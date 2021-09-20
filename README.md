@@ -1,27 +1,29 @@
 # Saco de Carvão
 
-O MPS geralmente fornece uma função de planejamento crucial, extraindo dados reais de suprimento e demanda, bem como previsões, para fornecer planos de produção precisos e oportunos que ajudem os fabricantes a atingir seus objetivos de produção e minimizar os custos de aquisição. [¹](https://www.rech.com.br/blog/o-que-e-plano-mestre-de-producao-e-como-ele-pode-otimizar-a-sua-producao)
+- Unificação de cadastro (peças acabadas e suprimentos/matéria-prima)
+- Unificação do Controle de Estoque
+- Entrada dos valores de previsão de demanda
 
-## calculo de plano mestre de produção
+## Unificação de cadastro/Estoque e entrada de previsão de demanda
 
-- Líder: Alexandre Castanheira
-- Projetista de Banco de Dados: Luciano
-- Desenvolvedor: Marcos Vinícius
-- Analista:
-  - Gabriel Faltz
-  - Julia Frascato
-- Testador: Rafael Rufini
+- Líder: Taylan Peixoto
+- Projetista de Banco de Dados: Daniel Correa
+- Desenvolvedor: Ricardo Gomes
+- Analista: Filipe de Souza
+- Testador: Cesar Kimura
+
+![e la vamos nos](https://i.pinimg.com/736x/c2/ae/d7/c2aed7f1f926f508b62131115c3e260b.jpg)
 
 ## Fazer
 
 ### Documentação
-- Sei não
+- Tudo
 
 ### Banco de Dados
-- Sei mão
+- tudo
 
 ### Desenvolvimento
-- Sei bão
+- Tudo mesmo
 
 ### Testes e Padronização
-- Sei vão
+- Tudo de tudo
