@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MRP_SdC", "MRP_SdC\MRP_SdC.csproj", "{0675D178-EF71-452F-8097-0EC789A7EC52}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0675D178-EF71-452F-8097-0EC789A7EC52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0675D178-EF71-452F-8097-0EC789A7EC52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0675D178-EF71-452F-8097-0EC789A7EC52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0675D178-EF71-452F-8097-0EC789A7EC52}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B00750E1-9759-4188-A2A8-26697E3654E9}
+	EndGlobalSection
+EndGlobal
