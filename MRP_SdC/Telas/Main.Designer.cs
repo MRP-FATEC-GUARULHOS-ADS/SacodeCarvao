@@ -29,10 +29,10 @@ namespace MRP_SdC
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title8 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_frm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.demandaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,7 +43,7 @@ namespace MRP_SdC
             this.produtoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.componenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mPSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menu_dir_pnl = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -138,7 +138,7 @@ namespace MRP_SdC
             this.estoqueToolStripMenuItem,
             this.cadastrarToolStripMenuItem,
             this.usuárioToolStripMenuItem,
-            this.ajudaToolStripMenuItem});
+            this.mPSToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1008, 24);
@@ -199,11 +199,11 @@ namespace MRP_SdC
             this.usuárioToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.usuárioToolStripMenuItem.Text = "Usuário";
             // 
-            // ajudaToolStripMenuItem
+            // mPSToolStripMenuItem
             // 
-            this.ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
-            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.ajudaToolStripMenuItem.Text = "Ajuda";
+            this.mPSToolStripMenuItem.Name = "mPSToolStripMenuItem";
+            this.mPSToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.mPSToolStripMenuItem.Text = "Ajuda";
             // 
             // statusStrip1
             // 
@@ -333,37 +333,37 @@ namespace MRP_SdC
             // 
             this.demanda_ago_cht.BackColor = System.Drawing.SystemColors.Control;
             this.demanda_ago_cht.BorderlineColor = System.Drawing.SystemColors.ControlDarkDark;
-            chartArea8.BackColor = System.Drawing.SystemColors.Control;
-            chartArea8.Name = "ChartArea1";
-            this.demanda_ago_cht.ChartAreas.Add(chartArea8);
+            chartArea2.BackColor = System.Drawing.SystemColors.Control;
+            chartArea2.Name = "ChartArea1";
+            this.demanda_ago_cht.ChartAreas.Add(chartArea2);
             this.demanda_ago_cht.Dock = System.Windows.Forms.DockStyle.Top;
-            legend8.BackColor = System.Drawing.SystemColors.Control;
-            legend8.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend8.Name = "Legend1";
-            this.demanda_ago_cht.Legends.Add(legend8);
+            legend2.BackColor = System.Drawing.SystemColors.Control;
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend2.Name = "Legend1";
+            this.demanda_ago_cht.Legends.Add(legend2);
             this.demanda_ago_cht.Location = new System.Drawing.Point(12, 16);
             this.demanda_ago_cht.Name = "demanda_ago_cht";
-            series8.BackImageTransparentColor = System.Drawing.SystemColors.Control;
-            series8.BackSecondaryColor = System.Drawing.SystemColors.Control;
-            series8.BorderColor = System.Drawing.SystemColors.Control;
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series8.Color = System.Drawing.SystemColors.Control;
-            series8.LabelBackColor = System.Drawing.SystemColors.Control;
-            series8.LabelBorderColor = System.Drawing.SystemColors.Control;
-            series8.Legend = "Legend1";
-            series8.MarkerBorderColor = System.Drawing.SystemColors.Control;
-            series8.MarkerColor = System.Drawing.SystemColors.Control;
-            series8.Name = "Series1";
-            series8.YValuesPerPoint = 2;
-            this.demanda_ago_cht.Series.Add(series8);
+            series2.BackImageTransparentColor = System.Drawing.SystemColors.Control;
+            series2.BackSecondaryColor = System.Drawing.SystemColors.Control;
+            series2.BorderColor = System.Drawing.SystemColors.Control;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.Color = System.Drawing.SystemColors.Control;
+            series2.LabelBackColor = System.Drawing.SystemColors.Control;
+            series2.LabelBorderColor = System.Drawing.SystemColors.Control;
+            series2.Legend = "Legend1";
+            series2.MarkerBorderColor = System.Drawing.SystemColors.Control;
+            series2.MarkerColor = System.Drawing.SystemColors.Control;
+            series2.Name = "Series1";
+            series2.YValuesPerPoint = 2;
+            this.demanda_ago_cht.Series.Add(series2);
             this.demanda_ago_cht.Size = new System.Drawing.Size(266, 300);
             this.demanda_ago_cht.TabIndex = 0;
             this.demanda_ago_cht.Text = "chart1";
-            title8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            title8.Name = "Title1";
-            title8.Text = "Demanda de agosto, 2021";
-            this.demanda_ago_cht.Titles.Add(title8);
+            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            title2.Name = "Title1";
+            title2.Text = "Demanda de agosto, 2021";
+            this.demanda_ago_cht.Titles.Add(title2);
             // 
             // demanda_gpb
             // 
@@ -943,7 +943,6 @@ namespace MRP_SdC
         private System.Windows.Forms.ToolStripMenuItem componenteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem demandaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuárioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Panel menu_dir_pnl;
         private System.Windows.Forms.GroupBox demanda_gpb;
@@ -1003,6 +1002,7 @@ namespace MRP_SdC
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.Panel dem_pesquisa_barra_pnl;
+        private System.Windows.Forms.ToolStripMenuItem mPSToolStripMenuItem;
     }
 }
 
