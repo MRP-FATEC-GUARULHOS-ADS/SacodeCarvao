@@ -163,13 +163,13 @@ namespace MRP_SdC
             // produtosToolStripMenuItem
             // 
             this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
-            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.produtosToolStripMenuItem.Text = "Produtos";
             // 
             // componentesToolStripMenuItem
             // 
             this.componentesToolStripMenuItem.Name = "componentesToolStripMenuItem";
-            this.componentesToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.componentesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.componentesToolStripMenuItem.Text = "Componentes";
             // 
             // cadastrarToolStripMenuItem
@@ -184,13 +184,13 @@ namespace MRP_SdC
             // produtoToolStripMenuItem
             // 
             this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
-            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.produtoToolStripMenuItem.Text = "Produto";
             // 
             // componenteToolStripMenuItem
             // 
             this.componenteToolStripMenuItem.Name = "componenteToolStripMenuItem";
-            this.componenteToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.componenteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.componenteToolStripMenuItem.Text = "Componente";
             // 
             // usuárioToolStripMenuItem

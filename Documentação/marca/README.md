@@ -19,3 +19,5 @@ interfaces, telas, documentos, entre outros).
 Com a ideia do saco de carvão na cabeça, analisamos sua definição e suas características a fim de fazer uma analogia com a nossa proposta:
 
 O carvão mineral era utilizado para impulsionar o funcionamento das máquinas a vapor. Uma “FONTE DE ENERGIA” para a transformação do futuro!
+
+[Identidade Visual Completa](./IdentidadeVisual.pdf)

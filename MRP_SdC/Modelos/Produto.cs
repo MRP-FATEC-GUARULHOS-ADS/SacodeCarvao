@@ -19,7 +19,7 @@
 
         public Produto(
             int id, string modelo, string descricao, double valor,
-            int qtdeMin = 0, int qtdeMax = 0, int qtdeAtual = 0, char estado = 'P'
+            int qtdeMin = 0, int qtdeMax = 0, int qtdeAtual = 0, char estado = 'D'
         )
         {
             this.id = id;
