@@ -59,6 +59,9 @@ namespace MRP_SdC
             this.ttl_lbl = new System.Windows.Forms.Label();
             this.EspDir_pnl = new System.Windows.Forms.Panel();
             this.EspEsq_pnl = new System.Windows.Forms.Panel();
+            this.descnt_btn = new System.Windows.Forms.Button();
+            this.pesquisa_sep_pnl = new System.Windows.Forms.Panel();
+            this.pesquisa_descnt_cbx = new System.Windows.Forms.CheckBox();
             this.corpo_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prod_lista_dgv)).BeginInit();
             this.dados_pnl.SuspendLayout();
@@ -276,6 +279,8 @@ namespace MRP_SdC
             // 
             this.pesquisa_cont_pnl.Controls.Add(this.pesquisa_tbx);
             this.pesquisa_cont_pnl.Controls.Add(this.pesquisa_btn);
+            this.pesquisa_cont_pnl.Controls.Add(this.pesquisa_sep_pnl);
+            this.pesquisa_cont_pnl.Controls.Add(this.pesquisa_descnt_cbx);
             this.pesquisa_cont_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.pesquisa_cont_pnl.Location = new System.Drawing.Point(0, 6);
             this.pesquisa_cont_pnl.Name = "pesquisa_cont_pnl";
@@ -287,13 +292,13 @@ namespace MRP_SdC
             this.pesquisa_tbx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pesquisa_tbx.Location = new System.Drawing.Point(0, 0);
             this.pesquisa_tbx.Name = "pesquisa_tbx";
-            this.pesquisa_tbx.Size = new System.Drawing.Size(608, 20);
+            this.pesquisa_tbx.Size = new System.Drawing.Size(495, 20);
             this.pesquisa_tbx.TabIndex = 0;
             // 
             // pesquisa_btn
             // 
             this.pesquisa_btn.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pesquisa_btn.Location = new System.Drawing.Point(608, 0);
+            this.pesquisa_btn.Location = new System.Drawing.Point(495, 0);
             this.pesquisa_btn.Name = "pesquisa_btn";
             this.pesquisa_btn.Size = new System.Drawing.Size(32, 20);
             this.pesquisa_btn.TabIndex = 1;
@@ -302,6 +307,7 @@ namespace MRP_SdC
             // 
             // barraInf_pnl
             // 
+            this.barraInf_pnl.Controls.Add(this.descnt_btn);
             this.barraInf_pnl.Controls.Add(this.ok_btn);
             this.barraInf_pnl.Controls.Add(this.editar_btn);
             this.barraInf_pnl.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -359,6 +365,37 @@ namespace MRP_SdC
             this.EspEsq_pnl.Name = "EspEsq_pnl";
             this.EspEsq_pnl.Size = new System.Drawing.Size(32, 481);
             this.EspEsq_pnl.TabIndex = 5;
+            // 
+            // descnt_btn
+            // 
+            this.descnt_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.descnt_btn.Enabled = false;
+            this.descnt_btn.Location = new System.Drawing.Point(172, 10);
+            this.descnt_btn.Name = "descnt_btn";
+            this.descnt_btn.Size = new System.Drawing.Size(160, 23);
+            this.descnt_btn.TabIndex = 2;
+            this.descnt_btn.Text = "Descontinuar Produto";
+            this.descnt_btn.UseVisualStyleBackColor = true;
+            // 
+            // pesquisa_sep_pnl
+            // 
+            this.pesquisa_sep_pnl.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pesquisa_sep_pnl.Location = new System.Drawing.Point(527, 0);
+            this.pesquisa_sep_pnl.Name = "pesquisa_sep_pnl";
+            this.pesquisa_sep_pnl.Size = new System.Drawing.Size(12, 20);
+            this.pesquisa_sep_pnl.TabIndex = 3;
+            // 
+            // pesquisa_descnt_cbx
+            // 
+            this.pesquisa_descnt_cbx.AutoSize = true;
+            this.pesquisa_descnt_cbx.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pesquisa_descnt_cbx.Location = new System.Drawing.Point(539, 0);
+            this.pesquisa_descnt_cbx.Name = "pesquisa_descnt_cbx";
+            this.pesquisa_descnt_cbx.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.pesquisa_descnt_cbx.Size = new System.Drawing.Size(101, 20);
+            this.pesquisa_descnt_cbx.TabIndex = 4;
+            this.pesquisa_descnt_cbx.Text = "descontinuados";
+            this.pesquisa_descnt_cbx.UseVisualStyleBackColor = true;
             // 
             // EstoqueProduto
             // 
@@ -419,5 +456,8 @@ namespace MRP_SdC
         private System.Windows.Forms.Panel EspDir_pnl;
         private System.Windows.Forms.Panel EspEsq_pnl;
         private System.Windows.Forms.DataGridView prod_lista_dgv;
+        private System.Windows.Forms.Button descnt_btn;
+        private System.Windows.Forms.Panel pesquisa_sep_pnl;
+        private System.Windows.Forms.CheckBox pesquisa_descnt_cbx;
     }
 }

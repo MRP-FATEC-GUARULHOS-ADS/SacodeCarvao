@@ -59,6 +59,12 @@
     <Compile Include="Telas\CadastroComponente.Designer.cs">
       <DependentUpon>CadastroComponente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\ExplosaoProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\ExplosaoProduto.Designer.cs">
+      <DependentUpon>ExplosaoProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\CadastroProduto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Telas\CadastroComponente.resx">
       <DependentUpon>CadastroComponente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\ExplosaoProduto.resx">
+      <DependentUpon>ExplosaoProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\CadastroProduto.resx">
       <DependentUpon>CadastroProduto.cs</DependentUpon>

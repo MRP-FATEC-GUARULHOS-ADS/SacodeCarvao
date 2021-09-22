@@ -39,6 +39,24 @@ namespace MRP_SdC
             AtualizaListas();
         }
 
+        // funcoes das listas
+        private void Produtos_DGV_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                prod_exp_btn.Enabled = true;
+            }
+        }
+        private void Componentes_DGV_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                comp_edt_btn.Enabled = true;
+                comp_forn_btn.Enabled = true;
+            }
+        }
+
+        // funcoes dos botoes
         private void Cadastro_Comp_Click(object sender, EventArgs e)
         {
             CadastroComponente formCadastroComponente = new CadastroComponente();
@@ -56,6 +74,12 @@ namespace MRP_SdC
         {
             CadastroProduto formCadastroProduto = new CadastroProduto();
             formCadastroProduto.ShowDialog();
+            AtualizaListas();
+        }
+        private void Explosao_Prod_Click(object sender, EventArgs e)
+        {
+            ExplosaoProduto formExplosaoProduto = new ExplosaoProduto();
+            formExplosaoProduto.ShowDialog();
             AtualizaListas();
         }
         private void Estoque_Prod_Click(object sender, EventArgs e)
