@@ -20,7 +20,7 @@ namespace MRP_SdC
         // funcoes personalizadas
         private void AtualizaLista()
         {
-            ProdutoDAO objProdDAO = new ProdutoDAO();
+            MySQL.ProdutoDAO objProdDAO = new MySQL.ProdutoDAO();
             List<Produto> listaProdutos = objProdDAO.GetProdutos();
 
             var bindingProdutos = new BindingList<Produto>(listaProdutos);

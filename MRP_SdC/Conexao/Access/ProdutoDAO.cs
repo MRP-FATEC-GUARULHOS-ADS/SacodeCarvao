@@ -1,130 +1,135 @@
 ﻿using System;
 using System.Collections.Generic;
-using MySql.Data.MySqlClient;
+using System.Data.OleDb;
 
 namespace MRP_SdC.Access
 {
     class ProdutoDAO
-    {/*
+    {
         public Boolean Insert(Produto prod)
         {
             Conexao conexao = new Conexao();
+            bool deuTudoCerto = true;
 
-            if (conexao.mErro.Length > 0)
+            using (OleDbConnection conexaoAccess = conexao.GetConexao())
             {
-                return false;
-            }
-
-            try
-            {
-                MySqlDataReader reader;
-                string query = "INSERT INTO PRODUTO ( " +
-                    "modeloProduto,  descrProduto, valorProduto, qtdeMinEstoque, qtdeMaxEstoque, qtdeAtualEstoque, estado " +
-                    ") VALUES( @modelo, @descricao, @valor, @qntmin, @qntmax, @qntatual, @estado ); ";
-                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
-                if (!conexao.OpenConexao())
+                try
                 {
-                    return false;
+                    // cria a string de comando
+                    string SQL = "INSERT INTO produto ( " +
+                        "modeloProduto,  descrProduto, valorProduto, qtdeMinEstoque, qtdeMaxEstoque, qtdeAtualEstoque, estadoProduto " +
+                        ") VALUES ('";
+                    SQL += prod.modelo + "','" + prod.descricao + "','" + prod.valor + "','";
+                    SQL += prod.qtdeMin + "','" + prod.qtdeMax + "','" + prod.qtdeAtual + "','" + (prod.estado ? 1 : 0) + "');";
+
+                    // abre a conexao com o banco de dados
+                    conexaoAccess.Open();
+
+                    // cria o comando a ser enviado
+                    OleDbCommand comando = new OleDbCommand(SQL, conexaoAccess);
+
+                    // executa o comando
+                    comando.ExecuteNonQuery();
                 }
-
-                cmd.Parameters.AddWithValue("@modelo", prod.modelo);
-                cmd.Parameters.AddWithValue("@descricao", prod.descricao);
-                cmd.Parameters.AddWithValue("@valor", prod.valor);
-                cmd.Parameters.AddWithValue("@qntmin", prod.qtdeMin);
-                cmd.Parameters.AddWithValue("@qntmax", prod.qtdeMax);
-                cmd.Parameters.AddWithValue("@qntatual", prod.qtdeAtual);
-                cmd.Parameters.AddWithValue("@estado", prod.estado);
-                cmd.Prepare();
-
-                reader = cmd.ExecuteReader();
-                reader.Read();
-
+                catch (OleDbException oledbex)
+                {
+                    deuTudoCerto = false;
+                    Console.WriteLine("Erro de acesso ao banco de dados " + oledbex.Message, "Erro");
+                }
+                finally
+                {
+                    //fecha a conexao
+                    conexaoAccess.Close();
+                }
             }
-            catch (MySqlException e)
-            {
-                return false;
-            }
-            conexao.CloseConexao();
-            return true;
+            return deuTudoCerto;
         }
 
         public Boolean Update(Produto prod)
         {
             Conexao conexao = new Conexao();
+            bool deuTudoCerto = true;
 
-            if (conexao.mErro.Length > 0)
+            using (OleDbConnection conexaoAccess = conexao.GetConexao())
             {
-                return false;
-            }
-
-            try
-            {
-                MySqlDataReader reader;
-                string query = "UPDATE PRODUTO " +
-                    "SET modeloProduto = @modelo, descrProduto = @descricao, valorProduto = @valor, " +
-                    "qtdeMinEstoque = @qntmin, qtdeMaxEstoque = @qntmax, qtdeAtualEstoque = @qntatual, estado = @estado " +
-                    "WHERE idProduto = @id; ";
-                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
-                if (!conexao.OpenConexao())
+                try
                 {
-                    return false;
+                    // cria a string de comando
+                    string SQL = "UPDATE produto SET " +
+                        " modeloProduto = '" + prod.modelo + "', descrProduto = '" + prod.descricao + "', valorProduto = '" + prod.valor +
+                        "', qtdeMinEstoque = '" + prod.qtdeMin + "', qtdeMaxEstoque = '" + prod.qtdeMax +
+                        "', qtdeAtualEstoque = '" + prod.qtdeAtual + "', estadoProduto = '" + (prod.estado ? 1 : 0) +
+                        "' WHERE [idProduto] = " + prod.id + ";";
+
+                    // cria o comando a ser enviado
+                    OleDbCommand comando = new OleDbCommand();
+
+                    // abre a conexao com o banco
+                    conexaoAccess.Open();
+
+                    // seta a conexao do comando
+                    comando.Connection = conexaoAccess;
+
+                    // seta o comando a ser executado
+                    comando.CommandText = SQL;
+
+                    // executa o comando
+                    comando.ExecuteNonQuery();
+
                 }
-
-                cmd.Parameters.AddWithValue("@modelo", prod.modelo);
-                cmd.Parameters.AddWithValue("@descricao", prod.descricao);
-                cmd.Parameters.AddWithValue("@valor", prod.valor);
-                cmd.Parameters.AddWithValue("@qntmin", prod.qtdeMin);
-                cmd.Parameters.AddWithValue("@qntmax", prod.qtdeMax);
-                cmd.Parameters.AddWithValue("@qntatual", prod.qtdeAtual);
-                cmd.Parameters.AddWithValue("@estado", prod.estado);
-                cmd.Parameters.AddWithValue("@id", prod.id);
-                cmd.Prepare();
-
-                reader = cmd.ExecuteReader();
-                reader.Read();
-
+                catch (OleDbException oledbex)
+                {
+                    deuTudoCerto = false;
+                    Console.WriteLine("Erro de acesso ao banco de dados " + oledbex.Message, "Erro");
+                }
+                finally
+                {
+                    //fecha a conexao
+                    conexaoAccess.Close();
+                }
             }
-            catch (MySqlException e)
-            {
-                return false;
-            }
-            conexao.CloseConexao();
-            return true;
+            return deuTudoCerto;
         }
 
         public Boolean Delete(int id)
         {
             Conexao conexao = new Conexao();
+            bool deuTudoCerto = true;
 
-            if (conexao.mErro.Length > 0)
+            using (OleDbConnection conexaoAccess = conexao.GetConexao())
             {
-                return false;
-            }
-
-            try
-            {
-                MySqlDataReader reader;
-                string query = "DELETE from PRODUTO " +
-                    "WHERE idProduto = @id; ";
-                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
-                if (!conexao.OpenConexao())
+                try
                 {
-                    return false;
+                    // cria a string de comando
+                    string SQL = "DELETE FROM produto WHERE [idProduto] = " + id + ";";
+
+                    // cria o comando a ser enviado
+                    OleDbCommand comando = new OleDbCommand();
+
+                    // abre a conexao com o banco
+                    conexaoAccess.Open();
+
+                    // seta a conexao do comando
+                    comando.Connection = conexaoAccess;
+
+                    // seta o comando a ser executado
+                    comando.CommandText = SQL;
+
+                    // executa o comando
+                    comando.ExecuteNonQuery();
                 }
-
-                cmd.Parameters.AddWithValue("@id", id);
-                cmd.Prepare();
-
-                reader = cmd.ExecuteReader();
-                reader.Read();
-
+                catch (OleDbException oledbex)
+                {
+                    deuTudoCerto = false;
+                    Console.WriteLine("Erro de acesso ao banco de dados " + oledbex.Message, "Erro");
+                }
+                finally
+                {
+                    //fecha a conexao
+                    conexaoAccess.Close();
+                }
             }
-            catch (MySqlException e)
-            {
-                return false;
-            }
-            conexao.CloseConexao();
-            return true;
+            return deuTudoCerto;
         }
 
         public List<Produto> GetProdutos()
@@ -134,42 +139,53 @@ namespace MRP_SdC.Access
 
             Conexao conexao = new Conexao();
 
-            if (conexao.mErro.Length > 0)
+            using (OleDbConnection conexaoAccess = conexao.GetConexao())
             {
-                return null;
-            }
-
-            try
-            {
-                MySqlDataReader reader;
-                string query = "SELECT p.* FROM PRODUTO p WHERE p.estado = 'P'; ";
-                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
-                if (!conexao.OpenConexao())
+                try
                 {
-                    return null;
+                    // cria a string de comando
+                    string query = "SELECT * FROM produto WHERE  [estadoProduto] = True;";
+
+                    OleDbCommand comando = new OleDbCommand();
+
+                    conexaoAccess.Open();
+
+                    comando.Connection = conexaoAccess;
+
+                    comando.CommandText = query;
+
+                    using (OleDbDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if (!reader.IsDBNull(0))
+                            {
+                                objProduto = new Produto();
+                                objProduto.id = Convert.ToInt32(reader["idProduto"]);
+                                objProduto.modelo = (string)reader["modeloProduto"];
+                                objProduto.descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : "");
+                                objProduto.valor = Convert.ToDouble(reader["valorProduto"]);
+                                objProduto.qtdeMin = ((reader["qtdeMinEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeMinEstoque"]) : 0);
+                                objProduto.qtdeMax = ((reader["qtdeMaxEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeMaxEstoque"]) : 0);
+                                objProduto.qtdeAtual = ((reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0);
+                                objProduto.estado = (bool)reader["estadoProduto"];
+
+                                listaProdutos.Add(objProduto);
+                            }
+                        }
+                    }
                 }
-
-                reader = cmd.ExecuteReader();
-
-                while (reader.Read())
+                catch (OleDbException oledbex)
                 {
-                    objProduto = new Produto();
-                    objProduto.id = Convert.ToInt32(reader["idProduto"]);
-                    objProduto.modelo = (string)reader["modeloProduto"];
-                    objProduto.descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : "");
-                    objProduto.valor = Convert.ToDouble(reader["valorProduto"]);
-                    objProduto.qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]);
-                    objProduto.qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]);
-                    objProduto.qtdeAtual = ( (reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0 );
-                    objProduto.estado = Convert.ToChar(reader["estado"]);
-
-                    listaProdutos.Add(objProduto);
+                    // ou não
+                    Console.WriteLine("Erro de acesso ao banco de dados " + oledbex.Message, "Erro");
+                }
+                finally
+                {
+                    // fecha a conexao
+                    conexaoAccess.Close();
                 }
             }
-            catch (MySqlException e)
-            {
-            }
-            conexao.CloseConexao();
             return listaProdutos;
         }
 
@@ -180,101 +196,110 @@ namespace MRP_SdC.Access
 
             Conexao conexao = new Conexao();
 
-            if (conexao.mErro.Length > 0)
+            using (OleDbConnection conexaoAccess = conexao.GetConexao())
             {
-                return null;
-            }
-
-            try
-            {
-                MySqlDataReader reader;
-                string query = "SELECT * FROM PRODUTO " +
-                    "WHERE (idProduto LIKE @pesquisa " +
-                        "OR modeloProduto LIKE @pesquisa " +
-                        "OR descrProduto LIKE @pesquisa ) " +
-                        "AND estado = 'P';";
-                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
-                if (!conexao.OpenConexao())
+                try
                 {
-                    return null;
-                }
+                    // cria a string de comando
+                    string query = "SELECT * FROM produto WHERE [idProduto] = " + pesquisa +
+                        " OR [modeloProduto] = " + pesquisa + ";";
 
-                cmd.Parameters.AddWithValue("@pesquisa", pesquisa);
-                cmd.Prepare();
-                Console.WriteLine(query);
+                    OleDbCommand comando = new OleDbCommand();
 
-                reader = cmd.ExecuteReader();
+                    conexaoAccess.Open();
 
-                while (reader.Read())
-                {
-                    objProduto = new Produto
+                    comando.Connection = conexaoAccess;
+
+                    comando.CommandText = query;
+
+                    using (OleDbDataReader reader = comando.ExecuteReader())
                     {
-                        id = Convert.ToInt32(reader["idProduto"]),
-                        modelo = (string)reader["modeloProduto"],
-                        descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : ""),
-                        valor = Convert.ToDouble(reader["valorProduto"]),
-                        qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]),
-                        qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]),
-                        qtdeAtual = ( (reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0 ),
-                        estado = Convert.ToChar(reader["estado"])
-                    };
+                        while (reader.Read())
+                        {
+                            if (!reader.IsDBNull(0))
+                            {
+                                objProduto = new Produto();
+                                objProduto.id = Convert.ToInt32(reader["idProduto"]);
+                                objProduto.modelo = (string)reader["modeloProduto"];
+                                objProduto.descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : "");
+                                objProduto.valor = Convert.ToDouble(reader["valorProduto"]);
+                                objProduto.qtdeMin = ((reader["qtdeMinEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeMinEstoque"]) : 0);
+                                objProduto.qtdeMax = ((reader["qtdeMaxEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeMaxEstoque"]) : 0);
+                                objProduto.qtdeAtual = ((reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0);
+                                objProduto.estado = (bool)reader["estadoProduto"];
 
-                    listaProdutos.Add(objProduto);
+                                listaProdutos.Add(objProduto);
+                            }
+                        }
+                    }
+                }
+                catch (OleDbException oledbex)
+                {
+                    // ou não
+                    Console.WriteLine("Erro de acesso ao banco de dados " + oledbex.Message, "Erro");
+                }
+                finally
+                {
+                    // fecha a conexao
+                    conexaoAccess.Close();
                 }
             }
-            catch (MySqlException e)
-            {
-            }
-            conexao.CloseConexao();
             return listaProdutos;
         }
 
         public Produto Get(int id)
         {
-            Produto objProduto;
+            Produto objProduto = new Produto();
 
             Conexao conexao = new Conexao();
 
-            if (conexao.mErro.Length > 0)
+            using (OleDbConnection conexaoAccess = conexao.GetConexao())
             {
-                return null;
-            }
-
-            try
-            {
-                MySqlDataReader reader;
-                string query = "SELECT p.* FROM PRODUTO p WHERE idProduto = (@id)";
-                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
-                if (!conexao.OpenConexao())
+                try
                 {
-                    return null;
+                    // cria a string de comando
+                    string query = "SELECT * FROM produto WHERE [idProduto] = " + id + ";";
+
+                    OleDbCommand comando = new OleDbCommand();
+
+                    conexaoAccess.Open();
+
+                    comando.Connection = conexaoAccess;
+
+                    comando.CommandText = query;
+
+                    using (OleDbDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if (!reader.IsDBNull(0))
+                            {
+                                objProduto = new Produto();
+
+                                objProduto.id = Convert.ToInt32(reader["idProduto"]);
+                                objProduto.modelo = (string)reader["modeloProduto"];
+                                objProduto.descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : "");
+                                objProduto.valor = Convert.ToDouble(reader["valorProduto"]);
+                                objProduto.qtdeMin = ((reader["qtdeMinEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeMinEstoque"]) : 0);
+                                objProduto.qtdeMax = ((reader["qtdeMaxEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeMaxEstoque"]) : 0);
+                                objProduto.qtdeAtual = ((reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0);
+                                objProduto.estado = (bool)reader["estadoProduto"];
+                            }
+                        }
+                    }
                 }
-
-                cmd.Parameters.AddWithValue("@id", id);
-                cmd.Prepare();
-
-                reader = cmd.ExecuteReader();
-                reader.Read();
-
-                objProduto = new Produto
+                catch (OleDbException oledbex)
                 {
-                    id = Convert.ToInt32(reader["idProduto"]),
-                    modelo = (string)reader["modeloProduto"],
-                    descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : ""),
-                    valor = Convert.ToDouble(reader["valorProduto"]),
-                    qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]),
-                    qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]),
-                    qtdeAtual = ( (reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0 ),
-                    estado = Convert.ToChar(reader["estado"])
-                };
-
+                    // ou não
+                    Console.WriteLine("Erro de acesso ao banco de dados " + oledbex.Message, "Erro");
+                }
+                finally
+                {
+                    // fecha a conexao
+                    conexaoAccess.Close();
+                }
             }
-            catch (MySqlException e)
-            {
-                return null;
-            }
-            conexao.CloseConexao();
             return objProduto;
-        }*/
+        }
     }
 }

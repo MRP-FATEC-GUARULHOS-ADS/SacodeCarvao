@@ -11,7 +11,7 @@ namespace MRP_SdC
         public int qtdeMin { get; set; }
         public int qtdeMax { get; set; }
         public int qtdeAtual { get; set; }
-        public char estado { get; set; }
+        public bool estado { get; set; }
         public List<Componente> componentes { get; set; }
 
         // Construtores
@@ -21,7 +21,7 @@ namespace MRP_SdC
         }
 
         public Produto(
-            string modelo, string descricao, double valor, char estado = 'D'
+            string modelo, string descricao, double valor, bool estado = false
         )
         {
             this.modelo = modelo;

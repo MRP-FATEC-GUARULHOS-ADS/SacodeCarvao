@@ -20,7 +20,7 @@ namespace MRP_SdC.Access
                         "tipoComponente, marcaComponente, modeloComponente, especsComponente, qtdeMinEstoque, qtdeMaxEstoque, qtdeAtualEstoque, estadoComponente" +
                         ") VALUES ('";
                     SQL += comp.tipo + "','" + comp.marca + "','" + comp.modelo + "','" + comp.especificacoes + "','";
-                    SQL += comp.qtdeMin + "','" + comp.qtdeMax + "','" + comp.qtdeAtual + "','" + comp.estado + "');";
+                    SQL += comp.qtdeMin + "','" + comp.qtdeMax + "','" + comp.qtdeAtual + "','" + (comp.estado ? 1 : 0) + "');";
 
                     // abre a conexao com o banco de dados
                     conexaoAccess.Open();
@@ -34,14 +34,15 @@ namespace MRP_SdC.Access
                 catch (OleDbException oledbex)
                 {
                     deuTudoCerto = false;
+                    Console.WriteLine("Erro de acesso ao banco de dados " + oledbex.Message, "Erro");
                 }
                 finally
                 {
                     //fecha a conexao
                     conexaoAccess.Close();
                 }
-                return deuTudoCerto;
             }
+            return deuTudoCerto;
         }
 
         public Boolean Update(Componente comp)
@@ -57,7 +58,7 @@ namespace MRP_SdC.Access
                     string SQL = "UPDATE componente SET tipoComponente = '" + comp.tipo + "', marcaComponente = '" + comp.marca +
                         "', modeloComponente = '" + comp.modelo + "', especsComponente = '" + comp.especificacoes +
                         "', qtdeMinEstoque = '" + comp.qtdeMin + "', qtdeMaxEstoque = '" + comp.qtdeMax +
-                        "', qtdeAtualEstoque = '" + comp.qtdeAtual + "', estadoComponente = '" + comp.estado +
+                        "', qtdeAtualEstoque = '" + comp.qtdeAtual + "', estadoComponente = '" + (comp.estado ? 1 : 0) +
                         "' WHERE [idComponente] = " + comp.id + ";";
 
                     // cria o comando a ser enviado
@@ -79,6 +80,7 @@ namespace MRP_SdC.Access
                 catch (OleDbException oledbex)
                 {
                     deuTudoCerto = false;
+                    Console.WriteLine("Erro de acesso ao banco de dados " + oledbex.Message, "Erro");
                 }
                 finally
                 {
@@ -119,6 +121,7 @@ namespace MRP_SdC.Access
                 catch (OleDbException oledbex)
                 {
                     deuTudoCerto = false;
+                    Console.WriteLine("Erro de acesso ao banco de dados " + oledbex.Message, "Erro");
                 }
                 finally
                 {
@@ -158,7 +161,7 @@ namespace MRP_SdC.Access
                                     objComponente.qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]);
                                     objComponente.qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]);
                                     objComponente.qtdeAtual = Convert.ToInt32(reader["qtdeAtualEstoque"]);
-                                    objComponente.estado = ((bool)reader["estadoComponente"] ? 'P' : 'D' );
+                                    objComponente.estado = (bool)reader["estadoComponente"];
 
                                     listaComponentes.Add(objComponente);
                                 }
@@ -190,29 +193,33 @@ namespace MRP_SdC.Access
             {
                 try
                 {
-                    // cria o adapter e preenche o dataset
-                    using (OleDbCommand cmd = new OleDbCommand("SELECT * from componente WHERE [modeloComponente] = " + pesquisa + ";", conexaoAccess))
-                    {
-                        conexaoAccess.Open();
-                        using (OleDbDataReader reader = cmd.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                if (!reader.IsDBNull(0))
-                                {
-                                    objComponente = new Componente();
-                                    objComponente.id = Convert.ToInt32(reader["idComponente"]);
-                                    objComponente.tipo = (string)reader["tipoComponente"];
-                                    objComponente.marca = (string)reader["marcaComponente"];
-                                    objComponente.modelo = (string)reader["modeloComponente"];
-                                    objComponente.especificacoes = (reader["especsComponente"] != DBNull.Value ? (string)(reader["especsComponente"]) : "");
-                                    objComponente.qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]);
-                                    objComponente.qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]);
-                                    objComponente.qtdeAtual = Convert.ToInt32(reader["qtdeAtualEstoque"]);
-                                    objComponente.estado = ((bool)reader["estadoComponente"] ? 'P' : 'D');
+                    string query = "SELECT * from componente WHERE [modeloComponente] = " + pesquisa + ";";
+                    OleDbCommand comando = new OleDbCommand();
 
-                                    listaComponentes.Add(objComponente);
-                                }
+                    conexaoAccess.Open();
+
+                    comando.Connection = conexaoAccess;
+
+                    comando.CommandText = query;
+
+                    using (OleDbDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if (!reader.IsDBNull(0))
+                            {
+                                objComponente = new Componente();
+                                objComponente.id = Convert.ToInt32(reader["idComponente"]);
+                                objComponente.tipo = (string)reader["tipoComponente"];
+                                objComponente.marca = (string)reader["marcaComponente"];
+                                objComponente.modelo = (string)reader["modeloComponente"];
+                                objComponente.especificacoes = (reader["especsComponente"] != DBNull.Value ? (string)(reader["especsComponente"]) : "");
+                                objComponente.qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]);
+                                objComponente.qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]);
+                                objComponente.qtdeAtual = Convert.ToInt32(reader["qtdeAtualEstoque"]);
+                                objComponente.estado = (bool)reader["estadoComponente"];
+
+                                listaComponentes.Add(objComponente);
                             }
                         }
                     }
@@ -259,7 +266,7 @@ namespace MRP_SdC.Access
                                     objComponente.qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]);
                                     objComponente.qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]);
                                     objComponente.qtdeAtual = Convert.ToInt32(reader["qtdeAtualEstoque"]);
-                                    objComponente.estado = ((bool)reader["estadoComponente"] ? 'P' : 'D');
+                                    objComponente.estado = (bool)reader["estadoComponente"];
                                 }
                             }
                         }

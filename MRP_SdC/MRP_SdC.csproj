@@ -51,9 +51,9 @@
     <Compile Include="Conexao\Access\ComponenteDAO.cs" />
     <Compile Include="Conexao\Access\Conexao.cs" />
     <Compile Include="Conexao\Access\ProdutoDAO.cs" />
-    <Compile Include="Conexao\ComponenteDAO.cs" />
-    <Compile Include="Conexao\Conexao.cs" />
-    <Compile Include="Conexao\ProdutoDAO.cs" />
+    <Compile Include="Conexao\MySQL\ComponenteDAO.cs" />
+    <Compile Include="Conexao\MySQL\Conexao.cs" />
+    <Compile Include="Conexao\MySQL\ProdutoDAO.cs" />
     <Compile Include="Modelos\Componente.cs" />
     <Compile Include="Modelos\Produto.cs" />
     <Compile Include="Telas\CadastroComponente.cs">

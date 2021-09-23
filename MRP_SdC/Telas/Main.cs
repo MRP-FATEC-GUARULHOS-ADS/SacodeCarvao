@@ -21,7 +21,7 @@ namespace MRP_SdC
         private void AtualizaListas()
         {
             Access.ComponenteDAO objCompDAO = new Access.ComponenteDAO();
-            ProdutoDAO objProdDAO = new ProdutoDAO();
+            Access.ProdutoDAO objProdDAO = new Access.ProdutoDAO();
 
             List<Componente> listaComponentes = objCompDAO.GetComponentes();
             List<Produto> listaProdutos = objProdDAO.GetProdutos();

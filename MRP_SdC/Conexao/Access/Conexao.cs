@@ -22,7 +22,6 @@ namespace MRP_SdC.Access
             // usando o caminho do arquivo
             string caminho = Application.StartupPath;
             // gambiarra pra tirar o caminho da pasta debug
-            // string pasta = caminho.Substring(0, caminho.Length - 9) + "DBP1-MRP_final.mdb";
             string pasta = caminho + @"..\..\..\..\BancodeDados\SacodeCarvao.mdb";
             string conn = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + pasta;
 

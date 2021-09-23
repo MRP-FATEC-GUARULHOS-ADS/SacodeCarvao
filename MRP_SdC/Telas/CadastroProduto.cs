@@ -58,7 +58,7 @@ namespace MRP_SdC
             double valor = (double.TryParse(valor_tbx.Text, out valor) ? double.Parse(valor_tbx.Text) : 0);
 
             Produto myProduto = new Produto(
-                modelo_tbx.Text, descr_tbm.Text, valor, (estado_clb.CheckedIndices[0] == 0 ? 'P' : 'D')
+                modelo_tbx.Text, descr_tbm.Text, valor, (estado_clb.CheckedIndices[0] == 0 ? true : false)
             );
 
             // confirmando insercao
@@ -68,7 +68,7 @@ namespace MRP_SdC
             );
             if (confirmarInsert == DialogResult.Yes)
             {
-                ProdutoDAO objProdDAO = new ProdutoDAO();
+                Access.ProdutoDAO objProdDAO = new Access.ProdutoDAO();
                 objProdDAO.Insert(myProduto);
             }
 

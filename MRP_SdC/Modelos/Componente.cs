@@ -11,7 +11,7 @@
         public int qtdeMin { get; set; }
         public int qtdeMax { get; set; }
         public int qtdeAtual { get; set; }
-        public char estado { get; set; }
+        public bool estado { get; set; }
 
         // Construtores
         public Componente()
@@ -20,7 +20,7 @@
         }
 
         public Componente(
-            string tipo, string marca, string modelo, string especificacoes, char estado = 'P'
+            string tipo, string marca, string modelo, string especificacoes, bool estado = false
         )
         {
             this.id = id;

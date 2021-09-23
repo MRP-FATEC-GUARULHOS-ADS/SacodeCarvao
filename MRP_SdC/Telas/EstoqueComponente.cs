@@ -20,7 +20,7 @@ namespace MRP_SdC
         // funcoes personalizadas
         private void AtualizaLista()
         {
-            ComponenteDAO objCompDAO = new ComponenteDAO();
+            MySQL.ComponenteDAO objCompDAO = new MySQL.ComponenteDAO();
             List<Componente> listaComponentes = objCompDAO.GetComponentes();
 
             var lista = new BindingList<Componente>(listaComponentes);
