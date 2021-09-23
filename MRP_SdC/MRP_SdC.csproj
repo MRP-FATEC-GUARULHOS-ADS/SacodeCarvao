@@ -48,6 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conexao\Access\ComponenteDAO.cs" />
+    <Compile Include="Conexao\Access\Conexao.cs" />
+    <Compile Include="Conexao\Access\ProdutoDAO.cs" />
     <Compile Include="Conexao\ComponenteDAO.cs" />
     <Compile Include="Conexao\Conexao.cs" />
     <Compile Include="Conexao\ProdutoDAO.cs" />

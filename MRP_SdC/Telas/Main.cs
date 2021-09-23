@@ -20,7 +20,7 @@ namespace MRP_SdC
         // funcoes personalizadas
         private void AtualizaListas()
         {
-            ComponenteDAO objCompDAO = new ComponenteDAO();
+            Access.ComponenteDAO objCompDAO = new Access.ComponenteDAO();
             ProdutoDAO objProdDAO = new ProdutoDAO();
 
             List<Componente> listaComponentes = objCompDAO.GetComponentes();

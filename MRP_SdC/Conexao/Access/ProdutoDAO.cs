@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 
-namespace MRP_SdC
+namespace MRP_SdC.Access
 {
     class ProdutoDAO
-    {
+    {/*
         public Boolean Insert(Produto prod)
         {
             Conexao conexao = new Conexao();
@@ -275,6 +275,6 @@ namespace MRP_SdC
             }
             conexao.CloseConexao();
             return objProduto;
-        }
+        }*/
     }
 }
