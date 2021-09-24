@@ -64,5 +64,18 @@ namespace MRP_SdC
             formEstoqueProduto.ShowDialog();
             AtualizaListas();
         }
+
+        private void btnCadastrarProducao_Click(object sender, EventArgs e)
+        {
+            CadastroMPS cadastromps = new CadastroMPS();
+            cadastromps.Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            ConexaoMPS mps = new ConexaoMPS();
+            mps.AtualizarLista(dem_lista_dgv);
+        }
+
     }
 }
