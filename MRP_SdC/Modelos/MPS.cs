@@ -1,6 +1,6 @@
 ﻿namespace MRP_SdC
 {
-    class MPS
+    public class MPS
     {
         //Atributos
         public int idProducao { get; set; }
