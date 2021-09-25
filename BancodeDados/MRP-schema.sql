@@ -43,12 +43,12 @@ FOREIGN KEY (idComponente) REFERENCES COMPONENTE(idComponente);
 
 CREATE TABLE FORNECEDOR (
  idFornecedor int primary key AUTO_INCREMENT,
- nome varchar(100),
+ nome varchar(100) not null,
  logradouro varchar(150),
  numero varchar(30),
  complemento varchar(50),
  cep char(8),
- telefone varchar(20),
+ telefone varchar(20) not null,
  celular varchar(20),
  email varchar(30),
  urlSite varchar(100)

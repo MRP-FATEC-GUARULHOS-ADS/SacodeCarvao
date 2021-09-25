@@ -295,7 +295,7 @@ namespace MRP_SdC
             this.Controls.Add(this.corpo_pnl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CadastroProduto";
-            this.Text = "CadastroComponente";
+            this.Text = "Cadastro de produto";
             this.corpo_pnl.ResumeLayout(false);
             this.explosao_pnl.ResumeLayout(false);
             this.barraInf_pnl.ResumeLayout(false);

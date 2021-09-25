@@ -50,17 +50,25 @@
   <ItemGroup>
     <Compile Include="Conexao\Access\ComponenteDAO.cs" />
     <Compile Include="Conexao\Access\Conexao.cs" />
+    <Compile Include="Conexao\Access\FornecedorDAO.cs" />
     <Compile Include="Conexao\Access\ProdutoDAO.cs" />
     <Compile Include="Conexao\MySQL\ComponenteDAO.cs" />
     <Compile Include="Conexao\MySQL\Conexao.cs" />
     <Compile Include="Conexao\MySQL\ProdutoDAO.cs" />
     <Compile Include="Modelos\Componente.cs" />
+    <Compile Include="Modelos\Fornecedor.cs" />
     <Compile Include="Modelos\Produto.cs" />
     <Compile Include="Telas\CadastroComponente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Telas\CadastroComponente.Designer.cs">
       <DependentUpon>CadastroComponente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Fornecedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Fornecedores.Designer.cs">
+      <DependentUpon>Fornecedores.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\ExplosaoProduto.cs">
       <SubType>Form</SubType>
@@ -96,6 +104,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Telas\CadastroComponente.resx">
       <DependentUpon>CadastroComponente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Fornecedores.resx">
+      <DependentUpon>Fornecedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\ExplosaoProduto.resx">
       <DependentUpon>ExplosaoProduto.cs</DependentUpon>
