@@ -47,7 +47,7 @@ CREATE TABLE FORNECEDOR (
  logradouro varchar(150),
  numero varchar(30),
  complemento varchar(50),
- cep char(8),
+ cep char(8) not null,
  telefone varchar(20) not null,
  celular varchar(20),
  email varchar(30),
@@ -93,6 +93,19 @@ CREATE TABLE MOVIMENTACAO_COMPONENTE (
 ALTER TABLE MOVIMENTACAO_COMPONENTE
 ADD CONSTRAINT FK_MOVCOMP_COMPONENTE
 FOREIGN KEY (idComponente) REFERENCES COMPONENTE(idComponente);
+
+CREATE TABLE MPS (
+  idProducao int primary key AUTO_INCREMENT,
+  quantidadeemMaos int,
+  quantidadeDisponivel int,
+  quantidadeDemanda int,
+  quantidadeProduzir int,
+  idProduto int not null
+);
+
+ALTER TABLE MPS 
+ADD CONSTRAINT FK_MPS_PRODUTO
+FOREIGN KEY (idProduto) REFERENCES Produto(idProduto);
 
 -- INSERTS
 INSERT INTO PRODUTO (

@@ -29,10 +29,10 @@ namespace MRP_SdC
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_frm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.demandaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,22 +57,14 @@ namespace MRP_SdC
             this.demanda_ago_cht = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.demanda_gpb = new System.Windows.Forms.GroupBox();
             this.dem_lista_dgv = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dem_dir_pnl = new System.Windows.Forms.Panel();
             this.relatorio_btn = new System.Windows.Forms.Button();
             this.previsao_btn = new System.Windows.Forms.Button();
+            this.cadastrar_producao_btn = new System.Windows.Forms.Button();
             this.dem_pesquisa_pnl = new System.Windows.Forms.Panel();
             this.dem_pesquisa_barra_pnl = new System.Windows.Forms.Panel();
             this.dem_pesquisa_tbx = new System.Windows.Forms.TextBox();
             this.dem_pesquisa_btn = new System.Windows.Forms.Button();
-            this.dem_dir_pnl = new System.Windows.Forms.Panel();
-            this.button8 = new System.Windows.Forms.Button();
-            this.btnCadastrarProducao = new System.Windows.Forms.Button();
-            this.relatorio_btn = new System.Windows.Forms.Button();
-            this.previsao_btn = new System.Windows.Forms.Button();
             this.menu_main_pnl = new System.Windows.Forms.Panel();
             this.prodcomp_pnl = new System.Windows.Forms.Panel();
             this.comp_gpb = new System.Windows.Forms.GroupBox();
@@ -337,37 +329,37 @@ namespace MRP_SdC
             // 
             this.demanda_ago_cht.BackColor = System.Drawing.SystemColors.Control;
             this.demanda_ago_cht.BorderlineColor = System.Drawing.SystemColors.ControlDarkDark;
-            chartArea1.BackColor = System.Drawing.SystemColors.Control;
-            chartArea1.Name = "ChartArea1";
-            this.demanda_ago_cht.ChartAreas.Add(chartArea1);
+            chartArea2.BackColor = System.Drawing.SystemColors.Control;
+            chartArea2.Name = "ChartArea1";
+            this.demanda_ago_cht.ChartAreas.Add(chartArea2);
             this.demanda_ago_cht.Dock = System.Windows.Forms.DockStyle.Top;
-            legend1.BackColor = System.Drawing.SystemColors.Control;
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend1.Name = "Legend1";
-            this.demanda_ago_cht.Legends.Add(legend1);
+            legend2.BackColor = System.Drawing.SystemColors.Control;
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend2.Name = "Legend1";
+            this.demanda_ago_cht.Legends.Add(legend2);
             this.demanda_ago_cht.Location = new System.Drawing.Point(12, 16);
             this.demanda_ago_cht.Name = "demanda_ago_cht";
-            series1.BackImageTransparentColor = System.Drawing.SystemColors.Control;
-            series1.BackSecondaryColor = System.Drawing.SystemColors.Control;
-            series1.BorderColor = System.Drawing.SystemColors.Control;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series1.Color = System.Drawing.SystemColors.Control;
-            series1.LabelBackColor = System.Drawing.SystemColors.Control;
-            series1.LabelBorderColor = System.Drawing.SystemColors.Control;
-            series1.Legend = "Legend1";
-            series1.MarkerBorderColor = System.Drawing.SystemColors.Control;
-            series1.MarkerColor = System.Drawing.SystemColors.Control;
-            series1.Name = "Series1";
-            series1.YValuesPerPoint = 2;
-            this.demanda_ago_cht.Series.Add(series1);
+            series2.BackImageTransparentColor = System.Drawing.SystemColors.Control;
+            series2.BackSecondaryColor = System.Drawing.SystemColors.Control;
+            series2.BorderColor = System.Drawing.SystemColors.Control;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.Color = System.Drawing.SystemColors.Control;
+            series2.LabelBackColor = System.Drawing.SystemColors.Control;
+            series2.LabelBorderColor = System.Drawing.SystemColors.Control;
+            series2.Legend = "Legend1";
+            series2.MarkerBorderColor = System.Drawing.SystemColors.Control;
+            series2.MarkerColor = System.Drawing.SystemColors.Control;
+            series2.Name = "Series1";
+            series2.YValuesPerPoint = 2;
+            this.demanda_ago_cht.Series.Add(series2);
             this.demanda_ago_cht.Size = new System.Drawing.Size(266, 300);
             this.demanda_ago_cht.TabIndex = 0;
             this.demanda_ago_cht.Text = "chart1";
-            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            title1.Name = "Title1";
-            title1.Text = "Demanda de agosto, 2021";
-            this.demanda_ago_cht.Titles.Add(title1);
+            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            title2.Name = "Title1";
+            title2.Text = "Demanda de agosto, 2021";
+            this.demanda_ago_cht.Titles.Add(title2);
             // 
             // demanda_gpb
             // 
@@ -398,37 +390,11 @@ namespace MRP_SdC
             this.dem_lista_dgv.StandardTab = true;
             this.dem_lista_dgv.TabIndex = 1;
             // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 60;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Produto";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Data";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Movimentação";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Width = 200;
-            // 
             // dem_dir_pnl
             // 
-            this.dem_dir_pnl.Controls.Add(this.relatorio_btn);
+            this.dem_dir_pnl.Controls.Add(this.cadastrar_producao_btn);
             this.dem_dir_pnl.Controls.Add(this.previsao_btn);
+            this.dem_dir_pnl.Controls.Add(this.relatorio_btn);
             this.dem_dir_pnl.Dock = System.Windows.Forms.DockStyle.Right;
             this.dem_dir_pnl.Location = new System.Drawing.Point(530, 52);
             this.dem_dir_pnl.Name = "dem_dir_pnl";
@@ -438,7 +404,7 @@ namespace MRP_SdC
             // relatorio_btn
             // 
             this.relatorio_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.relatorio_btn.Location = new System.Drawing.Point(9, 18);
+            this.relatorio_btn.Location = new System.Drawing.Point(9, 6);
             this.relatorio_btn.Name = "relatorio_btn";
             this.relatorio_btn.Size = new System.Drawing.Size(108, 24);
             this.relatorio_btn.TabIndex = 0;
@@ -448,12 +414,23 @@ namespace MRP_SdC
             // previsao_btn
             // 
             this.previsao_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.previsao_btn.Location = new System.Drawing.Point(9, 48);
+            this.previsao_btn.Location = new System.Drawing.Point(9, 36);
             this.previsao_btn.Name = "previsao_btn";
             this.previsao_btn.Size = new System.Drawing.Size(108, 23);
             this.previsao_btn.TabIndex = 1;
             this.previsao_btn.Text = "Previsão";
             this.previsao_btn.UseVisualStyleBackColor = true;
+            // 
+            // cadastrar_producao_btn
+            // 
+            this.cadastrar_producao_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cadastrar_producao_btn.Location = new System.Drawing.Point(9, 65);
+            this.cadastrar_producao_btn.Name = "cadastrar_producao_btn";
+            this.cadastrar_producao_btn.Size = new System.Drawing.Size(108, 24);
+            this.cadastrar_producao_btn.TabIndex = 2;
+            this.cadastrar_producao_btn.Text = "Cadastrar";
+            this.cadastrar_producao_btn.UseVisualStyleBackColor = true;
+            this.cadastrar_producao_btn.Click += new System.EventHandler(this.btnCadastrarProducao_Click);
             // 
             // dem_pesquisa_pnl
             // 
@@ -492,60 +469,6 @@ namespace MRP_SdC
             this.dem_pesquisa_btn.TabIndex = 1;
             this.dem_pesquisa_btn.Text = "👁";
             this.dem_pesquisa_btn.UseVisualStyleBackColor = true;
-            // 
-            // dem_dir_pnl
-            // 
-            this.dem_dir_pnl.Controls.Add(this.button8);
-            this.dem_dir_pnl.Controls.Add(this.btnCadastrarProducao);
-            this.dem_dir_pnl.Controls.Add(this.relatorio_btn);
-            this.dem_dir_pnl.Controls.Add(this.previsao_btn);
-            this.dem_dir_pnl.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dem_dir_pnl.Location = new System.Drawing.Point(530, 16);
-            this.dem_dir_pnl.Name = "dem_dir_pnl";
-            this.dem_dir_pnl.Size = new System.Drawing.Size(120, 163);
-            this.dem_dir_pnl.TabIndex = 2;
-            // 
-            // button8
-            // 
-            this.button8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button8.Location = new System.Drawing.Point(9, 125);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(108, 24);
-            this.button8.TabIndex = 3;
-            this.button8.Text = "Consultar";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // btnCadastrarProducao
-            // 
-            this.btnCadastrarProducao.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnCadastrarProducao.Location = new System.Drawing.Point(9, 95);
-            this.btnCadastrarProducao.Name = "btnCadastrarProducao";
-            this.btnCadastrarProducao.Size = new System.Drawing.Size(108, 24);
-            this.btnCadastrarProducao.TabIndex = 2;
-            this.btnCadastrarProducao.Text = "Cadastrar";
-            this.btnCadastrarProducao.UseVisualStyleBackColor = true;
-            this.btnCadastrarProducao.Click += new System.EventHandler(this.btnCadastrarProducao_Click);
-            // 
-            // relatorio_btn
-            // 
-            this.relatorio_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.relatorio_btn.Location = new System.Drawing.Point(9, 36);
-            this.relatorio_btn.Name = "relatorio_btn";
-            this.relatorio_btn.Size = new System.Drawing.Size(108, 24);
-            this.relatorio_btn.TabIndex = 0;
-            this.relatorio_btn.Text = "Relatorio";
-            this.relatorio_btn.UseVisualStyleBackColor = true;
-            // 
-            // previsao_btn
-            // 
-            this.previsao_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.previsao_btn.Location = new System.Drawing.Point(9, 66);
-            this.previsao_btn.Name = "previsao_btn";
-            this.previsao_btn.Size = new System.Drawing.Size(108, 23);
-            this.previsao_btn.TabIndex = 1;
-            this.previsao_btn.Text = "Previsão";
-            this.previsao_btn.UseVisualStyleBackColor = true;
             // 
             // menu_main_pnl
             // 
@@ -1043,8 +966,7 @@ namespace MRP_SdC
         private System.Windows.Forms.Button prod_des_btn;
         private System.Windows.Forms.Panel dem_pesquisa_barra_pnl;
         private System.Windows.Forms.ToolStripMenuItem mPSToolStripMenuItem;
-        private System.Windows.Forms.Button btnCadastrarProducao;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button cadastrar_producao_btn;
     }
 }
 

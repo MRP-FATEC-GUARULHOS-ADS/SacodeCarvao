@@ -22,15 +22,19 @@ namespace MRP_SdC
         {
             Access.ComponenteDAO objCompDAO = new Access.ComponenteDAO();
             Access.ProdutoDAO objProdDAO = new Access.ProdutoDAO();
+            MySQL.ConexaoMPS mps = new MySQL.ConexaoMPS();
 
             List<Componente> listaComponentes = objCompDAO.GetComponentes();
             List<Produto> listaProdutos = objProdDAO.GetProdutos();
+            List<MPS> listaMPS = mps.GetMPS();
 
             var bindingComponentes = new BindingList<Componente>(listaComponentes);
             var bindingProdutos = new BindingList<Produto>(listaProdutos);
+            var lista = new BindingList<MPS>(listaMPS);
 
             comp_lista_dgv.DataSource = bindingComponentes;
-            prod_lista_dgv.DataSource = bindingProdutos;
+            prod_lista_dgv.DataSource = bindingProdutos;            
+            dem_lista_dgv.DataSource = lista;
         }
 
         // funcoes do formulario
@@ -99,12 +103,7 @@ namespace MRP_SdC
         {
             CadastroMPS cadastromps = new CadastroMPS();
             cadastromps.Show();
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            ConexaoMPS mps = new ConexaoMPS();
-            mps.AtualizarLista(dem_lista_dgv);
+            AtualizaListas();
         }
 
     }

@@ -19,26 +19,26 @@ namespace MRP_SdC
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                MPS mps = new MPS(' ', int.Parse(textBox4.Text), int.Parse(preco_tbx.Text),
-                int.Parse(textBox1.Text), int.Parse(textBox2.Text), int.Parse(textBox3.Text));
+            MPS mps = new MPS(' ', int.Parse(id_tbx.Text), int.Parse(maos_tbx.Text),
+            int.Parse(disponivel_tbx.Text), int.Parse(demanda_tbx.Text), int.Parse(produzir_tbx.Text));
 
-                DialogResult confirmarInsert = MessageBox.Show(
-                    "( ﾉ ﾟｰﾟ)ﾉ " + mps.idProduto + " ?!", "Confirmar Inserção",
-                    MessageBoxButtons.YesNo
-                );
-                if (confirmarInsert == DialogResult.Yes)
-                {
-                    ConexaoMPS mpss = new ConexaoMPS();
-
-                    mpss.Insert(mps);
-                }
-            }
-            catch (Exception erro)
+            DialogResult confirmarInsert = MessageBox.Show(
+                "( ﾉ ﾟｰﾟ)ﾉ " + mps.idProduto + " ?!", "Confirmar Inserção",
+                MessageBoxButtons.YesNo
+            );
+            if (confirmarInsert == DialogResult.Yes)
             {
-                MessageBox.Show(erro.Message);
+                MySQL.ConexaoMPS mpss = new MySQL.ConexaoMPS();
+
+                mpss.Insert(mps);
+
+                Close();
             }
+        }
+
+        private void Cancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

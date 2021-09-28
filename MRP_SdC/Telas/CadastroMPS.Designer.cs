@@ -29,33 +29,34 @@ namespace MRP_SdC
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadastroMPS));
             this.esp_dir_pnl = new System.Windows.Forms.Panel();
             this.esp_esq_pnl = new System.Windows.Forms.Panel();
             this.ttl_lbl = new System.Windows.Forms.Label();
-            this.tipo_pnl = new System.Windows.Forms.Panel();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.tipo_lbl = new System.Windows.Forms.Label();
-            this.preco_pnl = new System.Windows.Forms.Panel();
-            this.preco_tbx = new System.Windows.Forms.TextBox();
-            this.preco_lbl = new System.Windows.Forms.Label();
-            this.especs_pnl = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.Cadastrar = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.id_pnl = new System.Windows.Forms.Panel();
+            this.id_tbx = new System.Windows.Forms.TextBox();
+            this.id_lbl = new System.Windows.Forms.Label();
+            this.maos_pnl = new System.Windows.Forms.Panel();
+            this.maos_tbx = new System.Windows.Forms.TextBox();
+            this.maos_lbl = new System.Windows.Forms.Label();
+            this.barraInf_pnl = new System.Windows.Forms.Panel();
+            this.produzir_pnl = new System.Windows.Forms.Panel();
+            this.produzir_tbx = new System.Windows.Forms.TextBox();
+            this.produzir_lbl = new System.Windows.Forms.Label();
+            this.demanda_pnl = new System.Windows.Forms.Panel();
+            this.demanda_tbx = new System.Windows.Forms.TextBox();
+            this.demanda_lbl = new System.Windows.Forms.Label();
+            this.cadastrar = new System.Windows.Forms.Button();
+            this.disponivel_pnl = new System.Windows.Forms.Panel();
+            this.disponivel_tbx = new System.Windows.Forms.TextBox();
+            this.disponivel_lbl = new System.Windows.Forms.Label();
             this.cancelar_btn = new System.Windows.Forms.Button();
-            this.tipo_pnl.SuspendLayout();
-            this.preco_pnl.SuspendLayout();
-            this.especs_pnl.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.id_pnl.SuspendLayout();
+            this.maos_pnl.SuspendLayout();
+            this.barraInf_pnl.SuspendLayout();
+            this.produzir_pnl.SuspendLayout();
+            this.demanda_pnl.SuspendLayout();
+            this.disponivel_pnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // esp_dir_pnl
@@ -82,217 +83,217 @@ namespace MRP_SdC
             this.ttl_lbl.Name = "ttl_lbl";
             this.ttl_lbl.Padding = new System.Windows.Forms.Padding(0, 16, 0, 12);
             this.ttl_lbl.Size = new System.Drawing.Size(298, 56);
-            this.ttl_lbl.TabIndex = 11;
+            this.ttl_lbl.TabIndex = 0;
             this.ttl_lbl.Text = "Cadastrar Produção";
             this.ttl_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tipo_pnl
+            // id_pnl
             // 
-            this.tipo_pnl.Controls.Add(this.textBox4);
-            this.tipo_pnl.Controls.Add(this.tipo_lbl);
-            this.tipo_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tipo_pnl.Location = new System.Drawing.Point(32, 56);
-            this.tipo_pnl.Name = "tipo_pnl";
-            this.tipo_pnl.Size = new System.Drawing.Size(298, 48);
-            this.tipo_pnl.TabIndex = 14;
+            this.id_pnl.Controls.Add(this.id_tbx);
+            this.id_pnl.Controls.Add(this.id_lbl);
+            this.id_pnl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.id_pnl.Location = new System.Drawing.Point(32, 56);
+            this.id_pnl.Name = "id_pnl";
+            this.id_pnl.Size = new System.Drawing.Size(298, 48);
+            this.id_pnl.TabIndex = 1;
             // 
-            // textBox4
+            // id_tbx
             // 
-            this.textBox4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox4.Location = new System.Drawing.Point(0, 17);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(298, 20);
-            this.textBox4.TabIndex = 2;
+            this.id_tbx.Dock = System.Windows.Forms.DockStyle.Top;
+            this.id_tbx.Location = new System.Drawing.Point(0, 17);
+            this.id_tbx.Name = "id_tbx";
+            this.id_tbx.Size = new System.Drawing.Size(298, 20);
+            this.id_tbx.TabIndex = 1;
             // 
-            // tipo_lbl
+            // id_lbl
             // 
-            this.tipo_lbl.AutoSize = true;
-            this.tipo_lbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tipo_lbl.Location = new System.Drawing.Point(0, 0);
-            this.tipo_lbl.Name = "tipo_lbl";
-            this.tipo_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.tipo_lbl.Size = new System.Drawing.Size(58, 17);
-            this.tipo_lbl.TabIndex = 0;
-            this.tipo_lbl.Text = "ID Produto";
+            this.id_lbl.AutoSize = true;
+            this.id_lbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.id_lbl.Location = new System.Drawing.Point(0, 0);
+            this.id_lbl.Name = "id_lbl";
+            this.id_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.id_lbl.Size = new System.Drawing.Size(58, 17);
+            this.id_lbl.TabIndex = 0;
+            this.id_lbl.Text = "ID Produto";
             // 
-            // preco_pnl
+            // maos_pnl
             // 
-            this.preco_pnl.Controls.Add(this.preco_tbx);
-            this.preco_pnl.Controls.Add(this.preco_lbl);
-            this.preco_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.preco_pnl.Location = new System.Drawing.Point(32, 104);
-            this.preco_pnl.Name = "preco_pnl";
-            this.preco_pnl.Size = new System.Drawing.Size(298, 48);
-            this.preco_pnl.TabIndex = 15;
+            this.maos_pnl.Controls.Add(this.maos_tbx);
+            this.maos_pnl.Controls.Add(this.maos_lbl);
+            this.maos_pnl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.maos_pnl.Location = new System.Drawing.Point(32, 104);
+            this.maos_pnl.Name = "maos_pnl";
+            this.maos_pnl.Size = new System.Drawing.Size(298, 48);
+            this.maos_pnl.TabIndex = 2;
             // 
-            // preco_tbx
+            // maos_tbx
             // 
-            this.preco_tbx.Dock = System.Windows.Forms.DockStyle.Top;
-            this.preco_tbx.Location = new System.Drawing.Point(0, 17);
-            this.preco_tbx.Name = "preco_tbx";
-            this.preco_tbx.Size = new System.Drawing.Size(298, 20);
-            this.preco_tbx.TabIndex = 1;
+            this.maos_tbx.Dock = System.Windows.Forms.DockStyle.Top;
+            this.maos_tbx.Location = new System.Drawing.Point(0, 17);
+            this.maos_tbx.Name = "maos_tbx";
+            this.maos_tbx.Size = new System.Drawing.Size(298, 20);
+            this.maos_tbx.TabIndex = 1;
             // 
-            // preco_lbl
+            // maos_lbl
             // 
-            this.preco_lbl.AutoSize = true;
-            this.preco_lbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.preco_lbl.Location = new System.Drawing.Point(0, 0);
-            this.preco_lbl.Name = "preco_lbl";
-            this.preco_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.preco_lbl.Size = new System.Drawing.Size(51, 17);
-            this.preco_lbl.TabIndex = 0;
-            this.preco_lbl.Text = "Em Mãos";
+            this.maos_lbl.AutoSize = true;
+            this.maos_lbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.maos_lbl.Location = new System.Drawing.Point(0, 0);
+            this.maos_lbl.Name = "maos_lbl";
+            this.maos_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.maos_lbl.Size = new System.Drawing.Size(51, 17);
+            this.maos_lbl.TabIndex = 0;
+            this.maos_lbl.Text = "Em Mãos";
             // 
-            // especs_pnl
+            // barraInf_pnl
             // 
-            this.especs_pnl.AutoSize = true;
-            this.especs_pnl.Controls.Add(this.panel3);
-            this.especs_pnl.Controls.Add(this.panel2);
-            this.especs_pnl.Controls.Add(this.Cadastrar);
-            this.especs_pnl.Controls.Add(this.panel1);
-            this.especs_pnl.Controls.Add(this.cancelar_btn);
-            this.especs_pnl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.especs_pnl.Location = new System.Drawing.Point(32, 152);
-            this.especs_pnl.Name = "especs_pnl";
-            this.especs_pnl.Size = new System.Drawing.Size(298, 324);
-            this.especs_pnl.TabIndex = 16;
+            this.barraInf_pnl.Controls.Add(this.cadastrar);
+            this.barraInf_pnl.Controls.Add(this.cancelar_btn);
+            this.barraInf_pnl.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barraInf_pnl.Location = new System.Drawing.Point(32, 428);
+            this.barraInf_pnl.Name = "barraInf_pnl";
+            this.barraInf_pnl.Size = new System.Drawing.Size(298, 48);
+            this.barraInf_pnl.TabIndex = 6;
             // 
-            // panel3
+            // produzir_pnl
             // 
-            this.panel3.Controls.Add(this.textBox3);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 96);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(298, 48);
-            this.panel3.TabIndex = 20;
+            this.produzir_pnl.Controls.Add(this.produzir_tbx);
+            this.produzir_pnl.Controls.Add(this.produzir_lbl);
+            this.produzir_pnl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.produzir_pnl.Location = new System.Drawing.Point(32, 152);
+            this.produzir_pnl.Name = "produzir_pnl";
+            this.produzir_pnl.Size = new System.Drawing.Size(298, 48);
+            this.produzir_pnl.TabIndex = 3;
             // 
-            // textBox3
+            // produzir_tbx
             // 
-            this.textBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox3.Location = new System.Drawing.Point(0, 17);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(298, 20);
-            this.textBox3.TabIndex = 2;
+            this.produzir_tbx.Dock = System.Windows.Forms.DockStyle.Top;
+            this.produzir_tbx.Location = new System.Drawing.Point(0, 17);
+            this.produzir_tbx.Name = "produzir_tbx";
+            this.produzir_tbx.Size = new System.Drawing.Size(298, 20);
+            this.produzir_tbx.TabIndex = 1;
             // 
-            // label3
+            // produzir_lbl
             // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Location = new System.Drawing.Point(0, 0);
-            this.label3.Name = "label3";
-            this.label3.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.label3.Size = new System.Drawing.Size(45, 17);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Produzir";
+            this.produzir_lbl.AutoSize = true;
+            this.produzir_lbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.produzir_lbl.Location = new System.Drawing.Point(0, 0);
+            this.produzir_lbl.Name = "produzir_lbl";
+            this.produzir_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.produzir_lbl.Size = new System.Drawing.Size(45, 17);
+            this.produzir_lbl.TabIndex = 0;
+            this.produzir_lbl.Text = "Produzir";
             // 
-            // panel2
+            // demanda_pnl
             // 
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 48);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(298, 48);
-            this.panel2.TabIndex = 19;
+            this.demanda_pnl.Controls.Add(this.demanda_tbx);
+            this.demanda_pnl.Controls.Add(this.demanda_lbl);
+            this.demanda_pnl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.demanda_pnl.Location = new System.Drawing.Point(32, 200);
+            this.demanda_pnl.Name = "demanda_pnl";
+            this.demanda_pnl.Size = new System.Drawing.Size(298, 48);
+            this.demanda_pnl.TabIndex = 4;
             // 
-            // textBox2
+            // demanda_tbx
             // 
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox2.Location = new System.Drawing.Point(0, 17);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(298, 20);
-            this.textBox2.TabIndex = 2;
+            this.demanda_tbx.Dock = System.Windows.Forms.DockStyle.Top;
+            this.demanda_tbx.Location = new System.Drawing.Point(0, 17);
+            this.demanda_tbx.Name = "demanda_tbx";
+            this.demanda_tbx.Size = new System.Drawing.Size(298, 20);
+            this.demanda_tbx.TabIndex = 1;
             // 
-            // label2
+            // demanda_lbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.label2.Size = new System.Drawing.Size(53, 17);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Demanda";
+            this.demanda_lbl.AutoSize = true;
+            this.demanda_lbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.demanda_lbl.Location = new System.Drawing.Point(0, 0);
+            this.demanda_lbl.Name = "demanda_lbl";
+            this.demanda_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.demanda_lbl.Size = new System.Drawing.Size(53, 17);
+            this.demanda_lbl.TabIndex = 0;
+            this.demanda_lbl.Text = "Demanda";
             // 
-            // Cadastrar
+            // cadastrar
             // 
-            this.Cadastrar.BackColor = System.Drawing.Color.Lime;
-            this.Cadastrar.Location = new System.Drawing.Point(164, 221);
-            this.Cadastrar.Name = "Cadastrar";
-            this.Cadastrar.Size = new System.Drawing.Size(128, 32);
-            this.Cadastrar.TabIndex = 18;
-            this.Cadastrar.Text = "Cadastrar";
-            this.Cadastrar.UseVisualStyleBackColor = false;
-            this.Cadastrar.Click += new System.EventHandler(this.button1_Click);
+            this.cadastrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cadastrar.BackColor = System.Drawing.Color.Lime;
+            this.cadastrar.Location = new System.Drawing.Point(167, 3);
+            this.cadastrar.Name = "cadastrar";
+            this.cadastrar.Size = new System.Drawing.Size(128, 32);
+            this.cadastrar.TabIndex = 18;
+            this.cadastrar.Text = "Cadastrar";
+            this.cadastrar.UseVisualStyleBackColor = false;
+            this.cadastrar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // panel1
+            // disponivel_pnl
             // 
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(298, 48);
-            this.panel1.TabIndex = 16;
+            this.disponivel_pnl.Controls.Add(this.disponivel_tbx);
+            this.disponivel_pnl.Controls.Add(this.disponivel_lbl);
+            this.disponivel_pnl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.disponivel_pnl.Location = new System.Drawing.Point(32, 248);
+            this.disponivel_pnl.Name = "disponivel_pnl";
+            this.disponivel_pnl.Size = new System.Drawing.Size(298, 48);
+            this.disponivel_pnl.TabIndex = 5;
             // 
-            // textBox1
+            // disponivel_tbx
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox1.Location = new System.Drawing.Point(0, 17);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(298, 20);
-            this.textBox1.TabIndex = 2;
+            this.disponivel_tbx.Dock = System.Windows.Forms.DockStyle.Top;
+            this.disponivel_tbx.Location = new System.Drawing.Point(0, 17);
+            this.disponivel_tbx.Name = "disponivel_tbx";
+            this.disponivel_tbx.Size = new System.Drawing.Size(298, 20);
+            this.disponivel_tbx.TabIndex = 1;
             // 
-            // label1
+            // disponivel_lbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.label1.Size = new System.Drawing.Size(58, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Disponível";
+            this.disponivel_lbl.AutoSize = true;
+            this.disponivel_lbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.disponivel_lbl.Location = new System.Drawing.Point(0, 0);
+            this.disponivel_lbl.Name = "disponivel_lbl";
+            this.disponivel_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.disponivel_lbl.Size = new System.Drawing.Size(58, 17);
+            this.disponivel_lbl.TabIndex = 0;
+            this.disponivel_lbl.Text = "Disponível";
             // 
             // cancelar_btn
             // 
-            this.cancelar_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cancelar_btn.BackColor = System.Drawing.Color.Red;
-            this.cancelar_btn.Location = new System.Drawing.Point(14, 221);
+            this.cancelar_btn.Location = new System.Drawing.Point(3, 3);
             this.cancelar_btn.Name = "cancelar_btn";
             this.cancelar_btn.Size = new System.Drawing.Size(144, 32);
             this.cancelar_btn.TabIndex = 2;
             this.cancelar_btn.Text = "Cancelar";
             this.cancelar_btn.UseVisualStyleBackColor = false;
+            this.cancelar_btn.Click += new System.EventHandler(this.Cancelar_Click);
             // 
             // CadastroMPS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(362, 476);
-            this.Controls.Add(this.especs_pnl);
-            this.Controls.Add(this.preco_pnl);
-            this.Controls.Add(this.tipo_pnl);
+            this.Controls.Add(this.barraInf_pnl);
+            this.Controls.Add(this.disponivel_pnl);
+            this.Controls.Add(this.demanda_pnl);
+            this.Controls.Add(this.produzir_pnl);
+            this.Controls.Add(this.maos_pnl);
+            this.Controls.Add(this.id_pnl);
             this.Controls.Add(this.ttl_lbl);
             this.Controls.Add(this.esp_esq_pnl);
             this.Controls.Add(this.esp_dir_pnl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CadastroMPS";
             this.Text = "MPS";
-            this.tipo_pnl.ResumeLayout(false);
-            this.tipo_pnl.PerformLayout();
-            this.preco_pnl.ResumeLayout(false);
-            this.preco_pnl.PerformLayout();
-            this.especs_pnl.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.id_pnl.ResumeLayout(false);
+            this.id_pnl.PerformLayout();
+            this.maos_pnl.ResumeLayout(false);
+            this.maos_pnl.PerformLayout();
+            this.barraInf_pnl.ResumeLayout(false);
+            this.produzir_pnl.ResumeLayout(false);
+            this.produzir_pnl.PerformLayout();
+            this.demanda_pnl.ResumeLayout(false);
+            this.demanda_pnl.PerformLayout();
+            this.disponivel_pnl.ResumeLayout(false);
+            this.disponivel_pnl.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -301,23 +302,23 @@ namespace MRP_SdC
         private System.Windows.Forms.Panel esp_dir_pnl;
         private System.Windows.Forms.Panel esp_esq_pnl;
         private System.Windows.Forms.Label ttl_lbl;
-        private System.Windows.Forms.Panel tipo_pnl;
-        private System.Windows.Forms.Label tipo_lbl;
-        private System.Windows.Forms.Panel preco_pnl;
-        private System.Windows.Forms.TextBox preco_tbx;
-        private System.Windows.Forms.Label preco_lbl;
-        private System.Windows.Forms.Panel especs_pnl;
+        private System.Windows.Forms.Panel id_pnl;
+        private System.Windows.Forms.Label id_lbl;
+        private System.Windows.Forms.Panel maos_pnl;
+        private System.Windows.Forms.TextBox maos_tbx;
+        private System.Windows.Forms.Label maos_lbl;
+        private System.Windows.Forms.Panel barraInf_pnl;
         private System.Windows.Forms.Button cancelar_btn;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button Cadastrar;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel disponivel_pnl;
+        private System.Windows.Forms.Label disponivel_lbl;
+        private System.Windows.Forms.TextBox id_tbx;
+        private System.Windows.Forms.Button cadastrar;
+        private System.Windows.Forms.TextBox disponivel_tbx;
+        private System.Windows.Forms.Panel produzir_pnl;
+        private System.Windows.Forms.TextBox produzir_tbx;
+        private System.Windows.Forms.Label produzir_lbl;
+        private System.Windows.Forms.Panel demanda_pnl;
+        private System.Windows.Forms.TextBox demanda_tbx;
+        private System.Windows.Forms.Label demanda_lbl;
     }
 }
