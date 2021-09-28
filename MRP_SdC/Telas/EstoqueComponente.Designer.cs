@@ -36,6 +36,8 @@ namespace MRP_SdC
             this.corpo_pnl = new System.Windows.Forms.Panel();
             this.comp_lista_dgv = new System.Windows.Forms.DataGridView();
             this.dados_pnl = new System.Windows.Forms.Panel();
+            this.atualizar_pnl = new System.Windows.Forms.Panel();
+            this.atualizar_btn = new System.Windows.Forms.Button();
             this.dados_estoque_pnl = new System.Windows.Forms.Panel();
             this.dados_max_pnl = new System.Windows.Forms.Panel();
             this.dados_max_tbx = new System.Windows.Forms.TextBox();
@@ -53,15 +55,20 @@ namespace MRP_SdC
             this.pesquisa_cont_pnl = new System.Windows.Forms.Panel();
             this.pesquisa_tbx = new System.Windows.Forms.TextBox();
             this.pesquisa_btn = new System.Windows.Forms.Button();
+            this.pesquisa_sep_pnl = new System.Windows.Forms.Panel();
+            this.pesquisa_descnt_cbx = new System.Windows.Forms.CheckBox();
             this.barraInf_pnl = new System.Windows.Forms.Panel();
-            this.ok_btn = new System.Windows.Forms.Button();
+            this.descnt_btn = new System.Windows.Forms.Button();
+            this.fornecedores_btn = new System.Windows.Forms.Button();
             this.editar_btn = new System.Windows.Forms.Button();
+            this.ok_btn = new System.Windows.Forms.Button();
             this.ttl_lbl = new System.Windows.Forms.Label();
             this.EspDir_pnl = new System.Windows.Forms.Panel();
             this.EspEsq_pnl = new System.Windows.Forms.Panel();
             this.corpo_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comp_lista_dgv)).BeginInit();
             this.dados_pnl.SuspendLayout();
+            this.atualizar_pnl.SuspendLayout();
             this.dados_estoque_pnl.SuspendLayout();
             this.dados_max_pnl.SuspendLayout();
             this.dados_min_pnl.SuspendLayout();
@@ -104,10 +111,12 @@ namespace MRP_SdC
             this.comp_lista_dgv.Size = new System.Drawing.Size(400, 345);
             this.comp_lista_dgv.StandardTab = true;
             this.comp_lista_dgv.TabIndex = 2;
+            this.comp_lista_dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Componentes_DGV_CellClick);
             // 
             // dados_pnl
             // 
             this.dados_pnl.AutoScroll = true;
+            this.dados_pnl.Controls.Add(this.atualizar_pnl);
             this.dados_pnl.Controls.Add(this.dados_estoque_pnl);
             this.dados_pnl.Controls.Add(this.demanda_cht);
             this.dados_pnl.Controls.Add(this.dados_subttl_lbl);
@@ -118,6 +127,25 @@ namespace MRP_SdC
             this.dados_pnl.Padding = new System.Windows.Forms.Padding(12, 24, 12, 12);
             this.dados_pnl.Size = new System.Drawing.Size(240, 345);
             this.dados_pnl.TabIndex = 3;
+            // 
+            // atualizar_pnl
+            // 
+            this.atualizar_pnl.Controls.Add(this.atualizar_btn);
+            this.atualizar_pnl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.atualizar_pnl.Location = new System.Drawing.Point(12, 362);
+            this.atualizar_pnl.Name = "atualizar_pnl";
+            this.atualizar_pnl.Size = new System.Drawing.Size(199, 42);
+            this.atualizar_pnl.TabIndex = 4;
+            // 
+            // atualizar_btn
+            // 
+            this.atualizar_btn.Enabled = false;
+            this.atualizar_btn.Location = new System.Drawing.Point(3, 10);
+            this.atualizar_btn.Name = "atualizar_btn";
+            this.atualizar_btn.Size = new System.Drawing.Size(176, 23);
+            this.atualizar_btn.TabIndex = 0;
+            this.atualizar_btn.Text = "Atualizar valores";
+            this.atualizar_btn.UseVisualStyleBackColor = true;
             // 
             // dados_estoque_pnl
             // 
@@ -148,6 +176,7 @@ namespace MRP_SdC
             this.dados_max_tbx.Name = "dados_max_tbx";
             this.dados_max_tbx.Size = new System.Drawing.Size(199, 20);
             this.dados_max_tbx.TabIndex = 1;
+            this.dados_max_tbx.TextChanged += new System.EventHandler(this.Dados_tbx_TextChanged);
             // 
             // dados_max_lbl
             // 
@@ -177,6 +206,7 @@ namespace MRP_SdC
             this.dados_min_tbx.Name = "dados_min_tbx";
             this.dados_min_tbx.Size = new System.Drawing.Size(199, 20);
             this.dados_min_tbx.TabIndex = 1;
+            this.dados_min_tbx.TextChanged += new System.EventHandler(this.Dados_tbx_TextChanged);
             // 
             // dados_min_lbl
             // 
@@ -206,6 +236,7 @@ namespace MRP_SdC
             this.dados_atual_tbx.Name = "dados_atual_tbx";
             this.dados_atual_tbx.Size = new System.Drawing.Size(199, 20);
             this.dados_atual_tbx.TabIndex = 1;
+            this.dados_atual_tbx.TextChanged += new System.EventHandler(this.Dados_tbx_TextChanged);
             // 
             // dados_atual_lbl
             // 
@@ -248,9 +279,9 @@ namespace MRP_SdC
             this.dados_subttl_lbl.Location = new System.Drawing.Point(12, 37);
             this.dados_subttl_lbl.Name = "dados_subttl_lbl";
             this.dados_subttl_lbl.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.dados_subttl_lbl.Size = new System.Drawing.Size(129, 21);
+            this.dados_subttl_lbl.Size = new System.Drawing.Size(60, 21);
             this.dados_subttl_lbl.TabIndex = 1;
-            this.dados_subttl_lbl.Text = "Doritos - Wasabi";
+            this.dados_subttl_lbl.Text = "Modelo";
             // 
             // dados_ttl_lbl
             // 
@@ -258,9 +289,9 @@ namespace MRP_SdC
             this.dados_ttl_lbl.Dock = System.Windows.Forms.DockStyle.Top;
             this.dados_ttl_lbl.Location = new System.Drawing.Point(12, 24);
             this.dados_ttl_lbl.Name = "dados_ttl_lbl";
-            this.dados_ttl_lbl.Size = new System.Drawing.Size(115, 13);
+            this.dados_ttl_lbl.Size = new System.Drawing.Size(65, 13);
             this.dados_ttl_lbl.TabIndex = 0;
-            this.dados_ttl_lbl.Text = "00102409 - Placa Mãe";
+            this.dados_ttl_lbl.Text = "codigo - tipo";
             // 
             // pesquisa_pnl
             // 
@@ -276,6 +307,8 @@ namespace MRP_SdC
             // 
             this.pesquisa_cont_pnl.Controls.Add(this.pesquisa_tbx);
             this.pesquisa_cont_pnl.Controls.Add(this.pesquisa_btn);
+            this.pesquisa_cont_pnl.Controls.Add(this.pesquisa_sep_pnl);
+            this.pesquisa_cont_pnl.Controls.Add(this.pesquisa_descnt_cbx);
             this.pesquisa_cont_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.pesquisa_cont_pnl.Location = new System.Drawing.Point(0, 6);
             this.pesquisa_cont_pnl.Name = "pesquisa_cont_pnl";
@@ -287,39 +320,72 @@ namespace MRP_SdC
             this.pesquisa_tbx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pesquisa_tbx.Location = new System.Drawing.Point(0, 0);
             this.pesquisa_tbx.Name = "pesquisa_tbx";
-            this.pesquisa_tbx.Size = new System.Drawing.Size(608, 20);
+            this.pesquisa_tbx.Size = new System.Drawing.Size(495, 20);
             this.pesquisa_tbx.TabIndex = 0;
             // 
             // pesquisa_btn
             // 
             this.pesquisa_btn.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pesquisa_btn.Location = new System.Drawing.Point(608, 0);
+            this.pesquisa_btn.Location = new System.Drawing.Point(495, 0);
             this.pesquisa_btn.Name = "pesquisa_btn";
             this.pesquisa_btn.Size = new System.Drawing.Size(32, 20);
             this.pesquisa_btn.TabIndex = 1;
             this.pesquisa_btn.Text = "👁";
             this.pesquisa_btn.UseVisualStyleBackColor = true;
             // 
+            // pesquisa_sep_pnl
+            // 
+            this.pesquisa_sep_pnl.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pesquisa_sep_pnl.Location = new System.Drawing.Point(527, 0);
+            this.pesquisa_sep_pnl.Name = "pesquisa_sep_pnl";
+            this.pesquisa_sep_pnl.Size = new System.Drawing.Size(12, 20);
+            this.pesquisa_sep_pnl.TabIndex = 2;
+            // 
+            // pesquisa_descnt_cbx
+            // 
+            this.pesquisa_descnt_cbx.AutoSize = true;
+            this.pesquisa_descnt_cbx.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pesquisa_descnt_cbx.Location = new System.Drawing.Point(539, 0);
+            this.pesquisa_descnt_cbx.Name = "pesquisa_descnt_cbx";
+            this.pesquisa_descnt_cbx.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.pesquisa_descnt_cbx.Size = new System.Drawing.Size(101, 20);
+            this.pesquisa_descnt_cbx.TabIndex = 3;
+            this.pesquisa_descnt_cbx.Text = "descontinuados";
+            this.pesquisa_descnt_cbx.UseVisualStyleBackColor = true;
+            // 
             // barraInf_pnl
             // 
-            this.barraInf_pnl.Controls.Add(this.ok_btn);
+            this.barraInf_pnl.Controls.Add(this.descnt_btn);
+            this.barraInf_pnl.Controls.Add(this.fornecedores_btn);
             this.barraInf_pnl.Controls.Add(this.editar_btn);
+            this.barraInf_pnl.Controls.Add(this.ok_btn);
             this.barraInf_pnl.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barraInf_pnl.Location = new System.Drawing.Point(32, 433);
             this.barraInf_pnl.Name = "barraInf_pnl";
             this.barraInf_pnl.Size = new System.Drawing.Size(640, 48);
             this.barraInf_pnl.TabIndex = 4;
             // 
-            // ok_btn
+            // descnt_btn
             // 
-            this.ok_btn.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.ok_btn.Enabled = false;
-            this.ok_btn.Location = new System.Drawing.Point(525, 10);
-            this.ok_btn.Name = "ok_btn";
-            this.ok_btn.Size = new System.Drawing.Size(112, 23);
-            this.ok_btn.TabIndex = 0;
-            this.ok_btn.Text = "OK";
-            this.ok_btn.UseVisualStyleBackColor = true;
+            this.descnt_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.descnt_btn.Enabled = false;
+            this.descnt_btn.Location = new System.Drawing.Point(306, 10);
+            this.descnt_btn.Name = "descnt_btn";
+            this.descnt_btn.Size = new System.Drawing.Size(144, 23);
+            this.descnt_btn.TabIndex = 3;
+            this.descnt_btn.Text = "Descontinuar Componente";
+            this.descnt_btn.UseVisualStyleBackColor = true;
+            // 
+            // fornecedores_btn
+            // 
+            this.fornecedores_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.fornecedores_btn.Enabled = false;
+            this.fornecedores_btn.Location = new System.Drawing.Point(156, 10);
+            this.fornecedores_btn.Name = "fornecedores_btn";
+            this.fornecedores_btn.Size = new System.Drawing.Size(144, 23);
+            this.fornecedores_btn.TabIndex = 2;
+            this.fornecedores_btn.Text = "Fornecedores";
+            this.fornecedores_btn.UseVisualStyleBackColor = true;
             // 
             // editar_btn
             // 
@@ -331,6 +397,18 @@ namespace MRP_SdC
             this.editar_btn.TabIndex = 1;
             this.editar_btn.Text = "Editar Componente";
             this.editar_btn.UseVisualStyleBackColor = true;
+            // 
+            // ok_btn
+            // 
+            this.ok_btn.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ok_btn.Enabled = false;
+            this.ok_btn.Location = new System.Drawing.Point(522, 10);
+            this.ok_btn.Name = "ok_btn";
+            this.ok_btn.Size = new System.Drawing.Size(112, 23);
+            this.ok_btn.TabIndex = 0;
+            this.ok_btn.Text = "OK";
+            this.ok_btn.UseVisualStyleBackColor = true;
+            this.ok_btn.Click += new System.EventHandler(this.OK_btn_Click);
             // 
             // ttl_lbl
             // 
@@ -368,12 +446,13 @@ namespace MRP_SdC
             this.Controls.Add(this.corpo_pnl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EstoqueComponente";
-            this.Text = "CadastroComponente";
+            this.Text = "Estoque de componentes";
             this.Load += new System.EventHandler(this.FormEstComp_Load);
             this.corpo_pnl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.comp_lista_dgv)).EndInit();
             this.dados_pnl.ResumeLayout(false);
             this.dados_pnl.PerformLayout();
+            this.atualizar_pnl.ResumeLayout(false);
             this.dados_estoque_pnl.ResumeLayout(false);
             this.dados_max_pnl.ResumeLayout(false);
             this.dados_max_pnl.PerformLayout();
@@ -419,5 +498,11 @@ namespace MRP_SdC
         private System.Windows.Forms.Panel dados_atual_pnl;
         private System.Windows.Forms.TextBox dados_atual_tbx;
         private System.Windows.Forms.Label dados_atual_lbl;
+        private System.Windows.Forms.Panel pesquisa_sep_pnl;
+        private System.Windows.Forms.CheckBox pesquisa_descnt_cbx;
+        private System.Windows.Forms.Button descnt_btn;
+        private System.Windows.Forms.Button fornecedores_btn;
+        private System.Windows.Forms.Panel atualizar_pnl;
+        private System.Windows.Forms.Button atualizar_btn;
     }
 }

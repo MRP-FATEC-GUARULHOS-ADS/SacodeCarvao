@@ -7,7 +7,7 @@ CREATE TABLE PRODUTO (
  idProduto int primary key AUTO_INCREMENT,
  modeloProduto varchar(100) not null,
  descrProduto varchar(1000),
- valor decimal(10,2),
+ valorProduto decimal(10,2),
  qtdeMinEstoque int,
  qtdeMaxEstoque int,
  qtdeAtualEstoque int,
@@ -43,12 +43,12 @@ FOREIGN KEY (idComponente) REFERENCES COMPONENTE(idComponente);
 
 CREATE TABLE FORNECEDOR (
  idFornecedor int primary key AUTO_INCREMENT,
- nome varchar(100),
+ nome varchar(100) not null,
  logradouro varchar(150),
  numero varchar(30),
  complemento varchar(50),
  cep char(8),
- telefone varchar(20),
+ telefone varchar(20) not null,
  celular varchar(20),
  email varchar(30),
  urlSite varchar(100)
@@ -73,8 +73,8 @@ FOREIGN KEY (idComponente) REFERENCES COMPONENTE(idComponente);
 CREATE TABLE MOVIMENTACAO_PRODUTO (
   idMovProduto int primary key AUTO_INCREMENT,
   dataMov date not null,
-  tipoMovimentacao char(1) not null,
-  qtde int not null,
+  tipoMov char(1) not null,
+  qtdeMov int not null,
   idProduto int not null
 );
 
@@ -85,8 +85,8 @@ FOREIGN KEY (idProduto) REFERENCES Produto(idProduto);
 CREATE TABLE MOVIMENTACAO_COMPONENTE (
   idMovComponente int primary key AUTO_INCREMENT,
   dataMov date not null,
-  tipoMovimentacao char(1) not null,
-  qtde int not null,
+  tipoMov char(1) not null,
+  qtdeMov int not null,
   idComponente int not null
 );
 
@@ -96,7 +96,7 @@ FOREIGN KEY (idComponente) REFERENCES COMPONENTE(idComponente);
 
 -- INSERTS
 INSERT INTO PRODUTO (
-  modeloProduto, descrProduto, valor,
+  modeloProduto, descrProduto, valorProduto,
   qtdeMinEstoque, qtdeMaxEstoque, qtdeAtualEstoque, estado
 ) VALUES
   ('Notebook A3', 'Notebook A3 A315-33-C58D Intel Celeron N3060 15,6" 4GB HD 500 GB Linux', 2899, 50, 500, 100, 'P'),
@@ -113,11 +113,11 @@ INSERT INTO COMPONENTE (
   ('Processador','Intel', 'Core i5 1035G1', null, 100, 1100, 110, 'D'),
   ('Processador','Intel', 'Core i3 10110U', null, 80, 720, 100, 'P'),
   ('Processador','Intel', 'Core i5 9300H', null, 100, 1000, 200, 'P'),
-  ('HD', 'Seagate', 'HD 500 GB', null, 10, 500, 80, 'P'),
-  ('HD', 'ASUS', 'HD 1 TB', null, 100, 1000, 200, 'P'),
-  ('SSD', 'Crucial', 'SSD 500 GB', null, 100, 1000, 200, 'P'),
-  ('Memória RAM', 'Kingston', 'Memória RAM 4 GB', null, 100, 1000, 200, 'M'),
-  ('Memória RAM', 'Spectrix', 'Memória RAM 8 GB', null, 100, 1000, 200, 'P');
+  ('HD', 'Seagate', '500 GB', null, 10, 500, 80, 'P'),
+  ('HD', 'ASUS', '1 TB', null, 100, 1000, 200, 'P'),
+  ('SSD', 'Crucial', '500 GB', null, 100, 1000, 200, 'P'),
+  ('Memória RAM', 'Kingston', '4 GB', null, 100, 1000, 200, 'M'),
+  ('Memória RAM', 'Spectrix', '8 GB', null, 100, 1000, 200, 'P');
 
 INSERT INTO PRODUTO_COMPONENTE VALUES 
   (1,  1, 1) ,(1,  6, 1) ,(1,  9, 1),

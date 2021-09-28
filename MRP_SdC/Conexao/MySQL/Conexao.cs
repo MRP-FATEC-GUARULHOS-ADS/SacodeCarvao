@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
-namespace MRP_SdC
+namespace MRP_SdC.MySQL
 {
     class Conexao
     {

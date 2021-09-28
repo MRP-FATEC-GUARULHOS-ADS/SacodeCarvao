@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 
-namespace MRP_SdC
+namespace MRP_SdC.MySQL
 {
     class ComponenteDAO
     {
@@ -34,7 +34,7 @@ namespace MRP_SdC
                 cmd.Parameters.AddWithValue("@qntmin", comp.qtdeMin);
                 cmd.Parameters.AddWithValue("@qntmax", comp.qtdeMax);
                 cmd.Parameters.AddWithValue("@qntatual", comp.qtdeAtual);
-                cmd.Parameters.AddWithValue("@estado", comp.estado);
+                cmd.Parameters.AddWithValue("@estado", (comp.estado ? 'P' : 'D'));
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -78,7 +78,7 @@ namespace MRP_SdC
                 cmd.Parameters.AddWithValue("@qntmin", comp.qtdeMin);
                 cmd.Parameters.AddWithValue("@qntmax", comp.qtdeMax);
                 cmd.Parameters.AddWithValue("@qntatual", comp.qtdeAtual);
-                cmd.Parameters.AddWithValue("@estado", comp.estado);
+                cmd.Parameters.AddWithValue("@estado", (comp.estado ? 'P' : 'D'));
                 cmd.Parameters.AddWithValue("@id", comp.id);
                 cmd.Prepare();
 
@@ -163,7 +163,7 @@ namespace MRP_SdC
                     objComponente.qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]);
                     objComponente.qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]);
                     objComponente.qtdeAtual = Convert.ToInt32(reader["qtdeAtualEstoque"]);
-                    objComponente.estado = Convert.ToChar(reader["estado"]);
+                    objComponente.estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false);
 
                     listaComponentes.Add(objComponente);
                 }
@@ -219,7 +219,7 @@ namespace MRP_SdC
                     objComponente.qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]);
                     objComponente.qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]);
                     objComponente.qtdeAtual = Convert.ToInt32(reader["qtdeAtualEstoque"]);
-                    objComponente.estado = Convert.ToChar(reader["estado"]);
+                    objComponente.estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false);
 
                     listaComponentes.Add(objComponente);
                 }
@@ -265,7 +265,7 @@ namespace MRP_SdC
                 objComponente.qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]);
                 objComponente.qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]);
                 objComponente.qtdeAtual = Convert.ToInt32(reader["qtdeAtualEstoque"]);
-                objComponente.estado = Convert.ToChar(reader["estado"]);
+                objComponente.estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false);
 
             }
             catch (MySqlException e)

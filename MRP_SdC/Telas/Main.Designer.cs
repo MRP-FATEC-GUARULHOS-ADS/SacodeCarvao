@@ -57,6 +57,13 @@ namespace MRP_SdC
             this.demanda_ago_cht = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.demanda_gpb = new System.Windows.Forms.GroupBox();
             this.dem_lista_dgv = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dem_dir_pnl = new System.Windows.Forms.Panel();
+            this.relatorio_btn = new System.Windows.Forms.Button();
+            this.previsao_btn = new System.Windows.Forms.Button();
             this.dem_pesquisa_pnl = new System.Windows.Forms.Panel();
             this.dem_pesquisa_barra_pnl = new System.Windows.Forms.Panel();
             this.dem_pesquisa_tbx = new System.Windows.Forms.TextBox();
@@ -74,7 +81,7 @@ namespace MRP_SdC
             this.comp_cad_btn = new System.Windows.Forms.Button();
             this.comp_edt_btn = new System.Windows.Forms.Button();
             this.comp_est_btn = new System.Windows.Forms.Button();
-            this.comp_exc_btn = new System.Windows.Forms.Button();
+            this.comp_forn_btn = new System.Windows.Forms.Button();
             this.comp_pesquisa_pnl = new System.Windows.Forms.Panel();
             this.comp_pesquisa_barra_pnl = new System.Windows.Forms.Panel();
             this.comp_pesquisa_tbx = new System.Windows.Forms.TextBox();
@@ -86,7 +93,6 @@ namespace MRP_SdC
             this.prod_cad_btn = new System.Windows.Forms.Button();
             this.prod_exp_btn = new System.Windows.Forms.Button();
             this.prod_est_btn = new System.Windows.Forms.Button();
-            this.prod_des_btn = new System.Windows.Forms.Button();
             this.prod_pesquisa_pnl = new System.Windows.Forms.Panel();
             this.prod_pesquisa_barra_pnl = new System.Windows.Forms.Panel();
             this.prod_pesquisa_tbx = new System.Windows.Forms.TextBox();
@@ -107,9 +113,9 @@ namespace MRP_SdC
             ((System.ComponentModel.ISupportInitialize)(this.demanda_ago_cht)).BeginInit();
             this.demanda_gpb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dem_lista_dgv)).BeginInit();
+            this.dem_dir_pnl.SuspendLayout();
             this.dem_pesquisa_pnl.SuspendLayout();
             this.dem_pesquisa_barra_pnl.SuspendLayout();
-            this.dem_dir_pnl.SuspendLayout();
             this.menu_main_pnl.SuspendLayout();
             this.prodcomp_pnl.SuspendLayout();
             this.comp_gpb.SuspendLayout();
@@ -366,8 +372,8 @@ namespace MRP_SdC
             // demanda_gpb
             // 
             this.demanda_gpb.Controls.Add(this.dem_lista_dgv);
-            this.demanda_gpb.Controls.Add(this.dem_pesquisa_pnl);
             this.demanda_gpb.Controls.Add(this.dem_dir_pnl);
+            this.demanda_gpb.Controls.Add(this.dem_pesquisa_pnl);
             this.demanda_gpb.Dock = System.Windows.Forms.DockStyle.Fill;
             this.demanda_gpb.Location = new System.Drawing.Point(24, 12);
             this.demanda_gpb.Name = "demanda_gpb";
@@ -392,6 +398,63 @@ namespace MRP_SdC
             this.dem_lista_dgv.StandardTab = true;
             this.dem_lista_dgv.TabIndex = 1;
             // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Produto";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Data";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Movimentação";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 200;
+            // 
+            // dem_dir_pnl
+            // 
+            this.dem_dir_pnl.Controls.Add(this.relatorio_btn);
+            this.dem_dir_pnl.Controls.Add(this.previsao_btn);
+            this.dem_dir_pnl.Dock = System.Windows.Forms.DockStyle.Right;
+            this.dem_dir_pnl.Location = new System.Drawing.Point(530, 52);
+            this.dem_dir_pnl.Name = "dem_dir_pnl";
+            this.dem_dir_pnl.Size = new System.Drawing.Size(120, 127);
+            this.dem_dir_pnl.TabIndex = 2;
+            // 
+            // relatorio_btn
+            // 
+            this.relatorio_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.relatorio_btn.Location = new System.Drawing.Point(9, 18);
+            this.relatorio_btn.Name = "relatorio_btn";
+            this.relatorio_btn.Size = new System.Drawing.Size(108, 24);
+            this.relatorio_btn.TabIndex = 0;
+            this.relatorio_btn.Text = "Relatorio";
+            this.relatorio_btn.UseVisualStyleBackColor = true;
+            // 
+            // previsao_btn
+            // 
+            this.previsao_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.previsao_btn.Location = new System.Drawing.Point(9, 48);
+            this.previsao_btn.Name = "previsao_btn";
+            this.previsao_btn.Size = new System.Drawing.Size(108, 23);
+            this.previsao_btn.TabIndex = 1;
+            this.previsao_btn.Text = "Previsão";
+            this.previsao_btn.UseVisualStyleBackColor = true;
+            // 
             // dem_pesquisa_pnl
             // 
             this.dem_pesquisa_pnl.Controls.Add(this.dem_pesquisa_barra_pnl);
@@ -399,7 +462,7 @@ namespace MRP_SdC
             this.dem_pesquisa_pnl.Location = new System.Drawing.Point(3, 16);
             this.dem_pesquisa_pnl.Name = "dem_pesquisa_pnl";
             this.dem_pesquisa_pnl.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            this.dem_pesquisa_pnl.Size = new System.Drawing.Size(527, 36);
+            this.dem_pesquisa_pnl.Size = new System.Drawing.Size(647, 36);
             this.dem_pesquisa_pnl.TabIndex = 0;
             // 
             // dem_pesquisa_barra_pnl
@@ -409,7 +472,7 @@ namespace MRP_SdC
             this.dem_pesquisa_barra_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.dem_pesquisa_barra_pnl.Location = new System.Drawing.Point(0, 6);
             this.dem_pesquisa_barra_pnl.Name = "dem_pesquisa_barra_pnl";
-            this.dem_pesquisa_barra_pnl.Size = new System.Drawing.Size(527, 20);
+            this.dem_pesquisa_barra_pnl.Size = new System.Drawing.Size(647, 20);
             this.dem_pesquisa_barra_pnl.TabIndex = 0;
             // 
             // dem_pesquisa_tbx
@@ -417,13 +480,13 @@ namespace MRP_SdC
             this.dem_pesquisa_tbx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dem_pesquisa_tbx.Location = new System.Drawing.Point(0, 0);
             this.dem_pesquisa_tbx.Name = "dem_pesquisa_tbx";
-            this.dem_pesquisa_tbx.Size = new System.Drawing.Size(495, 20);
+            this.dem_pesquisa_tbx.Size = new System.Drawing.Size(615, 20);
             this.dem_pesquisa_tbx.TabIndex = 0;
             // 
             // dem_pesquisa_btn
             // 
             this.dem_pesquisa_btn.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dem_pesquisa_btn.Location = new System.Drawing.Point(495, 0);
+            this.dem_pesquisa_btn.Location = new System.Drawing.Point(615, 0);
             this.dem_pesquisa_btn.Name = "dem_pesquisa_btn";
             this.dem_pesquisa_btn.Size = new System.Drawing.Size(32, 20);
             this.dem_pesquisa_btn.TabIndex = 1;
@@ -534,13 +597,14 @@ namespace MRP_SdC
             this.comp_lista_dgv.Size = new System.Drawing.Size(203, 156);
             this.comp_lista_dgv.StandardTab = true;
             this.comp_lista_dgv.TabIndex = 1;
+            this.comp_lista_dgv.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Componentes_DGV_RowEnter);
             // 
             // comp_dir_pnl
             // 
             this.comp_dir_pnl.Controls.Add(this.comp_cad_btn);
             this.comp_dir_pnl.Controls.Add(this.comp_edt_btn);
             this.comp_dir_pnl.Controls.Add(this.comp_est_btn);
-            this.comp_dir_pnl.Controls.Add(this.comp_exc_btn);
+            this.comp_dir_pnl.Controls.Add(this.comp_forn_btn);
             this.comp_dir_pnl.Dock = System.Windows.Forms.DockStyle.Right;
             this.comp_dir_pnl.Location = new System.Drawing.Point(206, 52);
             this.comp_dir_pnl.Name = "comp_dir_pnl";
@@ -580,16 +644,16 @@ namespace MRP_SdC
             this.comp_est_btn.UseVisualStyleBackColor = true;
             this.comp_est_btn.Click += new System.EventHandler(this.Estoque_Comp_Click);
             // 
-            // comp_exc_btn
+            // comp_forn_btn
             // 
-            this.comp_exc_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.comp_exc_btn.Enabled = false;
-            this.comp_exc_btn.Location = new System.Drawing.Point(9, 130);
-            this.comp_exc_btn.Name = "comp_exc_btn";
-            this.comp_exc_btn.Size = new System.Drawing.Size(96, 23);
-            this.comp_exc_btn.TabIndex = 3;
-            this.comp_exc_btn.Text = "Excluir";
-            this.comp_exc_btn.UseVisualStyleBackColor = true;
+            this.comp_forn_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.comp_forn_btn.Location = new System.Drawing.Point(9, 106);
+            this.comp_forn_btn.Name = "comp_forn_btn";
+            this.comp_forn_btn.Size = new System.Drawing.Size(96, 23);
+            this.comp_forn_btn.TabIndex = 3;
+            this.comp_forn_btn.Text = "Fornecedores";
+            this.comp_forn_btn.UseVisualStyleBackColor = true;
+            this.comp_forn_btn.Click += new System.EventHandler(this.Fornecedor_Comp_Click);
             // 
             // comp_pesquisa_pnl
             // 
@@ -665,13 +729,13 @@ namespace MRP_SdC
             this.prod_lista_dgv.Size = new System.Drawing.Size(206, 156);
             this.prod_lista_dgv.StandardTab = true;
             this.prod_lista_dgv.TabIndex = 1;
+            this.prod_lista_dgv.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Produtos_DGV_RowEnter);
             // 
             // prod_dir_pnl
             // 
             this.prod_dir_pnl.Controls.Add(this.prod_cad_btn);
             this.prod_dir_pnl.Controls.Add(this.prod_exp_btn);
             this.prod_dir_pnl.Controls.Add(this.prod_est_btn);
-            this.prod_dir_pnl.Controls.Add(this.prod_des_btn);
             this.prod_dir_pnl.Dock = System.Windows.Forms.DockStyle.Right;
             this.prod_dir_pnl.Location = new System.Drawing.Point(209, 52);
             this.prod_dir_pnl.Name = "prod_dir_pnl";
@@ -699,6 +763,7 @@ namespace MRP_SdC
             this.prod_exp_btn.TabIndex = 1;
             this.prod_exp_btn.Text = "Explosão";
             this.prod_exp_btn.UseVisualStyleBackColor = true;
+            this.prod_exp_btn.Click += new System.EventHandler(this.Explosao_Prod_Click);
             // 
             // prod_est_btn
             // 
@@ -710,17 +775,6 @@ namespace MRP_SdC
             this.prod_est_btn.Text = "Estoque";
             this.prod_est_btn.UseVisualStyleBackColor = true;
             this.prod_est_btn.Click += new System.EventHandler(this.Estoque_Prod_Click);
-            // 
-            // prod_des_btn
-            // 
-            this.prod_des_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.prod_des_btn.Enabled = false;
-            this.prod_des_btn.Location = new System.Drawing.Point(9, 130);
-            this.prod_des_btn.Name = "prod_des_btn";
-            this.prod_des_btn.Size = new System.Drawing.Size(96, 23);
-            this.prod_des_btn.TabIndex = 3;
-            this.prod_des_btn.Text = "Descontinuar";
-            this.prod_des_btn.UseVisualStyleBackColor = true;
             // 
             // prod_pesquisa_pnl
             // 
@@ -892,10 +946,10 @@ namespace MRP_SdC
             ((System.ComponentModel.ISupportInitialize)(this.demanda_ago_cht)).EndInit();
             this.demanda_gpb.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dem_lista_dgv)).EndInit();
+            this.dem_dir_pnl.ResumeLayout(false);
             this.dem_pesquisa_pnl.ResumeLayout(false);
             this.dem_pesquisa_barra_pnl.ResumeLayout(false);
             this.dem_pesquisa_barra_pnl.PerformLayout();
-            this.dem_dir_pnl.ResumeLayout(false);
             this.menu_main_pnl.ResumeLayout(false);
             this.prodcomp_pnl.ResumeLayout(false);
             this.comp_gpb.ResumeLayout(false);
@@ -976,7 +1030,7 @@ namespace MRP_SdC
         private System.Windows.Forms.Button comp_cad_btn;
         private System.Windows.Forms.Button comp_edt_btn;
         private System.Windows.Forms.Button comp_est_btn;
-        private System.Windows.Forms.Button comp_exc_btn;
+        private System.Windows.Forms.Button comp_forn_btn;
         private System.Windows.Forms.DataGridView prod_lista_dgv;
         private System.Windows.Forms.Panel prod_pesquisa_pnl;
         private System.Windows.Forms.Panel prod_pesquisa_barra_pnl;

@@ -74,13 +74,13 @@ Pronto, mudança feita, espero que tenha valido a pena.
 
 ### calculo de plano mestre de produção
 
-- Líder: Alexandre Castanheira
-- Projetista de Banco de Dados: Luciano
-- Desenvolvedor: Marcos Vinícius
-- Analista:
-  - Gabriel Faltz
-  - Julia Frascato
-- Testador: Rafael Rufini
+- Líder: Taylan Peixoto
+- Projetista de Banco de Dados: Daniel Correa
+- Desenvolvedor: Ricardo Gomes
+- Analista: Filipe de Souza
+- Testador: Cesar Kimura
+
+![e la vamos nos](https://i.pinimg.com/736x/c2/ae/d7/c2aed7f1f926f508b62131115c3e260b.jpg)
 
 
 ### Unificação de cadastro/Estoque e entrada de previsão de demanda
