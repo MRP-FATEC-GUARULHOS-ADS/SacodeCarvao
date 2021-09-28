@@ -1,6 +1,6 @@
 ﻿namespace MRP_SdC
 {
-    class Componente
+    public class Componente
     {
         // Atributos
         public int id { get; set; }
@@ -11,7 +11,7 @@
         public int qtdeMin { get; set; }
         public int qtdeMax { get; set; }
         public int qtdeAtual { get; set; }
-        public char estado { get; set; }
+        public bool estado { get; set; }
 
         // Construtores
         public Componente()
@@ -20,8 +20,7 @@
         }
 
         public Componente(
-            int id, string tipo, string marca, string modelo, string especificacoes,
-            int qtdeMin = 0, int qtdeMax = 0, int qtdeAtual = 0, char estado = 'P'
+            string tipo, string marca, string modelo, string especificacoes, bool estado = false
         )
         {
             this.id = id;

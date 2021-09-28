@@ -10,20 +10,17 @@ using System.Windows.Forms;
 
 namespace MRP_SdC
 {
-    public partial class CadastroComponente : Form
+    public partial class CadastroFornecedor : Form
     {
-        public CadastroComponente()
+        public CadastroFornecedor()
         {
             InitializeComponent();
-
-            // as gambiarra denovo
-            estado_clb.SetItemChecked(0, true);
         }
 
         // funcoes das text-boxes
         private void Required_TextChanged(object sender, System.EventArgs e)
         {
-            if (tipo_cbb.Text != "" && marca_tbx.Text != "" && modelo_tbx.Text != "")
+            if (nome_tbx.Text != "" && cep_tbx.Text != "" && telefone_tbx.Text != "")
             {
                 ok_btn.Enabled = true;
             }
@@ -33,29 +30,23 @@ namespace MRP_SdC
             }
         }
 
-        // funcoes da checklist
-        private void Estado_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            for (int ix = 0; ix < estado_clb.Items.Count; ++ix)
-                if (ix != e.Index) estado_clb.SetItemChecked(ix, false);
-        }
-
         // funcoes dos botoes
         private void OK_btn_Click(object sender, System.EventArgs e)
         {
-            Componente myComponente = new Componente(
-                tipo_cbb.Text, marca_tbx.Text, modelo_tbx.Text, especs_tbm.Text, (estado_clb.CheckedIndices[0] == 0 ? true : false)
+            Fornecedor myFornecedor = new Fornecedor(
+                nome_tbx.Text, cep_tbx.Text, telefone_tbx.Text, logradouro_tbx.Text,
+                numero_tbx.Text, complemento_tbx.Text, celular_tbx.Text, email_tbx.Text, site_tbx.Text
             );
 
             // confirmando insercao
             DialogResult confirmarInsert = MessageBox.Show(
-                "〜(￣▽￣〜) " + myComponente + " ?!", "Confirmar Inserção",
+                "〜(￣▽￣〜) " + myFornecedor + " ?!", "Confirmar Inserção",
                 MessageBoxButtons.YesNo
             );
             if (confirmarInsert == DialogResult.Yes)
             {
-                Access.ComponenteDAO objCompDAO = new Access.ComponenteDAO();
-                objCompDAO.Insert(myComponente);
+                Access.FornecedorDAO objFornDAO = new Access.FornecedorDAO();
+                objFornDAO.Insert(myFornecedor);
             }
 
             Close();

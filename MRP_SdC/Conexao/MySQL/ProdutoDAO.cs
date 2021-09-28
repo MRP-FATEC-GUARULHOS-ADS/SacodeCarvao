@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 
-namespace MRP_SdC
+namespace MRP_SdC.MySQL
 {
     class ProdutoDAO
     {
@@ -19,7 +19,7 @@ namespace MRP_SdC
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO PRODUTO ( " +
-                    "modeloProduto,  descrProduto, valor, qtdeMinEstoque, qtdeMaxEstoque, qtdeAtualEstoque, estado " +
+                    "modeloProduto,  descrProduto, valorProduto, qtdeMinEstoque, qtdeMaxEstoque, qtdeAtualEstoque, estado " +
                     ") VALUES( @modelo, @descricao, @valor, @qntmin, @qntmax, @qntatual, @estado ); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
@@ -33,7 +33,7 @@ namespace MRP_SdC
                 cmd.Parameters.AddWithValue("@qntmin", prod.qtdeMin);
                 cmd.Parameters.AddWithValue("@qntmax", prod.qtdeMax);
                 cmd.Parameters.AddWithValue("@qntatual", prod.qtdeAtual);
-                cmd.Parameters.AddWithValue("@estado", prod.estado);
+                cmd.Parameters.AddWithValue("@estado", (prod.estado ? 'P' : 'D'));
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -61,7 +61,7 @@ namespace MRP_SdC
             {
                 MySqlDataReader reader;
                 string query = "UPDATE PRODUTO " +
-                    "SET modeloProduto = @modelo, descrProduto = @descricao, valor = @valor, " +
+                    "SET modeloProduto = @modelo, descrProduto = @descricao, valorProduto = @valor, " +
                     "qtdeMinEstoque = @qntmin, qtdeMaxEstoque = @qntmax, qtdeAtualEstoque = @qntatual, estado = @estado " +
                     "WHERE idProduto = @id; ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
@@ -70,13 +70,13 @@ namespace MRP_SdC
                     return false;
                 }
 
-                cmd.Parameters.AddWithValue("@tipo", prod.modelo);
-                cmd.Parameters.AddWithValue("@marca", prod.descricao);
-                cmd.Parameters.AddWithValue("@modelo", prod.valor);
+                cmd.Parameters.AddWithValue("@modelo", prod.modelo);
+                cmd.Parameters.AddWithValue("@descricao", prod.descricao);
+                cmd.Parameters.AddWithValue("@valor", prod.valor);
                 cmd.Parameters.AddWithValue("@qntmin", prod.qtdeMin);
                 cmd.Parameters.AddWithValue("@qntmax", prod.qtdeMax);
                 cmd.Parameters.AddWithValue("@qntatual", prod.qtdeAtual);
-                cmd.Parameters.AddWithValue("@estado", prod.estado);
+                cmd.Parameters.AddWithValue("@estado", (prod.estado ? 'P' : 'D'));
                 cmd.Parameters.AddWithValue("@id", prod.id);
                 cmd.Prepare();
 
@@ -157,11 +157,11 @@ namespace MRP_SdC
                     objProduto.id = Convert.ToInt32(reader["idProduto"]);
                     objProduto.modelo = (string)reader["modeloProduto"];
                     objProduto.descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : "");
-                    objProduto.valor = Convert.ToDouble(reader["valor"]);
+                    objProduto.valor = Convert.ToDouble(reader["valorProduto"]);
                     objProduto.qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]);
                     objProduto.qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]);
                     objProduto.qtdeAtual = ( (reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0 );
-                    objProduto.estado = Convert.ToChar(reader["estado"]);
+                    objProduto.estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false);
 
                     listaProdutos.Add(objProduto);
                 }
@@ -212,12 +212,12 @@ namespace MRP_SdC
                         id = Convert.ToInt32(reader["idProduto"]),
                         modelo = (string)reader["modeloProduto"],
                         descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : ""),
-                        valor = Convert.ToDouble(reader["valor"]),
+                        valor = Convert.ToDouble(reader["valorProduto"]),
                         qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]),
                         qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]),
                         qtdeAtual = ( (reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0 ),
-                        estado = Convert.ToChar(reader["estado"])
-                    };
+                        estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false)
+                };
 
                     listaProdutos.Add(objProduto);
                 }
@@ -261,12 +261,12 @@ namespace MRP_SdC
                     id = Convert.ToInt32(reader["idProduto"]),
                     modelo = (string)reader["modeloProduto"],
                     descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : ""),
-                    valor = Convert.ToDouble(reader["valor"]),
+                    valor = Convert.ToDouble(reader["valorProduto"]),
                     qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]),
                     qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]),
                     qtdeAtual = ( (reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0 ),
-                    estado = Convert.ToChar(reader["estado"])
-                };
+                    estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false)
+            };
 
             }
             catch (MySqlException e)
