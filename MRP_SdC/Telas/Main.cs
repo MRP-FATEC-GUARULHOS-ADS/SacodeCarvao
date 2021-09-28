@@ -40,19 +40,19 @@ namespace MRP_SdC
         }
 
         // funcoes das listas
-        private void Produtos_DGV_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex != -1)
-            {
-                prod_exp_btn.Enabled = true;
-            }
-        }
         private void Componentes_DGV_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
             {
                 comp_edt_btn.Enabled = true;
                 comp_forn_btn.Enabled = true;
+            }
+        }
+        private void Produtos_DGV_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                prod_exp_btn.Enabled = true;
             }
         }
 
@@ -67,6 +67,12 @@ namespace MRP_SdC
         {
             EstoqueComponente formEstoqueComponente = new EstoqueComponente();
             formEstoqueComponente.ShowDialog();
+            AtualizaListas();
+        }
+        private void Fornecedor_Comp_Click(object sender, EventArgs e)
+        {
+            Fornecedores formFornecedor = new Fornecedores();
+            formFornecedor.ShowDialog();
             AtualizaListas();
         }
 

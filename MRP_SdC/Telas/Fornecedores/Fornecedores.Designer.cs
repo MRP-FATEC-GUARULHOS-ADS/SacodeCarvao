@@ -31,8 +31,10 @@ namespace MRP_SdC
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Fornecedores));
             this.corpo_pnl = new System.Windows.Forms.Panel();
-            this.comp_lista_dgv = new System.Windows.Forms.DataGridView();
+            this.forn_lista_dgv = new System.Windows.Forms.DataGridView();
             this.fornecedor_pnl = new System.Windows.Forms.Panel();
+            this.componentes_pnl = new System.Windows.Forms.Panel();
+            this.componentes_btn = new System.Windows.Forms.Button();
             this.site_lbl = new System.Windows.Forms.Label();
             this.email_lbl = new System.Windows.Forms.Label();
             this.celular_lbl = new System.Windows.Forms.Label();
@@ -46,16 +48,17 @@ namespace MRP_SdC
             this.pesquisa_tbx = new System.Windows.Forms.TextBox();
             this.pesquisa_btn = new System.Windows.Forms.Button();
             this.barraInf_pnl = new System.Windows.Forms.Panel();
-            this.exclur_btn = new System.Windows.Forms.Button();
+            this.excluir_btn = new System.Windows.Forms.Button();
             this.editar_btn = new System.Windows.Forms.Button();
-            this.comps_btn = new System.Windows.Forms.Button();
+            this.cadastrar_btn = new System.Windows.Forms.Button();
             this.ok_btn = new System.Windows.Forms.Button();
             this.ttl_lbl = new System.Windows.Forms.Label();
             this.EspDir_pnl = new System.Windows.Forms.Panel();
             this.EspEsq_pnl = new System.Windows.Forms.Panel();
             this.corpo_pnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comp_lista_dgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.forn_lista_dgv)).BeginInit();
             this.fornecedor_pnl.SuspendLayout();
+            this.componentes_pnl.SuspendLayout();
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
             this.barraInf_pnl.SuspendLayout();
@@ -65,7 +68,7 @@ namespace MRP_SdC
             // 
             this.corpo_pnl.AutoScroll = true;
             this.corpo_pnl.AutoSize = true;
-            this.corpo_pnl.Controls.Add(this.comp_lista_dgv);
+            this.corpo_pnl.Controls.Add(this.forn_lista_dgv);
             this.corpo_pnl.Controls.Add(this.fornecedor_pnl);
             this.corpo_pnl.Controls.Add(this.pesquisa_pnl);
             this.corpo_pnl.Controls.Add(this.barraInf_pnl);
@@ -78,26 +81,28 @@ namespace MRP_SdC
             this.corpo_pnl.Size = new System.Drawing.Size(704, 481);
             this.corpo_pnl.TabIndex = 0;
             // 
-            // comp_lista_dgv
+            // forn_lista_dgv
             // 
-            this.comp_lista_dgv.AllowUserToAddRows = false;
-            this.comp_lista_dgv.AllowUserToDeleteRows = false;
-            this.comp_lista_dgv.BackgroundColor = System.Drawing.Color.White;
-            this.comp_lista_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.comp_lista_dgv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comp_lista_dgv.Location = new System.Drawing.Point(32, 88);
-            this.comp_lista_dgv.MultiSelect = false;
-            this.comp_lista_dgv.Name = "comp_lista_dgv";
-            this.comp_lista_dgv.ReadOnly = true;
-            this.comp_lista_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.comp_lista_dgv.Size = new System.Drawing.Size(400, 345);
-            this.comp_lista_dgv.StandardTab = true;
-            this.comp_lista_dgv.TabIndex = 2;
-            this.comp_lista_dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Componentes_DGV_CellClick);
+            this.forn_lista_dgv.AllowUserToAddRows = false;
+            this.forn_lista_dgv.AllowUserToDeleteRows = false;
+            this.forn_lista_dgv.BackgroundColor = System.Drawing.Color.White;
+            this.forn_lista_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.forn_lista_dgv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.forn_lista_dgv.Location = new System.Drawing.Point(32, 88);
+            this.forn_lista_dgv.MultiSelect = false;
+            this.forn_lista_dgv.Name = "forn_lista_dgv";
+            this.forn_lista_dgv.ReadOnly = true;
+            this.forn_lista_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.forn_lista_dgv.Size = new System.Drawing.Size(400, 345);
+            this.forn_lista_dgv.StandardTab = true;
+            this.forn_lista_dgv.TabIndex = 2;
+            this.forn_lista_dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Fornecedores_DGV_CellClick);
+            this.forn_lista_dgv.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Lista_DGV_RowEnter);
             // 
             // fornecedor_pnl
             // 
             this.fornecedor_pnl.AutoScroll = true;
+            this.fornecedor_pnl.Controls.Add(this.componentes_pnl);
             this.fornecedor_pnl.Controls.Add(this.site_lbl);
             this.fornecedor_pnl.Controls.Add(this.email_lbl);
             this.fornecedor_pnl.Controls.Add(this.celular_lbl);
@@ -113,6 +118,25 @@ namespace MRP_SdC
             this.fornecedor_pnl.Size = new System.Drawing.Size(240, 345);
             this.fornecedor_pnl.TabIndex = 3;
             // 
+            // componentes_pnl
+            // 
+            this.componentes_pnl.Controls.Add(this.componentes_btn);
+            this.componentes_pnl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.componentes_pnl.Location = new System.Drawing.Point(12, 220);
+            this.componentes_pnl.Name = "componentes_pnl";
+            this.componentes_pnl.Size = new System.Drawing.Size(216, 48);
+            this.componentes_pnl.TabIndex = 8;
+            // 
+            // componentes_btn
+            // 
+            this.componentes_btn.Enabled = false;
+            this.componentes_btn.Location = new System.Drawing.Point(3, 10);
+            this.componentes_btn.Name = "componentes_btn";
+            this.componentes_btn.Size = new System.Drawing.Size(192, 23);
+            this.componentes_btn.TabIndex = 0;
+            this.componentes_btn.Text = "Componentes do fornecedor";
+            this.componentes_btn.UseVisualStyleBackColor = true;
+            // 
             // site_lbl
             // 
             this.site_lbl.AutoSize = true;
@@ -120,8 +144,8 @@ namespace MRP_SdC
             this.site_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.site_lbl.Location = new System.Drawing.Point(12, 191);
             this.site_lbl.Name = "site_lbl";
-            this.site_lbl.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.site_lbl.Size = new System.Drawing.Size(25, 21);
+            this.site_lbl.Padding = new System.Windows.Forms.Padding(0, 8, 0, 8);
+            this.site_lbl.Size = new System.Drawing.Size(25, 29);
             this.site_lbl.TabIndex = 7;
             this.site_lbl.Text = "Site";
             // 
@@ -247,9 +271,9 @@ namespace MRP_SdC
             // 
             // barraInf_pnl
             // 
-            this.barraInf_pnl.Controls.Add(this.exclur_btn);
+            this.barraInf_pnl.Controls.Add(this.excluir_btn);
             this.barraInf_pnl.Controls.Add(this.editar_btn);
-            this.barraInf_pnl.Controls.Add(this.comps_btn);
+            this.barraInf_pnl.Controls.Add(this.cadastrar_btn);
             this.barraInf_pnl.Controls.Add(this.ok_btn);
             this.barraInf_pnl.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barraInf_pnl.Location = new System.Drawing.Point(32, 433);
@@ -257,16 +281,16 @@ namespace MRP_SdC
             this.barraInf_pnl.Size = new System.Drawing.Size(640, 48);
             this.barraInf_pnl.TabIndex = 4;
             // 
-            // exclur_btn
+            // excluir_btn
             // 
-            this.exclur_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.exclur_btn.Enabled = false;
-            this.exclur_btn.Location = new System.Drawing.Point(306, 10);
-            this.exclur_btn.Name = "exclur_btn";
-            this.exclur_btn.Size = new System.Drawing.Size(144, 23);
-            this.exclur_btn.TabIndex = 3;
-            this.exclur_btn.Text = "Excluir Fornecedor";
-            this.exclur_btn.UseVisualStyleBackColor = true;
+            this.excluir_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.excluir_btn.Enabled = false;
+            this.excluir_btn.Location = new System.Drawing.Point(306, 10);
+            this.excluir_btn.Name = "excluir_btn";
+            this.excluir_btn.Size = new System.Drawing.Size(144, 23);
+            this.excluir_btn.TabIndex = 3;
+            this.excluir_btn.Text = "Excluir Fornecedor";
+            this.excluir_btn.UseVisualStyleBackColor = true;
             // 
             // editar_btn
             // 
@@ -279,16 +303,16 @@ namespace MRP_SdC
             this.editar_btn.Text = "Editar Fornecedor";
             this.editar_btn.UseVisualStyleBackColor = true;
             // 
-            // comps_btn
+            // cadastrar_btn
             // 
-            this.comps_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.comps_btn.Enabled = false;
-            this.comps_btn.Location = new System.Drawing.Point(6, 10);
-            this.comps_btn.Name = "comps_btn";
-            this.comps_btn.Size = new System.Drawing.Size(144, 23);
-            this.comps_btn.TabIndex = 1;
-            this.comps_btn.Text = "Componentes";
-            this.comps_btn.UseVisualStyleBackColor = true;
+            this.cadastrar_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cadastrar_btn.Location = new System.Drawing.Point(6, 10);
+            this.cadastrar_btn.Name = "cadastrar_btn";
+            this.cadastrar_btn.Size = new System.Drawing.Size(144, 23);
+            this.cadastrar_btn.TabIndex = 1;
+            this.cadastrar_btn.Text = "Cadastrar Fornecedor";
+            this.cadastrar_btn.UseVisualStyleBackColor = true;
+            this.cadastrar_btn.Click += new System.EventHandler(this.Cadastrar_btn_Click);
             // 
             // ok_btn
             // 
@@ -339,11 +363,12 @@ namespace MRP_SdC
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Fornecedores";
             this.Text = "Fornecedores";
-            this.Load += new System.EventHandler(this.FormEstComp_Load);
+            this.Load += new System.EventHandler(this.Form_Load);
             this.corpo_pnl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.comp_lista_dgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.forn_lista_dgv)).EndInit();
             this.fornecedor_pnl.ResumeLayout(false);
             this.fornecedor_pnl.PerformLayout();
+            this.componentes_pnl.ResumeLayout(false);
             this.pesquisa_pnl.ResumeLayout(false);
             this.pesquisa_cont_pnl.ResumeLayout(false);
             this.pesquisa_cont_pnl.PerformLayout();
@@ -366,11 +391,11 @@ namespace MRP_SdC
         private System.Windows.Forms.TextBox pesquisa_tbx;
         private System.Windows.Forms.Button pesquisa_btn;
         private System.Windows.Forms.Panel fornecedor_pnl;
-        private System.Windows.Forms.Button comps_btn;
-        private System.Windows.Forms.DataGridView comp_lista_dgv;
+        private System.Windows.Forms.Button cadastrar_btn;
+        private System.Windows.Forms.DataGridView forn_lista_dgv;
         private System.Windows.Forms.Label nome_lbl;
         private System.Windows.Forms.Label codigo_lbl;
-        private System.Windows.Forms.Button exclur_btn;
+        private System.Windows.Forms.Button excluir_btn;
         private System.Windows.Forms.Button editar_btn;
         private System.Windows.Forms.Label site_lbl;
         private System.Windows.Forms.Label email_lbl;
@@ -378,5 +403,7 @@ namespace MRP_SdC
         private System.Windows.Forms.Label telefone_lbl;
         private System.Windows.Forms.Label cep_lbl;
         private System.Windows.Forms.Label logradouro_lbl;
+        private System.Windows.Forms.Panel componentes_pnl;
+        private System.Windows.Forms.Button componentes_btn;
     }
 }

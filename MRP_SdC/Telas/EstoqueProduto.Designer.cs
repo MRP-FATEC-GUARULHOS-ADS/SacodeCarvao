@@ -130,19 +130,18 @@ namespace MRP_SdC
             // atualizar_pnl
             // 
             this.atualizar_pnl.Controls.Add(this.atualizar_btn);
-            this.atualizar_pnl.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.atualizar_pnl.Location = new System.Drawing.Point(12, 350);
+            this.atualizar_pnl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.atualizar_pnl.Location = new System.Drawing.Point(12, 362);
             this.atualizar_pnl.Name = "atualizar_pnl";
             this.atualizar_pnl.Size = new System.Drawing.Size(199, 42);
             this.atualizar_pnl.TabIndex = 5;
             // 
             // atualizar_btn
             // 
-            this.atualizar_btn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.atualizar_btn.Enabled = false;
-            this.atualizar_btn.Location = new System.Drawing.Point(3, 9);
+            this.atualizar_btn.Location = new System.Drawing.Point(3, 10);
             this.atualizar_btn.Name = "atualizar_btn";
-            this.atualizar_btn.Size = new System.Drawing.Size(193, 23);
+            this.atualizar_btn.Size = new System.Drawing.Size(176, 23);
             this.atualizar_btn.TabIndex = 0;
             this.atualizar_btn.Text = "Atualizar valores";
             this.atualizar_btn.UseVisualStyleBackColor = true;

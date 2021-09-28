@@ -60,8 +60,8 @@ namespace MRP_SdC
             this.barraInf_pnl = new System.Windows.Forms.Panel();
             this.descnt_btn = new System.Windows.Forms.Button();
             this.fornecedores_btn = new System.Windows.Forms.Button();
-            this.ok_btn = new System.Windows.Forms.Button();
             this.editar_btn = new System.Windows.Forms.Button();
+            this.ok_btn = new System.Windows.Forms.Button();
             this.ttl_lbl = new System.Windows.Forms.Label();
             this.EspDir_pnl = new System.Windows.Forms.Panel();
             this.EspEsq_pnl = new System.Windows.Forms.Panel();
@@ -131,7 +131,7 @@ namespace MRP_SdC
             // atualizar_pnl
             // 
             this.atualizar_pnl.Controls.Add(this.atualizar_btn);
-            this.atualizar_pnl.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.atualizar_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.atualizar_pnl.Location = new System.Drawing.Point(12, 362);
             this.atualizar_pnl.Name = "atualizar_pnl";
             this.atualizar_pnl.Size = new System.Drawing.Size(199, 42);
@@ -139,11 +139,10 @@ namespace MRP_SdC
             // 
             // atualizar_btn
             // 
-            this.atualizar_btn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.atualizar_btn.Enabled = false;
-            this.atualizar_btn.Location = new System.Drawing.Point(3, 9);
+            this.atualizar_btn.Location = new System.Drawing.Point(3, 10);
             this.atualizar_btn.Name = "atualizar_btn";
-            this.atualizar_btn.Size = new System.Drawing.Size(193, 23);
+            this.atualizar_btn.Size = new System.Drawing.Size(176, 23);
             this.atualizar_btn.TabIndex = 0;
             this.atualizar_btn.Text = "Atualizar valores";
             this.atualizar_btn.UseVisualStyleBackColor = true;
@@ -157,8 +156,7 @@ namespace MRP_SdC
             this.dados_estoque_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.dados_estoque_pnl.Location = new System.Drawing.Point(12, 218);
             this.dados_estoque_pnl.Name = "dados_estoque_pnl";
-            this.dados_estoque_pnl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 12);
-            this.dados_estoque_pnl.Size = new System.Drawing.Size(199, 156);
+            this.dados_estoque_pnl.Size = new System.Drawing.Size(199, 144);
             this.dados_estoque_pnl.TabIndex = 3;
             // 
             // dados_max_pnl
@@ -389,6 +387,17 @@ namespace MRP_SdC
             this.fornecedores_btn.Text = "Fornecedores";
             this.fornecedores_btn.UseVisualStyleBackColor = true;
             // 
+            // editar_btn
+            // 
+            this.editar_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.editar_btn.Enabled = false;
+            this.editar_btn.Location = new System.Drawing.Point(6, 10);
+            this.editar_btn.Name = "editar_btn";
+            this.editar_btn.Size = new System.Drawing.Size(144, 23);
+            this.editar_btn.TabIndex = 1;
+            this.editar_btn.Text = "Editar Componente";
+            this.editar_btn.UseVisualStyleBackColor = true;
+            // 
             // ok_btn
             // 
             this.ok_btn.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -400,17 +409,6 @@ namespace MRP_SdC
             this.ok_btn.Text = "OK";
             this.ok_btn.UseVisualStyleBackColor = true;
             this.ok_btn.Click += new System.EventHandler(this.OK_btn_Click);
-            // 
-            // editar_btn
-            // 
-            this.editar_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.editar_btn.Enabled = false;
-            this.editar_btn.Location = new System.Drawing.Point(6, 10);
-            this.editar_btn.Name = "editar_btn";
-            this.editar_btn.Size = new System.Drawing.Size(144, 23);
-            this.editar_btn.TabIndex = 1;
-            this.editar_btn.Text = "Editar Componente";
-            this.editar_btn.UseVisualStyleBackColor = true;
             // 
             // ttl_lbl
             // 

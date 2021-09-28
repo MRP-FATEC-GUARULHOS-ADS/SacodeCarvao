@@ -23,7 +23,7 @@ namespace MRP_SdC
         // funcoes personalizadas
         private void AtualizaLista()
         {
-            MySQL.ProdutoDAO objProdDAO = new MySQL.ProdutoDAO();
+            Access.ProdutoDAO objProdDAO = new Access.ProdutoDAO();
             List<Produto> listaProdutos = objProdDAO.GetProdutos();
 
             var bindingProdutos = new BindingList<Produto>(listaProdutos);

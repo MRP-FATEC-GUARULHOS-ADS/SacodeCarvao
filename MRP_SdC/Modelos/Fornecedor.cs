@@ -19,11 +19,11 @@
         }
 
         public Fornecedor (
-            int id, string nome, string telefone, string logradouro = "", string numero = "", string complemento = "",
-            string cep = "", string celular = "", string email = "", string site = ""
+            string nome, string cep, string telefone,
+            string logradouro = "", string numero = "", string complemento = "",
+            string celular = "", string email = "", string site = ""
         )
         {
-            this.id = id;
             this.nome = nome;
             this.telefone = telefone;
             this.logradouro = logradouro;
@@ -33,6 +33,11 @@
             this.celular = celular;
             this.email = email;
             this.site = site;
+        }
+
+        public override string ToString()
+        {
+            return this.nome;
         }
     }
 }

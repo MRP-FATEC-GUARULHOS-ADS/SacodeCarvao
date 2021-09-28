@@ -64,10 +64,16 @@
     <Compile Include="Telas\CadastroComponente.Designer.cs">
       <DependentUpon>CadastroComponente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Telas\Fornecedores.cs">
+    <Compile Include="Telas\Fornecedores\CadastroFornecedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Telas\Fornecedores.Designer.cs">
+    <Compile Include="Telas\Fornecedores\CadastroFornecedor.Designer.cs">
+      <DependentUpon>CadastroFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Fornecedores\Fornecedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Fornecedores\Fornecedores.Designer.cs">
       <DependentUpon>Fornecedores.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\ExplosaoProduto.cs">
@@ -105,7 +111,10 @@
     <EmbeddedResource Include="Telas\CadastroComponente.resx">
       <DependentUpon>CadastroComponente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Telas\Fornecedores.resx">
+    <EmbeddedResource Include="Telas\Fornecedores\CadastroFornecedor.resx">
+      <DependentUpon>CadastroFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Fornecedores\Fornecedores.resx">
       <DependentUpon>Fornecedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\ExplosaoProduto.resx">
