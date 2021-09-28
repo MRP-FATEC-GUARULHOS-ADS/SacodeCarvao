@@ -70,43 +70,6 @@ Incluir no commit só os arquivos que você alterou diminui a chance de criar co
 
 Pronto, mudança feita, espero que tenha valido a pena.
 
-## Equipes
-
-### calculo de plano mestre de produção
-
-- Líder: Taylan Peixoto
-- Projetista de Banco de Dados: Daniel Correa
-- Desenvolvedor: Ricardo Gomes
-- Analista: Filipe de Souza
-- Testador: Cesar Kimura
-
-![e la vamos nos](https://i.pinimg.com/736x/c2/ae/d7/c2aed7f1f926f508b62131115c3e260b.jpg)
-
-
-### Unificação de cadastro/Estoque e entrada de previsão de demanda
-
-- Líder: Taylan Peixoto
-- Projetista de Banco de Dados: Daniel Correa
-- Desenvolvedor: Ricardo Gomes
-- Analista: Filipe de Souza
-- Testador: Cesar Kimura
-
-### desenvolvimento do BOM
-
-- Líder: Gabriel Szucs
-- Projetista de Banco de Dados: Vinicius Calgaro
-- Desenvolvedor: Vinicius Brasil
-- Analista: Ariel Brandon
-- Testador: Alvaro Makoto
-
-### desenvolvimento da EAP
-
-- Líder: Matheus
-- Projetista de Banco de Dados: Felipe Prado
-- Desenvolvedor: Tiago
-- Analista: Mario
-- Testador: Guilherme
-
 ![e la vamos nos](https://i.pinimg.com/736x/c2/ae/d7/c2aed7f1f926f508b62131115c3e260b.jpg)
 
 ## Fazer
