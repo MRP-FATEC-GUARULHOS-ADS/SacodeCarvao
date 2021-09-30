@@ -59,8 +59,8 @@ namespace MRP_SdC
             this.pesquisa_descnt_cbx = new System.Windows.Forms.CheckBox();
             this.barraInf_pnl = new System.Windows.Forms.Panel();
             this.descnt_btn = new System.Windows.Forms.Button();
-            this.fornecedores_btn = new System.Windows.Forms.Button();
             this.editar_btn = new System.Windows.Forms.Button();
+            this.fornecedores_btn = new System.Windows.Forms.Button();
             this.ok_btn = new System.Windows.Forms.Button();
             this.ttl_lbl = new System.Windows.Forms.Label();
             this.EspDir_pnl = new System.Windows.Forms.Panel();
@@ -112,6 +112,7 @@ namespace MRP_SdC
             this.comp_lista_dgv.StandardTab = true;
             this.comp_lista_dgv.TabIndex = 2;
             this.comp_lista_dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Componentes_DGV_CellClick);
+            this.comp_lista_dgv.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Lista_DGV_RowEnter);
             // 
             // dados_pnl
             // 
@@ -356,8 +357,8 @@ namespace MRP_SdC
             // barraInf_pnl
             // 
             this.barraInf_pnl.Controls.Add(this.descnt_btn);
-            this.barraInf_pnl.Controls.Add(this.fornecedores_btn);
             this.barraInf_pnl.Controls.Add(this.editar_btn);
+            this.barraInf_pnl.Controls.Add(this.fornecedores_btn);
             this.barraInf_pnl.Controls.Add(this.ok_btn);
             this.barraInf_pnl.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barraInf_pnl.Location = new System.Drawing.Point(32, 433);
@@ -369,34 +370,33 @@ namespace MRP_SdC
             // 
             this.descnt_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.descnt_btn.Enabled = false;
-            this.descnt_btn.Location = new System.Drawing.Point(306, 10);
+            this.descnt_btn.Location = new System.Drawing.Point(300, 10);
             this.descnt_btn.Name = "descnt_btn";
             this.descnt_btn.Size = new System.Drawing.Size(144, 23);
             this.descnt_btn.TabIndex = 3;
             this.descnt_btn.Text = "Descontinuar Componente";
             this.descnt_btn.UseVisualStyleBackColor = true;
             // 
-            // fornecedores_btn
-            // 
-            this.fornecedores_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.fornecedores_btn.Enabled = false;
-            this.fornecedores_btn.Location = new System.Drawing.Point(156, 10);
-            this.fornecedores_btn.Name = "fornecedores_btn";
-            this.fornecedores_btn.Size = new System.Drawing.Size(144, 23);
-            this.fornecedores_btn.TabIndex = 2;
-            this.fornecedores_btn.Text = "Fornecedores";
-            this.fornecedores_btn.UseVisualStyleBackColor = true;
-            // 
             // editar_btn
             // 
             this.editar_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.editar_btn.Enabled = false;
-            this.editar_btn.Location = new System.Drawing.Point(6, 10);
+            this.editar_btn.Location = new System.Drawing.Point(150, 10);
             this.editar_btn.Name = "editar_btn";
             this.editar_btn.Size = new System.Drawing.Size(144, 23);
-            this.editar_btn.TabIndex = 1;
+            this.editar_btn.TabIndex = 2;
             this.editar_btn.Text = "Editar Componente";
             this.editar_btn.UseVisualStyleBackColor = true;
+            // 
+            // fornecedores_btn
+            // 
+            this.fornecedores_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.fornecedores_btn.Location = new System.Drawing.Point(0, 10);
+            this.fornecedores_btn.Name = "fornecedores_btn";
+            this.fornecedores_btn.Size = new System.Drawing.Size(144, 23);
+            this.fornecedores_btn.TabIndex = 1;
+            this.fornecedores_btn.Text = "Fornecedores";
+            this.fornecedores_btn.UseVisualStyleBackColor = true;
             // 
             // ok_btn
             // 

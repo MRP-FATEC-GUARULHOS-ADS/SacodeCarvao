@@ -136,6 +136,7 @@ namespace MRP_SdC
             this.componentes_btn.TabIndex = 0;
             this.componentes_btn.Text = "Componentes do fornecedor";
             this.componentes_btn.UseVisualStyleBackColor = true;
+            this.componentes_btn.Click += new System.EventHandler(this.Componentes_btn_Click);
             // 
             // site_lbl
             // 

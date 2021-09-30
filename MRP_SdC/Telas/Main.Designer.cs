@@ -58,9 +58,9 @@ namespace MRP_SdC
             this.demanda_gpb = new System.Windows.Forms.GroupBox();
             this.dem_lista_dgv = new System.Windows.Forms.DataGridView();
             this.dem_dir_pnl = new System.Windows.Forms.Panel();
-            this.relatorio_btn = new System.Windows.Forms.Button();
-            this.previsao_btn = new System.Windows.Forms.Button();
             this.cadastrar_producao_btn = new System.Windows.Forms.Button();
+            this.previsao_btn = new System.Windows.Forms.Button();
+            this.relatorio_btn = new System.Windows.Forms.Button();
             this.dem_pesquisa_pnl = new System.Windows.Forms.Panel();
             this.dem_pesquisa_barra_pnl = new System.Windows.Forms.Panel();
             this.dem_pesquisa_tbx = new System.Windows.Forms.TextBox();
@@ -99,6 +99,7 @@ namespace MRP_SdC
             this.user_ttl_txb = new System.Windows.Forms.Label();
             this.user_img_pnl = new System.Windows.Forms.Panel();
             this.logo_pnl = new System.Windows.Forms.Panel();
+            this.fornecedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.menu_dir_pnl.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -172,7 +173,8 @@ namespace MRP_SdC
             // 
             this.cadastrarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.produtoToolStripMenuItem,
-            this.componenteToolStripMenuItem});
+            this.componenteToolStripMenuItem,
+            this.fornecedoresToolStripMenuItem});
             this.cadastrarToolStripMenuItem.Name = "cadastrarToolStripMenuItem";
             this.cadastrarToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.cadastrarToolStripMenuItem.Text = "Cadastrar";
@@ -401,15 +403,16 @@ namespace MRP_SdC
             this.dem_dir_pnl.Size = new System.Drawing.Size(120, 127);
             this.dem_dir_pnl.TabIndex = 2;
             // 
-            // relatorio_btn
+            // cadastrar_producao_btn
             // 
-            this.relatorio_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.relatorio_btn.Location = new System.Drawing.Point(9, 6);
-            this.relatorio_btn.Name = "relatorio_btn";
-            this.relatorio_btn.Size = new System.Drawing.Size(108, 24);
-            this.relatorio_btn.TabIndex = 0;
-            this.relatorio_btn.Text = "Relatorio";
-            this.relatorio_btn.UseVisualStyleBackColor = true;
+            this.cadastrar_producao_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cadastrar_producao_btn.Location = new System.Drawing.Point(9, 65);
+            this.cadastrar_producao_btn.Name = "cadastrar_producao_btn";
+            this.cadastrar_producao_btn.Size = new System.Drawing.Size(108, 24);
+            this.cadastrar_producao_btn.TabIndex = 2;
+            this.cadastrar_producao_btn.Text = "Cadastrar";
+            this.cadastrar_producao_btn.UseVisualStyleBackColor = true;
+            this.cadastrar_producao_btn.Click += new System.EventHandler(this.btnCadastrarProducao_Click);
             // 
             // previsao_btn
             // 
@@ -421,16 +424,15 @@ namespace MRP_SdC
             this.previsao_btn.Text = "Previsão";
             this.previsao_btn.UseVisualStyleBackColor = true;
             // 
-            // cadastrar_producao_btn
+            // relatorio_btn
             // 
-            this.cadastrar_producao_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cadastrar_producao_btn.Location = new System.Drawing.Point(9, 65);
-            this.cadastrar_producao_btn.Name = "cadastrar_producao_btn";
-            this.cadastrar_producao_btn.Size = new System.Drawing.Size(108, 24);
-            this.cadastrar_producao_btn.TabIndex = 2;
-            this.cadastrar_producao_btn.Text = "Cadastrar";
-            this.cadastrar_producao_btn.UseVisualStyleBackColor = true;
-            this.cadastrar_producao_btn.Click += new System.EventHandler(this.btnCadastrarProducao_Click);
+            this.relatorio_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.relatorio_btn.Location = new System.Drawing.Point(9, 6);
+            this.relatorio_btn.Name = "relatorio_btn";
+            this.relatorio_btn.Size = new System.Drawing.Size(108, 24);
+            this.relatorio_btn.TabIndex = 0;
+            this.relatorio_btn.Text = "Relatorio";
+            this.relatorio_btn.UseVisualStyleBackColor = true;
             // 
             // dem_pesquisa_pnl
             // 
@@ -845,6 +847,12 @@ namespace MRP_SdC
             this.logo_pnl.Size = new System.Drawing.Size(56, 56);
             this.logo_pnl.TabIndex = 0;
             // 
+            // fornecedoresToolStripMenuItem
+            // 
+            this.fornecedoresToolStripMenuItem.Name = "fornecedoresToolStripMenuItem";
+            this.fornecedoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fornecedoresToolStripMenuItem.Text = "Fornecedores";
+            // 
             // Main_frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -967,6 +975,7 @@ namespace MRP_SdC
         private System.Windows.Forms.Panel dem_pesquisa_barra_pnl;
         private System.Windows.Forms.ToolStripMenuItem mPSToolStripMenuItem;
         private System.Windows.Forms.Button cadastrar_producao_btn;
+        private System.Windows.Forms.ToolStripMenuItem fornecedoresToolStripMenuItem;
     }
 }
 

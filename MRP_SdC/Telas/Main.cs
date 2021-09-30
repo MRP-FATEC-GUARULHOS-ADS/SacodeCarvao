@@ -22,7 +22,7 @@ namespace MRP_SdC
         {
             Access.ComponenteDAO objCompDAO = new Access.ComponenteDAO();
             Access.ProdutoDAO objProdDAO = new Access.ProdutoDAO();
-            MySQL.ConexaoMPS mps = new MySQL.ConexaoMPS();
+            Access.ConexaoMPS mps = new Access.ConexaoMPS();
 
             List<Componente> listaComponentes = objCompDAO.GetComponentes();
             List<Produto> listaProdutos = objProdDAO.GetProdutos();
@@ -102,7 +102,7 @@ namespace MRP_SdC
         private void btnCadastrarProducao_Click(object sender, EventArgs e)
         {
             CadastroMPS cadastromps = new CadastroMPS();
-            cadastromps.Show();
+            cadastromps.ShowDialog();
             AtualizaListas();
         }
 

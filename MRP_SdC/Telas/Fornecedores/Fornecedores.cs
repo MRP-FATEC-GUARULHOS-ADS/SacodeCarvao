@@ -57,6 +57,7 @@ namespace MRP_SdC
         {
             if (e.RowIndex != -1)
             {
+                componentes_btn.Enabled = true;
                 editar_btn.Enabled = true;
                 excluir_btn.Enabled = true;
             }
@@ -80,6 +81,13 @@ namespace MRP_SdC
         {
             CadastroFornecedor formCadFornecedor = new CadastroFornecedor();
             formCadFornecedor.ShowDialog();
+            AtualizaLista();
+        }
+
+        private void Componentes_btn_Click(object sender, EventArgs e)
+        {
+            ComponentesFornecedor formCompsFornecedor = new ComponentesFornecedor(myForn);
+            formCompsFornecedor.ShowDialog();
             AtualizaLista();
         }
     }

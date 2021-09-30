@@ -49,6 +49,15 @@ namespace MRP_SdC
         }
 
         // funcoes da lista
+        private void Lista_DGV_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                editar_btn.Enabled = true;
+                descnt_btn.Enabled = true;
+            }
+        }
+
         private void Produtos_DGV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1 && prod_lista_dgv.CurrentRow != null)

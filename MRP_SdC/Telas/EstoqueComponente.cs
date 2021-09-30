@@ -50,6 +50,15 @@ namespace MRP_SdC
         }
 
         // funcoes da lista
+        private void Lista_DGV_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                editar_btn.Enabled = true;
+                descnt_btn.Enabled = true;
+            }
+        }
+
         private void Componentes_DGV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1 && comp_lista_dgv.CurrentRow != null)

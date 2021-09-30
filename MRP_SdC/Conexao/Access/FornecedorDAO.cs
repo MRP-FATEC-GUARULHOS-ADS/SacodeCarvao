@@ -162,6 +162,7 @@ namespace MRP_SdC.Access
                         {
                             if (!reader.IsDBNull(0))
                             {
+                                FornecedorComponenteDAO fornCompDAO = new FornecedorComponenteDAO();
                                 objFornecedor = new Fornecedor
                                 {
                                     id = Convert.ToInt32(reader["idFornecedor"]),
@@ -175,6 +176,7 @@ namespace MRP_SdC.Access
                                     email = (reader["email"] != DBNull.Value ? (string)(reader["email"]) : ""),
                                     site = (reader["urlSite"] != DBNull.Value ? (string)(reader["urlSite"]) : "")
                                 };
+                                objFornecedor.componentes = fornCompDAO.GetComponentes(objFornecedor);
 
                                 listaFornecedores.Add(objFornecedor);
                             }
@@ -224,6 +226,7 @@ namespace MRP_SdC.Access
                         {
                             if (!reader.IsDBNull(0))
                             {
+                                FornecedorComponenteDAO fornCompDAO = new FornecedorComponenteDAO();
                                 objFornecedor = new Fornecedor
                                 {
                                     id = Convert.ToInt32(reader["idFornecedor"]),
@@ -237,6 +240,7 @@ namespace MRP_SdC.Access
                                     email = (reader["email"] != DBNull.Value ? (string)(reader["email"]) : ""),
                                     site = (reader["urlSite"] != DBNull.Value ? (string)(reader["urlSite"]) : "")
                                 };
+                                objFornecedor.componentes = fornCompDAO.GetComponentes(objFornecedor);
 
                                 listaFornecedores.Add(objFornecedor);
                             }
@@ -284,6 +288,7 @@ namespace MRP_SdC.Access
                         {
                             if (!reader.IsDBNull(0))
                             {
+                                FornecedorComponenteDAO fornCompDAO = new FornecedorComponenteDAO();
                                 objFornecedor = new Fornecedor
                                 {
                                     id = Convert.ToInt32(reader["idFornecedor"]),
@@ -297,6 +302,7 @@ namespace MRP_SdC.Access
                                     email = (reader["email"] != DBNull.Value ? (string)(reader["email"]) : ""),
                                     site = (reader["urlSite"] != DBNull.Value ? (string)(reader["urlSite"]) : "")
                                 };
+                                objFornecedor.componentes = fornCompDAO.GetComponentes(objFornecedor);
                             }
                         }
                     }

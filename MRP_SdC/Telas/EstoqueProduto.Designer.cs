@@ -111,6 +111,7 @@ namespace MRP_SdC
             this.prod_lista_dgv.StandardTab = true;
             this.prod_lista_dgv.TabIndex = 2;
             this.prod_lista_dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Produtos_DGV_CellClick);
+            this.prod_lista_dgv.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Lista_DGV_RowEnter);
             // 
             // dados_pnl
             // 
@@ -367,7 +368,7 @@ namespace MRP_SdC
             // 
             this.descnt_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.descnt_btn.Enabled = false;
-            this.descnt_btn.Location = new System.Drawing.Point(172, 10);
+            this.descnt_btn.Location = new System.Drawing.Point(166, 10);
             this.descnt_btn.Name = "descnt_btn";
             this.descnt_btn.Size = new System.Drawing.Size(160, 23);
             this.descnt_btn.TabIndex = 2;
@@ -378,7 +379,7 @@ namespace MRP_SdC
             // 
             this.editar_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.editar_btn.Enabled = false;
-            this.editar_btn.Location = new System.Drawing.Point(6, 10);
+            this.editar_btn.Location = new System.Drawing.Point(0, 10);
             this.editar_btn.Name = "editar_btn";
             this.editar_btn.Size = new System.Drawing.Size(160, 23);
             this.editar_btn.TabIndex = 1;

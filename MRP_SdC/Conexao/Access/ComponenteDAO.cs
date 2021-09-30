@@ -248,7 +248,7 @@ namespace MRP_SdC.Access
                 try
                 {
                     // cria o adapter e preenche o dataset
-                    using (OleDbCommand cmd = new OleDbCommand("SELECT * from tb_cadpecas WHERE [idComponente] = " + id + ";", conexaoAccess))
+                    using (OleDbCommand cmd = new OleDbCommand("SELECT * from componente WHERE [idComponente] = " + id + ";", conexaoAccess))
                     {
                         conexaoAccess.Open();
                         using (OleDbDataReader reader = cmd.ExecuteReader())
