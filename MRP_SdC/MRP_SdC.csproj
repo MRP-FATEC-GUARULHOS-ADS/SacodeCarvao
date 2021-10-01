@@ -63,10 +63,10 @@
     <Compile Include="Modelos\Componente.cs" />
     <Compile Include="Modelos\Fornecedor.cs" />
     <Compile Include="Modelos\Produto.cs" />
-    <Compile Include="Telas\CadastroComponente.cs">
+    <Compile Include="Telas\Componentes\CadastroComponente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Telas\CadastroComponente.Designer.cs">
+    <Compile Include="Telas\Componentes\CadastroComponente.Designer.cs">
       <DependentUpon>CadastroComponente.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\Fornecedores\CadastroComponenteFornecedor.cs">
@@ -93,28 +93,34 @@
     <Compile Include="Telas\Fornecedores\Fornecedores.Designer.cs">
       <DependentUpon>Fornecedores.cs</DependentUpon>
     </Compile>
-    <Compile Include="Telas\ExplosaoProduto.cs">
+    <Compile Include="Telas\Produtos\EditarProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Telas\ExplosaoProduto.Designer.cs">
+    <Compile Include="Telas\Produtos\EditarProduto.Designer.cs">
+      <DependentUpon>EditarProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Produtos\ExplosaoProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Produtos\ExplosaoProduto.Designer.cs">
       <DependentUpon>ExplosaoProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Telas\CadastroProduto.cs">
+    <Compile Include="Telas\Produtos\CadastroProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Telas\CadastroProduto.Designer.cs">
+    <Compile Include="Telas\Produtos\CadastroProduto.Designer.cs">
       <DependentUpon>CadastroProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Telas\EstoqueProduto.cs">
+    <Compile Include="Telas\Produtos\EstoqueProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Telas\EstoqueProduto.Designer.cs">
+    <Compile Include="Telas\Produtos\EstoqueProduto.Designer.cs">
       <DependentUpon>EstoqueProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Telas\EstoqueComponente.cs">
+    <Compile Include="Telas\Componentes\EstoqueComponente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Telas\EstoqueComponente.Designer.cs">
+    <Compile Include="Telas\Componentes\EstoqueComponente.Designer.cs">
       <DependentUpon>EstoqueComponente.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\Main.cs">
@@ -131,7 +137,7 @@
     <Compile Include="Telas\CadastroMPS.Designer.cs">
       <DependentUpon>CadastroMPS.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Telas\CadastroComponente.resx">
+    <EmbeddedResource Include="Telas\Componentes\CadastroComponente.resx">
       <DependentUpon>CadastroComponente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Fornecedores\CadastroComponenteFornecedor.resx">
@@ -146,16 +152,19 @@
     <EmbeddedResource Include="Telas\Fornecedores\Fornecedores.resx">
       <DependentUpon>Fornecedores.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Telas\ExplosaoProduto.resx">
+    <EmbeddedResource Include="Telas\Produtos\EditarProduto.resx">
+      <DependentUpon>EditarProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Produtos\ExplosaoProduto.resx">
       <DependentUpon>ExplosaoProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Telas\CadastroProduto.resx">
+    <EmbeddedResource Include="Telas\Produtos\CadastroProduto.resx">
       <DependentUpon>CadastroProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Telas\EstoqueProduto.resx">
+    <EmbeddedResource Include="Telas\Produtos\EstoqueProduto.resx">
       <DependentUpon>EstoqueProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Telas\EstoqueComponente.resx">
+    <EmbeddedResource Include="Telas\Componentes\EstoqueComponente.resx">
       <DependentUpon>EstoqueComponente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Main.resx">

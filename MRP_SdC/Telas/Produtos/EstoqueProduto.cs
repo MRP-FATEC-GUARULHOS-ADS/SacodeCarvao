@@ -24,7 +24,7 @@ namespace MRP_SdC
         private void AtualizaLista()
         {
             Access.ProdutoDAO objProdDAO = new Access.ProdutoDAO();
-            List<Produto> listaProdutos = objProdDAO.GetProdutos();
+            List<Produto> listaProdutos = (pesquisa_descnt_cbx.Checked ? objProdDAO.GetProdutos() : objProdDAO.GetProdutosAtivos());
 
             var bindingProdutos = new BindingList<Produto>(listaProdutos);
             prod_lista_dgv.DataSource = bindingProdutos;
@@ -32,6 +32,7 @@ namespace MRP_SdC
         private void MudaInfos()
         {
             myProd = prod_lista_dgv.CurrentRow.DataBoundItem as Produto;
+            descnt_btn.Enabled = myProd.estado;
             // textos do produto selecionado
             dados_ttl_lbl.Text = String.Format("{0:D6}", myProd.id);
             dados_subttl_lbl.Text = myProd.modelo;
@@ -48,13 +49,19 @@ namespace MRP_SdC
             MudaInfos();
         }
 
+        // funcoes da checkbox da pesquisa
+        private void Pesquisa_CBX_CheckedChanged(object sender, EventArgs e)
+        {
+            AtualizaLista();
+        }
+
         // funcoes da lista
         private void Lista_DGV_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
             {
                 editar_btn.Enabled = true;
-                descnt_btn.Enabled = true;
+                arvore_btn.Enabled = true;
             }
         }
 
@@ -77,5 +84,29 @@ namespace MRP_SdC
         {
             Close();
         }
+
+        private void Editar_btn_Click(object sender, EventArgs e)
+        {
+            EditarProduto editProd = new EditarProduto( myProd );
+            editProd.ShowDialog();
+            AtualizaLista();
+        }
+
+        private void Arvore_btn_Click(object sender, EventArgs e)
+        {
+            ExplosaoProduto arvoreProd = new ExplosaoProduto(myProd);
+            arvoreProd.ShowDialog();
+            AtualizaLista();
+        }
+
+        private void Descnt_btn_Click(object sender, EventArgs e)
+        {
+            Access.ProdutoDAO prodDAO = new Access.ProdutoDAO();
+            myProd.estado = false;
+            prodDAO.UpdateEstado(myProd);
+            AtualizaLista();
+        }
+
+
     }
 }

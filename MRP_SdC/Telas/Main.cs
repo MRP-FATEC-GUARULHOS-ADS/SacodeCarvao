@@ -20,21 +20,17 @@ namespace MRP_SdC
         // funcoes personalizadas
         private void AtualizaListas()
         {
-            Access.ComponenteDAO objCompDAO = new Access.ComponenteDAO();
-            Access.ProdutoDAO objProdDAO = new Access.ProdutoDAO();
             Access.ConexaoMPS mps = new Access.ConexaoMPS();
+            Access.ProdutoDAO objProdDAO = new Access.ProdutoDAO();
 
-            List<Componente> listaComponentes = objCompDAO.GetComponentes();
-            List<Produto> listaProdutos = objProdDAO.GetProdutos();
             List<MPS> listaMPS = mps.GetMPS();
+            List<Produto> listaProdutos = objProdDAO.GetProdutosAtivos();
 
-            var bindingComponentes = new BindingList<Componente>(listaComponentes);
+            var bindingMPS = new BindingList<MPS>(listaMPS);
             var bindingProdutos = new BindingList<Produto>(listaProdutos);
-            var lista = new BindingList<MPS>(listaMPS);
 
-            comp_lista_dgv.DataSource = bindingComponentes;
+            dem_lista_dgv.DataSource = bindingMPS;
             prod_lista_dgv.DataSource = bindingProdutos;            
-            dem_lista_dgv.DataSource = lista;
         }
 
         // funcoes do formulario
@@ -44,59 +40,26 @@ namespace MRP_SdC
         }
 
         // funcoes das listas
-        private void Componentes_DGV_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex != -1)
-            {
-                comp_edt_btn.Enabled = true;
-                comp_forn_btn.Enabled = true;
-            }
-        }
-        private void Produtos_DGV_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex != -1)
-            {
-                prod_exp_btn.Enabled = true;
-            }
-        }
+
 
         // funcoes dos botoes
-        private void Cadastro_Comp_Click(object sender, EventArgs e)
-        {
-            CadastroComponente formCadastroComponente = new CadastroComponente();
-            formCadastroComponente.ShowDialog();
-            AtualizaListas();
-        }
-        private void Estoque_Comp_Click(object sender, EventArgs e)
-        {
-            EstoqueComponente formEstoqueComponente = new EstoqueComponente();
-            formEstoqueComponente.ShowDialog();
-            AtualizaListas();
-        }
-        private void Fornecedor_Comp_Click(object sender, EventArgs e)
-        {
-            Fornecedores formFornecedor = new Fornecedores();
-            formFornecedor.ShowDialog();
-            AtualizaListas();
-        }
-
-        private void Cadastro_Prod_Click(object sender, EventArgs e)
-        {
-            CadastroProduto formCadastroProduto = new CadastroProduto();
-            formCadastroProduto.ShowDialog();
-            AtualizaListas();
-        }
-        private void Explosao_Prod_Click(object sender, EventArgs e)
-        {
-            ExplosaoProduto formExplosaoProduto = new ExplosaoProduto();
-            formExplosaoProduto.ShowDialog();
-            AtualizaListas();
-        }
         private void Estoque_Prod_Click(object sender, EventArgs e)
         {
             EstoqueProduto formEstoqueProduto = new EstoqueProduto();
             formEstoqueProduto.ShowDialog();
             AtualizaListas();
+        }
+
+        private void Estoque_Comp_Click(object sender, EventArgs e)
+        {
+            EstoqueComponente formEstoqueComponente = new EstoqueComponente();
+            formEstoqueComponente.ShowDialog();
+        }
+
+        private void Fornecedor_Comp_Click(object sender, EventArgs e)
+        {
+            Fornecedores formFornecedor = new Fornecedores();
+            formFornecedor.ShowDialog();
         }
 
         private void btnCadastrarProducao_Click(object sender, EventArgs e)
@@ -106,5 +69,39 @@ namespace MRP_SdC
             AtualizaListas();
         }
 
+        //funcoes do menu
+        private void EstProdutos_TSMI_Click(object sender, EventArgs e)
+        {
+            EstoqueProduto formEstoqueProduto = new EstoqueProduto();
+            formEstoqueProduto.ShowDialog();
+            AtualizaListas();
+        }
+        private void EstComponentes_TSMI_Click(object sender, EventArgs e)
+        {
+            EstoqueComponente formEstoqueComponente = new EstoqueComponente();
+            formEstoqueComponente.ShowDialog();
+        }
+        private void EstFornecedores_TSMI_Click(object sender, EventArgs e)
+        {
+            Fornecedores formFornecedores = new Fornecedores();
+            formFornecedores.ShowDialog();
+        }
+
+        private void CadProdutos_TSMI_Click(object sender, EventArgs e)
+        {
+            CadastroProduto formCadProduto = new CadastroProduto();
+            formCadProduto.ShowDialog();
+            AtualizaListas();
+        }
+        private void CadComponentes_TSMI_Click(object sender, EventArgs e)
+        {
+            CadastroComponente formCadComponente = new CadastroComponente();
+            formCadComponente.ShowDialog();
+        }
+        private void CadFornecedores_TSMI_Click(object sender, EventArgs e)
+        {
+            CadastroFornecedor formCadFornecedor = new CadastroFornecedor();
+            formCadFornecedor.ShowDialog();
+        }
     }
 }
