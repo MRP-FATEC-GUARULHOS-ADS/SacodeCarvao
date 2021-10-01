@@ -63,6 +63,12 @@
     <Compile Include="Modelos\Componente.cs" />
     <Compile Include="Modelos\Fornecedor.cs" />
     <Compile Include="Modelos\Produto.cs" />
+    <Compile Include="Telas\Componentes\EditarComponente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Componentes\EditarComponente.Designer.cs">
+      <DependentUpon>EditarComponente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Componentes\CadastroComponente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,12 @@
     </Compile>
     <Compile Include="Telas\Fornecedores\CadastroComponenteFornecedor.Designer.cs">
       <DependentUpon>CadastroComponenteFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Fornecedores\EditarFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Fornecedores\EditarFornecedor.Designer.cs">
+      <DependentUpon>EditarFornecedor.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\Fornecedores\CadastroFornecedor.cs">
       <SubType>Form</SubType>
@@ -137,11 +149,17 @@
     <Compile Include="Telas\CadastroMPS.Designer.cs">
       <DependentUpon>CadastroMPS.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Telas\Componentes\EditarComponente.resx">
+      <DependentUpon>EditarComponente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\Componentes\CadastroComponente.resx">
       <DependentUpon>CadastroComponente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Fornecedores\CadastroComponenteFornecedor.resx">
       <DependentUpon>CadastroComponenteFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Fornecedores\EditarFornecedor.resx">
+      <DependentUpon>EditarFornecedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Fornecedores\CadastroFornecedor.resx">
       <DependentUpon>CadastroFornecedor.cs</DependentUpon>

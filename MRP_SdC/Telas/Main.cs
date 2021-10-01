@@ -21,16 +21,18 @@ namespace MRP_SdC
         private void AtualizaListas()
         {
             Access.ConexaoMPS mps = new Access.ConexaoMPS();
-            Access.ProdutoDAO objProdDAO = new Access.ProdutoDAO();
-
             List<MPS> listaMPS = mps.GetMPS();
-            List<Produto> listaProdutos = objProdDAO.GetProdutosAtivos();
-
             var bindingMPS = new BindingList<MPS>(listaMPS);
-            var bindingProdutos = new BindingList<Produto>(listaProdutos);
-
             dem_lista_dgv.DataSource = bindingMPS;
-            prod_lista_dgv.DataSource = bindingProdutos;            
+
+            ListarProdutosAtivos();
+        }
+        private void ListarProdutosAtivos()
+        {
+            Access.ProdutoDAO produtoDAO = new Access.ProdutoDAO();
+            List<Produto> listaProdutos = produtoDAO.GetProdutosAtivos();
+            var bindingProdutos = new BindingList<Produto>(listaProdutos);
+            prod_lista_dgv.DataSource = bindingProdutos;
         }
 
         // funcoes do formulario
@@ -41,6 +43,35 @@ namespace MRP_SdC
 
         // funcoes das listas
 
+
+        // funcoes de pesquisa
+        private void PesquisarProdutos()
+        {
+            if (prod_pesquisa_tbx.Text != "")
+            {
+                Access.ProdutoDAO produtoDAO = new Access.ProdutoDAO();
+                List<Produto> listaProdutos = produtoDAO.PesquisaProdutos(prod_pesquisa_tbx.Text);
+                var bindingProdutos = new BindingList<Produto>(listaProdutos);
+                prod_lista_dgv.DataSource = bindingProdutos;
+            }
+            else
+            {
+                ListarProdutosAtivos();
+            }
+        }
+
+        /// Produtos
+        private void PesquisarProdutos_TBX_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                PesquisarProdutos();
+            }
+        }
+        private void PesquisarProdutos_BTN_Click(object sender, EventArgs e)
+        {
+            PesquisarProdutos();
+        }
 
         // funcoes dos botoes
         private void Estoque_Prod_Click(object sender, EventArgs e)
@@ -70,6 +101,13 @@ namespace MRP_SdC
         }
 
         //funcoes do menu
+        private void DemMPS_TSMI_Click(object sender, EventArgs e)
+        {
+            CadastroMPS formMPS = new CadastroMPS();
+            formMPS.ShowDialog();
+            AtualizaListas();
+        }
+
         private void EstProdutos_TSMI_Click(object sender, EventArgs e)
         {
             EstoqueProduto formEstoqueProduto = new EstoqueProduto();

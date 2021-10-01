@@ -33,12 +33,15 @@ namespace MRP_SdC
         {
             myProd = prod_lista_dgv.CurrentRow.DataBoundItem as Produto;
             descnt_btn.Enabled = myProd.estado;
+
             // textos do produto selecionado
             dados_ttl_lbl.Text = String.Format("{0:D6}", myProd.id);
             dados_subttl_lbl.Text = myProd.modelo;
             estoque_atual_tbx.Text = myProd.qtdeAtual.ToString();
             estoque_min_tbx.Text = myProd.qtdeMin.ToString();
             estoque_max_tbx.Text = myProd.qtdeMax.ToString();
+
+            atualizar_btn.Enabled = false;
         }
 
         // funcoes do formulario
@@ -47,12 +50,7 @@ namespace MRP_SdC
             AtualizaLista();
 
             MudaInfos();
-        }
-
-        // funcoes da checkbox da pesquisa
-        private void Pesquisa_CBX_CheckedChanged(object sender, EventArgs e)
-        {
-            AtualizaLista();
+            atualizar_btn.Enabled = false;
         }
 
         // funcoes da lista
@@ -71,6 +69,39 @@ namespace MRP_SdC
             {
                 MudaInfos();
             }
+        }
+
+        // funcoes de pesquisa
+        private void PesquisarProdutos()
+        {
+            if (pesquisa_tbx.Text != "")
+            {
+                Access.ProdutoDAO produtoDAO = new Access.ProdutoDAO();
+                List<Produto> listaProdutos = produtoDAO.PesquisaProdutos(pesquisa_tbx.Text);
+                var bindingProdutos = new BindingList<Produto>(listaProdutos);
+                prod_lista_dgv.DataSource = bindingProdutos;
+            }
+            else
+            {
+                AtualizaLista();
+            }
+        }
+
+        private void Pesquisar_TBX_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                PesquisarProdutos();
+            }
+        }
+        private void Pesquisar_BTN_Click(object sender, EventArgs e)
+        {
+            PesquisarProdutos();
+        }
+        /// funcoes da checkbox da pesquisa
+        private void Pesquisar_CBX_CheckedChanged(object sender, EventArgs e)
+        {
+            AtualizaLista();
         }
 
         // funcoes das textboxes
@@ -107,6 +138,18 @@ namespace MRP_SdC
             AtualizaLista();
         }
 
+        private void Estoque_btn_Click(object sender, EventArgs e)
+        {
+            Access.ProdutoDAO prodDAO = new Access.ProdutoDAO();
 
+            myProd.qtdeAtual = Int32.Parse(estoque_atual_tbx.Text);
+            myProd.qtdeMin = Int32.Parse(estoque_min_tbx.Text);
+            myProd.qtdeMax = Int32.Parse(estoque_max_tbx.Text);
+
+            prodDAO.UpdateEstoque(myProd);
+            atualizar_btn.Enabled = false;
+
+            AtualizaLista();
+        }
     }
 }

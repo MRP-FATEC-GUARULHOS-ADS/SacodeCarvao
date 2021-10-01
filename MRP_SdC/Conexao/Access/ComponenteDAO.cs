@@ -90,6 +90,92 @@ namespace MRP_SdC.Access
             }
             return deuTudoCerto;
         }
+        public Boolean UpdateEstado(Componente comp)
+        {
+            Conexao conexao = new Conexao();
+            bool deuTudoCerto = true;
+
+            using (OleDbConnection conexaoAccess = conexao.GetConexao())
+            {
+                try
+                {
+                    // cria a string de comando
+                    string SQL = String.Format("UPDATE componente SET estadoComponente = '{1}' " +
+                        "WHERE [idComponente] = {0};", comp.id, (comp.estado ? 1 : 0));
+
+                    // cria o comando a ser enviado
+                    OleDbCommand comando = new OleDbCommand();
+
+                    // abre a conexao com o banco
+                    conexaoAccess.Open();
+
+                    // seta a conexao do comando
+                    comando.Connection = conexaoAccess;
+
+                    // seta o comando a ser executado
+                    comando.CommandText = SQL;
+
+                    // executa o comando
+                    comando.ExecuteNonQuery();
+
+                }
+                catch (OleDbException oledbex)
+                {
+                    deuTudoCerto = false;
+                    Console.WriteLine("Erro de acesso ao banco de dados " + oledbex.Message, "Erro");
+                }
+                finally
+                {
+                    //fecha a conexao
+                    conexaoAccess.Close();
+                }
+            }
+            return deuTudoCerto;
+        }
+        public Boolean UpdateEstoque(Componente comp)
+        {
+            Conexao conexao = new Conexao();
+            bool deuTudoCerto = true;
+
+            using (OleDbConnection conexaoAccess = conexao.GetConexao())
+            {
+                try
+                {
+                    // cria a string de comando
+                    string SQL = String.Format("UPDATE componente SET " +
+                        "qtdeMinEstoque = '{1}', qtdeMaxEstoque = '{2}', qtdeAtualEstoque = '{3}' " +
+                        "WHERE [idComponente] = {0};",
+                        comp.id, comp.qtdeMin, comp.qtdeMax, comp.qtdeAtual);
+
+                    // cria o comando a ser enviado
+                    OleDbCommand comando = new OleDbCommand();
+
+                    // abre a conexao com o banco
+                    conexaoAccess.Open();
+
+                    // seta a conexao do comando
+                    comando.Connection = conexaoAccess;
+
+                    // seta o comando a ser executado
+                    comando.CommandText = SQL;
+
+                    // executa o comando
+                    comando.ExecuteNonQuery();
+
+                }
+                catch (OleDbException oledbex)
+                {
+                    deuTudoCerto = false;
+                    Console.WriteLine("Erro de acesso ao banco de dados " + oledbex.Message, "Erro");
+                }
+                finally
+                {
+                    //fecha a conexao
+                    conexaoAccess.Close();
+                }
+            }
+            return deuTudoCerto;
+        }
 
         public Boolean Delete(int id)
         {
@@ -139,6 +225,56 @@ namespace MRP_SdC.Access
             Conexao conexao = new Conexao();
 
             using(OleDbConnection conexaoAccess = conexao.GetConexao())
+            {
+                try
+                {
+                    // cria o adapter e preenche o dataset
+                    using (OleDbCommand cmd = new OleDbCommand("SELECT * FROM COMPONENTE;", conexaoAccess))
+                    {
+                        conexaoAccess.Open();
+                        using (OleDbDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                if (!reader.IsDBNull(0))
+                                {
+                                    objComponente = new Componente();
+                                    objComponente.id = Convert.ToInt32(reader["idComponente"]);
+                                    objComponente.tipo = (string)reader["tipoComponente"];
+                                    objComponente.marca = (string)reader["marcaComponente"];
+                                    objComponente.modelo = (string)reader["modeloComponente"];
+                                    objComponente.especificacoes = (reader["especsComponente"] != DBNull.Value ? (string)(reader["especsComponente"]) : "");
+                                    objComponente.qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]);
+                                    objComponente.qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]);
+                                    objComponente.qtdeAtual = Convert.ToInt32(reader["qtdeAtualEstoque"]);
+                                    objComponente.estado = (bool)reader["estadoComponente"];
+
+                                    listaComponentes.Add(objComponente);
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (OleDbException oledbex)
+                {
+                    // ou não
+                    Console.WriteLine("Erro de acesso ao banco de dados " + oledbex.Message, "Erro");
+                }
+                finally
+                {
+                    // fecha a conexao
+                    conexaoAccess.Close();
+                }
+            }
+            return listaComponentes;
+        }
+        public List<Componente> GetComponentesAtivos()
+        {
+            List<Componente> listaComponentes = new List<Componente>();
+            Componente objComponente;
+            Conexao conexao = new Conexao();
+
+            using (OleDbConnection conexaoAccess = conexao.GetConexao())
             {
                 try
                 {
@@ -193,14 +329,16 @@ namespace MRP_SdC.Access
             {
                 try
                 {
-                    string query = "SELECT * from componente WHERE [modeloComponente] = " + pesquisa + ";";
+                    string SQL = String.Format("SELECT * from componente WHERE [idComponente] LIKE '%{0}%' " +
+                        "OR [tipoComponente] LIKE '%{0}%' OR [marcaComponente] LIKE '%{0}%' " +
+                        "OR [modeloComponente] LIKE '%{0}%';", pesquisa);
                     OleDbCommand comando = new OleDbCommand();
 
                     conexaoAccess.Open();
 
                     comando.Connection = conexaoAccess;
 
-                    comando.CommandText = query;
+                    comando.CommandText = SQL;
 
                     using (OleDbDataReader reader = comando.ExecuteReader())
                     {

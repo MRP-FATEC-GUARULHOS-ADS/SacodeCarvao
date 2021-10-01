@@ -24,21 +24,26 @@ namespace MRP_SdC
         private void AtualizaLista()
         {
             Access.ComponenteDAO objCompDAO = new Access.ComponenteDAO();
-            List<Componente> listaComponentes = objCompDAO.GetComponentes();
+            List<Componente> listaComponentes =
+                (pesquisa_descnt_cbx.Checked ? objCompDAO.GetComponentes() : objCompDAO.GetComponentesAtivos()); ;
 
-            var lista = new BindingList<Componente>(listaComponentes);
-            comp_lista_dgv.DataSource = lista;
+            var bindingComps = new BindingList<Componente>(listaComponentes);
+            comp_lista_dgv.DataSource = bindingComps;
         }
 
         private void MudaInfos()
         {
             myComp = comp_lista_dgv.CurrentRow.DataBoundItem as Componente;
+            descnt_btn.Enabled = myComp.estado;
+
             // textos do componente selecionado
             dados_ttl_lbl.Text = String.Format("{0:D6} - {1}", myComp.id, myComp.tipo);
             dados_subttl_lbl.Text = myComp.modelo;
             dados_atual_tbx.Text = myComp.qtdeAtual.ToString();
             dados_min_tbx.Text = myComp.qtdeMin.ToString();
             dados_max_tbx.Text = myComp.qtdeMax.ToString();
+
+            atualizar_btn.Enabled = false;
         }
 
         // funcoes do formulario
@@ -47,6 +52,7 @@ namespace MRP_SdC
             AtualizaLista();
 
             MudaInfos();
+            atualizar_btn.Enabled = false;
         }
 
         // funcoes da lista
@@ -67,6 +73,39 @@ namespace MRP_SdC
             }
         }
 
+        // funcoes de pesquisa
+        private void Pesquisar()
+        {
+            if (pesquisa_tbx.Text != "")
+            {
+                Access.ComponenteDAO componenteDAO = new Access.ComponenteDAO();
+                List<Componente> listaComponentes = componenteDAO.PesquisaComponentes(pesquisa_tbx.Text);
+                var bindingComponentes = new BindingList<Componente>(listaComponentes);
+                comp_lista_dgv.DataSource = bindingComponentes;
+            }
+            else
+            {
+                AtualizaLista();
+            }
+        }
+
+        private void Pesquisar_TBX_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Pesquisar();
+            }
+        }
+        private void Pesquisar_BTN_Click(object sender, EventArgs e)
+        {
+            Pesquisar();
+        }
+        /// funcoes da checkbox da pesquisa
+        private void Pesquisar_CBX_CheckedChanged(object sender, EventArgs e)
+        {
+            AtualizaLista();
+        }
+
         // funcoes das textboxes
         private void Dados_tbx_TextChanged(object sender, EventArgs e)
         {
@@ -77,6 +116,43 @@ namespace MRP_SdC
         private void OK_btn_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void Cadastrar_btn_Click(object sender, EventArgs e)
+        {
+            CadastroComponente formCadComponente = new CadastroComponente();
+            formCadComponente.ShowDialog();
+            AtualizaLista();
+        }
+
+        private void Editar_btn_Click(object sender, EventArgs e)
+        {
+            EditarComponente formEditarComp = new EditarComponente( myComp );
+            formEditarComp.ShowDialog();
+            AtualizaLista();
+        }
+
+        private void Descnt_btn_Click(object sender, EventArgs e)
+        {
+
+            Access.ComponenteDAO compDAO = new Access.ComponenteDAO();
+            myComp.estado = false;
+            compDAO.UpdateEstado(myComp);
+            AtualizaLista();
+        }
+
+        private void Estoque_btn_Click(object sender, EventArgs e)
+        {
+            Access.ComponenteDAO compDAO = new Access.ComponenteDAO();
+
+            myComp.qtdeAtual = Int32.Parse(dados_atual_tbx.Text);
+            myComp.qtdeMin = Int32.Parse(dados_min_tbx.Text);
+            myComp.qtdeMax = Int32.Parse(dados_max_tbx.Text);
+
+            compDAO.UpdateEstoque(myComp);
+            atualizar_btn.Enabled = false;
+
+            AtualizaLista();
         }
     }
 }

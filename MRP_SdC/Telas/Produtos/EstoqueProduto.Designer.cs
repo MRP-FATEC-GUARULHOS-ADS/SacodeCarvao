@@ -39,15 +39,15 @@ namespace MRP_SdC
             this.atualizar_pnl = new System.Windows.Forms.Panel();
             this.atualizar_btn = new System.Windows.Forms.Button();
             this.dados_estoque_pnl = new System.Windows.Forms.Panel();
+            this.estoque_atual_pnl = new System.Windows.Forms.Panel();
+            this.estoque_atual_tbx = new System.Windows.Forms.TextBox();
+            this.estoque_atual_lbl = new System.Windows.Forms.Label();
             this.estoque_max_pnl = new System.Windows.Forms.Panel();
             this.estoque_max_tbx = new System.Windows.Forms.TextBox();
             this.estoque_max_lbl = new System.Windows.Forms.Label();
             this.estoque_min_pnl = new System.Windows.Forms.Panel();
             this.estoque_min_tbx = new System.Windows.Forms.TextBox();
             this.estoque_min_lbl = new System.Windows.Forms.Label();
-            this.estoque_atual_pnl = new System.Windows.Forms.Panel();
-            this.estoque_atual_tbx = new System.Windows.Forms.TextBox();
-            this.estoque_atual_lbl = new System.Windows.Forms.Label();
             this.chart_cht = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dados_subttl_lbl = new System.Windows.Forms.Label();
             this.dados_ttl_lbl = new System.Windows.Forms.Label();
@@ -70,9 +70,9 @@ namespace MRP_SdC
             this.dados_pnl.SuspendLayout();
             this.atualizar_pnl.SuspendLayout();
             this.dados_estoque_pnl.SuspendLayout();
+            this.estoque_atual_pnl.SuspendLayout();
             this.estoque_max_pnl.SuspendLayout();
             this.estoque_min_pnl.SuspendLayout();
-            this.estoque_atual_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).BeginInit();
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
@@ -147,25 +147,56 @@ namespace MRP_SdC
             this.atualizar_btn.TabIndex = 0;
             this.atualizar_btn.Text = "Atualizar estoque";
             this.atualizar_btn.UseVisualStyleBackColor = true;
+            this.atualizar_btn.Click += new System.EventHandler(this.Estoque_btn_Click);
             // 
             // dados_estoque_pnl
             // 
             this.dados_estoque_pnl.AutoSize = true;
+            this.dados_estoque_pnl.Controls.Add(this.estoque_atual_pnl);
             this.dados_estoque_pnl.Controls.Add(this.estoque_max_pnl);
             this.dados_estoque_pnl.Controls.Add(this.estoque_min_pnl);
-            this.dados_estoque_pnl.Controls.Add(this.estoque_atual_pnl);
             this.dados_estoque_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.dados_estoque_pnl.Location = new System.Drawing.Point(12, 218);
             this.dados_estoque_pnl.Name = "dados_estoque_pnl";
             this.dados_estoque_pnl.Size = new System.Drawing.Size(199, 144);
             this.dados_estoque_pnl.TabIndex = 3;
             // 
+            // estoque_atual_pnl
+            // 
+            this.estoque_atual_pnl.Controls.Add(this.estoque_atual_tbx);
+            this.estoque_atual_pnl.Controls.Add(this.estoque_atual_lbl);
+            this.estoque_atual_pnl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.estoque_atual_pnl.Location = new System.Drawing.Point(0, 96);
+            this.estoque_atual_pnl.Name = "estoque_atual_pnl";
+            this.estoque_atual_pnl.Size = new System.Drawing.Size(199, 48);
+            this.estoque_atual_pnl.TabIndex = 0;
+            // 
+            // estoque_atual_tbx
+            // 
+            this.estoque_atual_tbx.Dock = System.Windows.Forms.DockStyle.Top;
+            this.estoque_atual_tbx.Location = new System.Drawing.Point(0, 17);
+            this.estoque_atual_tbx.Name = "estoque_atual_tbx";
+            this.estoque_atual_tbx.Size = new System.Drawing.Size(199, 20);
+            this.estoque_atual_tbx.TabIndex = 1;
+            this.estoque_atual_tbx.TextChanged += new System.EventHandler(this.Estoque_tbx_TextChanged);
+            // 
+            // estoque_atual_lbl
+            // 
+            this.estoque_atual_lbl.AutoSize = true;
+            this.estoque_atual_lbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.estoque_atual_lbl.Location = new System.Drawing.Point(0, 0);
+            this.estoque_atual_lbl.Name = "estoque_atual_lbl";
+            this.estoque_atual_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.estoque_atual_lbl.Size = new System.Drawing.Size(73, 17);
+            this.estoque_atual_lbl.TabIndex = 0;
+            this.estoque_atual_lbl.Text = "Estoque Atual";
+            // 
             // estoque_max_pnl
             // 
             this.estoque_max_pnl.Controls.Add(this.estoque_max_tbx);
             this.estoque_max_pnl.Controls.Add(this.estoque_max_lbl);
             this.estoque_max_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.estoque_max_pnl.Location = new System.Drawing.Point(0, 96);
+            this.estoque_max_pnl.Location = new System.Drawing.Point(0, 48);
             this.estoque_max_pnl.Name = "estoque_max_pnl";
             this.estoque_max_pnl.Size = new System.Drawing.Size(199, 48);
             this.estoque_max_pnl.TabIndex = 2;
@@ -195,7 +226,7 @@ namespace MRP_SdC
             this.estoque_min_pnl.Controls.Add(this.estoque_min_tbx);
             this.estoque_min_pnl.Controls.Add(this.estoque_min_lbl);
             this.estoque_min_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.estoque_min_pnl.Location = new System.Drawing.Point(0, 48);
+            this.estoque_min_pnl.Location = new System.Drawing.Point(0, 0);
             this.estoque_min_pnl.Name = "estoque_min_pnl";
             this.estoque_min_pnl.Size = new System.Drawing.Size(199, 48);
             this.estoque_min_pnl.TabIndex = 1;
@@ -219,36 +250,6 @@ namespace MRP_SdC
             this.estoque_min_lbl.Size = new System.Drawing.Size(84, 17);
             this.estoque_min_lbl.TabIndex = 0;
             this.estoque_min_lbl.Text = "Estoque Mínimo";
-            // 
-            // estoque_atual_pnl
-            // 
-            this.estoque_atual_pnl.Controls.Add(this.estoque_atual_tbx);
-            this.estoque_atual_pnl.Controls.Add(this.estoque_atual_lbl);
-            this.estoque_atual_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.estoque_atual_pnl.Location = new System.Drawing.Point(0, 0);
-            this.estoque_atual_pnl.Name = "estoque_atual_pnl";
-            this.estoque_atual_pnl.Size = new System.Drawing.Size(199, 48);
-            this.estoque_atual_pnl.TabIndex = 0;
-            // 
-            // estoque_atual_tbx
-            // 
-            this.estoque_atual_tbx.Dock = System.Windows.Forms.DockStyle.Top;
-            this.estoque_atual_tbx.Location = new System.Drawing.Point(0, 17);
-            this.estoque_atual_tbx.Name = "estoque_atual_tbx";
-            this.estoque_atual_tbx.Size = new System.Drawing.Size(199, 20);
-            this.estoque_atual_tbx.TabIndex = 1;
-            this.estoque_atual_tbx.TextChanged += new System.EventHandler(this.Estoque_tbx_TextChanged);
-            // 
-            // estoque_atual_lbl
-            // 
-            this.estoque_atual_lbl.AutoSize = true;
-            this.estoque_atual_lbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.estoque_atual_lbl.Location = new System.Drawing.Point(0, 0);
-            this.estoque_atual_lbl.Name = "estoque_atual_lbl";
-            this.estoque_atual_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.estoque_atual_lbl.Size = new System.Drawing.Size(73, 17);
-            this.estoque_atual_lbl.TabIndex = 0;
-            this.estoque_atual_lbl.Text = "Estoque Atual";
             // 
             // chart_cht
             // 
@@ -323,6 +324,7 @@ namespace MRP_SdC
             this.pesquisa_tbx.Name = "pesquisa_tbx";
             this.pesquisa_tbx.Size = new System.Drawing.Size(495, 20);
             this.pesquisa_tbx.TabIndex = 0;
+            this.pesquisa_tbx.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Pesquisar_TBX_KeyUp);
             // 
             // pesquisa_btn
             // 
@@ -333,6 +335,7 @@ namespace MRP_SdC
             this.pesquisa_btn.TabIndex = 1;
             this.pesquisa_btn.Text = "👁";
             this.pesquisa_btn.UseVisualStyleBackColor = true;
+            this.pesquisa_btn.Click += new System.EventHandler(this.Pesquisar_BTN_Click);
             // 
             // pesquisa_sep_pnl
             // 
@@ -353,7 +356,7 @@ namespace MRP_SdC
             this.pesquisa_descnt_cbx.TabIndex = 4;
             this.pesquisa_descnt_cbx.Text = "descontinuados";
             this.pesquisa_descnt_cbx.UseVisualStyleBackColor = true;
-            this.pesquisa_descnt_cbx.CheckedChanged += new System.EventHandler(this.Pesquisa_CBX_CheckedChanged);
+            this.pesquisa_descnt_cbx.CheckedChanged += new System.EventHandler(this.Pesquisar_CBX_CheckedChanged);
             // 
             // barraInf_pnl
             // 
@@ -459,12 +462,12 @@ namespace MRP_SdC
             this.dados_pnl.PerformLayout();
             this.atualizar_pnl.ResumeLayout(false);
             this.dados_estoque_pnl.ResumeLayout(false);
+            this.estoque_atual_pnl.ResumeLayout(false);
+            this.estoque_atual_pnl.PerformLayout();
             this.estoque_max_pnl.ResumeLayout(false);
             this.estoque_max_pnl.PerformLayout();
             this.estoque_min_pnl.ResumeLayout(false);
             this.estoque_min_pnl.PerformLayout();
-            this.estoque_atual_pnl.ResumeLayout(false);
-            this.estoque_atual_pnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).EndInit();
             this.pesquisa_pnl.ResumeLayout(false);
             this.pesquisa_cont_pnl.ResumeLayout(false);

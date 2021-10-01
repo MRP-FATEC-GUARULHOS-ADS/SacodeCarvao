@@ -71,6 +71,34 @@ namespace MRP_SdC
             }
         }
 
+        // funcoes de pesquisa
+        private void Pesquisar()
+        {
+            if (pesquisa_tbx.Text != "")
+            {
+                Access.FornecedorDAO fornecedorDAO = new Access.FornecedorDAO();
+                List<Fornecedor> listaFornecedores = fornecedorDAO.PesquisaFornecedor(pesquisa_tbx.Text);
+                var bindingFornecedores = new BindingList<Fornecedor>(listaFornecedores);
+                forn_lista_dgv.DataSource = bindingFornecedores;
+            }
+            else
+            {
+                AtualizaLista();
+            }
+        }
+
+        private void Pesquisar_TBX_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Pesquisar();
+            }
+        }
+        private void Pesquisar_BTN_Click(object sender, EventArgs e)
+        {
+            Pesquisar();
+        }
+
         // funcoes dos botoes
         private void OK_btn_Click(object sender, EventArgs e)
         {
@@ -84,11 +112,32 @@ namespace MRP_SdC
             AtualizaLista();
         }
 
+        private void Editar_btn_Click(object sender, EventArgs e)
+        {
+            EditarFornecedor formEditarForn = new EditarFornecedor( myForn );
+            formEditarForn.ShowDialog();
+            AtualizaLista();
+        }
+
+        private void Exclur_btn_Click(object sender, EventArgs e)
+        {
+            // confirmando exclusão
+            DialogResult confirmarExclusao = MessageBox.Show(
+                "(°ー°〃) " + myForn + " ?!", "Confirmar Exclusão",
+                MessageBoxButtons.YesNo
+            );
+            if (confirmarExclusao == DialogResult.Yes)
+            {
+                Access.FornecedorDAO fornecedorDAO = new Access.FornecedorDAO();
+                fornecedorDAO.Delete(myForn.id);
+                AtualizaLista();
+            }
+        }
+
         private void Componentes_btn_Click(object sender, EventArgs e)
         {
             ComponentesFornecedor formCompsFornecedor = new ComponentesFornecedor(myForn);
             formCompsFornecedor.ShowDialog();
-            AtualizaLista();
         }
     }
 }

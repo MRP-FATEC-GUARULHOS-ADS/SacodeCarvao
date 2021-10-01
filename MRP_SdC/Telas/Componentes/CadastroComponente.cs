@@ -16,7 +16,7 @@ namespace MRP_SdC
         {
             InitializeComponent();
 
-            // as gambiarra denovo
+            // as gambiarra
             estado_clb.SetItemChecked(0, true);
         }
 

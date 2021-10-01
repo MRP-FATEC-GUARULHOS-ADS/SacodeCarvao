@@ -22,17 +22,16 @@ namespace MRP_SdC
             myProd = prod;
 
             MudaInfos();
+            ok_btn.Enabled = false;
         }
 
         // adaptando informações
         private void MudaInfos()
         {
-            ttl_lbl.Text = myProd.id.ToString();
+            ttl_lbl.Text = String.Format("{0:D6}", myProd.id);
             modelo_tbx.Text = myProd.modelo;
             descr_tbm.Text = myProd.descricao;
             valor_tbx.Text = myProd.valor.ToString();
-
-            ok_btn.Enabled = false;
         }
 
         // funcoes das text-boxes
@@ -56,12 +55,12 @@ namespace MRP_SdC
             myProd.descricao = descr_tbm.Text;
             myProd.valor = valor;
 
-            // confirmando insercao
-            DialogResult confirmarInsert = MessageBox.Show(
+            // messagebox confirmando edicao
+            DialogResult confirmarEdit = MessageBox.Show(
                 "(′д｀σ)σ " + myProd + " ?!", "Confirmar Edição",
                 MessageBoxButtons.YesNo
             );
-            if (confirmarInsert == DialogResult.Yes)
+            if (confirmarEdit == DialogResult.Yes)
             {
                 Access.ProdutoDAO objProdDAO = new Access.ProdutoDAO();
                 objProdDAO.Update(myProd);
