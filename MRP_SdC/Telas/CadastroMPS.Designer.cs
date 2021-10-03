@@ -40,17 +40,17 @@ namespace MRP_SdC
             this.maos_tbx = new System.Windows.Forms.TextBox();
             this.maos_lbl = new System.Windows.Forms.Label();
             this.barraInf_pnl = new System.Windows.Forms.Panel();
+            this.cadastrar = new System.Windows.Forms.Button();
+            this.cancelar_btn = new System.Windows.Forms.Button();
             this.produzir_pnl = new System.Windows.Forms.Panel();
             this.produzir_tbx = new System.Windows.Forms.TextBox();
             this.produzir_lbl = new System.Windows.Forms.Label();
             this.demanda_pnl = new System.Windows.Forms.Panel();
             this.demanda_tbx = new System.Windows.Forms.TextBox();
             this.demanda_lbl = new System.Windows.Forms.Label();
-            this.cadastrar = new System.Windows.Forms.Button();
             this.disponivel_pnl = new System.Windows.Forms.Panel();
             this.disponivel_tbx = new System.Windows.Forms.TextBox();
             this.disponivel_lbl = new System.Windows.Forms.Label();
-            this.cancelar_btn = new System.Windows.Forms.Button();
             this.id_pnl.SuspendLayout();
             this.maos_pnl.SuspendLayout();
             this.barraInf_pnl.SuspendLayout();
@@ -155,6 +155,29 @@ namespace MRP_SdC
             this.barraInf_pnl.Size = new System.Drawing.Size(298, 48);
             this.barraInf_pnl.TabIndex = 6;
             // 
+            // cadastrar
+            // 
+            this.cadastrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cadastrar.BackColor = System.Drawing.Color.Lime;
+            this.cadastrar.Location = new System.Drawing.Point(167, 3);
+            this.cadastrar.Name = "cadastrar";
+            this.cadastrar.Size = new System.Drawing.Size(128, 32);
+            this.cadastrar.TabIndex = 18;
+            this.cadastrar.Text = "Cadastrar";
+            this.cadastrar.UseVisualStyleBackColor = false;
+            this.cadastrar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // cancelar_btn
+            // 
+            this.cancelar_btn.BackColor = System.Drawing.Color.Red;
+            this.cancelar_btn.Location = new System.Drawing.Point(3, 3);
+            this.cancelar_btn.Name = "cancelar_btn";
+            this.cancelar_btn.Size = new System.Drawing.Size(144, 32);
+            this.cancelar_btn.TabIndex = 2;
+            this.cancelar_btn.Text = "Cancelar";
+            this.cancelar_btn.UseVisualStyleBackColor = false;
+            this.cancelar_btn.Click += new System.EventHandler(this.Cancelar_Click);
+            // 
             // produzir_pnl
             // 
             this.produzir_pnl.Controls.Add(this.produzir_tbx);
@@ -213,18 +236,6 @@ namespace MRP_SdC
             this.demanda_lbl.TabIndex = 0;
             this.demanda_lbl.Text = "Demanda";
             // 
-            // cadastrar
-            // 
-            this.cadastrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cadastrar.BackColor = System.Drawing.Color.Lime;
-            this.cadastrar.Location = new System.Drawing.Point(167, 3);
-            this.cadastrar.Name = "cadastrar";
-            this.cadastrar.Size = new System.Drawing.Size(128, 32);
-            this.cadastrar.TabIndex = 18;
-            this.cadastrar.Text = "Cadastrar";
-            this.cadastrar.UseVisualStyleBackColor = false;
-            this.cadastrar.Click += new System.EventHandler(this.button1_Click);
-            // 
             // disponivel_pnl
             // 
             this.disponivel_pnl.Controls.Add(this.disponivel_tbx);
@@ -253,17 +264,6 @@ namespace MRP_SdC
             this.disponivel_lbl.Size = new System.Drawing.Size(58, 17);
             this.disponivel_lbl.TabIndex = 0;
             this.disponivel_lbl.Text = "Disponível";
-            // 
-            // cancelar_btn
-            // 
-            this.cancelar_btn.BackColor = System.Drawing.Color.Red;
-            this.cancelar_btn.Location = new System.Drawing.Point(3, 3);
-            this.cancelar_btn.Name = "cancelar_btn";
-            this.cancelar_btn.Size = new System.Drawing.Size(144, 32);
-            this.cancelar_btn.TabIndex = 2;
-            this.cancelar_btn.Text = "Cancelar";
-            this.cancelar_btn.UseVisualStyleBackColor = false;
-            this.cancelar_btn.Click += new System.EventHandler(this.Cancelar_Click);
             // 
             // CadastroMPS
             // 

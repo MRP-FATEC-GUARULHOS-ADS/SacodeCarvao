@@ -56,12 +56,12 @@ namespace MRP_SdC.Access
                 try
                 {
                     // cria a string de comando
-                    string SQL = String.Format("UPDATE FORNECEDOR SET nomeFornecedor = {0}, " +
-                        "logradouro = {1}, numero = {2}, complemento = {3}, " +
-                        "cepFornecedor = {4}, telefone = {5}, celular = {6}, email = {7}, urlSite = {8} " +
-                        "WHERE [idFornecedor] = {9};",
-                        forn.nome, forn.logradouro, forn.numero, forn.complemento, forn.cep,
-                        forn.telefone, forn.celular, forn.email, forn.site, forn.id);
+                    string SQL = String.Format("UPDATE FORNECEDOR SET nomeFornecedor = '{1}', " +
+                        "logradouro = '{2}', numero = '{3}', complemento = '{4}', " +
+                        "cepFornecedor = '{5}', telefone = '{6}', celular = '{7}', email = '{8}', urlSite = '{9}' " +
+                        "WHERE [idFornecedor] = {0};",
+                        forn.id, forn.nome, forn.logradouro, forn.numero, forn.complemento,
+                        forn.cep, forn.telefone, forn.celular, forn.email, forn.site);
 
                     // cria o comando a ser enviado
                     OleDbCommand comando = new OleDbCommand();
@@ -162,6 +162,7 @@ namespace MRP_SdC.Access
                         {
                             if (!reader.IsDBNull(0))
                             {
+                                FornecedorComponenteDAO fornCompDAO = new FornecedorComponenteDAO();
                                 objFornecedor = new Fornecedor
                                 {
                                     id = Convert.ToInt32(reader["idFornecedor"]),
@@ -175,6 +176,7 @@ namespace MRP_SdC.Access
                                     email = (reader["email"] != DBNull.Value ? (string)(reader["email"]) : ""),
                                     site = (reader["urlSite"] != DBNull.Value ? (string)(reader["urlSite"]) : "")
                                 };
+                                objFornecedor.componentes = fornCompDAO.GetComponentes(objFornecedor);
 
                                 listaFornecedores.Add(objFornecedor);
                             }
@@ -207,8 +209,8 @@ namespace MRP_SdC.Access
                 try
                 {
                     // cria a string de comando
-                    string SQL = String.Format("SELECT * FROM FORNECEDOR WHERE [idFornecedor] = {0} " +
-                        "OR [{1}] = {0} OR [{2}] = {0};", pesquisa, "nomeFornecedor", "telefone");
+                    string SQL = String.Format("SELECT * FROM FORNECEDOR WHERE [idFornecedor] LIKE '%{0}%' " +
+                        "OR [nomeFornecedor] LIKE '%{0}%';", pesquisa);
 
                     OleDbCommand comando = new OleDbCommand();
 
@@ -224,6 +226,7 @@ namespace MRP_SdC.Access
                         {
                             if (!reader.IsDBNull(0))
                             {
+                                FornecedorComponenteDAO fornCompDAO = new FornecedorComponenteDAO();
                                 objFornecedor = new Fornecedor
                                 {
                                     id = Convert.ToInt32(reader["idFornecedor"]),
@@ -237,6 +240,7 @@ namespace MRP_SdC.Access
                                     email = (reader["email"] != DBNull.Value ? (string)(reader["email"]) : ""),
                                     site = (reader["urlSite"] != DBNull.Value ? (string)(reader["urlSite"]) : "")
                                 };
+                                objFornecedor.componentes = fornCompDAO.GetComponentes(objFornecedor);
 
                                 listaFornecedores.Add(objFornecedor);
                             }
@@ -284,6 +288,7 @@ namespace MRP_SdC.Access
                         {
                             if (!reader.IsDBNull(0))
                             {
+                                FornecedorComponenteDAO fornCompDAO = new FornecedorComponenteDAO();
                                 objFornecedor = new Fornecedor
                                 {
                                     id = Convert.ToInt32(reader["idFornecedor"]),
@@ -297,6 +302,7 @@ namespace MRP_SdC.Access
                                     email = (reader["email"] != DBNull.Value ? (string)(reader["email"]) : ""),
                                     site = (reader["urlSite"] != DBNull.Value ? (string)(reader["urlSite"]) : "")
                                 };
+                                objFornecedor.componentes = fornCompDAO.GetComponentes(objFornecedor);
                             }
                         }
                     }
