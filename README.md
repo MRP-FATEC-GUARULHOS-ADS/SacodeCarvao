@@ -1,6 +1,8 @@
 # Saco de Carvão
 
-O objetivo principal de qualquer MRP é assegurar a disponibilidade de material para a produção, mantendo sempre um estoque mínimo de material, componentes e insumos de produção.
+- Unificação de cadastro (peças acabadas e suprimentos/matéria-prima)
+- Unificação do Controle de Estoque
+- Entrada dos valores de previsão de demanda
 
 ## Instruções
 
@@ -78,19 +80,12 @@ Pronto, mudança feita, espero que tenha valido a pena.
 - Tudo
 
 ### Banco de Dados
-- Quase tudo
-- Atributos das tabelas:
-  - PLANO_PRODUCAO
-  - PREVISAO_DEMANDA
-  - VENDAS
-- Proteger as strings de acesso ao banco de dados
-- Subir o banco no Azure (?)
+- usuarios
+- cliente
+- todo o resto...
 
 ### Desenvolvimento
 - Tudo mesmo
 
 ### Testes e Padronização
 - Tudo de tudo
-- garantir que os campos sejam preenchidos da forma certa
-- imprimir os catchs no console
-- Ajuda

@@ -42,6 +42,7 @@ namespace MRP_SdC.MySQL
             }
             catch (MySqlException e)
             {
+                Console.WriteLine(e);
                 return false;
             }
             conexao.CloseConexao();
@@ -86,6 +87,81 @@ namespace MRP_SdC.MySQL
             }
             catch (MySqlException e)
             {
+                Console.WriteLine(e);
+                return false;
+            }
+            conexao.CloseConexao();
+            return true;
+        }
+        public Boolean UpdateEstado(Produto prod)
+        {
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return false;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "UPDATE PRODUTO SET estado = @estado WHERE idProduto = @id;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return false;
+                }
+
+                cmd.Parameters.AddWithValue("@estado", (prod.estado ? 'P' : 'D'));
+                cmd.Parameters.AddWithValue("@id", prod.id);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            conexao.CloseConexao();
+            return true;
+        }
+        public Boolean UpdateEstoque(Produto prod)
+        {
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return false;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "UPDATE PRODUTO SET qtdeMinEstoque = @qntmin, " +
+                    "qtdeMaxEstoque = @qntmax, qtdeAtualEstoque = @qntatual " +
+                    "WHERE idProduto = @id; ";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return false;
+                }
+
+                cmd.Parameters.AddWithValue("@qntmin", prod.qtdeMin);
+                cmd.Parameters.AddWithValue("@qntmax", prod.qtdeMax);
+                cmd.Parameters.AddWithValue("@qntatual", prod.qtdeAtual);
+                cmd.Parameters.AddWithValue("@id", prod.id);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
                 return false;
             }
             conexao.CloseConexao();
@@ -121,6 +197,7 @@ namespace MRP_SdC.MySQL
             }
             catch (MySqlException e)
             {
+                Console.WriteLine(e);
                 return false;
             }
             conexao.CloseConexao();
@@ -128,6 +205,54 @@ namespace MRP_SdC.MySQL
         }
 
         public List<Produto> GetProdutos()
+        {
+            List<Produto> listaProdutos = new List<Produto>();
+            Produto objProduto;
+
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT p.* FROM PRODUTO p;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    objProduto = new Produto
+                    {
+                        id = Convert.ToInt32(reader["idProduto"]),
+                        modelo = (string)reader["modeloProduto"],
+                        descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : ""),
+                        valor = Convert.ToDouble(reader["valorProduto"]),
+                        qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]),
+                        qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]),
+                        qtdeAtual = ((reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0),
+                        estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false)
+                    };
+
+                    listaProdutos.Add(objProduto);
+                }
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+            }
+            conexao.CloseConexao();
+            return listaProdutos;
+        }
+        public List<Produto> GetProdutosAtivos()
         {
             List<Produto> listaProdutos = new List<Produto>();
             Produto objProduto;
@@ -153,21 +278,24 @@ namespace MRP_SdC.MySQL
 
                 while (reader.Read())
                 {
-                    objProduto = new Produto();
-                    objProduto.id = Convert.ToInt32(reader["idProduto"]);
-                    objProduto.modelo = (string)reader["modeloProduto"];
-                    objProduto.descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : "");
-                    objProduto.valor = Convert.ToDouble(reader["valorProduto"]);
-                    objProduto.qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]);
-                    objProduto.qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]);
-                    objProduto.qtdeAtual = ( (reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0 );
-                    objProduto.estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false);
+                    objProduto = new Produto
+                    {
+                        id = Convert.ToInt32(reader["idProduto"]),
+                        modelo = (string)reader["modeloProduto"],
+                        descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : ""),
+                        valor = Convert.ToDouble(reader["valorProduto"]),
+                        qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]),
+                        qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]),
+                        qtdeAtual = ((reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0),
+                        estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false)
+                    };
 
                     listaProdutos.Add(objProduto);
                 }
             }
             catch (MySqlException e)
             {
+                Console.WriteLine(e);
             }
             conexao.CloseConexao();
             return listaProdutos;
@@ -224,6 +352,7 @@ namespace MRP_SdC.MySQL
             }
             catch (MySqlException e)
             {
+                Console.WriteLine(e);
             }
             conexao.CloseConexao();
             return listaProdutos;
@@ -243,7 +372,7 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "SELECT p.* FROM PRODUTO p WHERE idProduto = (@id)";
+                string query = "SELECT p.* FROM PRODUTO p WHERE idProduto = (@id);";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -271,6 +400,7 @@ namespace MRP_SdC.MySQL
             }
             catch (MySqlException e)
             {
+                Console.WriteLine(e);
                 return null;
             }
             conexao.CloseConexao();

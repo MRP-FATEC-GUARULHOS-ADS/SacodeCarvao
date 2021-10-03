@@ -1,7 +1,7 @@
 ﻿
 namespace MRP_SdC
 {
-    partial class CadastroProduto
+    partial class EditarProduto
     {
         /// <summary>
         /// Required designer variable.
@@ -29,16 +29,13 @@ namespace MRP_SdC
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadastroProduto));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditarProduto));
             this.corpo_pnl = new System.Windows.Forms.Panel();
             this.explosao_pnl = new System.Windows.Forms.Panel();
             this.explosao_btn = new System.Windows.Forms.Button();
             this.barraInf_pnl = new System.Windows.Forms.Panel();
             this.cancelar_btn = new System.Windows.Forms.Button();
             this.ok_btn = new System.Windows.Forms.Button();
-            this.estado_pnl = new System.Windows.Forms.Panel();
-            this.estado_clb = new System.Windows.Forms.CheckedListBox();
-            this.estado_lbl = new System.Windows.Forms.Label();
             this.valor_pnl = new System.Windows.Forms.Panel();
             this.valor_tbx = new System.Windows.Forms.TextBox();
             this.valor_lbl = new System.Windows.Forms.Label();
@@ -54,7 +51,6 @@ namespace MRP_SdC
             this.corpo_pnl.SuspendLayout();
             this.explosao_pnl.SuspendLayout();
             this.barraInf_pnl.SuspendLayout();
-            this.estado_pnl.SuspendLayout();
             this.valor_pnl.SuspendLayout();
             this.descr_pnl.SuspendLayout();
             this.modelo_pnl.SuspendLayout();
@@ -66,7 +62,6 @@ namespace MRP_SdC
             this.corpo_pnl.AutoSize = true;
             this.corpo_pnl.Controls.Add(this.explosao_pnl);
             this.corpo_pnl.Controls.Add(this.barraInf_pnl);
-            this.corpo_pnl.Controls.Add(this.estado_pnl);
             this.corpo_pnl.Controls.Add(this.valor_pnl);
             this.corpo_pnl.Controls.Add(this.descr_pnl);
             this.corpo_pnl.Controls.Add(this.modelo_pnl);
@@ -95,7 +90,7 @@ namespace MRP_SdC
             this.explosao_btn.Name = "explosao_btn";
             this.explosao_btn.Size = new System.Drawing.Size(234, 23);
             this.explosao_btn.TabIndex = 0;
-            this.explosao_btn.Text = "Cadastrar Componentes do Produto";
+            this.explosao_btn.Text = "Árvore do Produto";
             this.explosao_btn.UseVisualStyleBackColor = true;
             this.explosao_btn.Click += new System.EventHandler(this.Explosao_Prod_Click);
             // 
@@ -132,44 +127,6 @@ namespace MRP_SdC
             this.ok_btn.UseVisualStyleBackColor = true;
             this.ok_btn.Click += new System.EventHandler(this.OK_btn_Click);
             // 
-            // estado_pnl
-            // 
-            this.estado_pnl.Controls.Add(this.estado_clb);
-            this.estado_pnl.Controls.Add(this.estado_lbl);
-            this.estado_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.estado_pnl.Location = new System.Drawing.Point(32, 240);
-            this.estado_pnl.Name = "estado_pnl";
-            this.estado_pnl.Size = new System.Drawing.Size(240, 58);
-            this.estado_pnl.TabIndex = 4;
-            // 
-            // estado_clb
-            // 
-            this.estado_clb.BackColor = System.Drawing.SystemColors.Control;
-            this.estado_clb.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.estado_clb.CheckOnClick = true;
-            this.estado_clb.Dock = System.Windows.Forms.DockStyle.Top;
-            this.estado_clb.Enabled = false;
-            this.estado_clb.FormattingEnabled = true;
-            this.estado_clb.Items.AddRange(new object[] {
-            "sim",
-            "não"});
-            this.estado_clb.Location = new System.Drawing.Point(0, 17);
-            this.estado_clb.Name = "estado_clb";
-            this.estado_clb.Size = new System.Drawing.Size(240, 30);
-            this.estado_clb.TabIndex = 1;
-            this.estado_clb.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.Estado_ItemCheck);
-            // 
-            // estado_lbl
-            // 
-            this.estado_lbl.AutoSize = true;
-            this.estado_lbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.estado_lbl.Location = new System.Drawing.Point(0, 0);
-            this.estado_lbl.Name = "estado_lbl";
-            this.estado_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.estado_lbl.Size = new System.Drawing.Size(114, 17);
-            this.estado_lbl.TabIndex = 0;
-            this.estado_lbl.Text = "Adicionar à produção?";
-            // 
             // valor_pnl
             // 
             this.valor_pnl.Controls.Add(this.valor_tbx);
@@ -187,6 +144,7 @@ namespace MRP_SdC
             this.valor_tbx.Name = "valor_tbx";
             this.valor_tbx.Size = new System.Drawing.Size(240, 20);
             this.valor_tbx.TabIndex = 1;
+            this.valor_tbx.TextChanged += new System.EventHandler(this.Required_TextChanged);
             // 
             // valor_lbl
             // 
@@ -217,6 +175,7 @@ namespace MRP_SdC
             this.descr_tbm.Name = "descr_tbm";
             this.descr_tbm.Size = new System.Drawing.Size(240, 64);
             this.descr_tbm.TabIndex = 1;
+            this.descr_tbm.TextChanged += new System.EventHandler(this.Required_TextChanged);
             // 
             // descr_lbl
             // 
@@ -268,7 +227,7 @@ namespace MRP_SdC
             this.ttl_lbl.Padding = new System.Windows.Forms.Padding(0, 16, 0, 12);
             this.ttl_lbl.Size = new System.Drawing.Size(240, 52);
             this.ttl_lbl.TabIndex = 0;
-            this.ttl_lbl.Text = "Cadastrar produto";
+            this.ttl_lbl.Text = "Produto";
             this.ttl_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // esp_dir_pnl
@@ -287,20 +246,18 @@ namespace MRP_SdC
             this.esp_esq_pnl.Size = new System.Drawing.Size(32, 409);
             this.esp_esq_pnl.TabIndex = 7;
             // 
-            // CadastroProduto
+            // EditarProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(304, 409);
             this.Controls.Add(this.corpo_pnl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "CadastroProduto";
-            this.Text = "Cadastro de produto";
+            this.Name = "EditarProduto";
+            this.Text = "Editar produto";
             this.corpo_pnl.ResumeLayout(false);
             this.explosao_pnl.ResumeLayout(false);
             this.barraInf_pnl.ResumeLayout(false);
-            this.estado_pnl.ResumeLayout(false);
-            this.estado_pnl.PerformLayout();
             this.valor_pnl.ResumeLayout(false);
             this.valor_pnl.PerformLayout();
             this.descr_pnl.ResumeLayout(false);
@@ -332,8 +289,5 @@ namespace MRP_SdC
         private System.Windows.Forms.Panel descr_pnl;
         private System.Windows.Forms.TextBox descr_tbm;
         private System.Windows.Forms.Label descr_lbl;
-        private System.Windows.Forms.Panel estado_pnl;
-        private System.Windows.Forms.CheckedListBox estado_clb;
-        private System.Windows.Forms.Label estado_lbl;
     }
 }

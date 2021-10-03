@@ -47,6 +47,7 @@ namespace MRP_SdC.MySQL
             }
             catch (MySqlException e)
             {
+                Console.WriteLine(e);
                 return false;
             }
             conexao.CloseConexao();
@@ -90,6 +91,7 @@ namespace MRP_SdC.MySQL
             }
             catch (MySqlException e)
             {
+                Console.WriteLine(e);
             }
             conexao.CloseConexao();
             return listaMPS;
@@ -132,6 +134,7 @@ namespace MRP_SdC.MySQL
             }
             catch (MySqlException e)
             {
+                Console.WriteLine(e);
                 return null;
             }
             conexao.CloseConexao();
