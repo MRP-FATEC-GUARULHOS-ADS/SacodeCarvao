@@ -39,15 +39,15 @@ namespace MRP_SdC
             this.atualizar_pnl = new System.Windows.Forms.Panel();
             this.atualizar_btn = new System.Windows.Forms.Button();
             this.dados_estoque_pnl = new System.Windows.Forms.Panel();
+            this.estoque_atual_pnl = new System.Windows.Forms.Panel();
+            this.estoque_atual_tbx = new System.Windows.Forms.TextBox();
+            this.estoque_atual_lbl = new System.Windows.Forms.Label();
             this.estoque_max_pnl = new System.Windows.Forms.Panel();
             this.estoque_max_tbx = new System.Windows.Forms.TextBox();
             this.estoque_max_lbl = new System.Windows.Forms.Label();
             this.estoque_min_pnl = new System.Windows.Forms.Panel();
             this.estoque_min_tbx = new System.Windows.Forms.TextBox();
             this.estoque_min_lbl = new System.Windows.Forms.Label();
-            this.estoque_atual_pnl = new System.Windows.Forms.Panel();
-            this.estoque_atual_tbx = new System.Windows.Forms.TextBox();
-            this.estoque_atual_lbl = new System.Windows.Forms.Label();
             this.chart_cht = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dados_subttl_lbl = new System.Windows.Forms.Label();
             this.dados_ttl_lbl = new System.Windows.Forms.Label();
@@ -59,6 +59,7 @@ namespace MRP_SdC
             this.pesquisa_descnt_cbx = new System.Windows.Forms.CheckBox();
             this.barraInf_pnl = new System.Windows.Forms.Panel();
             this.descnt_btn = new System.Windows.Forms.Button();
+            this.arvore_btn = new System.Windows.Forms.Button();
             this.editar_btn = new System.Windows.Forms.Button();
             this.ok_btn = new System.Windows.Forms.Button();
             this.ttl_lbl = new System.Windows.Forms.Label();
@@ -69,9 +70,9 @@ namespace MRP_SdC
             this.dados_pnl.SuspendLayout();
             this.atualizar_pnl.SuspendLayout();
             this.dados_estoque_pnl.SuspendLayout();
+            this.estoque_atual_pnl.SuspendLayout();
             this.estoque_max_pnl.SuspendLayout();
             this.estoque_min_pnl.SuspendLayout();
-            this.estoque_atual_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).BeginInit();
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
@@ -111,6 +112,7 @@ namespace MRP_SdC
             this.prod_lista_dgv.StandardTab = true;
             this.prod_lista_dgv.TabIndex = 2;
             this.prod_lista_dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Produtos_DGV_CellClick);
+            this.prod_lista_dgv.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Lista_DGV_RowEnter);
             // 
             // dados_pnl
             // 
@@ -133,7 +135,7 @@ namespace MRP_SdC
             this.atualizar_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.atualizar_pnl.Location = new System.Drawing.Point(12, 362);
             this.atualizar_pnl.Name = "atualizar_pnl";
-            this.atualizar_pnl.Size = new System.Drawing.Size(199, 42);
+            this.atualizar_pnl.Size = new System.Drawing.Size(199, 48);
             this.atualizar_pnl.TabIndex = 5;
             // 
             // atualizar_btn
@@ -143,27 +145,58 @@ namespace MRP_SdC
             this.atualizar_btn.Name = "atualizar_btn";
             this.atualizar_btn.Size = new System.Drawing.Size(176, 23);
             this.atualizar_btn.TabIndex = 0;
-            this.atualizar_btn.Text = "Atualizar valores";
+            this.atualizar_btn.Text = "Atualizar estoque";
             this.atualizar_btn.UseVisualStyleBackColor = true;
+            this.atualizar_btn.Click += new System.EventHandler(this.Estoque_btn_Click);
             // 
             // dados_estoque_pnl
             // 
             this.dados_estoque_pnl.AutoSize = true;
+            this.dados_estoque_pnl.Controls.Add(this.estoque_atual_pnl);
             this.dados_estoque_pnl.Controls.Add(this.estoque_max_pnl);
             this.dados_estoque_pnl.Controls.Add(this.estoque_min_pnl);
-            this.dados_estoque_pnl.Controls.Add(this.estoque_atual_pnl);
             this.dados_estoque_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.dados_estoque_pnl.Location = new System.Drawing.Point(12, 218);
             this.dados_estoque_pnl.Name = "dados_estoque_pnl";
             this.dados_estoque_pnl.Size = new System.Drawing.Size(199, 144);
             this.dados_estoque_pnl.TabIndex = 3;
             // 
+            // estoque_atual_pnl
+            // 
+            this.estoque_atual_pnl.Controls.Add(this.estoque_atual_tbx);
+            this.estoque_atual_pnl.Controls.Add(this.estoque_atual_lbl);
+            this.estoque_atual_pnl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.estoque_atual_pnl.Location = new System.Drawing.Point(0, 96);
+            this.estoque_atual_pnl.Name = "estoque_atual_pnl";
+            this.estoque_atual_pnl.Size = new System.Drawing.Size(199, 48);
+            this.estoque_atual_pnl.TabIndex = 0;
+            // 
+            // estoque_atual_tbx
+            // 
+            this.estoque_atual_tbx.Dock = System.Windows.Forms.DockStyle.Top;
+            this.estoque_atual_tbx.Location = new System.Drawing.Point(0, 17);
+            this.estoque_atual_tbx.Name = "estoque_atual_tbx";
+            this.estoque_atual_tbx.Size = new System.Drawing.Size(199, 20);
+            this.estoque_atual_tbx.TabIndex = 1;
+            this.estoque_atual_tbx.TextChanged += new System.EventHandler(this.Estoque_tbx_TextChanged);
+            // 
+            // estoque_atual_lbl
+            // 
+            this.estoque_atual_lbl.AutoSize = true;
+            this.estoque_atual_lbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.estoque_atual_lbl.Location = new System.Drawing.Point(0, 0);
+            this.estoque_atual_lbl.Name = "estoque_atual_lbl";
+            this.estoque_atual_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.estoque_atual_lbl.Size = new System.Drawing.Size(73, 17);
+            this.estoque_atual_lbl.TabIndex = 0;
+            this.estoque_atual_lbl.Text = "Estoque Atual";
+            // 
             // estoque_max_pnl
             // 
             this.estoque_max_pnl.Controls.Add(this.estoque_max_tbx);
             this.estoque_max_pnl.Controls.Add(this.estoque_max_lbl);
             this.estoque_max_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.estoque_max_pnl.Location = new System.Drawing.Point(0, 96);
+            this.estoque_max_pnl.Location = new System.Drawing.Point(0, 48);
             this.estoque_max_pnl.Name = "estoque_max_pnl";
             this.estoque_max_pnl.Size = new System.Drawing.Size(199, 48);
             this.estoque_max_pnl.TabIndex = 2;
@@ -193,7 +226,7 @@ namespace MRP_SdC
             this.estoque_min_pnl.Controls.Add(this.estoque_min_tbx);
             this.estoque_min_pnl.Controls.Add(this.estoque_min_lbl);
             this.estoque_min_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.estoque_min_pnl.Location = new System.Drawing.Point(0, 48);
+            this.estoque_min_pnl.Location = new System.Drawing.Point(0, 0);
             this.estoque_min_pnl.Name = "estoque_min_pnl";
             this.estoque_min_pnl.Size = new System.Drawing.Size(199, 48);
             this.estoque_min_pnl.TabIndex = 1;
@@ -217,36 +250,6 @@ namespace MRP_SdC
             this.estoque_min_lbl.Size = new System.Drawing.Size(84, 17);
             this.estoque_min_lbl.TabIndex = 0;
             this.estoque_min_lbl.Text = "Estoque Mínimo";
-            // 
-            // estoque_atual_pnl
-            // 
-            this.estoque_atual_pnl.Controls.Add(this.estoque_atual_tbx);
-            this.estoque_atual_pnl.Controls.Add(this.estoque_atual_lbl);
-            this.estoque_atual_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.estoque_atual_pnl.Location = new System.Drawing.Point(0, 0);
-            this.estoque_atual_pnl.Name = "estoque_atual_pnl";
-            this.estoque_atual_pnl.Size = new System.Drawing.Size(199, 48);
-            this.estoque_atual_pnl.TabIndex = 0;
-            // 
-            // estoque_atual_tbx
-            // 
-            this.estoque_atual_tbx.Dock = System.Windows.Forms.DockStyle.Top;
-            this.estoque_atual_tbx.Location = new System.Drawing.Point(0, 17);
-            this.estoque_atual_tbx.Name = "estoque_atual_tbx";
-            this.estoque_atual_tbx.Size = new System.Drawing.Size(199, 20);
-            this.estoque_atual_tbx.TabIndex = 1;
-            this.estoque_atual_tbx.TextChanged += new System.EventHandler(this.Estoque_tbx_TextChanged);
-            // 
-            // estoque_atual_lbl
-            // 
-            this.estoque_atual_lbl.AutoSize = true;
-            this.estoque_atual_lbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.estoque_atual_lbl.Location = new System.Drawing.Point(0, 0);
-            this.estoque_atual_lbl.Name = "estoque_atual_lbl";
-            this.estoque_atual_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.estoque_atual_lbl.Size = new System.Drawing.Size(73, 17);
-            this.estoque_atual_lbl.TabIndex = 0;
-            this.estoque_atual_lbl.Text = "Estoque Atual";
             // 
             // chart_cht
             // 
@@ -321,6 +324,7 @@ namespace MRP_SdC
             this.pesquisa_tbx.Name = "pesquisa_tbx";
             this.pesquisa_tbx.Size = new System.Drawing.Size(495, 20);
             this.pesquisa_tbx.TabIndex = 0;
+            this.pesquisa_tbx.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Pesquisar_TBX_KeyUp);
             // 
             // pesquisa_btn
             // 
@@ -331,6 +335,7 @@ namespace MRP_SdC
             this.pesquisa_btn.TabIndex = 1;
             this.pesquisa_btn.Text = "👁";
             this.pesquisa_btn.UseVisualStyleBackColor = true;
+            this.pesquisa_btn.Click += new System.EventHandler(this.Pesquisar_BTN_Click);
             // 
             // pesquisa_sep_pnl
             // 
@@ -351,10 +356,12 @@ namespace MRP_SdC
             this.pesquisa_descnt_cbx.TabIndex = 4;
             this.pesquisa_descnt_cbx.Text = "descontinuados";
             this.pesquisa_descnt_cbx.UseVisualStyleBackColor = true;
+            this.pesquisa_descnt_cbx.CheckedChanged += new System.EventHandler(this.Pesquisar_CBX_CheckedChanged);
             // 
             // barraInf_pnl
             // 
             this.barraInf_pnl.Controls.Add(this.descnt_btn);
+            this.barraInf_pnl.Controls.Add(this.arvore_btn);
             this.barraInf_pnl.Controls.Add(this.editar_btn);
             this.barraInf_pnl.Controls.Add(this.ok_btn);
             this.barraInf_pnl.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -367,23 +374,37 @@ namespace MRP_SdC
             // 
             this.descnt_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.descnt_btn.Enabled = false;
-            this.descnt_btn.Location = new System.Drawing.Point(172, 10);
+            this.descnt_btn.Location = new System.Drawing.Point(272, 10);
             this.descnt_btn.Name = "descnt_btn";
-            this.descnt_btn.Size = new System.Drawing.Size(160, 23);
+            this.descnt_btn.Size = new System.Drawing.Size(128, 23);
             this.descnt_btn.TabIndex = 2;
             this.descnt_btn.Text = "Descontinuar Produto";
             this.descnt_btn.UseVisualStyleBackColor = true;
+            this.descnt_btn.Click += new System.EventHandler(this.Descnt_btn_Click);
+            // 
+            // arvore_btn
+            // 
+            this.arvore_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.arvore_btn.Enabled = false;
+            this.arvore_btn.Location = new System.Drawing.Point(136, 10);
+            this.arvore_btn.Name = "arvore_btn";
+            this.arvore_btn.Size = new System.Drawing.Size(128, 23);
+            this.arvore_btn.TabIndex = 1;
+            this.arvore_btn.Text = "Árvore do Produto";
+            this.arvore_btn.UseVisualStyleBackColor = true;
+            this.arvore_btn.Click += new System.EventHandler(this.Arvore_btn_Click);
             // 
             // editar_btn
             // 
             this.editar_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.editar_btn.Enabled = false;
-            this.editar_btn.Location = new System.Drawing.Point(6, 10);
+            this.editar_btn.Location = new System.Drawing.Point(0, 10);
             this.editar_btn.Name = "editar_btn";
-            this.editar_btn.Size = new System.Drawing.Size(160, 23);
-            this.editar_btn.TabIndex = 1;
-            this.editar_btn.Text = "Editar Árvore do Produto";
+            this.editar_btn.Size = new System.Drawing.Size(128, 23);
+            this.editar_btn.TabIndex = 3;
+            this.editar_btn.Text = "Editar Produto";
             this.editar_btn.UseVisualStyleBackColor = true;
+            this.editar_btn.Click += new System.EventHandler(this.Editar_btn_Click);
             // 
             // ok_btn
             // 
@@ -441,12 +462,12 @@ namespace MRP_SdC
             this.dados_pnl.PerformLayout();
             this.atualizar_pnl.ResumeLayout(false);
             this.dados_estoque_pnl.ResumeLayout(false);
+            this.estoque_atual_pnl.ResumeLayout(false);
+            this.estoque_atual_pnl.PerformLayout();
             this.estoque_max_pnl.ResumeLayout(false);
             this.estoque_max_pnl.PerformLayout();
             this.estoque_min_pnl.ResumeLayout(false);
             this.estoque_min_pnl.PerformLayout();
-            this.estoque_atual_pnl.ResumeLayout(false);
-            this.estoque_atual_pnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).EndInit();
             this.pesquisa_pnl.ResumeLayout(false);
             this.pesquisa_cont_pnl.ResumeLayout(false);
@@ -480,7 +501,7 @@ namespace MRP_SdC
         private System.Windows.Forms.Button pesquisa_btn;
         private System.Windows.Forms.Panel barraInf_pnl;
         private System.Windows.Forms.Button ok_btn;
-        private System.Windows.Forms.Button editar_btn;
+        private System.Windows.Forms.Button arvore_btn;
         private System.Windows.Forms.Label ttl_lbl;
         private System.Windows.Forms.Panel EspDir_pnl;
         private System.Windows.Forms.Panel EspEsq_pnl;
@@ -490,5 +511,6 @@ namespace MRP_SdC
         private System.Windows.Forms.CheckBox pesquisa_descnt_cbx;
         private System.Windows.Forms.Panel atualizar_pnl;
         private System.Windows.Forms.Button atualizar_btn;
+        private System.Windows.Forms.Button editar_btn;
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace MRP_SdC
+﻿using System.Collections.Generic;
+
+namespace MRP_SdC
 {
     public class Fornecedor
     {
@@ -12,6 +14,7 @@
         public string celular { get; set; }
         public string email { get; set; }
         public string site { get; set; }
+        public List<FornecedorComponente> componentes { get; set; }
 
         public Fornecedor()
         {

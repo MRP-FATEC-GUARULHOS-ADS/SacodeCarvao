@@ -28,7 +28,7 @@ namespace MRP_SdC
             );
             if (confirmarInsert == DialogResult.Yes)
             {
-                MySQL.ConexaoMPS mpss = new MySQL.ConexaoMPS();
+                Access.ConexaoMPS mpss = new Access.ConexaoMPS();
 
                 mpss.Insert(mps);
 
