@@ -136,6 +136,7 @@ namespace MRP_SdC
             this.componentes_btn.TabIndex = 0;
             this.componentes_btn.Text = "Componentes do fornecedor";
             this.componentes_btn.UseVisualStyleBackColor = true;
+            this.componentes_btn.Click += new System.EventHandler(this.Componentes_btn_Click);
             // 
             // site_lbl
             // 
@@ -258,6 +259,7 @@ namespace MRP_SdC
             this.pesquisa_tbx.Name = "pesquisa_tbx";
             this.pesquisa_tbx.Size = new System.Drawing.Size(608, 20);
             this.pesquisa_tbx.TabIndex = 0;
+            this.pesquisa_tbx.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Pesquisar_TBX_KeyUp);
             // 
             // pesquisa_btn
             // 
@@ -268,6 +270,7 @@ namespace MRP_SdC
             this.pesquisa_btn.TabIndex = 1;
             this.pesquisa_btn.Text = "👁";
             this.pesquisa_btn.UseVisualStyleBackColor = true;
+            this.pesquisa_btn.Click += new System.EventHandler(this.Pesquisar_BTN_Click);
             // 
             // barraInf_pnl
             // 
@@ -285,28 +288,30 @@ namespace MRP_SdC
             // 
             this.excluir_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.excluir_btn.Enabled = false;
-            this.excluir_btn.Location = new System.Drawing.Point(306, 10);
+            this.excluir_btn.Location = new System.Drawing.Point(304, 10);
             this.excluir_btn.Name = "excluir_btn";
             this.excluir_btn.Size = new System.Drawing.Size(144, 23);
             this.excluir_btn.TabIndex = 3;
             this.excluir_btn.Text = "Excluir Fornecedor";
             this.excluir_btn.UseVisualStyleBackColor = true;
+            this.excluir_btn.Click += new System.EventHandler(this.Exclur_btn_Click);
             // 
             // editar_btn
             // 
             this.editar_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.editar_btn.Enabled = false;
-            this.editar_btn.Location = new System.Drawing.Point(156, 10);
+            this.editar_btn.Location = new System.Drawing.Point(152, 10);
             this.editar_btn.Name = "editar_btn";
             this.editar_btn.Size = new System.Drawing.Size(144, 23);
             this.editar_btn.TabIndex = 2;
             this.editar_btn.Text = "Editar Fornecedor";
             this.editar_btn.UseVisualStyleBackColor = true;
+            this.editar_btn.Click += new System.EventHandler(this.Editar_btn_Click);
             // 
             // cadastrar_btn
             // 
             this.cadastrar_btn.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cadastrar_btn.Location = new System.Drawing.Point(6, 10);
+            this.cadastrar_btn.Location = new System.Drawing.Point(0, 10);
             this.cadastrar_btn.Name = "cadastrar_btn";
             this.cadastrar_btn.Size = new System.Drawing.Size(144, 23);
             this.cadastrar_btn.TabIndex = 1;

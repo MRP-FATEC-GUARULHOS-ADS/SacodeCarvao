@@ -50,21 +50,50 @@
   <ItemGroup>
     <Compile Include="Conexao\Access\ComponenteDAO.cs" />
     <Compile Include="Conexao\Access\Conexao.cs" />
+    <Compile Include="Conexao\Access\ConexaoMPS.cs" />
+    <Compile Include="Conexao\Access\FornecedorComponenteDAO.cs" />
     <Compile Include="Conexao\Access\FornecedorDAO.cs" />
     <Compile Include="Conexao\Access\ProdutoDAO.cs" />
     <Compile Include="Conexao\MySQL\ComponenteDAO.cs" />
     <Compile Include="Conexao\MySQL\Conexao.cs" />
+    <Compile Include="Conexao\MySQL\FornecedorComponenteDAO.cs" />
+    <Compile Include="Conexao\MySQL\FornecedorDAO.cs" />
     <Compile Include="Conexao\MySQL\ProdutoDAO.cs" />
     <Compile Include="Conexao\MySQL\ConexaoMPS.cs" />
+    <Compile Include="Modelos\FornecedorComponente.cs" />
     <Compile Include="Modelos\MPS.cs" />
     <Compile Include="Modelos\Componente.cs" />
     <Compile Include="Modelos\Fornecedor.cs" />
     <Compile Include="Modelos\Produto.cs" />
-    <Compile Include="Telas\CadastroComponente.cs">
+    <Compile Include="Telas\Componentes\EditarComponente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Telas\CadastroComponente.Designer.cs">
+    <Compile Include="Telas\Componentes\EditarComponente.Designer.cs">
+      <DependentUpon>EditarComponente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Componentes\CadastroComponente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Componentes\CadastroComponente.Designer.cs">
       <DependentUpon>CadastroComponente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Fornecedores\EditarComponenteFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Fornecedores\EditarComponenteFornecedor.Designer.cs">
+      <DependentUpon>EditarComponenteFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Fornecedores\CadastroComponenteFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Fornecedores\CadastroComponenteFornecedor.Designer.cs">
+      <DependentUpon>CadastroComponenteFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Fornecedores\EditarFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Fornecedores\EditarFornecedor.Designer.cs">
+      <DependentUpon>EditarFornecedor.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\Fornecedores\CadastroFornecedor.cs">
       <SubType>Form</SubType>
@@ -72,34 +101,46 @@
     <Compile Include="Telas\Fornecedores\CadastroFornecedor.Designer.cs">
       <DependentUpon>CadastroFornecedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Fornecedores\ComponentesFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Fornecedores\ComponentesFornecedor.Designer.cs">
+      <DependentUpon>ComponentesFornecedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Fornecedores\Fornecedores.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Telas\Fornecedores\Fornecedores.Designer.cs">
       <DependentUpon>Fornecedores.cs</DependentUpon>
     </Compile>
-    <Compile Include="Telas\ExplosaoProduto.cs">
+    <Compile Include="Telas\Produtos\EditarProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Telas\ExplosaoProduto.Designer.cs">
+    <Compile Include="Telas\Produtos\EditarProduto.Designer.cs">
+      <DependentUpon>EditarProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Produtos\ExplosaoProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Produtos\ExplosaoProduto.Designer.cs">
       <DependentUpon>ExplosaoProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Telas\CadastroProduto.cs">
+    <Compile Include="Telas\Produtos\CadastroProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Telas\CadastroProduto.Designer.cs">
+    <Compile Include="Telas\Produtos\CadastroProduto.Designer.cs">
       <DependentUpon>CadastroProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Telas\EstoqueProduto.cs">
+    <Compile Include="Telas\Produtos\EstoqueProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Telas\EstoqueProduto.Designer.cs">
+    <Compile Include="Telas\Produtos\EstoqueProduto.Designer.cs">
       <DependentUpon>EstoqueProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Telas\EstoqueComponente.cs">
+    <Compile Include="Telas\Componentes\EstoqueComponente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Telas\EstoqueComponente.Designer.cs">
+    <Compile Include="Telas\Componentes\EstoqueComponente.Designer.cs">
       <DependentUpon>EstoqueComponente.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\Main.cs">
@@ -116,25 +157,43 @@
     <Compile Include="Telas\CadastroMPS.Designer.cs">
       <DependentUpon>CadastroMPS.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Telas\CadastroComponente.resx">
+    <EmbeddedResource Include="Telas\Componentes\EditarComponente.resx">
+      <DependentUpon>EditarComponente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Componentes\CadastroComponente.resx">
       <DependentUpon>CadastroComponente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Fornecedores\EditarComponenteFornecedor.resx">
+      <DependentUpon>EditarComponenteFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Fornecedores\CadastroComponenteFornecedor.resx">
+      <DependentUpon>CadastroComponenteFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Fornecedores\EditarFornecedor.resx">
+      <DependentUpon>EditarFornecedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Fornecedores\CadastroFornecedor.resx">
       <DependentUpon>CadastroFornecedor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Fornecedores\ComponentesFornecedor.resx">
+      <DependentUpon>ComponentesFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\Fornecedores\Fornecedores.resx">
       <DependentUpon>Fornecedores.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Telas\ExplosaoProduto.resx">
+    <EmbeddedResource Include="Telas\Produtos\EditarProduto.resx">
+      <DependentUpon>EditarProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Produtos\ExplosaoProduto.resx">
       <DependentUpon>ExplosaoProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Telas\CadastroProduto.resx">
+    <EmbeddedResource Include="Telas\Produtos\CadastroProduto.resx">
       <DependentUpon>CadastroProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Telas\EstoqueProduto.resx">
+    <EmbeddedResource Include="Telas\Produtos\EstoqueProduto.resx">
       <DependentUpon>EstoqueProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Telas\EstoqueComponente.resx">
+    <EmbeddedResource Include="Telas\Componentes\EstoqueComponente.resx">
       <DependentUpon>EstoqueComponente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Main.resx">
