@@ -71,5 +71,27 @@ namespace MRP_SdC
             formCadCompForn.ShowDialog();
             AtualizaLista();
         }
+
+        private void Editar_btn_Click(object sender, EventArgs e)
+        {
+            EditarComponenteFornecedor formEditCompForn = new EditarComponenteFornecedor(myFornComp);
+            formEditCompForn.ShowDialog();
+            AtualizaLista();
+        }
+
+        private void Excluir_btn_Click(object sender, EventArgs e)
+        {
+            // confirmando exclusão
+            DialogResult confirmarExclusao = MessageBox.Show(
+                "(✿◡‿◡) " + myFornComp + " ?!", "Confirmar exclusão do componente fornecido",
+                MessageBoxButtons.YesNo
+            );
+            if (confirmarExclusao == DialogResult.Yes)
+            {
+                Access.FornecedorComponenteDAO forncompDAO = new Access.FornecedorComponenteDAO();
+                forncompDAO.Delete(myFornComp);
+                AtualizaLista();
+            }
+        }
     }
 }

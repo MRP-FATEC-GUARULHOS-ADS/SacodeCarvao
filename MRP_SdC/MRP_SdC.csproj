@@ -56,6 +56,8 @@
     <Compile Include="Conexao\Access\ProdutoDAO.cs" />
     <Compile Include="Conexao\MySQL\ComponenteDAO.cs" />
     <Compile Include="Conexao\MySQL\Conexao.cs" />
+    <Compile Include="Conexao\MySQL\FornecedorComponenteDAO.cs" />
+    <Compile Include="Conexao\MySQL\FornecedorDAO.cs" />
     <Compile Include="Conexao\MySQL\ProdutoDAO.cs" />
     <Compile Include="Conexao\MySQL\ConexaoMPS.cs" />
     <Compile Include="Modelos\FornecedorComponente.cs" />
@@ -74,6 +76,12 @@
     </Compile>
     <Compile Include="Telas\Componentes\CadastroComponente.Designer.cs">
       <DependentUpon>CadastroComponente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Fornecedores\EditarComponenteFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Fornecedores\EditarComponenteFornecedor.Designer.cs">
+      <DependentUpon>EditarComponenteFornecedor.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\Fornecedores\CadastroComponenteFornecedor.cs">
       <SubType>Form</SubType>
@@ -154,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Componentes\CadastroComponente.resx">
       <DependentUpon>CadastroComponente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Fornecedores\EditarComponenteFornecedor.resx">
+      <DependentUpon>EditarComponenteFornecedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Fornecedores\CadastroComponenteFornecedor.resx">
       <DependentUpon>CadastroComponenteFornecedor.cs</DependentUpon>
