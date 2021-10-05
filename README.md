@@ -10,19 +10,21 @@
 
 O patrão ficou maluco, agora não precisa mais de MySQL pra usar o Saco de Carvão.
 
-Se você baixar o projeto e abrir a pasta `Conexao` vai ver que ela tem dois filhos, `Access` e `MySQL`, faça sua escolha, delete a outra opção, caso o Visual Studio esteja implicando com ela e troque todas as referências nos Formulários.
+Se você baixar o projeto e abrir a pasta `Conexao` vai ver que ela tem dois filhos, `Access` e `MySQL`, faça sua escolha, delete a outra opção caso o Visual Studio esteja implicando com ela e troque todas as referências nos Formulários.
 
-Por exemplo, no [formulário de produtos](https://github.com/MRP-FATEC-GUARULHOS-ADS/SacodeCarvao/blob/main/MRP_SdC/Telas/Main.cs#L23), a função de AtualizaListas está usando a conexão Access:
+Por exemplo, no [formulário de produtos](https://github.com/MRP-FATEC-GUARULHOS-ADS/SacodeCarvao/blob/main/MRP_SdC/Telas/Main.cs#L23), a função de `AtualizaListas()` está usando a conexão Access:
 
 ```C#
 Access.ConexaoMPS mps = new Access.ConexaoMPS();
 ```
 
-Nesse caso é só trocar essa referência pra:
+Nesse caso, se eu quiser mudar pra MySQL, é só trocar essa referência pra:
 
 ```C#
 MySQL.ConexaoMPS mps = new MySQL.ConexaoMPS();
 ```
+
+E aí tem que fazer o mesmo com todas as outras referências no projeto todo...
 
 ### Como baixar o projeto
 
