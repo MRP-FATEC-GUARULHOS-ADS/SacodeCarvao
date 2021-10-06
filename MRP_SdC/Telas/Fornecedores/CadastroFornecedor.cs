@@ -45,7 +45,7 @@ namespace MRP_SdC
             );
             if (confirmarInsert == DialogResult.Yes)
             {
-                Access.FornecedorDAO objFornDAO = new Access.FornecedorDAO();
+                MySQL.FornecedorDAO objFornDAO = new MySQL.FornecedorDAO();
                 objFornDAO.Insert(myFornecedor);
             }
 

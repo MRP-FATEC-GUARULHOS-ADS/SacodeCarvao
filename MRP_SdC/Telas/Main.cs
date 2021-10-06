@@ -20,7 +20,7 @@ namespace MRP_SdC
         // funcoes personalizadas
         private void AtualizaListas()
         {
-            Access.ConexaoMPS mps = new Access.ConexaoMPS();
+            MySQL.ConexaoMPS mps = new MySQL.ConexaoMPS();
             List<MPS> listaMPS = mps.GetMPS();
             var bindingMPS = new BindingList<MPS>(listaMPS);
             dem_lista_dgv.DataSource = bindingMPS;
@@ -29,7 +29,7 @@ namespace MRP_SdC
         }
         private void ListarProdutosAtivos()
         {
-            Access.ProdutoDAO produtoDAO = new Access.ProdutoDAO();
+            MySQL.ProdutoDAO produtoDAO = new MySQL.ProdutoDAO();
             List<Produto> listaProdutos = produtoDAO.GetProdutosAtivos();
             var bindingProdutos = new BindingList<Produto>(listaProdutos);
             prod_lista_dgv.DataSource = bindingProdutos;
@@ -49,7 +49,7 @@ namespace MRP_SdC
         {
             if (prod_pesquisa_tbx.Text != "")
             {
-                Access.ProdutoDAO produtoDAO = new Access.ProdutoDAO();
+                MySQL.ProdutoDAO produtoDAO = new MySQL.ProdutoDAO();
                 List<Produto> listaProdutos = produtoDAO.PesquisaProdutos(prod_pesquisa_tbx.Text);
                 var bindingProdutos = new BindingList<Produto>(listaProdutos);
                 prod_lista_dgv.DataSource = bindingProdutos;

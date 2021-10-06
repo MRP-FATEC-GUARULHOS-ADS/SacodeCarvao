@@ -281,6 +281,7 @@ namespace MRP_SdC
             this.Controls.Add(this.esp_dir_pnl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CadastroMPS";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MPS";
             this.id_pnl.ResumeLayout(false);
             this.id_pnl.PerformLayout();
