@@ -409,7 +409,6 @@ namespace MRP_SdC
             // ok_btn
             // 
             this.ok_btn.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.ok_btn.Enabled = false;
             this.ok_btn.Location = new System.Drawing.Point(522, 10);
             this.ok_btn.Name = "ok_btn";
             this.ok_btn.Size = new System.Drawing.Size(112, 23);
