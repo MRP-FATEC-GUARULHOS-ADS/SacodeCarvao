@@ -46,7 +46,7 @@ namespace MRP_SdC
             );
             if (confirmarInsert == DialogResult.Yes)
             {
-                Access.ProdutoDAO objProdDAO = new Access.ProdutoDAO();
+                MySQL.ProdutoDAO objProdDAO = new MySQL.ProdutoDAO();
                 objProdDAO.Insert(myProduto);
             }
 

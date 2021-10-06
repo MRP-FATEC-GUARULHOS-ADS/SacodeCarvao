@@ -453,6 +453,7 @@ namespace MRP_SdC
             this.Controls.Add(this.corpo_pnl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EstoqueProduto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Estoque de produtos";
             this.Load += new System.EventHandler(this.FormEstProd_Load);
             this.corpo_pnl.ResumeLayout(false);

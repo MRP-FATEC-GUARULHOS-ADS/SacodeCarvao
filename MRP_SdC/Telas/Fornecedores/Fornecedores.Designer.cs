@@ -322,7 +322,6 @@ namespace MRP_SdC
             // ok_btn
             // 
             this.ok_btn.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.ok_btn.Enabled = false;
             this.ok_btn.Location = new System.Drawing.Point(522, 10);
             this.ok_btn.Name = "ok_btn";
             this.ok_btn.Size = new System.Drawing.Size(112, 23);
@@ -367,6 +366,7 @@ namespace MRP_SdC
             this.Controls.Add(this.corpo_pnl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Fornecedores";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Fornecedores";
             this.Load += new System.EventHandler(this.Form_Load);
             this.corpo_pnl.ResumeLayout(false);

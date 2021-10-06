@@ -68,7 +68,7 @@ namespace MRP_SdC
             );
             if (confirmarEdit == DialogResult.Yes)
             {
-                Access.ComponenteDAO objCompDAO = new Access.ComponenteDAO();
+                MySQL.ComponenteDAO objCompDAO = new MySQL.ComponenteDAO();
                 objCompDAO.Update(myComp);
             }
 
