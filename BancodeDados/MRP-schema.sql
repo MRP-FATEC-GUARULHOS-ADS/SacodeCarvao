@@ -57,7 +57,7 @@ CREATE TABLE FORNECEDOR (
 CREATE TABLE FORNECEDOR_COMPONENTE (
   idFornecedor int not null,
   idComponente int not null,
-  leadTime date,
+  leadTime int,
   custo decimal(10,2),
   primary key (idFornecedor, idComponente)
 );
@@ -141,7 +141,7 @@ INSERT INTO PRODUTO_COMPONENTE VALUES
 INSERT INTO FORNECEDOR (
   nome, logradouro, numero, complemento, cep, telefone, celular, email, urlSite
 ) VALUES 
-  ('MaxFix','Rua Lúcia Mormito Biason', '204', null, , '09370835', '11 4544-1600', null, 'vendas@maxfix.ind.br', 'https://maxfix.ind.br'),
+  ('MaxFix','Rua Lúcia Mormito Biason', '204', null, '09370835', '11 4544-1600', null, 'vendas@maxfix.ind.br', 'https://maxfix.ind.br'),
   ('Baú da Eletrônica','AV. DOUTOR RAMOS DE AZEVEDO', '159', 'SALA 908', '07012020', '11 2442-6600', null, 'vendas@baudaeletronica.com.br', 'https://www.baudaeletronica.com.br');
 
 USE SacodeCarvao;
