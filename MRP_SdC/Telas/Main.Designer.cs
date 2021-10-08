@@ -37,6 +37,7 @@ namespace MRP_SdC
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.demandaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mPSToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mRPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.componentesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,7 +91,6 @@ namespace MRP_SdC
             this.user_ttl_txb = new System.Windows.Forms.Label();
             this.user_img_pnl = new System.Windows.Forms.Panel();
             this.logo_pnl = new System.Windows.Forms.Panel();
-            this.mRPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.menu_dir_pnl.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -142,6 +142,13 @@ namespace MRP_SdC
             this.mPSToolStripMenuItem1.Name = "mPSToolStripMenuItem1";
             this.mPSToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.mPSToolStripMenuItem1.Text = "MPS";
+            // 
+            // mRPToolStripMenuItem
+            // 
+            this.mRPToolStripMenuItem.Name = "mRPToolStripMenuItem";
+            this.mRPToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mRPToolStripMenuItem.Text = "MRP";
+            this.mRPToolStripMenuItem.Click += new System.EventHandler(this.mRPToolStripMenuItem_Click);
             // 
             // estoqueToolStripMenuItem
             // 
@@ -726,12 +733,6 @@ namespace MRP_SdC
             this.logo_pnl.Name = "logo_pnl";
             this.logo_pnl.Size = new System.Drawing.Size(56, 56);
             this.logo_pnl.TabIndex = 0;
-            // 
-            // mRPToolStripMenuItem
-            // 
-            this.mRPToolStripMenuItem.Name = "mRPToolStripMenuItem";
-            this.mRPToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.mRPToolStripMenuItem.Text = "MRP";
             // 
             // Main_frm
             // 

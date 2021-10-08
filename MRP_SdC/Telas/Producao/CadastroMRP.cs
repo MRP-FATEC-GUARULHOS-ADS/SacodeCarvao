@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MRP_SdC
 {
-    public partial class CadastroMPS : Form
+    public partial class CadastroMRP : Form
     {
-        public CadastroMPS()
+        public CadastroMRP()
         {
             InitializeComponent();
         }

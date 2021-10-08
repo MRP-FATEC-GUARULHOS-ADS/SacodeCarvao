@@ -95,16 +95,16 @@ namespace MRP_SdC
 
         private void btnCadastrarProducao_Click(object sender, EventArgs e)
         {
-            CadastroMPS cadastromps = new CadastroMPS();
-            cadastromps.ShowDialog();
+            CadastroMRP cadastromrp = new CadastroMRP();
+            cadastromrp.ShowDialog();
             AtualizaListas();
         }
 
         //funcoes do menu
         private void DemMPS_TSMI_Click(object sender, EventArgs e)
         {
-            CadastroMPS formMPS = new CadastroMPS();
-            formMPS.ShowDialog();
+            CadastroMRP formMRP = new CadastroMRP();
+            formMRP.ShowDialog();
             AtualizaListas();
         }
 
@@ -140,6 +140,12 @@ namespace MRP_SdC
         {
             CadastroFornecedor formCadFornecedor = new CadastroFornecedor();
             formCadFornecedor.ShowDialog();
+        }
+
+        private void mRPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CadastroMRP formCadMRP = new CadastroMRP();
+            formCadMRP.ShowDialog();
         }
     }
 }

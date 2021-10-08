@@ -1,7 +1,7 @@
 ﻿
 namespace MRP_SdC
 {
-    partial class CadastroMPS
+    partial class CadastroMRP
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace MRP_SdC
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadastroMPS));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadastroMRP));
             this.esp_dir_pnl = new System.Windows.Forms.Panel();
             this.esp_esq_pnl = new System.Windows.Forms.Panel();
             this.ttl_lbl = new System.Windows.Forms.Label();
@@ -242,7 +242,7 @@ namespace MRP_SdC
             this.dataGridView1.Size = new System.Drawing.Size(240, 150);
             this.dataGridView1.TabIndex = 11;
             // 
-            // CadastroMPS
+            // CadastroMRP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -257,7 +257,7 @@ namespace MRP_SdC
             this.Controls.Add(this.esp_esq_pnl);
             this.Controls.Add(this.esp_dir_pnl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "CadastroMPS";
+            this.Name = "CadastroMRP";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MPS";
             this.id_pnl.ResumeLayout(false);
