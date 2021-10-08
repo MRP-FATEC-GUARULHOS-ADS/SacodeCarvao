@@ -3,12 +3,11 @@
     public class MRP
     {
         //Atributos
-        public int idProducao { get; set; }
+        public int idNecesLiq { get; set; }
         public int idProduto { get; set; }
-        public int quantidadeemMaos { get; set; }
-        public int quantidadeDisponivel { get; set; }
-        public int quantidadeDemanda { get; set; }
-        public int quantidadeProduzir { get; set; }
+        public int qntdPedido { get; set; }
+        public int qntdEstoque { get; set; }
+        public int qntdNecesLiq { get; set; }
 
         public MRP()
         {
@@ -16,16 +15,16 @@
         }
         //Construtores
         public MRP(
-            int idProducao, int idProduto, int quantidadeemMaos, int quantidadeDisponivel,
-            int quantidadeDemanda, int quantidadeProduzir
+            int idNecesLiq, int idProduto, int qntdPedido, int qntdEstoque,
+            int qntdNecesLiq
         )
         {
-            this.idProducao = idProducao;
+            this.idNecesLiq = idNecesLiq;
             this.idProduto = idProduto;
-            this.quantidadeemMaos = quantidadeemMaos;
-            this.quantidadeDisponivel = quantidadeDisponivel;
-            this.quantidadeDemanda = quantidadeDemanda;
-            this.quantidadeProduzir = quantidadeProduzir;
+            this.qntdPedido = qntdPedido;
+            this.qntdEstoque = qntdEstoque;
+            this.qntdNecesLiq = qntdNecesLiq;
+
         }
     }
 }
