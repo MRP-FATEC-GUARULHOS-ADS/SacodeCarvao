@@ -48,15 +48,13 @@ namespace MRP_SdC
             this.demanda_pnl = new System.Windows.Forms.Panel();
             this.demanda_tbx = new System.Windows.Forms.TextBox();
             this.demanda_lbl = new System.Windows.Forms.Label();
-            this.disponivel_pnl = new System.Windows.Forms.Panel();
-            this.disponivel_tbx = new System.Windows.Forms.TextBox();
-            this.disponivel_lbl = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.id_pnl.SuspendLayout();
             this.maos_pnl.SuspendLayout();
             this.barraInf_pnl.SuspendLayout();
             this.produzir_pnl.SuspendLayout();
             this.demanda_pnl.SuspendLayout();
-            this.disponivel_pnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // esp_dir_pnl
@@ -141,9 +139,9 @@ namespace MRP_SdC
             this.maos_lbl.Location = new System.Drawing.Point(0, 0);
             this.maos_lbl.Name = "maos_lbl";
             this.maos_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.maos_lbl.Size = new System.Drawing.Size(51, 17);
+            this.maos_lbl.Size = new System.Drawing.Size(98, 17);
             this.maos_lbl.TabIndex = 0;
-            this.maos_lbl.Text = "Em Mãos";
+            this.maos_lbl.Text = "Quantidade Pedido";
             // 
             // barraInf_pnl
             // 
@@ -203,9 +201,9 @@ namespace MRP_SdC
             this.produzir_lbl.Location = new System.Drawing.Point(0, 0);
             this.produzir_lbl.Name = "produzir_lbl";
             this.produzir_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.produzir_lbl.Size = new System.Drawing.Size(45, 17);
+            this.produzir_lbl.Size = new System.Drawing.Size(104, 17);
             this.produzir_lbl.TabIndex = 0;
-            this.produzir_lbl.Text = "Produzir";
+            this.produzir_lbl.Text = "Quantidade Estoque";
             // 
             // demanda_pnl
             // 
@@ -232,46 +230,25 @@ namespace MRP_SdC
             this.demanda_lbl.Location = new System.Drawing.Point(0, 0);
             this.demanda_lbl.Name = "demanda_lbl";
             this.demanda_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.demanda_lbl.Size = new System.Drawing.Size(53, 17);
+            this.demanda_lbl.Size = new System.Drawing.Size(164, 17);
             this.demanda_lbl.TabIndex = 0;
-            this.demanda_lbl.Text = "Demanda";
+            this.demanda_lbl.Text = "Quantidade Necessidade Liquida";
             // 
-            // disponivel_pnl
+            // dataGridView1
             // 
-            this.disponivel_pnl.Controls.Add(this.disponivel_tbx);
-            this.disponivel_pnl.Controls.Add(this.disponivel_lbl);
-            this.disponivel_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.disponivel_pnl.Location = new System.Drawing.Point(32, 248);
-            this.disponivel_pnl.Name = "disponivel_pnl";
-            this.disponivel_pnl.Size = new System.Drawing.Size(298, 48);
-            this.disponivel_pnl.TabIndex = 5;
-            // 
-            // disponivel_tbx
-            // 
-            this.disponivel_tbx.Dock = System.Windows.Forms.DockStyle.Top;
-            this.disponivel_tbx.Location = new System.Drawing.Point(0, 17);
-            this.disponivel_tbx.Name = "disponivel_tbx";
-            this.disponivel_tbx.Size = new System.Drawing.Size(298, 20);
-            this.disponivel_tbx.TabIndex = 1;
-            // 
-            // disponivel_lbl
-            // 
-            this.disponivel_lbl.AutoSize = true;
-            this.disponivel_lbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.disponivel_lbl.Location = new System.Drawing.Point(0, 0);
-            this.disponivel_lbl.Name = "disponivel_lbl";
-            this.disponivel_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.disponivel_lbl.Size = new System.Drawing.Size(58, 17);
-            this.disponivel_lbl.TabIndex = 0;
-            this.disponivel_lbl.Text = "Disponível";
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(65, 254);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.TabIndex = 11;
             // 
             // CadastroMPS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(362, 476);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.barraInf_pnl);
-            this.Controls.Add(this.disponivel_pnl);
             this.Controls.Add(this.demanda_pnl);
             this.Controls.Add(this.produzir_pnl);
             this.Controls.Add(this.maos_pnl);
@@ -292,8 +269,7 @@ namespace MRP_SdC
             this.produzir_pnl.PerformLayout();
             this.demanda_pnl.ResumeLayout(false);
             this.demanda_pnl.PerformLayout();
-            this.disponivel_pnl.ResumeLayout(false);
-            this.disponivel_pnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -310,16 +286,14 @@ namespace MRP_SdC
         private System.Windows.Forms.Label maos_lbl;
         private System.Windows.Forms.Panel barraInf_pnl;
         private System.Windows.Forms.Button cancelar_btn;
-        private System.Windows.Forms.Panel disponivel_pnl;
-        private System.Windows.Forms.Label disponivel_lbl;
         private System.Windows.Forms.TextBox id_tbx;
         private System.Windows.Forms.Button cadastrar;
-        private System.Windows.Forms.TextBox disponivel_tbx;
         private System.Windows.Forms.Panel produzir_pnl;
         private System.Windows.Forms.TextBox produzir_tbx;
         private System.Windows.Forms.Label produzir_lbl;
         private System.Windows.Forms.Panel demanda_pnl;
         private System.Windows.Forms.TextBox demanda_tbx;
         private System.Windows.Forms.Label demanda_lbl;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
