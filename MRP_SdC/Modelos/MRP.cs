@@ -15,7 +15,7 @@
         }
         //Construtores
         public MRP(
-            int idNecesLiq, int idProduto, int qntdPedido, int qntdEstoque,
+            int idProduto, int qntdPedido, int qntdEstoque,
             int qntdNecesLiq
         )
         {

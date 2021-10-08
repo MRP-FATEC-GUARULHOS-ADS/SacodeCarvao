@@ -49,6 +49,7 @@ namespace MRP_SdC
             this.demanda_tbx = new System.Windows.Forms.TextBox();
             this.demanda_lbl = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.id_pnl.SuspendLayout();
             this.maos_pnl.SuspendLayout();
             this.barraInf_pnl.SuspendLayout();
@@ -60,7 +61,7 @@ namespace MRP_SdC
             // esp_dir_pnl
             // 
             this.esp_dir_pnl.Dock = System.Windows.Forms.DockStyle.Right;
-            this.esp_dir_pnl.Location = new System.Drawing.Point(330, 0);
+            this.esp_dir_pnl.Location = new System.Drawing.Point(586, 0);
             this.esp_dir_pnl.Name = "esp_dir_pnl";
             this.esp_dir_pnl.Size = new System.Drawing.Size(32, 476);
             this.esp_dir_pnl.TabIndex = 9;
@@ -80,7 +81,7 @@ namespace MRP_SdC
             this.ttl_lbl.Location = new System.Drawing.Point(32, 0);
             this.ttl_lbl.Name = "ttl_lbl";
             this.ttl_lbl.Padding = new System.Windows.Forms.Padding(0, 16, 0, 12);
-            this.ttl_lbl.Size = new System.Drawing.Size(298, 56);
+            this.ttl_lbl.Size = new System.Drawing.Size(554, 56);
             this.ttl_lbl.TabIndex = 0;
             this.ttl_lbl.Text = "Cadastrar Produção";
             this.ttl_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -92,7 +93,7 @@ namespace MRP_SdC
             this.id_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.id_pnl.Location = new System.Drawing.Point(32, 56);
             this.id_pnl.Name = "id_pnl";
-            this.id_pnl.Size = new System.Drawing.Size(298, 48);
+            this.id_pnl.Size = new System.Drawing.Size(554, 48);
             this.id_pnl.TabIndex = 1;
             // 
             // id_tbx
@@ -100,7 +101,7 @@ namespace MRP_SdC
             this.id_tbx.Dock = System.Windows.Forms.DockStyle.Top;
             this.id_tbx.Location = new System.Drawing.Point(0, 17);
             this.id_tbx.Name = "id_tbx";
-            this.id_tbx.Size = new System.Drawing.Size(298, 20);
+            this.id_tbx.Size = new System.Drawing.Size(554, 20);
             this.id_tbx.TabIndex = 1;
             // 
             // id_lbl
@@ -121,7 +122,7 @@ namespace MRP_SdC
             this.maos_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.maos_pnl.Location = new System.Drawing.Point(32, 104);
             this.maos_pnl.Name = "maos_pnl";
-            this.maos_pnl.Size = new System.Drawing.Size(298, 48);
+            this.maos_pnl.Size = new System.Drawing.Size(554, 48);
             this.maos_pnl.TabIndex = 2;
             // 
             // maos_tbx
@@ -129,7 +130,7 @@ namespace MRP_SdC
             this.maos_tbx.Dock = System.Windows.Forms.DockStyle.Top;
             this.maos_tbx.Location = new System.Drawing.Point(0, 17);
             this.maos_tbx.Name = "maos_tbx";
-            this.maos_tbx.Size = new System.Drawing.Size(298, 20);
+            this.maos_tbx.Size = new System.Drawing.Size(554, 20);
             this.maos_tbx.TabIndex = 1;
             // 
             // maos_lbl
@@ -150,14 +151,14 @@ namespace MRP_SdC
             this.barraInf_pnl.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barraInf_pnl.Location = new System.Drawing.Point(32, 428);
             this.barraInf_pnl.Name = "barraInf_pnl";
-            this.barraInf_pnl.Size = new System.Drawing.Size(298, 48);
+            this.barraInf_pnl.Size = new System.Drawing.Size(554, 48);
             this.barraInf_pnl.TabIndex = 6;
             // 
             // cadastrar
             // 
             this.cadastrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cadastrar.BackColor = System.Drawing.Color.Lime;
-            this.cadastrar.Location = new System.Drawing.Point(167, 3);
+            this.cadastrar.Location = new System.Drawing.Point(345, 4);
             this.cadastrar.Name = "cadastrar";
             this.cadastrar.Size = new System.Drawing.Size(128, 32);
             this.cadastrar.TabIndex = 18;
@@ -168,7 +169,7 @@ namespace MRP_SdC
             // cancelar_btn
             // 
             this.cancelar_btn.BackColor = System.Drawing.Color.Red;
-            this.cancelar_btn.Location = new System.Drawing.Point(3, 3);
+            this.cancelar_btn.Location = new System.Drawing.Point(93, 3);
             this.cancelar_btn.Name = "cancelar_btn";
             this.cancelar_btn.Size = new System.Drawing.Size(144, 32);
             this.cancelar_btn.TabIndex = 2;
@@ -183,7 +184,7 @@ namespace MRP_SdC
             this.produzir_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.produzir_pnl.Location = new System.Drawing.Point(32, 152);
             this.produzir_pnl.Name = "produzir_pnl";
-            this.produzir_pnl.Size = new System.Drawing.Size(298, 48);
+            this.produzir_pnl.Size = new System.Drawing.Size(554, 48);
             this.produzir_pnl.TabIndex = 3;
             // 
             // produzir_tbx
@@ -191,7 +192,7 @@ namespace MRP_SdC
             this.produzir_tbx.Dock = System.Windows.Forms.DockStyle.Top;
             this.produzir_tbx.Location = new System.Drawing.Point(0, 17);
             this.produzir_tbx.Name = "produzir_tbx";
-            this.produzir_tbx.Size = new System.Drawing.Size(298, 20);
+            this.produzir_tbx.Size = new System.Drawing.Size(554, 20);
             this.produzir_tbx.TabIndex = 1;
             // 
             // produzir_lbl
@@ -212,7 +213,7 @@ namespace MRP_SdC
             this.demanda_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.demanda_pnl.Location = new System.Drawing.Point(32, 200);
             this.demanda_pnl.Name = "demanda_pnl";
-            this.demanda_pnl.Size = new System.Drawing.Size(298, 48);
+            this.demanda_pnl.Size = new System.Drawing.Size(554, 48);
             this.demanda_pnl.TabIndex = 4;
             // 
             // demanda_tbx
@@ -220,7 +221,7 @@ namespace MRP_SdC
             this.demanda_tbx.Dock = System.Windows.Forms.DockStyle.Top;
             this.demanda_tbx.Location = new System.Drawing.Point(0, 17);
             this.demanda_tbx.Name = "demanda_tbx";
-            this.demanda_tbx.Size = new System.Drawing.Size(298, 20);
+            this.demanda_tbx.Size = new System.Drawing.Size(554, 20);
             this.demanda_tbx.TabIndex = 1;
             // 
             // demanda_lbl
@@ -237,16 +238,29 @@ namespace MRP_SdC
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(65, 254);
+            this.dataGridView1.Location = new System.Drawing.Point(203, 254);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(240, 150);
             this.dataGridView1.TabIndex = 11;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.Lime;
+            this.button1.Location = new System.Drawing.Point(452, 297);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(128, 32);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Consultar";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // CadastroMRP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(362, 476);
+            this.ClientSize = new System.Drawing.Size(618, 476);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.barraInf_pnl);
             this.Controls.Add(this.demanda_pnl);
@@ -295,5 +309,6 @@ namespace MRP_SdC
         private System.Windows.Forms.TextBox demanda_tbx;
         private System.Windows.Forms.Label demanda_lbl;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -140,13 +140,13 @@ namespace MRP_SdC
             // mPSToolStripMenuItem1
             // 
             this.mPSToolStripMenuItem1.Name = "mPSToolStripMenuItem1";
-            this.mPSToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.mPSToolStripMenuItem1.Size = new System.Drawing.Size(99, 22);
             this.mPSToolStripMenuItem1.Text = "MPS";
             // 
             // mRPToolStripMenuItem
             // 
             this.mRPToolStripMenuItem.Name = "mRPToolStripMenuItem";
-            this.mRPToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mRPToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
             this.mRPToolStripMenuItem.Text = "MRP";
             this.mRPToolStripMenuItem.Click += new System.EventHandler(this.mRPToolStripMenuItem_Click);
             // 

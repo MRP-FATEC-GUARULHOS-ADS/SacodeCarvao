@@ -27,6 +27,7 @@ namespace MRP_SdC
 
             ListarProdutosAtivos();
         }
+
         private void ListarProdutosAtivos()
         {
             MySQL.ProdutoDAO produtoDAO = new MySQL.ProdutoDAO();

@@ -27,17 +27,17 @@ namespace MRP_SdC.MySQL
                 MySqlDataReader reader;
                 string query = "INSERT INTO MRP ( " +
                     "idProduto, qntdPedido, qntdEstoque, qntdNecesLiq" +
-                    ") VALUES(@idProduto, @quantidadeemMaos, @quantidadeDisponivel, @quantidadeDemanda); ";
+                    ") VALUES(@idProd, @qntdPed, @qntdEstoq, @qntdNecLiq); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return false;
                 }
 
-                cmd.Parameters.AddWithValue("@idProduto", mrp.idProduto);
-                cmd.Parameters.AddWithValue("@qntdPedido", mrp.qntdPedido);
-                cmd.Parameters.AddWithValue("@qntdEstoque", mrp.qntdEstoque);
-                cmd.Parameters.AddWithValue("@qntdNecesLiq", mrp.qntdNecesLiq);
+                cmd.Parameters.AddWithValue("@idProd", mrp.idProduto);
+                cmd.Parameters.AddWithValue("@qntdPed", mrp.qntdPedido);
+                cmd.Parameters.AddWithValue("@qntdEstoq", mrp.qntdEstoque);
+                cmd.Parameters.AddWithValue("@qntdNecLiq", mrp.qntdNecesLiq);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -109,7 +109,7 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "Select * FROM MRP WHERE idNecesLiq = (@idNecesLiq;";
+                string query = "Select * FROM MRP WHERE idNecesLiq = @idNecesLiq;";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
