@@ -94,17 +94,16 @@ ALTER TABLE MOVIMENTACAO_COMPONENTE
 ADD CONSTRAINT FK_MOVCOMP_COMPONENTE
 FOREIGN KEY (idComponente) REFERENCES COMPONENTE(idComponente);
 
-CREATE TABLE MPS (
-  idProducao int primary key AUTO_INCREMENT,
-  quantidadeemMaos int,
-  quantidadeDisponivel int,
-  quantidadeDemanda int,
-  quantidadeProduzir int,
-  idProduto int not null
+CREATE TABLE MRP (
+	idNecesLiq int primary key AUTO_INCREMENT,
+    idProduto int not null,
+    qntdPedido int not null,
+    qntdEstoque int not null,
+    qntdNecesLiq int not null
 );
-
-ALTER TABLE MPS 
-ADD CONSTRAINT FK_MPS_PRODUTO
+    
+ALTER TABLE MRP
+ADD CONSTRAINT FK_MRP_PRODUTO
 FOREIGN KEY (idProduto) REFERENCES Produto(idProduto);
 
 -- INSERTS

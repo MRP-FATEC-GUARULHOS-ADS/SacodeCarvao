@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Conexao\MySQL\ComponenteDAO.cs" />
     <Compile Include="Conexao\MySQL\Conexao.cs" />
+    <Compile Include="Conexao\MySQL\ConexaoMRP.cs" />
     <Compile Include="Conexao\MySQL\FornecedorComponenteDAO.cs" />
     <Compile Include="Conexao\MySQL\FornecedorDAO.cs" />
     <Compile Include="Conexao\MySQL\ProdutoDAO.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Modelos\MPS.cs" />
     <Compile Include="Modelos\Componente.cs" />
     <Compile Include="Modelos\Fornecedor.cs" />
+    <Compile Include="Modelos\MRP.cs" />
     <Compile Include="Modelos\Produto.cs" />
     <Compile Include="Telas\Componentes\EditarComponente.cs">
       <SubType>Form</SubType>
