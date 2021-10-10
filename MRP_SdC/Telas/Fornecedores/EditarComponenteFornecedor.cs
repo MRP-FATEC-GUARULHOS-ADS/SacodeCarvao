@@ -53,7 +53,7 @@ namespace MRP_SdC
             );
             if (confirmarEdit == DialogResult.Yes)
             {
-                Access.FornecedorComponenteDAO objFornCompDAO = new Access.FornecedorComponenteDAO();
+                MySQL.FornecedorComponenteDAO objFornCompDAO = new MySQL.FornecedorComponenteDAO();
                 objFornCompDAO.Update(myFornComp);
             }
 

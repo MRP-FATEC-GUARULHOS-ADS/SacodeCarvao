@@ -12,24 +12,48 @@ namespace MRP_SdC
 {
     public partial class Main_frm : Form
     {
+        Usuario myUser = null;
+
         public Main_frm()
         {
+            // chama a tela de login
+            //myUser = Logar();
+            
             InitializeComponent();
+            
         }
 
         // funcoes personalizadas
+        private Usuario Logar()
+        {
+            Login formLogin = new Login();
+            formLogin.ShowDialog();
+
+            return formLogin.myUser;
+        }
+        private void AutenticarUsuario()
+        {
+            // se não logou, fecha o programa
+            if (myUser == null)
+                Application.Exit();
+            // muda o nome exibido do usuário
+            else
+                user_name_txb.Text = myUser.Nome;
+        }
+
         private void AtualizaListas()
         {
-            Access.ConexaoMPS mps = new Access.ConexaoMPS();
-            List<MPS> listaMPS = mps.GetMPS();
-            var bindingMPS = new BindingList<MPS>(listaMPS);
-            dem_lista_dgv.DataSource = bindingMPS;
+            MySQL.ConexaoMRP mrpDAO = new MySQL.ConexaoMRP();
+            List<MRP> listaMRP = mrpDAO.GetMRP();
+            var bindingMRP = new BindingList<MRP>(listaMRP);
+            dem_lista_dgv.DataSource = bindingMRP;
 
             ListarProdutosAtivos();
         }
+
         private void ListarProdutosAtivos()
         {
-            Access.ProdutoDAO produtoDAO = new Access.ProdutoDAO();
+            MySQL.ProdutoDAO produtoDAO = new MySQL.ProdutoDAO();
             List<Produto> listaProdutos = produtoDAO.GetProdutosAtivos();
             var bindingProdutos = new BindingList<Produto>(listaProdutos);
             prod_lista_dgv.DataSource = bindingProdutos;
@@ -38,6 +62,8 @@ namespace MRP_SdC
         // funcoes do formulario
         private void FormMain_Load(object sender, EventArgs e)
         {
+            //AutenticarUsuario();
+
             AtualizaListas();
         }
 
@@ -49,7 +75,7 @@ namespace MRP_SdC
         {
             if (prod_pesquisa_tbx.Text != "")
             {
-                Access.ProdutoDAO produtoDAO = new Access.ProdutoDAO();
+                MySQL.ProdutoDAO produtoDAO = new MySQL.ProdutoDAO();
                 List<Produto> listaProdutos = produtoDAO.PesquisaProdutos(prod_pesquisa_tbx.Text);
                 var bindingProdutos = new BindingList<Produto>(listaProdutos);
                 prod_lista_dgv.DataSource = bindingProdutos;
@@ -95,16 +121,21 @@ namespace MRP_SdC
 
         private void btnCadastrarProducao_Click(object sender, EventArgs e)
         {
-            CadastroMPS cadastromps = new CadastroMPS();
-            cadastromps.ShowDialog();
+            CadastroMRP cadastromrp = new CadastroMRP();
+            cadastromrp.ShowDialog();
             AtualizaListas();
         }
 
         //funcoes do menu
+        private void Salir_TSMI_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void DemMPS_TSMI_Click(object sender, EventArgs e)
         {
-            CadastroMPS formMPS = new CadastroMPS();
-            formMPS.ShowDialog();
+            CadastroMRP formMRP = new CadastroMRP();
+            formMRP.ShowDialog();
             AtualizaListas();
         }
 
@@ -140,6 +171,18 @@ namespace MRP_SdC
         {
             CadastroFornecedor formCadFornecedor = new CadastroFornecedor();
             formCadFornecedor.ShowDialog();
+        }
+
+        private void mRPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CadastroMRP formCadMRP = new CadastroMRP();
+            formCadMRP.ShowDialog();
+        }
+
+        private void UsuarioSair_TSMI_Click(object sender, EventArgs e)
+        {
+            myUser = Logar();
+            AutenticarUsuario();
         }
     }
 }

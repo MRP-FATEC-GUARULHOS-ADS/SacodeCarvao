@@ -28,7 +28,7 @@ namespace MRP_SdC
         // funcoes personalizadas
         private void AtualizaLista()
         {
-            Access.FornecedorComponenteDAO objFornCompDAO = new Access.FornecedorComponenteDAO();
+            MySQL.FornecedorComponenteDAO objFornCompDAO = new MySQL.FornecedorComponenteDAO();
             List<FornecedorComponente> listaFornComps = objFornCompDAO.GetComponentes(myForn);
 
             var bindingLista = new BindingList<FornecedorComponente>(listaFornComps);
@@ -88,7 +88,7 @@ namespace MRP_SdC
             );
             if (confirmarExclusao == DialogResult.Yes)
             {
-                Access.FornecedorComponenteDAO forncompDAO = new Access.FornecedorComponenteDAO();
+                MySQL.FornecedorComponenteDAO forncompDAO = new MySQL.FornecedorComponenteDAO();
                 forncompDAO.Delete(myFornComp);
                 AtualizaLista();
             }

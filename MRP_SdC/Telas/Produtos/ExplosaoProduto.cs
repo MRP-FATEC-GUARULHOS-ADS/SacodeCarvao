@@ -18,7 +18,7 @@ namespace MRP_SdC
         // funcoes personalizadas
         public void ListaComponentes(ComboBox cbb)
         {
-            Access.ComponenteDAO compDAO = new Access.ComponenteDAO();
+            MySQL.ComponenteDAO compDAO = new MySQL.ComponenteDAO();
             BindingSource bindingComp = new BindingSource();
             bindingComp.DataSource = compDAO.GetComponentes();
             cbb.DataSource = bindingComp;
@@ -50,7 +50,7 @@ namespace MRP_SdC
         // funcoes dos botoes
         private void OK_btn_Click(object sender, EventArgs e)
         {
-            Access.ProdutoDAO prodDAO = new Access.ProdutoDAO();
+            MySQL.ProdutoDAO prodDAO = new MySQL.ProdutoDAO();
             myProd.estado = estado_clb.GetItemChecked(0);
             prodDAO.UpdateEstado(myProd);
             Close();
