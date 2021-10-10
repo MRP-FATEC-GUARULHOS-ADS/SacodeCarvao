@@ -23,7 +23,7 @@ namespace MRP_SdC
         // funcoes personalizadas
         private void AtualizaLista()
         {
-            Access.FornecedorDAO objFornDAO = new Access.FornecedorDAO();
+            MySQL.FornecedorDAO objFornDAO = new MySQL.FornecedorDAO();
             List<Fornecedor> listaFornecedores = objFornDAO.GetFornecedores();
 
             var lista = new BindingList<Fornecedor>(listaFornecedores);
@@ -76,7 +76,7 @@ namespace MRP_SdC
         {
             if (pesquisa_tbx.Text != "")
             {
-                Access.FornecedorDAO fornecedorDAO = new Access.FornecedorDAO();
+                MySQL.FornecedorDAO fornecedorDAO = new MySQL.FornecedorDAO();
                 List<Fornecedor> listaFornecedores = fornecedorDAO.PesquisaFornecedor(pesquisa_tbx.Text);
                 var bindingFornecedores = new BindingList<Fornecedor>(listaFornecedores);
                 forn_lista_dgv.DataSource = bindingFornecedores;
@@ -128,7 +128,7 @@ namespace MRP_SdC
             );
             if (confirmarExclusao == DialogResult.Yes)
             {
-                Access.FornecedorDAO fornecedorDAO = new Access.FornecedorDAO();
+                MySQL.FornecedorDAO fornecedorDAO = new MySQL.FornecedorDAO();
                 fornecedorDAO.Delete(myForn.id);
                 AtualizaLista();
             }

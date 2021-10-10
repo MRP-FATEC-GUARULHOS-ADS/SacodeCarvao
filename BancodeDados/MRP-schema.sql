@@ -57,7 +57,7 @@ CREATE TABLE FORNECEDOR (
 CREATE TABLE FORNECEDOR_COMPONENTE (
   idFornecedor int not null,
   idComponente int not null,
-  leadTime date,
+  leadTime int,
   custo decimal(10,2),
   primary key (idFornecedor, idComponente)
 );
@@ -94,18 +94,24 @@ ALTER TABLE MOVIMENTACAO_COMPONENTE
 ADD CONSTRAINT FK_MOVCOMP_COMPONENTE
 FOREIGN KEY (idComponente) REFERENCES COMPONENTE(idComponente);
 
-CREATE TABLE MPS (
-  idProducao int primary key AUTO_INCREMENT,
-  quantidadeemMaos int,
-  quantidadeDisponivel int,
-  quantidadeDemanda int,
-  quantidadeProduzir int,
-  idProduto int not null
+CREATE TABLE MRP (
+  idNecesLiq int primary key AUTO_INCREMENT,
+  idProduto int not null,
+  qntdPedido int not null,
+  qntdEstoque int not null,
+  qntdNecesLiq int not null
 );
 
-ALTER TABLE MPS 
-ADD CONSTRAINT FK_MPS_PRODUTO
+ALTER TABLE MRP
+ADD CONSTRAINT FK_MRP_PRODUTO
 FOREIGN KEY (idProduto) REFERENCES Produto(idProduto);
+
+CREATE TABLE USUARIO (
+  idUsuario int primary key AUTO_INCREMENT,
+  nomeUsuario varchar(100) not null,
+  senhaUsuario varchar(30) not null,
+  acessoUsuario varchar(30) not null
+);
 
 -- INSERTS
 INSERT INTO PRODUTO (
@@ -137,6 +143,18 @@ INSERT INTO PRODUTO_COMPONENTE VALUES
   (2,  2, 1) ,(2,  6, 1) ,(2,  9, 1),
   (3,  2, 1) ,(3,  9, 2) ,(3, 10, 1),
   (4,  2, 1) ,(4,  7, 1) ,(4,  9, 1);
+
+INSERT INTO FORNECEDOR (
+  nome, logradouro, numero, complemento, cep, telefone, celular, email, urlSite
+) VALUES 
+  ('MaxFix','Rua Lúcia Mormito Biason', '204', null, '09370835', '11 4544-1600', null, 'vendas@maxfix.ind.br', 'https://maxfix.ind.br'),
+  ('Baú da Eletrônica','AV. DOUTOR RAMOS DE AZEVEDO', '159', 'SALA 908', '07012020', '11 2442-6600', null, 'vendas@baudaeletronica.com.br', 'https://www.baudaeletronica.com.br');
+
+INSERT INTO USUARIO (
+  nomeUsuario, senhaUsuario, acessoUsuario
+) VALUES
+  ('gatinhodoestoque18', '123456', 'Estoque'),
+  ('admin', 'admin', 'Administracao');
 
 USE SacodeCarvao;
 DROP USER IF EXISTS 'SacodeCarvao'@'localhost';

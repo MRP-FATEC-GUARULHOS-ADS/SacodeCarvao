@@ -327,6 +327,7 @@ namespace MRP_SdC
             this.Controls.Add(this.corpo_pnl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ExplosaoProduto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Árvore do produto";
             this.corpo_pnl.ResumeLayout(false);
             this.corpo_pnl.PerformLayout();

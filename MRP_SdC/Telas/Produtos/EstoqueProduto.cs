@@ -23,7 +23,7 @@ namespace MRP_SdC
         // funcoes personalizadas
         private void AtualizaLista()
         {
-            Access.ProdutoDAO objProdDAO = new Access.ProdutoDAO();
+            MySQL.ProdutoDAO objProdDAO = new MySQL.ProdutoDAO();
             List<Produto> listaProdutos = (pesquisa_descnt_cbx.Checked ? objProdDAO.GetProdutos() : objProdDAO.GetProdutosAtivos());
 
             var bindingProdutos = new BindingList<Produto>(listaProdutos);
@@ -76,7 +76,7 @@ namespace MRP_SdC
         {
             if (pesquisa_tbx.Text != "")
             {
-                Access.ProdutoDAO produtoDAO = new Access.ProdutoDAO();
+                MySQL.ProdutoDAO produtoDAO = new MySQL.ProdutoDAO();
                 List<Produto> listaProdutos = produtoDAO.PesquisaProdutos(pesquisa_tbx.Text);
                 var bindingProdutos = new BindingList<Produto>(listaProdutos);
                 prod_lista_dgv.DataSource = bindingProdutos;
@@ -132,7 +132,7 @@ namespace MRP_SdC
 
         private void Descnt_btn_Click(object sender, EventArgs e)
         {
-            Access.ProdutoDAO prodDAO = new Access.ProdutoDAO();
+            MySQL.ProdutoDAO prodDAO = new MySQL.ProdutoDAO();
             myProd.estado = false;
             prodDAO.UpdateEstado(myProd);
             AtualizaLista();
@@ -140,7 +140,7 @@ namespace MRP_SdC
 
         private void Estoque_btn_Click(object sender, EventArgs e)
         {
-            Access.ProdutoDAO prodDAO = new Access.ProdutoDAO();
+            MySQL.ProdutoDAO prodDAO = new MySQL.ProdutoDAO();
 
             myProd.qtdeAtual = Int32.Parse(estoque_atual_tbx.Text);
             myProd.qtdeMin = Int32.Parse(estoque_min_tbx.Text);

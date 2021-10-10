@@ -20,13 +20,15 @@ namespace MRP_SdC.MySQL
                 MySqlDataReader reader;
                 string query = "INSERT INTO FORNECEDOR_COMPONENTE ( " +
                     "idFornecedor,  idComponente, leadTime, custo " +
-                    ") VALUES( @idforn, @idcomp, @lead, @custo ); ";
+                    ") VALUES ( @idforn, @idcomp, @lead, @custo ); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return false;
                 }
-
+                Console.Write(query);
+                Console.Write(fornComp.fornecedor.id);
+                Console.Write(fornComp.componente.id);
                 cmd.Parameters.AddWithValue("@idforn", fornComp.fornecedor.id);
                 cmd.Parameters.AddWithValue("@idcomp", fornComp.componente.id);
                 cmd.Parameters.AddWithValue("@lead", fornComp.leadTime);
@@ -159,7 +161,7 @@ namespace MRP_SdC.MySQL
                         fornecedor = forn,
                         componente = compDAO.Get(Convert.ToInt32(reader["idComponente"])),
                         leadTime = Convert.ToInt32(reader["leadTime"]),
-                        custo = Convert.ToDouble(reader["custoComponente"])
+                        custo = Convert.ToDouble(reader["custo"])
                     };
 
                     listaFornComps.Add(objFornComp);

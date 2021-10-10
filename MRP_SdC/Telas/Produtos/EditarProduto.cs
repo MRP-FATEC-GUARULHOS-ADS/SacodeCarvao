@@ -62,7 +62,7 @@ namespace MRP_SdC
             );
             if (confirmarEdit == DialogResult.Yes)
             {
-                Access.ProdutoDAO objProdDAO = new Access.ProdutoDAO();
+                MySQL.ProdutoDAO objProdDAO = new MySQL.ProdutoDAO();
                 objProdDAO.Update(myProd);
             }
 
