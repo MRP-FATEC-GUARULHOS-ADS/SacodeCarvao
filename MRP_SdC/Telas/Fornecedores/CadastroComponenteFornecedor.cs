@@ -47,6 +47,13 @@ namespace MRP_SdC
         }
 
         // funcoes dos botoes
+        private void NovoComp_btn_Click(object sender, System.EventArgs e)
+        {
+            CadastroComponente formCadComp = new CadastroComponente();
+            formCadComp.ShowDialog();
+            ListaComponentes();
+        }
+
         private void OK_btn_Click(object sender, System.EventArgs e)
         {
             FornecedorComponente myFornComp = new FornecedorComponente(

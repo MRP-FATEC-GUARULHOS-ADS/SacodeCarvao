@@ -46,11 +46,14 @@ namespace MRP_SdC
             this.ttl_lbl = new System.Windows.Forms.Label();
             this.esp_dir_pnl = new System.Windows.Forms.Panel();
             this.esp_esq_pnl = new System.Windows.Forms.Panel();
+            this.novo_comp_pnl = new System.Windows.Forms.Panel();
+            this.novo_comp_btn = new System.Windows.Forms.Button();
             this.corpo_pnl.SuspendLayout();
             this.barraInf_pnl.SuspendLayout();
             this.custo_pnl.SuspendLayout();
             this.lead_pnl.SuspendLayout();
             this.comp_pnl.SuspendLayout();
+            this.novo_comp_pnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // corpo_pnl
@@ -60,6 +63,7 @@ namespace MRP_SdC
             this.corpo_pnl.Controls.Add(this.barraInf_pnl);
             this.corpo_pnl.Controls.Add(this.custo_pnl);
             this.corpo_pnl.Controls.Add(this.lead_pnl);
+            this.corpo_pnl.Controls.Add(this.novo_comp_pnl);
             this.corpo_pnl.Controls.Add(this.comp_pnl);
             this.corpo_pnl.Controls.Add(this.ttl_lbl);
             this.corpo_pnl.Controls.Add(this.esp_dir_pnl);
@@ -67,7 +71,7 @@ namespace MRP_SdC
             this.corpo_pnl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.corpo_pnl.Location = new System.Drawing.Point(0, 0);
             this.corpo_pnl.Name = "corpo_pnl";
-            this.corpo_pnl.Size = new System.Drawing.Size(416, 281);
+            this.corpo_pnl.Size = new System.Drawing.Size(368, 313);
             this.corpo_pnl.TabIndex = 0;
             // 
             // barraInf_pnl
@@ -75,9 +79,9 @@ namespace MRP_SdC
             this.barraInf_pnl.Controls.Add(this.cancelar_btn);
             this.barraInf_pnl.Controls.Add(this.ok_btn);
             this.barraInf_pnl.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barraInf_pnl.Location = new System.Drawing.Point(32, 233);
+            this.barraInf_pnl.Location = new System.Drawing.Point(32, 265);
             this.barraInf_pnl.Name = "barraInf_pnl";
-            this.barraInf_pnl.Size = new System.Drawing.Size(352, 48);
+            this.barraInf_pnl.Size = new System.Drawing.Size(304, 48);
             this.barraInf_pnl.TabIndex = 6;
             // 
             // cancelar_btn
@@ -95,7 +99,7 @@ namespace MRP_SdC
             // 
             this.ok_btn.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.ok_btn.Enabled = false;
-            this.ok_btn.Location = new System.Drawing.Point(237, 10);
+            this.ok_btn.Location = new System.Drawing.Point(189, 10);
             this.ok_btn.Name = "ok_btn";
             this.ok_btn.Size = new System.Drawing.Size(112, 23);
             this.ok_btn.TabIndex = 0;
@@ -108,9 +112,9 @@ namespace MRP_SdC
             this.custo_pnl.Controls.Add(this.custo_tbx);
             this.custo_pnl.Controls.Add(this.custo_lbl);
             this.custo_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.custo_pnl.Location = new System.Drawing.Point(32, 148);
+            this.custo_pnl.Location = new System.Drawing.Point(32, 188);
             this.custo_pnl.Name = "custo_pnl";
-            this.custo_pnl.Size = new System.Drawing.Size(352, 48);
+            this.custo_pnl.Size = new System.Drawing.Size(304, 48);
             this.custo_pnl.TabIndex = 3;
             // 
             // custo_tbx
@@ -118,7 +122,7 @@ namespace MRP_SdC
             this.custo_tbx.Dock = System.Windows.Forms.DockStyle.Top;
             this.custo_tbx.Location = new System.Drawing.Point(0, 17);
             this.custo_tbx.Name = "custo_tbx";
-            this.custo_tbx.Size = new System.Drawing.Size(352, 20);
+            this.custo_tbx.Size = new System.Drawing.Size(304, 20);
             this.custo_tbx.TabIndex = 1;
             this.custo_tbx.TextChanged += new System.EventHandler(this.Required_TextChanged);
             // 
@@ -138,9 +142,9 @@ namespace MRP_SdC
             this.lead_pnl.Controls.Add(this.lead_tbx);
             this.lead_pnl.Controls.Add(this.lead_lbl);
             this.lead_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lead_pnl.Location = new System.Drawing.Point(32, 100);
+            this.lead_pnl.Location = new System.Drawing.Point(32, 140);
             this.lead_pnl.Name = "lead_pnl";
-            this.lead_pnl.Size = new System.Drawing.Size(352, 48);
+            this.lead_pnl.Size = new System.Drawing.Size(304, 48);
             this.lead_pnl.TabIndex = 2;
             // 
             // lead_tbx
@@ -148,7 +152,7 @@ namespace MRP_SdC
             this.lead_tbx.Dock = System.Windows.Forms.DockStyle.Top;
             this.lead_tbx.Location = new System.Drawing.Point(0, 17);
             this.lead_tbx.Name = "lead_tbx";
-            this.lead_tbx.Size = new System.Drawing.Size(352, 20);
+            this.lead_tbx.Size = new System.Drawing.Size(304, 20);
             this.lead_tbx.TabIndex = 2;
             this.lead_tbx.TextChanged += new System.EventHandler(this.Required_TextChanged);
             // 
@@ -170,7 +174,7 @@ namespace MRP_SdC
             this.comp_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.comp_pnl.Location = new System.Drawing.Point(32, 52);
             this.comp_pnl.Name = "comp_pnl";
-            this.comp_pnl.Size = new System.Drawing.Size(352, 48);
+            this.comp_pnl.Size = new System.Drawing.Size(304, 48);
             this.comp_pnl.TabIndex = 1;
             // 
             // comp_cbb
@@ -190,7 +194,7 @@ namespace MRP_SdC
             "Parafuso"});
             this.comp_cbb.Location = new System.Drawing.Point(0, 17);
             this.comp_cbb.Name = "comp_cbb";
-            this.comp_cbb.Size = new System.Drawing.Size(352, 21);
+            this.comp_cbb.Size = new System.Drawing.Size(304, 21);
             this.comp_cbb.TabIndex = 1;
             this.comp_cbb.SelectedIndexChanged += new System.EventHandler(this.Required_TextChanged);
             // 
@@ -212,17 +216,17 @@ namespace MRP_SdC
             this.ttl_lbl.Location = new System.Drawing.Point(32, 0);
             this.ttl_lbl.Name = "ttl_lbl";
             this.ttl_lbl.Padding = new System.Windows.Forms.Padding(0, 16, 0, 12);
-            this.ttl_lbl.Size = new System.Drawing.Size(352, 52);
+            this.ttl_lbl.Size = new System.Drawing.Size(304, 52);
             this.ttl_lbl.TabIndex = 0;
-            this.ttl_lbl.Text = "Cadastrar componente do fornecedor";
+            this.ttl_lbl.Text = "Componente do fornecedor";
             this.ttl_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // esp_dir_pnl
             // 
             this.esp_dir_pnl.Dock = System.Windows.Forms.DockStyle.Right;
-            this.esp_dir_pnl.Location = new System.Drawing.Point(384, 0);
+            this.esp_dir_pnl.Location = new System.Drawing.Point(336, 0);
             this.esp_dir_pnl.Name = "esp_dir_pnl";
-            this.esp_dir_pnl.Size = new System.Drawing.Size(32, 281);
+            this.esp_dir_pnl.Size = new System.Drawing.Size(32, 313);
             this.esp_dir_pnl.TabIndex = 8;
             // 
             // esp_esq_pnl
@@ -230,19 +234,39 @@ namespace MRP_SdC
             this.esp_esq_pnl.Dock = System.Windows.Forms.DockStyle.Left;
             this.esp_esq_pnl.Location = new System.Drawing.Point(0, 0);
             this.esp_esq_pnl.Name = "esp_esq_pnl";
-            this.esp_esq_pnl.Size = new System.Drawing.Size(32, 281);
+            this.esp_esq_pnl.Size = new System.Drawing.Size(32, 313);
             this.esp_esq_pnl.TabIndex = 7;
+            // 
+            // novo_comp_pnl
+            // 
+            this.novo_comp_pnl.Controls.Add(this.novo_comp_btn);
+            this.novo_comp_pnl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.novo_comp_pnl.Location = new System.Drawing.Point(32, 100);
+            this.novo_comp_pnl.Name = "novo_comp_pnl";
+            this.novo_comp_pnl.Size = new System.Drawing.Size(304, 40);
+            this.novo_comp_pnl.TabIndex = 9;
+            // 
+            // novo_comp_btn
+            // 
+            this.novo_comp_btn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.novo_comp_btn.Location = new System.Drawing.Point(31, 8);
+            this.novo_comp_btn.Name = "novo_comp_btn";
+            this.novo_comp_btn.Size = new System.Drawing.Size(240, 23);
+            this.novo_comp_btn.TabIndex = 2;
+            this.novo_comp_btn.Text = "Cadastrar novo componente";
+            this.novo_comp_btn.UseVisualStyleBackColor = true;
+            this.novo_comp_btn.Click += new System.EventHandler(this.NovoComp_btn_Click);
             // 
             // CadastroComponenteFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 281);
+            this.ClientSize = new System.Drawing.Size(368, 313);
             this.Controls.Add(this.corpo_pnl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CadastroComponenteFornecedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Cadastro de componente";
+            this.Text = "Cadastro de componente do fornecedor";
             this.corpo_pnl.ResumeLayout(false);
             this.barraInf_pnl.ResumeLayout(false);
             this.custo_pnl.ResumeLayout(false);
@@ -251,6 +275,7 @@ namespace MRP_SdC
             this.lead_pnl.PerformLayout();
             this.comp_pnl.ResumeLayout(false);
             this.comp_pnl.PerformLayout();
+            this.novo_comp_pnl.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,5 +299,7 @@ namespace MRP_SdC
         private System.Windows.Forms.Panel lead_pnl;
         private System.Windows.Forms.Label lead_lbl;
         private System.Windows.Forms.TextBox lead_tbx;
+        private System.Windows.Forms.Panel novo_comp_pnl;
+        private System.Windows.Forms.Button novo_comp_btn;
     }
 }

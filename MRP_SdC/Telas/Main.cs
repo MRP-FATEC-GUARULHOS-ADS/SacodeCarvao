@@ -101,6 +101,11 @@ namespace MRP_SdC
         }
 
         //funcoes do menu
+        private void Salir_TSMI_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void DemMPS_TSMI_Click(object sender, EventArgs e)
         {
             CadastroMPS formMPS = new CadastroMPS();
