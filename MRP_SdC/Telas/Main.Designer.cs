@@ -39,6 +39,7 @@ namespace MRP_SdC
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.demandaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mPSToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mRPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.componentesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -149,7 +150,8 @@ namespace MRP_SdC
             // demandaToolStripMenuItem
             // 
             this.demandaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mPSToolStripMenuItem1});
+            this.mPSToolStripMenuItem1,
+            this.mRPToolStripMenuItem});
             this.demandaToolStripMenuItem.Name = "demandaToolStripMenuItem";
             this.demandaToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
             this.demandaToolStripMenuItem.Text = "Demanda";
@@ -157,8 +159,15 @@ namespace MRP_SdC
             // mPSToolStripMenuItem1
             // 
             this.mPSToolStripMenuItem1.Name = "mPSToolStripMenuItem1";
-            this.mPSToolStripMenuItem1.Size = new System.Drawing.Size(98, 22);
+            this.mPSToolStripMenuItem1.Size = new System.Drawing.Size(99, 22);
             this.mPSToolStripMenuItem1.Text = "MPS";
+            // 
+            // mRPToolStripMenuItem
+            // 
+            this.mRPToolStripMenuItem.Name = "mRPToolStripMenuItem";
+            this.mRPToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.mRPToolStripMenuItem.Text = "MRP";
+            this.mRPToolStripMenuItem.Click += new System.EventHandler(this.mRPToolStripMenuItem_Click);
             // 
             // estoqueToolStripMenuItem
             // 
@@ -852,8 +861,7 @@ namespace MRP_SdC
         private System.Windows.Forms.ToolStripMenuItem fornecedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fornecedoresToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem mPSToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem arquivoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mRPToolStripMenuItem;
     }
 }
 
