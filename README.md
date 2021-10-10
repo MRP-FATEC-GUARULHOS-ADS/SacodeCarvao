@@ -1,7 +1,5 @@
 # Saco de Carvão
-- Unificação de cadastro (peças acabadas e suprimentos/matéria-prima)
-- Unificação do Controle de Estoque
-- Entrada dos valores de previsão de demanda
+O objetivo principal de qualquer MRP é assegurar a disponibilidade de material para a produção, mantendo sempre um estoque mínimo de material, componentes e insumos de produção.
 
 ## Instruções
 
