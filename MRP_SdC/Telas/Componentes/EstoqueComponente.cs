@@ -23,7 +23,7 @@ namespace MRP_SdC
         // funcoes personalizadas
         private void AtualizaLista()
         {
-            Access.ComponenteDAO objCompDAO = new Access.ComponenteDAO();
+            MySQL.ComponenteDAO objCompDAO = new MySQL.ComponenteDAO();
             List<Componente> listaComponentes =
                 (pesquisa_descnt_cbx.Checked ? objCompDAO.GetComponentes() : objCompDAO.GetComponentesAtivos()); ;
 
@@ -78,7 +78,7 @@ namespace MRP_SdC
         {
             if (pesquisa_tbx.Text != "")
             {
-                Access.ComponenteDAO componenteDAO = new Access.ComponenteDAO();
+                MySQL.ComponenteDAO componenteDAO = new MySQL.ComponenteDAO();
                 List<Componente> listaComponentes = componenteDAO.PesquisaComponentes(pesquisa_tbx.Text);
                 var bindingComponentes = new BindingList<Componente>(listaComponentes);
                 comp_lista_dgv.DataSource = bindingComponentes;
@@ -135,7 +135,7 @@ namespace MRP_SdC
         private void Descnt_btn_Click(object sender, EventArgs e)
         {
 
-            Access.ComponenteDAO compDAO = new Access.ComponenteDAO();
+            MySQL.ComponenteDAO compDAO = new MySQL.ComponenteDAO();
             myComp.estado = false;
             compDAO.UpdateEstado(myComp);
             AtualizaLista();
@@ -143,7 +143,7 @@ namespace MRP_SdC
 
         private void Estoque_btn_Click(object sender, EventArgs e)
         {
-            Access.ComponenteDAO compDAO = new Access.ComponenteDAO();
+            MySQL.ComponenteDAO compDAO = new MySQL.ComponenteDAO();
 
             myComp.qtdeAtual = Int32.Parse(dados_atual_tbx.Text);
             myComp.qtdeMin = Int32.Parse(dados_min_tbx.Text);

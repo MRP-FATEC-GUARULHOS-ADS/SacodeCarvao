@@ -27,7 +27,7 @@ namespace MRP_SdC
         // funcoes
         public void ListaComponentes()
         {
-            Access.ComponenteDAO compDAO = new Access.ComponenteDAO();
+            MySQL.ComponenteDAO compDAO = new MySQL.ComponenteDAO();
             BindingSource bindingComp = new BindingSource();
             bindingComp.DataSource = compDAO.GetComponentes();
             comp_cbb.DataSource = bindingComp;
@@ -47,6 +47,13 @@ namespace MRP_SdC
         }
 
         // funcoes dos botoes
+        private void NovoComp_btn_Click(object sender, System.EventArgs e)
+        {
+            CadastroComponente formCadComp = new CadastroComponente();
+            formCadComp.ShowDialog();
+            ListaComponentes();
+        }
+
         private void OK_btn_Click(object sender, System.EventArgs e)
         {
             FornecedorComponente myFornComp = new FornecedorComponente(
@@ -60,7 +67,7 @@ namespace MRP_SdC
             );
             if (confirmarInsert == DialogResult.Yes)
             {
-                Access.FornecedorComponenteDAO objFornCompDAO = new Access.FornecedorComponenteDAO();
+                MySQL.FornecedorComponenteDAO objFornCompDAO = new MySQL.FornecedorComponenteDAO();
                 objFornCompDAO.Insert(myFornComp);
             }
 
