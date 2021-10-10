@@ -95,16 +95,23 @@ ADD CONSTRAINT FK_MOVCOMP_COMPONENTE
 FOREIGN KEY (idComponente) REFERENCES COMPONENTE(idComponente);
 
 CREATE TABLE MRP (
-	idNecesLiq int primary key AUTO_INCREMENT,
-    idProduto int not null,
-    qntdPedido int not null,
-    qntdEstoque int not null,
-    qntdNecesLiq int not null
+  idNecesLiq int primary key AUTO_INCREMENT,
+  idProduto int not null,
+  qntdPedido int not null,
+  qntdEstoque int not null,
+  qntdNecesLiq int not null
 );
-    
+
 ALTER TABLE MRP
 ADD CONSTRAINT FK_MRP_PRODUTO
 FOREIGN KEY (idProduto) REFERENCES Produto(idProduto);
+
+CREATE TABLE USUARIO (
+  idUsuario int primary key AUTO_INCREMENT,
+  nomeUsuario varchar(100) not null,
+  senhaUsuario varchar(30) not null,
+  acessoUsuario varchar(30) not null
+);
 
 -- INSERTS
 INSERT INTO PRODUTO (
@@ -142,6 +149,12 @@ INSERT INTO FORNECEDOR (
 ) VALUES 
   ('MaxFix','Rua Lúcia Mormito Biason', '204', null, '09370835', '11 4544-1600', null, 'vendas@maxfix.ind.br', 'https://maxfix.ind.br'),
   ('Baú da Eletrônica','AV. DOUTOR RAMOS DE AZEVEDO', '159', 'SALA 908', '07012020', '11 2442-6600', null, 'vendas@baudaeletronica.com.br', 'https://www.baudaeletronica.com.br');
+
+INSERT INTO USUARIO (
+  nomeUsuario, senhaUsuario, acessoUsuario
+) VALUES
+  ('gatinhodoestoque18', '123456', 'Estoque'),
+  ('admin', 'admin', 'Administracao');
 
 USE SacodeCarvao;
 DROP USER IF EXISTS 'SacodeCarvao'@'localhost';

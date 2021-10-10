@@ -12,18 +12,41 @@ namespace MRP_SdC
 {
     public partial class Main_frm : Form
     {
+        Usuario myUser = null;
+
         public Main_frm()
         {
+            // chama a tela de login
+            //myUser = Logar();
+            
             InitializeComponent();
+            
         }
 
         // funcoes personalizadas
+        private Usuario Logar()
+        {
+            Login formLogin = new Login();
+            formLogin.ShowDialog();
+
+            return formLogin.myUser;
+        }
+        private void AutenticarUsuario()
+        {
+            // se não logou, fecha o programa
+            if (myUser == null)
+                Application.Exit();
+            // muda o nome exibido do usuário
+            else
+                user_name_txb.Text = myUser.Nome;
+        }
+
         private void AtualizaListas()
         {
-            MySQL.ConexaoMPS mps = new MySQL.ConexaoMPS();
-            List<MPS> listaMPS = mps.GetMPS();
-            var bindingMPS = new BindingList<MPS>(listaMPS);
-            dem_lista_dgv.DataSource = bindingMPS;
+            MySQL.ConexaoMRP mrpDAO = new MySQL.ConexaoMRP();
+            List<MRP> listaMRP = mrpDAO.GetMRP();
+            var bindingMRP = new BindingList<MRP>(listaMRP);
+            dem_lista_dgv.DataSource = bindingMRP;
 
             ListarProdutosAtivos();
         }
@@ -39,6 +62,8 @@ namespace MRP_SdC
         // funcoes do formulario
         private void FormMain_Load(object sender, EventArgs e)
         {
+            //AutenticarUsuario();
+
             AtualizaListas();
         }
 
@@ -152,6 +177,12 @@ namespace MRP_SdC
         {
             CadastroMRP formCadMRP = new CadastroMRP();
             formCadMRP.ShowDialog();
+        }
+
+        private void UsuarioSair_TSMI_Click(object sender, EventArgs e)
+        {
+            myUser = Logar();
+            AutenticarUsuario();
         }
     }
 }

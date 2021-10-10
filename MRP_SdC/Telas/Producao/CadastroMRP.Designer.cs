@@ -273,7 +273,7 @@ namespace MRP_SdC
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CadastroMRP";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "MPS";
+            this.Text = "Cadastrar Produção";
             this.id_pnl.ResumeLayout(false);
             this.id_pnl.PerformLayout();
             this.maos_pnl.ResumeLayout(false);

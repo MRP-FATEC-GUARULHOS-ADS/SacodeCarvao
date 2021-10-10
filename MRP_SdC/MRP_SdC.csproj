@@ -53,6 +53,7 @@
     <Compile Include="Conexao\MySQL\ConexaoMRP.cs" />
     <Compile Include="Conexao\MySQL\FornecedorComponenteDAO.cs" />
     <Compile Include="Conexao\MySQL\FornecedorDAO.cs" />
+    <Compile Include="Conexao\MySQL\UsuarioDAO.cs" />
     <Compile Include="Conexao\MySQL\ProdutoDAO.cs" />
     <Compile Include="Conexao\MySQL\ConexaoMPS.cs" />
     <Compile Include="Modelos\FornecedorComponente.cs" />
@@ -61,6 +62,13 @@
     <Compile Include="Modelos\Fornecedor.cs" />
     <Compile Include="Modelos\MRP.cs" />
     <Compile Include="Modelos\Produto.cs" />
+    <Compile Include="Modelos\Usuario.cs" />
+    <Compile Include="Telas\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Componentes\EditarComponente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +161,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Telas\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\Componentes\EditarComponente.resx">
       <DependentUpon>EditarComponente.cs</DependentUpon>
     </EmbeddedResource>
