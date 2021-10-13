@@ -1,13 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using System.Data;
-using System.Drawing;
-using System.Windows.Forms;
-using System.ComponentModel;
 
 namespace MRP_SdC.MySQL
 {
@@ -79,10 +72,13 @@ namespace MRP_SdC.MySQL
                 while (reader.Read())
                 {
                     mrp = new MRP();
-                    mrp.idProduto = Convert.ToInt32(reader["idProduto"]);
-                    mrp.qntdPedido = Convert.ToInt32(reader["qntdPedido"]);
-                    mrp.qntdEstoque = Convert.ToInt32(reader["qntdEstoque"]);
-                    mrp.qntdNecesLiq = Convert.ToInt32(reader["qntdNecesLiq"]);
+                    {
+                        mrp.idNecesLiq = Convert.ToInt32(reader["idNecesLiq"]);
+                        mrp.idProduto = Convert.ToInt32(reader["idProduto"]);
+                        mrp.qntdPedido = Convert.ToInt32(reader["qntdPedido"]);
+                        mrp.qntdEstoque = Convert.ToInt32(reader["qntdEstoque"]);
+                        mrp.qntdNecesLiq = Convert.ToInt32(reader["qntdNecesLiq"]);
+                    }
 
                     listaMRP.Add(mrp);
                 }

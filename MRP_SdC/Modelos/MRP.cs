@@ -1,4 +1,6 @@
-﻿namespace MRP_SdC
+﻿using System.Collections.Generic;
+
+namespace MRP_SdC
 {
     public class MRP
     {
@@ -19,7 +21,6 @@
             int qntdNecesLiq
         )
         {
-            this.idNecesLiq = idNecesLiq;
             this.idProduto = idProduto;
             this.qntdPedido = qntdPedido;
             this.qntdEstoque = qntdEstoque;
