@@ -82,6 +82,59 @@ namespace MRP_SdC.MySQL
             return true;
         }
 
+        public List<MRP> PesquisaMRP(string pesquisa)
+        {
+            List<MRP> listaMRP= new List<MRP>();
+            MRP mrp;
+
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT * FROM MRP " +
+                    "WHERE (idProduto LIKE @pesquisa " +
+                        "OR qntdPedido LIKE @pesquisa " +
+                        "OR qntdEstoque LIKE @pesquisa )";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Parameters.AddWithValue("@pesquisa", pesquisa);
+                cmd.Prepare();
+                Console.WriteLine(query);
+
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    mrp = new MRP
+                    {
+                        idNecesLiq = Convert.ToInt32(reader["idNecesLiq"]),
+                        idProduto = Convert.ToInt32(reader["idProduto"]),
+                        qntdPedido = Convert.ToInt32(reader["qntdPedido"]),
+                        qntdEstoque = Convert.ToInt32(reader["qntdEstoque"]),
+                        qntdNecesLiq = Convert.ToInt32(reader["qntdNecesLiq"])
+                    };
+
+                    listaMRP.Add(mrp);
+                }
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+            }
+            conexao.CloseConexao();
+            return listaMRP;
+        }
+
         public List<MRP> GetMRP()
         {
             List<MRP> listaMRP = new List<MRP>();

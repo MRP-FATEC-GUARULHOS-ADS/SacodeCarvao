@@ -345,7 +345,7 @@ namespace MRP_SdC.MySQL
                         qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]),
                         qtdeAtual = ( (reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0 ),
                         estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false)
-                };
+                    };
 
                     listaProdutos.Add(objProduto);
                 }

@@ -42,8 +42,9 @@ namespace MRP_SdC.Telas.Producao
             this.pesquisa_sep_pnl = new System.Windows.Forms.Panel();
             this.pesquisa_descnt_cbx = new System.Windows.Forms.CheckBox();
             this.dados_pnl = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAtualizaMRP = new System.Windows.Forms.Button();
             this.dados_estoque_pnl = new System.Windows.Forms.Panel();
             this.estoque_atual_pnl = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -61,7 +62,6 @@ namespace MRP_SdC.Telas.Producao
             this.dados_subttl_lbl = new System.Windows.Forms.Label();
             this.dados_ttl_lbl = new System.Windows.Forms.Label();
             this.mrp_dgv = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
             this.dados_pnl.SuspendLayout();
@@ -142,6 +142,7 @@ namespace MRP_SdC.Telas.Producao
             this.pesquisa_btn.TabIndex = 1;
             this.pesquisa_btn.Text = "👁";
             this.pesquisa_btn.UseVisualStyleBackColor = true;
+            this.pesquisa_btn.Click += new System.EventHandler(this.pesquisa_btn_Click);
             // 
             // pesquisa_sep_pnl
             // 
@@ -179,24 +180,33 @@ namespace MRP_SdC.Telas.Producao
             this.dados_pnl.Size = new System.Drawing.Size(240, 512);
             this.dados_pnl.TabIndex = 10;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(15, 465);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(171, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Exclusão";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btnAtualizaMRP);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(12, 399);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(216, 48);
             this.panel1.TabIndex = 6;
             // 
-            // button2
+            // btnAtualizaMRP
             // 
-            this.button2.Location = new System.Drawing.Point(10, 13);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(171, 23);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Atualizar Estoque";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnAtualizaMRP.Location = new System.Drawing.Point(10, 13);
+            this.btnAtualizaMRP.Name = "btnAtualizaMRP";
+            this.btnAtualizaMRP.Size = new System.Drawing.Size(171, 23);
+            this.btnAtualizaMRP.TabIndex = 0;
+            this.btnAtualizaMRP.Text = "Atualizar MRP";
+            this.btnAtualizaMRP.UseVisualStyleBackColor = true;
             // 
             // dados_estoque_pnl
             // 
@@ -387,16 +397,7 @@ namespace MRP_SdC.Telas.Producao
             this.mrp_dgv.StandardTab = true;
             this.mrp_dgv.TabIndex = 11;
             this.mrp_dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mrp_dgv_CellClick);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(15, 465);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(171, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Exclusão";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.mrp_dgv.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.mrp_dgv_RowEnter);
             // 
             // ConsultaMRP
             // 
@@ -460,7 +461,7 @@ namespace MRP_SdC.Telas.Producao
         private System.Windows.Forms.Label dados_ttl_lbl;
         private System.Windows.Forms.DataGridView mrp_dgv;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAtualizaMRP;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtQntdNecesLiq;
         private System.Windows.Forms.Label label1;

@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace MRP_SdC.Telas.Producao
 {
     public partial class ConsultaMRP : Form
     {
-        MRP mrp = new MRP();
-
         public ConsultaMRP()
         {
             InitializeComponent();
@@ -27,15 +26,17 @@ namespace MRP_SdC.Telas.Producao
             AtualizaListas();
 
             MudaInfos();
-            button2.Enabled = true;
+            btnAtualizaMRP.Enabled = false;
         }
 
         private void MudaInfos()
         {
+            MRP mrp = new MRP();
             mrp = mrp_dgv.CurrentRow.DataBoundItem as MRP;
 
             // textos do produto selecionado
             dados_ttl_lbl.Text = String.Format("{0:D6}", mrp.idNecesLiq);
+            mrp.idNecesLiq = int.Parse(dados_ttl_lbl.Text);
             dados_subttl_lbl.Text = String.Format(mrp.idProduto.ToString());
             txtProdId.Text = mrp.idProduto.ToString();
             txtQntdPedido.Text = mrp.qntdPedido.ToString();
@@ -52,15 +53,27 @@ namespace MRP_SdC.Telas.Producao
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        // funcoes de pesquisa
+        private void PesquisarProdutos()
+        {
+            if (pesquisa_tbx.Text != "")
+            {
+                MySQL.ConexaoMRP conexaomrp = new MySQL.ConexaoMRP();
+                List<MRP> listaMRP = conexaomrp.PesquisaMRP(pesquisa_tbx.Text);
+                var bindingProdutos = new BindingList<MRP>(listaMRP);
+                mrp_dgv.DataSource = bindingProdutos;
+            }
+            else
+            {
+                AtualizaListas();
+            }
+        }
+
+        public void btnAtualizarMRP_Click(object sender, EventArgs e)
         {
             MySQL.ConexaoMRP conexaomrp = new MySQL.ConexaoMRP();
-
-            mrp.idProduto = Int32.Parse(txtProdId.Text);
-            mrp.qntdPedido= Int32.Parse(txtQntdPedido.Text);
-            mrp.qntdEstoque = Int32.Parse(txtQntdEstoque.Text);
-            mrp.qntdNecesLiq = Int32.Parse(txtQntdNecesLiq.Text);
-
+            MRP mrp = new MRP(int.Parse(txtProdId.Text), int.Parse(txtQntdPedido.Text), int.Parse(txtQntdEstoque.Text), int.Parse(txtQntdNecesLiq.Text));
+            mrp.idNecesLiq = int.Parse(pesquisa_tbx.Text);
             conexaomrp.Update(mrp);
 
             AtualizaListas();
@@ -71,8 +84,20 @@ namespace MRP_SdC.Telas.Producao
             MySQL.ConexaoMRP conexaomrp = new MySQL.ConexaoMRP();
             conexaomrp.Delete(int.Parse(pesquisa_tbx.Text));
             AtualizaListas();
+        }
 
-            button2.Enabled = false;
+        //funcoes da lista
+        private void mrp_dgv_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                btnAtualizaMRP.Enabled = true;
+            }
+        }
+
+        private void pesquisa_btn_Click(object sender, EventArgs e)
+        {
+            PesquisarProdutos();
         }
     }
 }
