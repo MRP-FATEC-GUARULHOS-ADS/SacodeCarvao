@@ -235,9 +235,10 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "UPDATE MRP " +
-                    "SET idProduto = @idProd, qntdPedido = @qntdPed, qntdEstoque = @qntdEstoq, " +
-                    "qntdNecesLiq = @qntdNecLiq" +
-                    "WHERE idNecesLiq = @idNecLiq; ";
+                    "SET idProduto = @idProd, qntdPedido = @qntdPed, qntdEstoque= @qntdEstoq, " +
+                    "qntdNecesLiq = @qntdNecLiq " +
+                    "WHERE idNecesLiq = @idNecesLiq; ";
+
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -248,7 +249,7 @@ namespace MRP_SdC.MySQL
                 cmd.Parameters.AddWithValue("@qntdPed", mrp.qntdPedido);
                 cmd.Parameters.AddWithValue("@qntdEstoq", mrp.qntdEstoque);
                 cmd.Parameters.AddWithValue("@qntdNecLiq", mrp.qntdNecesLiq);
-                cmd.Parameters.AddWithValue("@idNecLiq", mrp.idNecesLiq);
+                cmd.Parameters.AddWithValue("@idNecesLiq", mrp.idNecesLiq);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();

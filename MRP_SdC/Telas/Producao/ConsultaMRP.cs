@@ -35,7 +35,7 @@ namespace MRP_SdC.Telas.Producao
             mrp = mrp_dgv.CurrentRow.DataBoundItem as MRP;
 
             // textos do produto selecionado
-            dados_ttl_lbl.Text = String.Format("{0:D6}", mrp.idNecesLiq);
+            dados_ttl_lbl.Text = mrp.idNecesLiq.ToString();
             mrp.idNecesLiq = int.Parse(dados_ttl_lbl.Text);
             dados_subttl_lbl.Text = String.Format(mrp.idProduto.ToString());
             txtProdId.Text = mrp.idProduto.ToString();
@@ -73,7 +73,6 @@ namespace MRP_SdC.Telas.Producao
         {
             MySQL.ConexaoMRP conexaomrp = new MySQL.ConexaoMRP();
             MRP mrp = new MRP(int.Parse(txtProdId.Text), int.Parse(txtQntdPedido.Text), int.Parse(txtQntdEstoque.Text), int.Parse(txtQntdNecesLiq.Text));
-            mrp.idNecesLiq = int.Parse(pesquisa_tbx.Text);
             conexaomrp.Update(mrp);
 
             AtualizaListas();
@@ -98,6 +97,26 @@ namespace MRP_SdC.Telas.Producao
         private void pesquisa_btn_Click(object sender, EventArgs e)
         {
             PesquisarProdutos();
+        }
+
+        private void btnAtualizaMRP_Click(object sender, EventArgs e)
+        {
+            MRP mrp = new MRP(int.Parse(txtProdId.Text), int.Parse(txtQntdPedido.Text),
+            int.Parse(txtQntdEstoque.Text), int.Parse(txtQntdNecesLiq.Text));
+
+            mrp.idNecesLiq = int.Parse(dados_ttl_lbl.Text);
+            DialogResult confirmarUpdate = MessageBox.Show(
+                "( ﾉ ﾟｰﾟ)ﾉ " + mrp.idProduto + " ?!", "Confirmar Update",
+                MessageBoxButtons.YesNo
+            );
+            if (confirmarUpdate == DialogResult.Yes)
+            {
+                MySQL.ConexaoMRP mrpcon = new MySQL.ConexaoMRP();
+
+                mrpcon.Update(mrp);
+
+                AtualizaListas();
+            }
         }
     }
 }
