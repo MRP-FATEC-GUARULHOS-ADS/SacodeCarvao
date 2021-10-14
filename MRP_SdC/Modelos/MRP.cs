@@ -11,21 +11,29 @@ namespace MRP_SdC
         public int qntdEstoque { get; set; }
         public int qntdNecesLiq { get; set; }
 
+        //Construtores
         public MRP()
         {
 
         }
+
         //Construtores
         public MRP(
             int idProduto, int qntdPedido, int qntdEstoque,
             int qntdNecesLiq
         )
+
         {
             this.idProduto = idProduto;
             this.qntdPedido = qntdPedido;
             this.qntdEstoque = qntdEstoque;
             this.qntdNecesLiq = qntdNecesLiq;
 
+        }
+
+        public override string ToString()
+        {
+            return this.idProduto.ToString();
         }
     }
 }

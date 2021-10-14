@@ -46,6 +46,42 @@ namespace MRP_SdC.MySQL
             return true;
         }
 
+        public Boolean Delete(int idNecesLiq)
+        {
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return false;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "DELETE FROM MRP " +
+                    "WHERE idNecesLiq = @idNecesLiq; ";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return false;
+                }
+
+                cmd.Parameters.AddWithValue("@idNecesLiq", idNecesLiq);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            conexao.CloseConexao();
+            return true;
+        }
+
         public List<MRP> GetMRP()
         {
             List<MRP> listaMRP = new List<MRP>();
@@ -92,7 +128,7 @@ namespace MRP_SdC.MySQL
         }
 
 
-        public MRP Get(int id)
+        public MRP Get(int idNecesLiq)
         {
             MRP mrp = new MRP();
             Conexao conexao = new Conexao();
@@ -105,14 +141,14 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "Select * FROM MRP WHERE idNecesLiq = @idNecesLiq;";
+                string query = "Select * FROM MRP WHERE idNecesLiq = @idNecLiq;";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return null;
                 }
 
-                cmd.Parameters.AddWithValue("@idNecesLiq", id);
+                cmd.Parameters.AddWithValue("@idNecLiq", idNecesLiq);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -131,6 +167,48 @@ namespace MRP_SdC.MySQL
             }
             conexao.CloseConexao();
             return mrp;
+        }
+
+        public Boolean Update(MRP mrp)
+        {
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return false;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "UPDATE MRP " +
+                    "SET idProduto = @idProd, qntdPedido = @qntdPed, qntdEstoque = @qntdEstoq, " +
+                    "qntdNecesLiq = @qntdNecLiq" +
+                    "WHERE idNecesLiq = @idNecLiq; ";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return false;
+                }
+
+                cmd.Parameters.AddWithValue("@idProd", mrp.idProduto);
+                cmd.Parameters.AddWithValue("@qntdPed", mrp.qntdPedido);
+                cmd.Parameters.AddWithValue("@qntdEstoq", mrp.qntdEstoque);
+                cmd.Parameters.AddWithValue("@qntdNecLiq", mrp.qntdNecesLiq);
+                cmd.Parameters.AddWithValue("@idNecLiq", mrp.idNecesLiq);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            conexao.CloseConexao();
+            return true;
         }
     }
 }
