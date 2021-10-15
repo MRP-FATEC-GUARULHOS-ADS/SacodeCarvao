@@ -24,6 +24,7 @@ O objetivo principal de qualquer MRP é assegurar a disponibilidade de material 
 #### Visual Studio
 
 1. Baixe e instale o [Visual Studio Enterprise 2019](https://azureforeducation.microsoft.com/devtools) usando o seu email institucional.
+  - A versão do .NET que você precisa ter é [4.7.2](https://dotnet.microsoft.com/download/dotnet-framework/net472) ou superior.
 
 2. Abra o Visual Studio, escolha a opção clonar um repositório.
 
