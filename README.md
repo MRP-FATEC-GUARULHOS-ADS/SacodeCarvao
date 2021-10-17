@@ -10,6 +10,8 @@ nem existe isso...
 - Analista: Mario
 - Testador: Guilherme
 
+![cadastrando produtos normais](/img/dobom.jpeg)
+
 ## Fazer
 
 ### Documentação
