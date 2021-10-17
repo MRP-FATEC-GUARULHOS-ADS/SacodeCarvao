@@ -173,16 +173,22 @@ namespace MRP_SdC
             formCadFornecedor.ShowDialog();
         }
 
-        private void mRPToolStripMenuItem_Click(object sender, EventArgs e)
+        private void UsuarioSair_TSMI_Click(object sender, EventArgs e)
+        {
+            myUser = Logar();
+            AutenticarUsuario();
+        }
+
+        private void cadastrarToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             CadastroMRP formCadMRP = new CadastroMRP();
             formCadMRP.ShowDialog();
         }
 
-        private void UsuarioSair_TSMI_Click(object sender, EventArgs e)
+        private void consultarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            myUser = Logar();
-            AutenticarUsuario();
+            Telas.Producao.ConsultaMRP formConsMRP = new Telas.Producao.ConsultaMRP();
+            formConsMRP.ShowDialog();
         }
     }
 }

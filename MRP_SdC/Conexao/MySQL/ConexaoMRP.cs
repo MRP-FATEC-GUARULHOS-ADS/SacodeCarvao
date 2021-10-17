@@ -1,13 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using System.Data;
-using System.Drawing;
-using System.Windows.Forms;
-using System.ComponentModel;
 
 namespace MRP_SdC.MySQL
 {
@@ -53,6 +46,95 @@ namespace MRP_SdC.MySQL
             return true;
         }
 
+        public Boolean Delete(int idNecesLiq)
+        {
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return false;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "DELETE FROM MRP " +
+                    "WHERE idNecesLiq = @idNecesLiq; ";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return false;
+                }
+
+                cmd.Parameters.AddWithValue("@idNecesLiq", idNecesLiq);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            conexao.CloseConexao();
+            return true;
+        }
+
+        public List<MRP> PesquisaMRP(string pesquisa)
+        {
+            List<MRP> listaMRP= new List<MRP>();
+            MRP mrp;
+
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT * FROM MRP " +
+                    "WHERE (idProduto LIKE @pesquisa " +
+                        "OR qntdPedido LIKE @pesquisa " +
+                        "OR qntdEstoque LIKE @pesquisa )";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Parameters.AddWithValue("@pesquisa", pesquisa);
+                cmd.Prepare();
+                Console.WriteLine(query);
+
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    mrp = new MRP
+                    {
+                        idNecesLiq = Convert.ToInt32(reader["idNecesLiq"]),
+                        idProduto = Convert.ToInt32(reader["idProduto"]),
+                        qntdPedido = Convert.ToInt32(reader["qntdPedido"]),
+                        qntdEstoque = Convert.ToInt32(reader["qntdEstoque"]),
+                        qntdNecesLiq = Convert.ToInt32(reader["qntdNecesLiq"])
+                    };
+
+                    listaMRP.Add(mrp);
+                }
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+            }
+            conexao.CloseConexao();
+            return listaMRP;
+        }
+
         public List<MRP> GetMRP()
         {
             List<MRP> listaMRP = new List<MRP>();
@@ -79,10 +161,13 @@ namespace MRP_SdC.MySQL
                 while (reader.Read())
                 {
                     mrp = new MRP();
-                    mrp.idProduto = Convert.ToInt32(reader["idProduto"]);
-                    mrp.qntdPedido = Convert.ToInt32(reader["qntdPedido"]);
-                    mrp.qntdEstoque = Convert.ToInt32(reader["qntdEstoque"]);
-                    mrp.qntdNecesLiq = Convert.ToInt32(reader["qntdNecesLiq"]);
+                    {
+                        mrp.idNecesLiq = Convert.ToInt32(reader["idNecesLiq"]);
+                        mrp.idProduto = Convert.ToInt32(reader["idProduto"]);
+                        mrp.qntdPedido = Convert.ToInt32(reader["qntdPedido"]);
+                        mrp.qntdEstoque = Convert.ToInt32(reader["qntdEstoque"]);
+                        mrp.qntdNecesLiq = Convert.ToInt32(reader["qntdNecesLiq"]);
+                    }
 
                     listaMRP.Add(mrp);
                 }
@@ -96,7 +181,7 @@ namespace MRP_SdC.MySQL
         }
 
 
-        public MRP Get(int id)
+        public MRP Get(int idNecesLiq)
         {
             MRP mrp = new MRP();
             Conexao conexao = new Conexao();
@@ -109,14 +194,14 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "Select * FROM MRP WHERE idNecesLiq = @idNecesLiq;";
+                string query = "Select * FROM MRP WHERE idNecesLiq = @idNecLiq;";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return null;
                 }
 
-                cmd.Parameters.AddWithValue("@idNecesLiq", id);
+                cmd.Parameters.AddWithValue("@idNecLiq", idNecesLiq);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -135,6 +220,49 @@ namespace MRP_SdC.MySQL
             }
             conexao.CloseConexao();
             return mrp;
+        }
+
+        public Boolean Update(MRP mrp)
+        {
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return false;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "UPDATE MRP " +
+                    "SET idProduto = @idProd, qntdPedido = @qntdPed, qntdEstoque= @qntdEstoq, " +
+                    "qntdNecesLiq = @qntdNecLiq " +
+                    "WHERE idNecesLiq = @idNecesLiq; ";
+
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return false;
+                }
+
+                cmd.Parameters.AddWithValue("@idProd", mrp.idProduto);
+                cmd.Parameters.AddWithValue("@qntdPed", mrp.qntdPedido);
+                cmd.Parameters.AddWithValue("@qntdEstoq", mrp.qntdEstoque);
+                cmd.Parameters.AddWithValue("@qntdNecLiq", mrp.qntdNecesLiq);
+                cmd.Parameters.AddWithValue("@idNecesLiq", mrp.idNecesLiq);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            conexao.CloseConexao();
+            return true;
         }
     }
 }

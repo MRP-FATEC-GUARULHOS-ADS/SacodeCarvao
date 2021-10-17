@@ -29,17 +29,21 @@ namespace MRP_SdC
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_frm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.demandaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mPSToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadastrarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mRPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadastrarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.estoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.componentesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +53,7 @@ namespace MRP_SdC
             this.componenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fornecedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sairToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mPSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menu_dir_pnl = new System.Windows.Forms.Panel();
@@ -93,7 +98,6 @@ namespace MRP_SdC
             this.user_ttl_txb = new System.Windows.Forms.Label();
             this.user_img_pnl = new System.Windows.Forms.Panel();
             this.logo_pnl = new System.Windows.Forms.Panel();
-            this.sairToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.menu_dir_pnl.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -144,7 +148,7 @@ namespace MRP_SdC
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
             this.sairToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.sairToolStripMenuItem.Text = "Fechar";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.Salir_TSMI_Click);
             // 
@@ -159,16 +163,47 @@ namespace MRP_SdC
             // 
             // mPSToolStripMenuItem1
             // 
+            this.mPSToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cadastrarToolStripMenuItem1,
+            this.consultarToolStripMenuItem});
             this.mPSToolStripMenuItem1.Name = "mPSToolStripMenuItem1";
             this.mPSToolStripMenuItem1.Size = new System.Drawing.Size(99, 22);
             this.mPSToolStripMenuItem1.Text = "MPS";
             // 
+            // cadastrarToolStripMenuItem1
+            // 
+            this.cadastrarToolStripMenuItem1.Name = "cadastrarToolStripMenuItem1";
+            this.cadastrarToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            this.cadastrarToolStripMenuItem1.Text = "Cadastrar";
+            // 
+            // consultarToolStripMenuItem
+            // 
+            this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.consultarToolStripMenuItem.Text = "Consultar";
+            // 
             // mRPToolStripMenuItem
             // 
+            this.mRPToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cadastrarToolStripMenuItem2,
+            this.consultarToolStripMenuItem1});
             this.mRPToolStripMenuItem.Name = "mRPToolStripMenuItem";
-            this.mRPToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.mRPToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mRPToolStripMenuItem.Text = "MRP";
-            this.mRPToolStripMenuItem.Click += new System.EventHandler(this.mRPToolStripMenuItem_Click);
+            // 
+            // cadastrarToolStripMenuItem2
+            // 
+            this.cadastrarToolStripMenuItem2.Name = "cadastrarToolStripMenuItem2";
+            this.cadastrarToolStripMenuItem2.Size = new System.Drawing.Size(125, 22);
+            this.cadastrarToolStripMenuItem2.Text = "Cadastrar";
+            this.cadastrarToolStripMenuItem2.Click += new System.EventHandler(this.cadastrarToolStripMenuItem2_Click);
+            // 
+            // consultarToolStripMenuItem1
+            // 
+            this.consultarToolStripMenuItem1.Name = "consultarToolStripMenuItem1";
+            this.consultarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.consultarToolStripMenuItem1.Text = "Consultar";
+            this.consultarToolStripMenuItem1.Click += new System.EventHandler(this.consultarToolStripMenuItem1_Click);
             // 
             // estoqueToolStripMenuItem
             // 
@@ -239,6 +274,13 @@ namespace MRP_SdC
             this.usuárioToolStripMenuItem.Name = "usuárioToolStripMenuItem";
             this.usuárioToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.usuárioToolStripMenuItem.Text = "Usuário";
+            // 
+            // sairToolStripMenuItem1
+            // 
+            this.sairToolStripMenuItem1.Name = "sairToolStripMenuItem1";
+            this.sairToolStripMenuItem1.Size = new System.Drawing.Size(93, 22);
+            this.sairToolStripMenuItem1.Text = "Sair";
+            this.sairToolStripMenuItem1.Click += new System.EventHandler(this.UsuarioSair_TSMI_Click);
             // 
             // mPSToolStripMenuItem
             // 
@@ -374,37 +416,37 @@ namespace MRP_SdC
             // 
             this.demanda_ago_cht.BackColor = System.Drawing.SystemColors.Control;
             this.demanda_ago_cht.BorderlineColor = System.Drawing.SystemColors.ControlDarkDark;
-            chartArea4.BackColor = System.Drawing.SystemColors.Control;
-            chartArea4.Name = "ChartArea1";
-            this.demanda_ago_cht.ChartAreas.Add(chartArea4);
+            chartArea2.BackColor = System.Drawing.SystemColors.Control;
+            chartArea2.Name = "ChartArea1";
+            this.demanda_ago_cht.ChartAreas.Add(chartArea2);
             this.demanda_ago_cht.Dock = System.Windows.Forms.DockStyle.Top;
-            legend4.BackColor = System.Drawing.SystemColors.Control;
-            legend4.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend4.Name = "Legend1";
-            this.demanda_ago_cht.Legends.Add(legend4);
+            legend2.BackColor = System.Drawing.SystemColors.Control;
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend2.Name = "Legend1";
+            this.demanda_ago_cht.Legends.Add(legend2);
             this.demanda_ago_cht.Location = new System.Drawing.Point(12, 16);
             this.demanda_ago_cht.Name = "demanda_ago_cht";
-            series4.BackImageTransparentColor = System.Drawing.SystemColors.Control;
-            series4.BackSecondaryColor = System.Drawing.SystemColors.Control;
-            series4.BorderColor = System.Drawing.SystemColors.Control;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series4.Color = System.Drawing.SystemColors.Control;
-            series4.LabelBackColor = System.Drawing.SystemColors.Control;
-            series4.LabelBorderColor = System.Drawing.SystemColors.Control;
-            series4.Legend = "Legend1";
-            series4.MarkerBorderColor = System.Drawing.SystemColors.Control;
-            series4.MarkerColor = System.Drawing.SystemColors.Control;
-            series4.Name = "Series1";
-            series4.YValuesPerPoint = 2;
-            this.demanda_ago_cht.Series.Add(series4);
+            series2.BackImageTransparentColor = System.Drawing.SystemColors.Control;
+            series2.BackSecondaryColor = System.Drawing.SystemColors.Control;
+            series2.BorderColor = System.Drawing.SystemColors.Control;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.Color = System.Drawing.SystemColors.Control;
+            series2.LabelBackColor = System.Drawing.SystemColors.Control;
+            series2.LabelBorderColor = System.Drawing.SystemColors.Control;
+            series2.Legend = "Legend1";
+            series2.MarkerBorderColor = System.Drawing.SystemColors.Control;
+            series2.MarkerColor = System.Drawing.SystemColors.Control;
+            series2.Name = "Series1";
+            series2.YValuesPerPoint = 2;
+            this.demanda_ago_cht.Series.Add(series2);
             this.demanda_ago_cht.Size = new System.Drawing.Size(266, 300);
             this.demanda_ago_cht.TabIndex = 0;
             this.demanda_ago_cht.Text = "chart1";
-            title4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            title4.Name = "Title1";
-            title4.Text = "Demanda de agosto, 2021";
-            this.demanda_ago_cht.Titles.Add(title4);
+            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            title2.Name = "Title1";
+            title2.Text = "Demanda de agosto, 2021";
+            this.demanda_ago_cht.Titles.Add(title2);
             // 
             // demanda_gpb
             // 
@@ -756,13 +798,6 @@ namespace MRP_SdC
             this.logo_pnl.Size = new System.Drawing.Size(56, 56);
             this.logo_pnl.TabIndex = 0;
             // 
-            // sairToolStripMenuItem1
-            // 
-            this.sairToolStripMenuItem1.Name = "sairToolStripMenuItem1";
-            this.sairToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.sairToolStripMenuItem1.Text = "Sair";
-            this.sairToolStripMenuItem1.Click += new System.EventHandler(this.UsuarioSair_TSMI_Click);
-            // 
             // Main_frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -875,6 +910,10 @@ namespace MRP_SdC
         private System.Windows.Forms.ToolStripMenuItem arquivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem cadastrarToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cadastrarToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem1;
     }
 }
 
