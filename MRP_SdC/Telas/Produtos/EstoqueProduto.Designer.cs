@@ -504,7 +504,6 @@ namespace MRP_SdC
         private System.Windows.Forms.Button arvore_btn;
         private System.Windows.Forms.Label ttl_lbl;
         private System.Windows.Forms.Panel EspDir_pnl;
-        private System.Windows.Forms.Panel EspEsq_pnl;
         private System.Windows.Forms.DataGridView prod_lista_dgv;
         private System.Windows.Forms.Button descnt_btn;
         private System.Windows.Forms.Panel pesquisa_sep_pnl;
@@ -512,5 +511,6 @@ namespace MRP_SdC
         private System.Windows.Forms.Panel atualizar_pnl;
         private System.Windows.Forms.Button atualizar_btn;
         private System.Windows.Forms.Button editar_btn;
+        private System.Windows.Forms.Panel EspEsq_pnl;
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace MRP_SdC
+﻿using System.Collections.Generic;
+
+namespace MRP_SdC
 {
     public class MRP
     {
@@ -9,22 +11,29 @@
         public int qntdEstoque { get; set; }
         public int qntdNecesLiq { get; set; }
 
+        //Construtores
         public MRP()
         {
 
         }
+
         //Construtores
         public MRP(
             int idProduto, int qntdPedido, int qntdEstoque,
             int qntdNecesLiq
         )
+
         {
-            this.idNecesLiq = idNecesLiq;
             this.idProduto = idProduto;
             this.qntdPedido = qntdPedido;
             this.qntdEstoque = qntdEstoque;
             this.qntdNecesLiq = qntdNecesLiq;
 
+        }
+
+        public override string ToString()
+        {
+            return this.idProduto.ToString();
         }
     }
 }
