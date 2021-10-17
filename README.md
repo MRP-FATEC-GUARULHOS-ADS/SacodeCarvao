@@ -13,11 +13,15 @@ O objetivo principal de qualquer MRP é assegurar a disponibilidade de material 
 
 #### mySql
 
-1. Baixe o [MySQL Workbench](https://dev.mysql.com/downloads/workbench/), instale o programa e [configure um servidor](https://www.alura.com.br/artigos/mysql-do-download-e-instalacao-ate-sua-primeira-tabela).
+1. Baixe e instale o [servidor MySQL](https://dev.mysql.com/downloads/mysql)
 
-2. Baixe e instale o [conector MySQL/.NET](https://dev.mysql.com/downloads/connector/net/).
+2. Baixe e instale o [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)
 
-3. Abra uma conexão no Workbench e cole o conteúdo do [.sql com o schema do projeto](./Documentação/BancodeDados/MRP-schema.sql) dentro da janela de queries da sua conexão, então execute a query com o botão mostrado na imagem abaixo.
+3. [configure o servidor](https://www.alura.com.br/artigos/mysql-do-download-e-instalacao-ate-sua-primeira-tabela).
+
+4. Abra uma conexão no Workbench e cole o conteúdo do [.sql com o schema do projeto](./BancodeDados/MRP-schema.sql) dentro da janela de queries da sua conexão, então execute a query com o botão mostrado na imagem abaixo.
+
+5. Baixe e instale o [conector MySQL/.NET](https://dev.mysql.com/downloads/connector/net/).
 
 ![executando queries mysql](/img/mysql.png)
 
@@ -42,7 +46,7 @@ https://github.com/MRP-FATEC-GUARULHOS-ADS/SacodeCarvao.git
 
 ![erro carregando referências](/img/vs-git6.png)
 
-5. Caso isso aconteça, tente remover a referência e readiciona-la em `Projeto > Adicionar Referência...`, se o problema for no Conector MySql tente instalar a [versão 8.0.21](https://downloads.mysql.com/archives/c-net/), ou então *dá teu jeito cara, sei lá*.
+5. Caso isso aconteça, tente remover a referência e readiciona-la em `Projeto > Adicionar Referência...`, se o problema for no Conector MySql tente instalar a [versão 8.0.25](https://downloads.mysql.com/archives/c-net/), ou então *dá teu jeito cara, sei lá*.
 
 ![adicionando referências](/img/vs-gitrefs.png)
 
