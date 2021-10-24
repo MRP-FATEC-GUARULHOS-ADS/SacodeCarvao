@@ -50,6 +50,7 @@ namespace MRP_SdC
             this.demanda_lbl = new System.Windows.Forms.Label();
             this.id_pnl.SuspendLayout();
             this.maos_pnl.SuspendLayout();
+            this.barraInf_pnl.SuspendLayout();
             this.produzir_pnl.SuspendLayout();
             this.demanda_pnl.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +61,7 @@ namespace MRP_SdC
             this.esp_dir_pnl.Location = new System.Drawing.Point(260, 0);
             this.esp_dir_pnl.Name = "esp_dir_pnl";
             this.esp_dir_pnl.Size = new System.Drawing.Size(32, 309);
-            this.esp_dir_pnl.TabIndex = 9;
+            this.esp_dir_pnl.TabIndex = 11;
             // 
             // esp_esq_pnl
             // 
@@ -142,6 +143,8 @@ namespace MRP_SdC
             // 
             // barraInf_pnl
             // 
+            this.barraInf_pnl.Controls.Add(this.cancelar_btn);
+            this.barraInf_pnl.Controls.Add(this.cadastrar);
             this.barraInf_pnl.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barraInf_pnl.Location = new System.Drawing.Point(32, 261);
             this.barraInf_pnl.Name = "barraInf_pnl";
@@ -152,10 +155,10 @@ namespace MRP_SdC
             // 
             this.cadastrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cadastrar.BackColor = System.Drawing.Color.Lime;
-            this.cadastrar.Location = new System.Drawing.Point(49, 274);
+            this.cadastrar.Location = new System.Drawing.Point(25, 8);
             this.cadastrar.Name = "cadastrar";
             this.cadastrar.Size = new System.Drawing.Size(81, 32);
-            this.cadastrar.TabIndex = 18;
+            this.cadastrar.TabIndex = 0;
             this.cadastrar.Text = "Cadastrar";
             this.cadastrar.UseVisualStyleBackColor = false;
             this.cadastrar.Click += new System.EventHandler(this.button1_Click);
@@ -163,10 +166,10 @@ namespace MRP_SdC
             // cancelar_btn
             // 
             this.cancelar_btn.BackColor = System.Drawing.Color.Red;
-            this.cancelar_btn.Location = new System.Drawing.Point(136, 274);
+            this.cancelar_btn.Location = new System.Drawing.Point(112, 8);
             this.cancelar_btn.Name = "cancelar_btn";
             this.cancelar_btn.Size = new System.Drawing.Size(90, 32);
-            this.cancelar_btn.TabIndex = 2;
+            this.cancelar_btn.TabIndex = 1;
             this.cancelar_btn.Text = "Cancelar";
             this.cancelar_btn.UseVisualStyleBackColor = false;
             this.cancelar_btn.Click += new System.EventHandler(this.Cancelar_Click);
@@ -234,16 +237,14 @@ namespace MRP_SdC
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 309);
-            this.Controls.Add(this.cancelar_btn);
-            this.Controls.Add(this.cadastrar);
             this.Controls.Add(this.barraInf_pnl);
             this.Controls.Add(this.demanda_pnl);
             this.Controls.Add(this.produzir_pnl);
             this.Controls.Add(this.maos_pnl);
             this.Controls.Add(this.id_pnl);
             this.Controls.Add(this.ttl_lbl);
-            this.Controls.Add(this.esp_esq_pnl);
             this.Controls.Add(this.esp_dir_pnl);
+            this.Controls.Add(this.esp_esq_pnl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CadastroMRP";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -252,6 +253,7 @@ namespace MRP_SdC
             this.id_pnl.PerformLayout();
             this.maos_pnl.ResumeLayout(false);
             this.maos_pnl.PerformLayout();
+            this.barraInf_pnl.ResumeLayout(false);
             this.produzir_pnl.ResumeLayout(false);
             this.produzir_pnl.PerformLayout();
             this.demanda_pnl.ResumeLayout(false);
