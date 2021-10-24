@@ -29,9 +29,9 @@ namespace MRP_SdC.Telas.Producao
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.EspEsq_pnl = new System.Windows.Forms.Panel();
             this.EspDir_pnl = new System.Windows.Forms.Panel();
             this.ttl_lbl = new System.Windows.Forms.Label();
@@ -257,9 +257,9 @@ namespace MRP_SdC.Telas.Producao
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.label1.Size = new System.Drawing.Size(85, 17);
+            this.label1.Size = new System.Drawing.Size(108, 17);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Estoque Máximo";
+            this.label1.Text = "Necessidade Líquida";
             // 
             // txtQntdEstoque
             // 
@@ -276,9 +276,9 @@ namespace MRP_SdC.Telas.Producao
             this.estoque_atual_lbl.Location = new System.Drawing.Point(0, 0);
             this.estoque_atual_lbl.Name = "estoque_atual_lbl";
             this.estoque_atual_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.estoque_atual_lbl.Size = new System.Drawing.Size(73, 17);
+            this.estoque_atual_lbl.Size = new System.Drawing.Size(104, 17);
             this.estoque_atual_lbl.TabIndex = 0;
-            this.estoque_atual_lbl.Text = "Estoque Atual";
+            this.estoque_atual_lbl.Text = "Quantidade Estoque";
             // 
             // estoque_max_pnl
             // 
@@ -305,9 +305,9 @@ namespace MRP_SdC.Telas.Producao
             this.estoque_max_lbl.Location = new System.Drawing.Point(0, 0);
             this.estoque_max_lbl.Name = "estoque_max_lbl";
             this.estoque_max_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.estoque_max_lbl.Size = new System.Drawing.Size(85, 17);
+            this.estoque_max_lbl.Size = new System.Drawing.Size(98, 17);
             this.estoque_max_lbl.TabIndex = 0;
-            this.estoque_max_lbl.Text = "Estoque Máximo";
+            this.estoque_max_lbl.Text = "Quantidade Pedido";
             // 
             // estoque_min_pnl
             // 
@@ -334,28 +334,28 @@ namespace MRP_SdC.Telas.Producao
             this.estoque_min_lbl.Location = new System.Drawing.Point(0, 0);
             this.estoque_min_lbl.Name = "estoque_min_lbl";
             this.estoque_min_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.estoque_min_lbl.Size = new System.Drawing.Size(84, 17);
+            this.estoque_min_lbl.Size = new System.Drawing.Size(56, 17);
             this.estoque_min_lbl.TabIndex = 0;
-            this.estoque_min_lbl.Text = "Estoque Mínimo";
+            this.estoque_min_lbl.Text = "Id Produto";
             // 
             // chart_cht
             // 
             this.chart_cht.BackColor = System.Drawing.SystemColors.Control;
-            chartArea2.BackColor = System.Drawing.SystemColors.Control;
-            chartArea2.Name = "ChartArea1";
-            this.chart_cht.ChartAreas.Add(chartArea2);
+            chartArea1.BackColor = System.Drawing.SystemColors.Control;
+            chartArea1.Name = "ChartArea1";
+            this.chart_cht.ChartAreas.Add(chartArea1);
             this.chart_cht.Dock = System.Windows.Forms.DockStyle.Top;
-            legend2.BackColor = System.Drawing.SystemColors.Control;
-            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend2.Name = "Legend1";
-            this.chart_cht.Legends.Add(legend2);
+            legend1.BackColor = System.Drawing.SystemColors.Control;
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend1.Name = "Legend1";
+            this.chart_cht.Legends.Add(legend1);
             this.chart_cht.Location = new System.Drawing.Point(12, 58);
             this.chart_cht.Name = "chart_cht";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart_cht.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart_cht.Series.Add(series1);
             this.chart_cht.Size = new System.Drawing.Size(216, 160);
             this.chart_cht.TabIndex = 2;
             this.chart_cht.Text = "chart1";
