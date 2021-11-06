@@ -26,8 +26,8 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO MPS ( " +
-                    "idProduto, quantidadeemMaos, quantidadeDisponivel, quantidadeDemanda, quantidadeProduzir" +
-                    ") VALUES(@idProduto, @quantidadeemMaos, @quantidadeDisponivel, @quantidadeDemanda, @quantidadeProduzir ); ";
+                    "idProduto, qntdemMaos, qntdDisponivel, qntdDemanda, qntdProduzir" +
+                    ") VALUES(@idProduto, @qntdadeemMaos, @qntdDisponivel, @qntdDemanda, @qntdProduzir ); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -35,10 +35,10 @@ namespace MRP_SdC.MySQL
                 }
 
                 cmd.Parameters.AddWithValue("@idProduto", mps.idProduto);
-                cmd.Parameters.AddWithValue("@quantidadeemMaos", mps.quantidadeemMaos);
-                cmd.Parameters.AddWithValue("@quantidadeDisponivel", mps.quantidadeDisponivel);
-                cmd.Parameters.AddWithValue("@quantidadeDemanda", mps.quantidadeDemanda);
-                cmd.Parameters.AddWithValue("@quantidadeProduzir", mps.quantidadeProduzir);
+                cmd.Parameters.AddWithValue("@qntdemMaos", mps.quantidadeemMaos);
+                cmd.Parameters.AddWithValue("@qntdDisponivel", mps.quantidadeDisponivel);
+                cmd.Parameters.AddWithValue("@qntdDemanda", mps.quantidadeDemanda);
+                cmd.Parameters.AddWithValue("@qntdProduzir", mps.quantidadeProduzir);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -81,10 +81,10 @@ namespace MRP_SdC.MySQL
                 {
                     mps = new MPS();
                     mps.idProduto = Convert.ToInt32(reader["idProduto"]);
-                    mps.quantidadeemMaos = Convert.ToInt32(reader["quantidadeemMaos"]);
-                    mps.quantidadeDisponivel = Convert.ToInt32(reader["quantidadeDisponivel"]);
-                    mps.quantidadeDemanda = Convert.ToInt32(reader["quantidadeDemanda"]);
-                    mps.quantidadeProduzir = Convert.ToInt32(reader["quantidadeProduzir"]);
+                    mps.quantidadeemMaos = Convert.ToInt32(reader["qntdemMaos"]);
+                    mps.quantidadeDisponivel = Convert.ToInt32(reader["qntdDisponivel"]);
+                    mps.quantidadeDemanda = Convert.ToInt32(reader["qntdDemanda"]);
+                    mps.quantidadeProduzir = Convert.ToInt32(reader["qntdProduzir"]);
 
                     listaMPS.Add(mps);
                 }
@@ -126,10 +126,10 @@ namespace MRP_SdC.MySQL
 
                 mps = new MPS();
                 mps.idProduto = Convert.ToInt32(reader["idProduto"]);
-                mps.quantidadeemMaos = Convert.ToInt32(reader["quantidadeemMaos"]);
-                mps.quantidadeDisponivel = Convert.ToInt32(reader["quantidadeDisponivel"]);
-                mps.quantidadeDemanda = Convert.ToInt32(reader["quantidadeDemanda"]);
-                mps.quantidadeProduzir = Convert.ToInt32(reader["quantidadeProduzir"]);
+                mps.quantidadeemMaos = Convert.ToInt32(reader["qntdemMaos"]);
+                mps.quantidadeDisponivel = Convert.ToInt32(reader["qntdDisponivel"]);
+                mps.quantidadeDemanda = Convert.ToInt32(reader["qntdDemanda"]);
+                mps.quantidadeProduzir = Convert.ToInt32(reader["qntdProduzir"]);
 
             }
             catch (MySqlException e)

@@ -16,7 +16,7 @@
         }
         //Construtores
         public MPS(
-            int idProducao, int idProduto, int quantidadeemMaos, int quantidadeDisponivel,
+            int idProduto, int quantidadeemMaos, int quantidadeDisponivel,
             int quantidadeDemanda, int quantidadeProduzir
         )
         {

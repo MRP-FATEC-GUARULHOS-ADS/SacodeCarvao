@@ -190,5 +190,11 @@ namespace MRP_SdC
             Telas.Producao.ConsultaMRP formConsMRP = new Telas.Producao.ConsultaMRP();
             formConsMRP.ShowDialog();
         }
+
+        private void cadastrarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Telas.Producao.CadastroMPS formCadMPS = new Telas.Producao.CadastroMPS();
+            formCadMPS.ShowDialog();
+        }
     }
 }
