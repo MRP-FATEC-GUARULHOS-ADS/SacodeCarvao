@@ -46,7 +46,6 @@ namespace MRP_SdC
             MySQL.ConexaoMRP mrpDAO = new MySQL.ConexaoMRP();
             List<MRP> listaMRP = mrpDAO.GetMRP();
             var bindingMRP = new BindingList<MRP>(listaMRP);
-            dem_lista_dgv.DataSource = bindingMRP;
 
             ListarProdutosAtivos();
         }
@@ -119,13 +118,6 @@ namespace MRP_SdC
             formFornecedor.ShowDialog();
         }
 
-        private void btnCadastrarProducao_Click(object sender, EventArgs e)
-        {
-            CadastroMRP cadastromrp = new CadastroMRP();
-            cadastromrp.ShowDialog();
-            AtualizaListas();
-        }
-
         //funcoes do menu
         private void Salir_TSMI_Click(object sender, EventArgs e)
         {
@@ -177,30 +169,6 @@ namespace MRP_SdC
         {
             myUser = Logar();
             AutenticarUsuario();
-        }
-
-        private void cadastrarToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            CadastroMRP formCadMRP = new CadastroMRP();
-            formCadMRP.ShowDialog();
-        }
-
-        private void consultarToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Telas.Producao.ConsultaMRP formConsMRP = new Telas.Producao.ConsultaMRP();
-            formConsMRP.ShowDialog();
-        }
-
-        private void cadastrarToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Telas.Producao.CadastroMPS formCadMPS = new Telas.Producao.CadastroMPS();
-            formCadMPS.ShowDialog();
-        }
-
-        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Telas.Producao.ConsultaMPS formCadMPS = new Telas.Producao.ConsultaMPS();
-            formCadMPS.ShowDialog();
         }
     }
 }

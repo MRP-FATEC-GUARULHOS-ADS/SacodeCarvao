@@ -21,14 +21,6 @@ namespace MRP_SdC.Telas.Producao
             mrp_dgv.DataSource = listaMRP;
         }
 
-        private void ConsultaMRP_Load(object sender, EventArgs e)
-        {
-            AtualizaListas();
-
-            MudaInfos();
-            btnAtualizaMRP.Enabled = false;
-        }
-
         private void MudaInfos()
         {
             MRP mrp = new MRP();
@@ -44,6 +36,13 @@ namespace MRP_SdC.Telas.Producao
             txtQntdNecesLiq.Text = mrp.qntdNecesLiq.ToString();
         }
 
+        private void ConsultaMRP_Load(object sender, EventArgs e)
+        {
+            AtualizaListas();
+
+            MudaInfos();
+            btnAtualizaMRP.Enabled = false;
+        }
 
         private void mrp_dgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -67,22 +66,6 @@ namespace MRP_SdC.Telas.Producao
             {
                 AtualizaListas();
             }
-        }
-
-        public void btnAtualizarMRP_Click(object sender, EventArgs e)
-        {
-            MySQL.ConexaoMRP conexaomrp = new MySQL.ConexaoMRP();
-            MRP mrp = new MRP(int.Parse(txtProdId.Text), int.Parse(txtQntdPedido.Text), int.Parse(txtQntdEstoque.Text), int.Parse(txtQntdNecesLiq.Text));
-            conexaomrp.Update(mrp);
-
-            AtualizaListas();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MySQL.ConexaoMRP conexaomrp = new MySQL.ConexaoMRP();
-            conexaomrp.Delete(int.Parse(pesquisa_tbx.Text));
-            AtualizaListas();
         }
 
         //funcoes da lista
@@ -115,6 +98,22 @@ namespace MRP_SdC.Telas.Producao
 
                 mrpcon.Update(mrp);
 
+                AtualizaListas();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MRP mrp = new MRP();
+
+            DialogResult confirmarUpdate = MessageBox.Show(
+                "( ﾉ ﾟｰﾟ)ﾉ " + mrp.idProduto + " ?!", "Confirmar Delete",
+                MessageBoxButtons.YesNo);
+
+            if (confirmarUpdate == DialogResult.Yes)
+            {
+                MySQL.ConexaoMRP conexaomrp = new MySQL.ConexaoMRP();
+                conexaomrp.Delete(int.Parse(dados_ttl_lbl.Text));
                 AtualizaListas();
             }
         }

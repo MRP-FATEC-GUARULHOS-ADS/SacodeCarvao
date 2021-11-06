@@ -194,7 +194,7 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "Select * FROM MRP WHERE idNecesLiq = @idNecLiq;";
+                string query = "SELECT * FROM MRP WHERE idNecesLiq = @idNecLiq;";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
