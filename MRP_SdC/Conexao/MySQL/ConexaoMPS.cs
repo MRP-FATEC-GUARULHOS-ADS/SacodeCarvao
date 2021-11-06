@@ -27,7 +27,7 @@ namespace MRP_SdC.MySQL
                 MySqlDataReader reader;
                 string query = "INSERT INTO MPS ( " +
                     "idProduto, qntdemMaos, qntdDisponivel, qntdDemanda, qntdProduzir" +
-                    ") VALUES(@idProduto, @qntdadeemMaos, @qntdDisponivel, @qntdDemanda, @qntdProduzir ); ";
+                    ") VALUES(@idProduto, @qntdemMaos, @qntdDisponivel, @qntdDemanda, @qntdProduzir ); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {

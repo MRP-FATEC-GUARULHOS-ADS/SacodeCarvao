@@ -196,5 +196,11 @@ namespace MRP_SdC
             Telas.Producao.CadastroMPS formCadMPS = new Telas.Producao.CadastroMPS();
             formCadMPS.ShowDialog();
         }
+
+        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Telas.Producao.ConsultaMPS formCadMPS = new Telas.Producao.ConsultaMPS();
+            formCadMPS.ShowDialog();
+        }
     }
 }
