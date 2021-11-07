@@ -1,4 +1,6 @@
-﻿namespace MRP_SdC
+﻿using System.Collections.Generic;
+
+namespace MRP_SdC
 {
     public class MPS
     {
@@ -10,22 +12,29 @@
         public int quantidadeDemanda { get; set; }
         public int quantidadeProduzir { get; set; }
 
+        //Construtores
         public MPS()
         {
 
         }
+
         //Construtores
         public MPS(
-            int idProducao, int idProduto, int quantidadeemMaos, int quantidadeDisponivel,
+            int idProduto, int quantidadeemMaos, int quantidadeDisponivel,
             int quantidadeDemanda, int quantidadeProduzir
         )
+
         {
-            this.idProducao = idProducao;
             this.idProduto = idProduto;
             this.quantidadeemMaos = quantidadeemMaos;
             this.quantidadeDisponivel = quantidadeDisponivel;
             this.quantidadeDemanda = quantidadeDemanda;
             this.quantidadeProduzir = quantidadeProduzir;
+        }
+
+        public override string ToString()
+        {
+            return this.idProduto.ToString();
         }
     }
 }

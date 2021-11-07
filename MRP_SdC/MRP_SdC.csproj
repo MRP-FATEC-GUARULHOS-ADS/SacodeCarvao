@@ -117,11 +117,23 @@
     <Compile Include="Telas\Fornecedores\Fornecedores.Designer.cs">
       <DependentUpon>Fornecedores.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Producao\CadastroMPS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Producao\CadastroMPS.Designer.cs">
+      <DependentUpon>CadastroMPS.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Producao\CadastroMRP.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Telas\Producao\CadastroMRP.Designer.cs">
       <DependentUpon>CadastroMRP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Producao\ConsultaMPS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Producao\ConsultaMPS.Designer.cs">
+      <DependentUpon>ConsultaMPS.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\Producao\ConsultaMRP.cs">
       <SubType>Form</SubType>
@@ -194,8 +206,14 @@
     <EmbeddedResource Include="Telas\Fornecedores\Fornecedores.resx">
       <DependentUpon>Fornecedores.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Producao\CadastroMPS.resx">
+      <DependentUpon>CadastroMPS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\Producao\CadastroMRP.resx">
       <DependentUpon>CadastroMRP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Producao\ConsultaMPS.resx">
+      <DependentUpon>ConsultaMPS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Producao\ConsultaMRP.resx">
       <DependentUpon>ConsultaMRP.cs</DependentUpon>
