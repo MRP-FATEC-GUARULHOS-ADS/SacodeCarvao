@@ -43,16 +43,13 @@ namespace MRP_SdC
             this.cadastrar = new System.Windows.Forms.Button();
             this.cancelar_btn = new System.Windows.Forms.Button();
             this.produzir_pnl = new System.Windows.Forms.Panel();
-            this.produzir_tbx = new System.Windows.Forms.TextBox();
+            this.qntdEstoque_tbx = new System.Windows.Forms.TextBox();
             this.produzir_lbl = new System.Windows.Forms.Label();
-            this.demanda_pnl = new System.Windows.Forms.Panel();
-            this.demanda_tbx = new System.Windows.Forms.TextBox();
-            this.demanda_lbl = new System.Windows.Forms.Label();
+            this.qntdNecesLiq_tbx = new System.Windows.Forms.Panel();
             this.id_pnl.SuspendLayout();
             this.maos_pnl.SuspendLayout();
             this.barraInf_pnl.SuspendLayout();
             this.produzir_pnl.SuspendLayout();
-            this.demanda_pnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // esp_dir_pnl
@@ -146,9 +143,9 @@ namespace MRP_SdC
             this.barraInf_pnl.Controls.Add(this.cancelar_btn);
             this.barraInf_pnl.Controls.Add(this.cadastrar);
             this.barraInf_pnl.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barraInf_pnl.Location = new System.Drawing.Point(32, 261);
+            this.barraInf_pnl.Location = new System.Drawing.Point(32, 248);
             this.barraInf_pnl.Name = "barraInf_pnl";
-            this.barraInf_pnl.Size = new System.Drawing.Size(228, 48);
+            this.barraInf_pnl.Size = new System.Drawing.Size(228, 61);
             this.barraInf_pnl.TabIndex = 6;
             // 
             // cadastrar
@@ -176,7 +173,7 @@ namespace MRP_SdC
             // 
             // produzir_pnl
             // 
-            this.produzir_pnl.Controls.Add(this.produzir_tbx);
+            this.produzir_pnl.Controls.Add(this.qntdEstoque_tbx);
             this.produzir_pnl.Controls.Add(this.produzir_lbl);
             this.produzir_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.produzir_pnl.Location = new System.Drawing.Point(32, 152);
@@ -184,13 +181,13 @@ namespace MRP_SdC
             this.produzir_pnl.Size = new System.Drawing.Size(228, 48);
             this.produzir_pnl.TabIndex = 3;
             // 
-            // produzir_tbx
+            // qntdEstoque_tbx
             // 
-            this.produzir_tbx.Dock = System.Windows.Forms.DockStyle.Top;
-            this.produzir_tbx.Location = new System.Drawing.Point(0, 17);
-            this.produzir_tbx.Name = "produzir_tbx";
-            this.produzir_tbx.Size = new System.Drawing.Size(228, 20);
-            this.produzir_tbx.TabIndex = 1;
+            this.qntdEstoque_tbx.Dock = System.Windows.Forms.DockStyle.Top;
+            this.qntdEstoque_tbx.Location = new System.Drawing.Point(0, 17);
+            this.qntdEstoque_tbx.Name = "qntdEstoque_tbx";
+            this.qntdEstoque_tbx.Size = new System.Drawing.Size(228, 20);
+            this.qntdEstoque_tbx.TabIndex = 1;
             // 
             // produzir_lbl
             // 
@@ -203,34 +200,13 @@ namespace MRP_SdC
             this.produzir_lbl.TabIndex = 0;
             this.produzir_lbl.Text = "Quantidade Estoque";
             // 
-            // demanda_pnl
+            // qntdNecesLiq_tbx
             // 
-            this.demanda_pnl.Controls.Add(this.demanda_tbx);
-            this.demanda_pnl.Controls.Add(this.demanda_lbl);
-            this.demanda_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.demanda_pnl.Location = new System.Drawing.Point(32, 200);
-            this.demanda_pnl.Name = "demanda_pnl";
-            this.demanda_pnl.Size = new System.Drawing.Size(228, 48);
-            this.demanda_pnl.TabIndex = 4;
-            // 
-            // demanda_tbx
-            // 
-            this.demanda_tbx.Dock = System.Windows.Forms.DockStyle.Top;
-            this.demanda_tbx.Location = new System.Drawing.Point(0, 17);
-            this.demanda_tbx.Name = "demanda_tbx";
-            this.demanda_tbx.Size = new System.Drawing.Size(228, 20);
-            this.demanda_tbx.TabIndex = 1;
-            // 
-            // demanda_lbl
-            // 
-            this.demanda_lbl.AutoSize = true;
-            this.demanda_lbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.demanda_lbl.Location = new System.Drawing.Point(0, 0);
-            this.demanda_lbl.Name = "demanda_lbl";
-            this.demanda_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.demanda_lbl.Size = new System.Drawing.Size(164, 17);
-            this.demanda_lbl.TabIndex = 0;
-            this.demanda_lbl.Text = "Quantidade Necessidade Liquida";
+            this.qntdNecesLiq_tbx.Dock = System.Windows.Forms.DockStyle.Top;
+            this.qntdNecesLiq_tbx.Location = new System.Drawing.Point(32, 200);
+            this.qntdNecesLiq_tbx.Name = "qntdNecesLiq_tbx";
+            this.qntdNecesLiq_tbx.Size = new System.Drawing.Size(228, 10);
+            this.qntdNecesLiq_tbx.TabIndex = 4;
             // 
             // CadastroMRP
             // 
@@ -238,7 +214,7 @@ namespace MRP_SdC
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 309);
             this.Controls.Add(this.barraInf_pnl);
-            this.Controls.Add(this.demanda_pnl);
+            this.Controls.Add(this.qntdNecesLiq_tbx);
             this.Controls.Add(this.produzir_pnl);
             this.Controls.Add(this.maos_pnl);
             this.Controls.Add(this.id_pnl);
@@ -256,8 +232,6 @@ namespace MRP_SdC
             this.barraInf_pnl.ResumeLayout(false);
             this.produzir_pnl.ResumeLayout(false);
             this.produzir_pnl.PerformLayout();
-            this.demanda_pnl.ResumeLayout(false);
-            this.demanda_pnl.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -277,10 +251,8 @@ namespace MRP_SdC
         private System.Windows.Forms.TextBox id_tbx;
         private System.Windows.Forms.Button cadastrar;
         private System.Windows.Forms.Panel produzir_pnl;
-        private System.Windows.Forms.TextBox produzir_tbx;
+        private System.Windows.Forms.TextBox qntdEstoque_tbx;
         private System.Windows.Forms.Label produzir_lbl;
-        private System.Windows.Forms.Panel demanda_pnl;
-        private System.Windows.Forms.TextBox demanda_tbx;
-        private System.Windows.Forms.Label demanda_lbl;
+        private System.Windows.Forms.Panel qntdNecesLiq_tbx;
     }
 }
