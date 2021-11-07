@@ -1,13 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using System.Data;
-using System.Drawing;
-using System.Windows.Forms;
-using System.ComponentModel;
 
 namespace MRP_SdC.MySQL
 {
@@ -26,19 +19,19 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO MPS ( " +
-                    "idProduto, quantidadeemMaos, quantidadeDisponivel, quantidadeDemanda, quantidadeProduzir" +
-                    ") VALUES(@idProduto, @quantidadeemMaos, @quantidadeDisponivel, @quantidadeDemanda, @quantidadeProduzir ); ";
+                    "idProduto, qntdemMaos, qntdDisponivel, qntdDemanda, qntdProduzir" +
+                    ") VALUES(@idProdut, @qntdMaos, @qntdDispon, @qntdDemand, @qntdProduz); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return false;
                 }
 
-                cmd.Parameters.AddWithValue("@idProduto", mps.idProduto);
-                cmd.Parameters.AddWithValue("@quantidadeemMaos", mps.quantidadeemMaos);
-                cmd.Parameters.AddWithValue("@quantidadeDisponivel", mps.quantidadeDisponivel);
-                cmd.Parameters.AddWithValue("@quantidadeDemanda", mps.quantidadeDemanda);
-                cmd.Parameters.AddWithValue("@quantidadeProduzir", mps.quantidadeProduzir);
+                cmd.Parameters.AddWithValue("@idProdut", mps.idProduto);
+                cmd.Parameters.AddWithValue("@qntdMaos", mps.quantidadeemMaos);
+                cmd.Parameters.AddWithValue("@qntdDispon", mps.quantidadeDisponivel);
+                cmd.Parameters.AddWithValue("@qntdDemand", mps.quantidadeDemanda);
+                cmd.Parameters.AddWithValue("@qntdProduz", mps.quantidadeProduzir);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -68,7 +61,7 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "Select * FROM MPS;";
+                string query = "SELECT * FROM MPS;";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -80,11 +73,12 @@ namespace MRP_SdC.MySQL
                 while (reader.Read())
                 {
                     mps = new MPS();
+                    mps.idProducao = Convert.ToInt32(reader["idProducao"]);
                     mps.idProduto = Convert.ToInt32(reader["idProduto"]);
-                    mps.quantidadeemMaos = Convert.ToInt32(reader["quantidadeemMaos"]);
-                    mps.quantidadeDisponivel = Convert.ToInt32(reader["quantidadeDisponivel"]);
-                    mps.quantidadeDemanda = Convert.ToInt32(reader["quantidadeDemanda"]);
-                    mps.quantidadeProduzir = Convert.ToInt32(reader["quantidadeProduzir"]);
+                    mps.quantidadeemMaos = Convert.ToInt32(reader["qntdemMaos"]);
+                    mps.quantidadeDisponivel = Convert.ToInt32(reader["qntdDisponivel"]);
+                    mps.quantidadeDemanda = Convert.ToInt32(reader["qntdDemanda"]);
+                    mps.quantidadeProduzir = Convert.ToInt32(reader["qntdProduzir"]);
 
                     listaMPS.Add(mps);
                 }
@@ -97,8 +91,7 @@ namespace MRP_SdC.MySQL
             return listaMPS;
         }
 
-
-        public MPS Get(int id)
+        public MPS Get(int idProducao)
         {
             MPS mps = new MPS();
             Conexao conexao = new Conexao();
@@ -111,14 +104,14 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "Select * FROM MPS WHERE idProducao = (@idProducao);";
+                string query = "SELECT * FROM MPS WHERE idProducao = (@idProduc);";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return null;
                 }
 
-                cmd.Parameters.AddWithValue("@idProducao", id);
+                cmd.Parameters.AddWithValue("@idProduc", idProducao);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -126,10 +119,10 @@ namespace MRP_SdC.MySQL
 
                 mps = new MPS();
                 mps.idProduto = Convert.ToInt32(reader["idProduto"]);
-                mps.quantidadeemMaos = Convert.ToInt32(reader["quantidadeemMaos"]);
-                mps.quantidadeDisponivel = Convert.ToInt32(reader["quantidadeDisponivel"]);
-                mps.quantidadeDemanda = Convert.ToInt32(reader["quantidadeDemanda"]);
-                mps.quantidadeProduzir = Convert.ToInt32(reader["quantidadeProduzir"]);
+                mps.quantidadeemMaos = Convert.ToInt32(reader["qntdemMaos"]);
+                mps.quantidadeDisponivel = Convert.ToInt32(reader["qntdDisponivel"]);
+                mps.quantidadeDemanda = Convert.ToInt32(reader["qntdDemanda"]);
+                mps.quantidadeProduzir = Convert.ToInt32(reader["qntdProduzir"]);
 
             }
             catch (MySqlException e)
@@ -139,6 +132,142 @@ namespace MRP_SdC.MySQL
             }
             conexao.CloseConexao();
             return mps;
+        }
+
+        public List<MPS> PesquisaMPS(string pesquisa)
+        {
+            List<MPS> listaMPS = new List<MPS>();
+            MPS mps;
+
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT * FROM MPS " +
+                    "WHERE (idProduto LIKE @pesquisa " +
+                        "OR qntdemMaos LIKE @pesquisa " +
+                        "OR qntdDisponivel LIKE @pesquisa " +
+                        "OR qntdDemanda LIKE @pesquisa " +
+                        "OR qntdProduzir LIKE @pesquisa)";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Parameters.AddWithValue("@pesquisa", pesquisa);
+                cmd.Prepare();
+                Console.WriteLine(query);
+
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    mps = new MPS
+                    {
+                        idProducao = Convert.ToInt32(reader["idProducao"]),
+                        idProduto = Convert.ToInt32(reader["idProduto"]),
+                        quantidadeemMaos = Convert.ToInt32(reader["qntdemMaos"]),
+                        quantidadeDisponivel = Convert.ToInt32(reader["qntdDisponivel"]),
+                        quantidadeDemanda = Convert.ToInt32(reader["qntdDemanda"]),
+                        quantidadeProduzir = Convert.ToInt32(reader["qntdProduzir"])
+                    };
+
+                    listaMPS.Add(mps);
+                }
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+            }
+            conexao.CloseConexao();
+            return listaMPS;
+        }
+
+        public Boolean Update(MPS mps)
+        {
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return false;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "UPDATE MPS " +
+                    "SET idProduto = @idProd, qntdemMaos = @qntdMaos, qntdDisponivel= @qntdDispon, " +
+                    "qntdDemanda = @qntdDemand, qntdProduzir = @qntdProduz " +
+                    "WHERE idProducao = @idProduc; ";
+
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return false;
+                }
+
+                cmd.Parameters.AddWithValue("@idProd", mps.idProduto);
+                cmd.Parameters.AddWithValue("@qntdMaos", mps.quantidadeemMaos);
+                cmd.Parameters.AddWithValue("@qntdDispon", mps.quantidadeDisponivel);
+                cmd.Parameters.AddWithValue("@qntdDemand", mps.quantidadeDemanda);
+                cmd.Parameters.AddWithValue("@qntdProduz", mps.idProducao);
+                cmd.Parameters.AddWithValue("@idProduc", mps.idProducao);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            conexao.CloseConexao();
+            return true;
+        }
+
+        public Boolean Delete(int idProducao)
+        {
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return false;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "DELETE FROM MPS " +
+                    "WHERE idProducao = @idProduc; ";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return false;
+                }
+
+                cmd.Parameters.AddWithValue("@idProduc", idProducao);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            conexao.CloseConexao();
+            return true;
         }
     }
 }
