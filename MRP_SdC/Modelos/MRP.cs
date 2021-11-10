@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace MRP_SdC
+﻿namespace MRP_SdC
 {
     public class MRP
     {
