@@ -3,7 +3,7 @@
     public class BOM
     {
         //atributos
-        public int numeroReferencia { get; set; }
+        public string idBOM { get; set; }
         public int idProduto { get; set; }
         public int quantidade { get; set; }
         public string nivel { get; set; }
@@ -16,10 +16,11 @@
 
         //construtores
         public BOM(
-            int idProduto, int quantidade, string nivel
+            string idBOM, int idProduto, int quantidade, string nivel
         )
 
         {
+            this.idBOM = idBOM;
             this.idProduto = idProduto;
             this.quantidade = quantidade;
             this.nivel = nivel;
@@ -27,7 +28,7 @@
 
         public override string ToString()
         {
-            return this.idProduto.ToString();
+            return this.idBOM;
         }
     }  
 }

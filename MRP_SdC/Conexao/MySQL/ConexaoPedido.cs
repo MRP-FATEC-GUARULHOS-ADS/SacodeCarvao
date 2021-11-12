@@ -4,9 +4,9 @@ using MySql.Data.MySqlClient;
 
 namespace MRP_SdC.MySQL
 {
-    class ConexaoBOM
+    class ConexaoPedido
     {
-        public Boolean Insert(BOM bom)
+        public Boolean Insert(Modelos.Pedido pedido)
         {
             Conexao conexao = new Conexao();
 
@@ -18,19 +18,18 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "INSERT INTO BOM ( " +
-                    "numeroreferencia, idProduto, quantidade, nivel" +
-                    ") VALUES(@numreferenc, @idprod, @qntd, @niv); ";
+                string query = "INSERT INTO PEDIDO ( " +
+                    "idPedido, idProduto, quantidade" +
+                    ") VALUES(@idPed, @idProd, @qntd); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return false;
                 }
 
-                cmd.Parameters.AddWithValue("@numreferenc", bom.idBOM);
-                cmd.Parameters.AddWithValue("@idprod", bom.idProduto);
-                cmd.Parameters.AddWithValue("@qntd", bom.quantidade);
-                cmd.Parameters.AddWithValue("@niv", bom.nivel);
+                cmd.Parameters.AddWithValue("@idPed", pedido.idPedido);
+                cmd.Parameters.AddWithValue("@idProd", pedido.idProduto);
+                cmd.Parameters.AddWithValue("@qntd", pedido.quantidade);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();

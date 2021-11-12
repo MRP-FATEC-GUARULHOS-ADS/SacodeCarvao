@@ -50,6 +50,15 @@ namespace MRP_SdC
             ListarProdutosAtivos();
         }
 
+        // funcoes personalizadas
+        private void atualizalistaspedido()
+        {
+            MySQL.ConexaoMRP mrp = new MySQL.ConexaoMRP();
+            List<MRP> listaMRP = mrp.GetMRP();
+
+            dem_lista_dgv.DataSource = listaMRP;
+        }
+
         private void ListarProdutosAtivos()
         {
             MySQL.ProdutoDAO produtoDAO = new MySQL.ProdutoDAO();
@@ -64,6 +73,7 @@ namespace MRP_SdC
             //AutenticarUsuario();
 
             AtualizaListas();
+            atualizalistaspedido();
         }
 
         // funcoes das listas
@@ -163,6 +173,18 @@ namespace MRP_SdC
         {
             CadastroFornecedor formCadFornecedor = new CadastroFornecedor();
             formCadFornecedor.ShowDialog();
+        }
+
+        private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Telas.Pedido.CadastroPedido formPedido = new Telas.Pedido.CadastroPedido();
+            formPedido.ShowDialog();
+        }
+
+        private void cadastrarToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            Telas.Producao.CadastroBOM formBOM = new Telas.Producao.CadastroBOM();
+            formBOM.ShowDialog();
         }
 
         private void UsuarioSair_TSMI_Click(object sender, EventArgs e)
