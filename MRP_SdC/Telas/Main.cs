@@ -183,8 +183,20 @@ namespace MRP_SdC
 
         private void cadastrarToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            Telas.Producao.CadastroBOM formBOM = new Telas.Producao.CadastroBOM();
-            formBOM.ShowDialog();
+            Telas.Producao.CadastroBOM formCadastroBOM = new Telas.Producao.CadastroBOM();
+            formCadastroBOM.ShowDialog();
+        }
+
+        private void cadastrarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Telas.Producao.CadastroMPS formCadastroMPS = new Telas.Producao.CadastroMPS();
+            formCadastroMPS.ShowDialog();
+        }
+
+        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Telas.Producao.ConsultaMPS formConsultaMPS = new Telas.Producao.ConsultaMPS();
+            formConsultaMPS.ShowDialog();
         }
 
         private void UsuarioSair_TSMI_Click(object sender, EventArgs e)
