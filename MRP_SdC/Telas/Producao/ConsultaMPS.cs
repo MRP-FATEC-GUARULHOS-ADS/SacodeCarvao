@@ -32,8 +32,8 @@ namespace MRP_SdC.Telas.Producao
             mps = mps_dgv.CurrentRow.DataBoundItem as MPS;
 
             // textos do produto selecionado
-            dados_ttl_lbl.Text = mps.idProducao.ToString();
-            mps.idProducao = int.Parse(dados_ttl_lbl.Text);
+            dados_ttl_lbl.Text = mps.idMPS.ToString();
+            mps.idMPS = dados_ttl_lbl.Text;
             dados_subttl_lbl.Text = String.Format(mps.idProduto.ToString());
             txtProdId.Text = mps.idProduto.ToString();
             txtQntdPedido.Text = mps.quantidadeemMaos.ToString();
@@ -81,10 +81,10 @@ namespace MRP_SdC.Telas.Producao
 
         public void btnAtualizaMRP_Click(object sender, EventArgs e)
         {
-            MPS mps = new MPS(int.Parse(txtProdId.Text), int.Parse(txtQntdPedido.Text),
-            int.Parse(txtQntdEstoque.Text), int.Parse(txtQntdNecesLiq.Text), int.Parse(textBox1.Text));
+            MPS mps = new MPS(int.Parse(txtProdId.Text), int.Parse(txtQntdPedido.Text),int.Parse(txtQntdEstoque.Text),
+            int.Parse(txtQntdNecesLiq.Text), int.Parse(textBox1.Text));
 
-            mps.idProducao = int.Parse(dados_ttl_lbl.Text);
+            mps.idMPS = dados_ttl_lbl.Text;
             DialogResult confirmarUpdate = MessageBox.Show(
                 "( ﾉ ﾟｰﾟ)ﾉ " + mps.idProduto + " ?!", "Confirmar Update",
                 MessageBoxButtons.YesNo
@@ -104,7 +104,7 @@ namespace MRP_SdC.Telas.Producao
             MPS mps = new MPS();
 
             DialogResult confirmarUpdate = MessageBox.Show(
-                "( ﾉ ﾟｰﾟ)ﾉ " + mps.idProduto + " ?!", "Confirmar Delete",
+                "( ﾉ ﾟｰﾟ)ﾉ " + mps.idMPS + " ?!", "Confirmar Delete",
                 MessageBoxButtons.YesNo);
 
             if(confirmarUpdate == DialogResult.Yes)
