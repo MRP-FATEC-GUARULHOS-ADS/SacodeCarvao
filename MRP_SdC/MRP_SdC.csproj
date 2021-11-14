@@ -50,17 +50,21 @@
   <ItemGroup>
     <Compile Include="Conexao\MySQL\ComponenteDAO.cs" />
     <Compile Include="Conexao\MySQL\Conexao.cs" />
+    <Compile Include="Conexao\MySQL\ConexaoBOM.cs" />
     <Compile Include="Conexao\MySQL\ConexaoMRP.cs" />
+    <Compile Include="Conexao\MySQL\ConexaoPedido.cs" />
     <Compile Include="Conexao\MySQL\FornecedorComponenteDAO.cs" />
     <Compile Include="Conexao\MySQL\FornecedorDAO.cs" />
     <Compile Include="Conexao\MySQL\UsuarioDAO.cs" />
     <Compile Include="Conexao\MySQL\ProdutoDAO.cs" />
     <Compile Include="Conexao\MySQL\ConexaoMPS.cs" />
+    <Compile Include="Modelos\BOM.cs" />
     <Compile Include="Modelos\FornecedorComponente.cs" />
     <Compile Include="Modelos\MPS.cs" />
     <Compile Include="Modelos\Componente.cs" />
     <Compile Include="Modelos\Fornecedor.cs" />
     <Compile Include="Modelos\MRP.cs" />
+    <Compile Include="Modelos\Pedido.cs" />
     <Compile Include="Modelos\Produto.cs" />
     <Compile Include="Modelos\Usuario.cs" />
     <Compile Include="Telas\Login.cs">
@@ -116,6 +120,18 @@
     </Compile>
     <Compile Include="Telas\Fornecedores\Fornecedores.Designer.cs">
       <DependentUpon>Fornecedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Pedido\CadastroPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Pedido\CadastroPedido.Designer.cs">
+      <DependentUpon>CadastroPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Producao\CadastroBOM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Producao\CadastroBOM.Designer.cs">
+      <DependentUpon>CadastroBOM.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\Producao\CadastroMPS.cs">
       <SubType>Form</SubType>
@@ -205,6 +221,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Fornecedores\Fornecedores.resx">
       <DependentUpon>Fornecedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Pedido\CadastroPedido.resx">
+      <DependentUpon>CadastroPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Producao\CadastroBOM.resx">
+      <DependentUpon>CadastroBOM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Producao\CadastroMPS.resx">
       <DependentUpon>CadastroMPS.cs</DependentUpon>

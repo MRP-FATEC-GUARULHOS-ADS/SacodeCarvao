@@ -19,9 +19,10 @@ namespace MRP_SdC.Telas.Producao
 
         private void cadastrar_Click(object sender, EventArgs e)
         {
-            MPS mps = new MPS(int.Parse(maos_tbx.Text), int.Parse(qntdEstoque_tbx.Text),
-            int.Parse(textBox1.Text), int.Parse(textBox2.Text), int.Parse(textBox3.Text));
-
+            
+            MPS mps = new MPS(int.Parse(qntdEstoque_tbx.Text), int.Parse(textBox1.Text), 
+            int.Parse(textBox2.Text), int.Parse(textBox3.Text), int.Parse(textBox4.Text));
+            mps.idMPS = maos_tbx.Text;
             DialogResult confirmarInsert = MessageBox.Show(
                 "( ﾉ ﾟｰﾟ)ﾉ " + mps.idProduto + " ?!", "Confirmar Inserção",
                 MessageBoxButtons.YesNo
@@ -30,7 +31,7 @@ namespace MRP_SdC.Telas.Producao
             {
                 MySQL.ConexaoMPS mrpcon = new MySQL.ConexaoMPS();
 
-                mrpcon.Insert(mps);
+                mrpcon.Insert(mps, mps.idMPS);
 
                 Close();
             }

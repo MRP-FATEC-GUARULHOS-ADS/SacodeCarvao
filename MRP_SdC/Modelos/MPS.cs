@@ -5,7 +5,7 @@ namespace MRP_SdC
     public class MPS
     {
         //Atributos
-        public int idProducao { get; set; }
+        public string idMPS { get; set; }
         public int idProduto { get; set; }
         public int quantidadeemMaos { get; set; }
         public int quantidadeDisponivel { get; set; }
@@ -34,7 +34,7 @@ namespace MRP_SdC
 
         public override string ToString()
         {
-            return this.idProduto.ToString();
+            return this.idMPS.ToString();
         }
     }
 }
