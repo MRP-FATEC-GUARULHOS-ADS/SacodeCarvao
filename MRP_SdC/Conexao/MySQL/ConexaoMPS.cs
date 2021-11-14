@@ -6,7 +6,7 @@ namespace MRP_SdC.MySQL
 {
     class ConexaoMPS
     {
-        public Boolean Insert(MPS mps)
+        public Boolean Insert(MPS mps, string id)
         {
             Conexao conexao = new Conexao();
 
@@ -19,14 +19,15 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO MPS ( " +
-                    "idProduto, qntdemMaos, qntdDisponivel, qntdDemanda, qntdProduzir" +
-                    ") VALUES(@idProdut, @qntdMaos, @qntdDispon, @qntdDemand, @qntdProduz); ";
+                    "idMPS, idProduto, qntdemMaos, qntdDisponivel, qntdDemanda, qntdProduzir" +
+                    ") VALUES(@id, @idProdut, @qntdMaos, @qntdDispon, @qntdDemand, @qntdProduz); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return false;
                 }
 
+                cmd.Parameters.AddWithValue("@id", mps.idMPS);
                 cmd.Parameters.AddWithValue("@idProdut", mps.idProduto);
                 cmd.Parameters.AddWithValue("@qntdMaos", mps.quantidadeemMaos);
                 cmd.Parameters.AddWithValue("@qntdDispon", mps.quantidadeDisponivel);
@@ -73,7 +74,7 @@ namespace MRP_SdC.MySQL
                 while (reader.Read())
                 {
                     mps = new MPS();
-                    mps.idProducao = Convert.ToInt32(reader["idProducao"]);
+                    mps.idMPS = (string)reader["idMPS"];
                     mps.idProduto = Convert.ToInt32(reader["idProduto"]);
                     mps.quantidadeemMaos = Convert.ToInt32(reader["qntdemMaos"]);
                     mps.quantidadeDisponivel = Convert.ToInt32(reader["qntdDisponivel"]);
@@ -104,14 +105,14 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "SELECT * FROM MPS WHERE idProducao = (@idProduc);";
+                string query = "SELECT * FROM MPS WHERE idMPS = (@id);";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return null;
                 }
 
-                cmd.Parameters.AddWithValue("@idProduc", idProducao);
+                cmd.Parameters.AddWithValue("@id", idProducao);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -171,7 +172,7 @@ namespace MRP_SdC.MySQL
                 {
                     mps = new MPS
                     {
-                        idProducao = Convert.ToInt32(reader["idProducao"]),
+                        idMPS = "idMPS",
                         idProduto = Convert.ToInt32(reader["idProduto"]),
                         quantidadeemMaos = Convert.ToInt32(reader["qntdemMaos"]),
                         quantidadeDisponivel = Convert.ToInt32(reader["qntdDisponivel"]),
@@ -205,7 +206,7 @@ namespace MRP_SdC.MySQL
                 string query = "UPDATE MPS " +
                     "SET idProduto = @idProd, qntdemMaos = @qntdMaos, qntdDisponivel= @qntdDispon, " +
                     "qntdDemanda = @qntdDemand, qntdProduzir = @qntdProduz " +
-                    "WHERE idProducao = @idProduc; ";
+                    "WHERE idMPS = @id; ";
 
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
@@ -217,8 +218,8 @@ namespace MRP_SdC.MySQL
                 cmd.Parameters.AddWithValue("@qntdMaos", mps.quantidadeemMaos);
                 cmd.Parameters.AddWithValue("@qntdDispon", mps.quantidadeDisponivel);
                 cmd.Parameters.AddWithValue("@qntdDemand", mps.quantidadeDemanda);
-                cmd.Parameters.AddWithValue("@qntdProduz", mps.idProducao);
-                cmd.Parameters.AddWithValue("@idProduc", mps.idProducao);
+                cmd.Parameters.AddWithValue("@qntdProduz", mps.quantidadeProduzir);
+                cmd.Parameters.AddWithValue("@idProduc", mps.idMPS);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -234,7 +235,7 @@ namespace MRP_SdC.MySQL
             return true;
         }
 
-        public Boolean Delete(int idProducao)
+        public Boolean Delete(int id)
         {
             Conexao conexao = new Conexao();
 
@@ -247,14 +248,14 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "DELETE FROM MPS " +
-                    "WHERE idProducao = @idProduc; ";
+                    "WHERE idMPS = @id; ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return false;
                 }
 
-                cmd.Parameters.AddWithValue("@idProduc", idProducao);
+                cmd.Parameters.AddWithValue("@idMPS", id);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
