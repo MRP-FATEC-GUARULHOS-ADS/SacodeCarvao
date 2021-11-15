@@ -1,11 +1,15 @@
-﻿namespace MRP_SdC.Modelos
+﻿using System;
+using System.Windows.Forms;
+
+namespace MRP_SdC.Modelos
 {
     class Pedido
     {
         //Atributos
-        public string idPedido;
-        public int idProduto;
-        public int quantidade;
+        public int idtabpedido { get; set; }
+        public string idPedido { get; set; }
+        public int idProduto { get; set; }
+        public int quantidade { get; set; }
 
         //Construtores
         public Pedido()
@@ -26,7 +30,7 @@
 
         public override string ToString()
         {
-            return this.idPedido.ToString();
+            return this.idtabpedido.ToString();
         }
     }
 }

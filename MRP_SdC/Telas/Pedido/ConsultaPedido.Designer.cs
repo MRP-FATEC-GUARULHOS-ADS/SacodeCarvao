@@ -1,7 +1,7 @@
 ﻿
-namespace MRP_SdC.Telas.Producao
+namespace MRP_SdC.Telas.Pedido
 {
-    partial class ConsultaMPS
+    partial class ConsultaPedido
     {
         /// <summary>
         /// Required designer variable.
@@ -84,16 +84,16 @@ namespace MRP_SdC.Telas.Producao
             this.EspEsq_pnl.Dock = System.Windows.Forms.DockStyle.Left;
             this.EspEsq_pnl.Location = new System.Drawing.Point(0, 0);
             this.EspEsq_pnl.Name = "EspEsq_pnl";
-            this.EspEsq_pnl.Size = new System.Drawing.Size(32, 486);
-            this.EspEsq_pnl.TabIndex = 7;
+            this.EspEsq_pnl.Size = new System.Drawing.Size(32, 450);
+            this.EspEsq_pnl.TabIndex = 8;
             // 
             // EspDir_pnl
             // 
             this.EspDir_pnl.Dock = System.Windows.Forms.DockStyle.Right;
             this.EspDir_pnl.Location = new System.Drawing.Point(768, 0);
             this.EspDir_pnl.Name = "EspDir_pnl";
-            this.EspDir_pnl.Size = new System.Drawing.Size(32, 486);
-            this.EspDir_pnl.TabIndex = 8;
+            this.EspDir_pnl.Size = new System.Drawing.Size(32, 450);
+            this.EspDir_pnl.TabIndex = 9;
             // 
             // ttl_lbl
             // 
@@ -103,8 +103,8 @@ namespace MRP_SdC.Telas.Producao
             this.ttl_lbl.Name = "ttl_lbl";
             this.ttl_lbl.Padding = new System.Windows.Forms.Padding(0, 16, 0, 12);
             this.ttl_lbl.Size = new System.Drawing.Size(736, 52);
-            this.ttl_lbl.TabIndex = 9;
-            this.ttl_lbl.Text = "MPS - Consulta";
+            this.ttl_lbl.TabIndex = 10;
+            this.ttl_lbl.Text = "Pedido - Consulta";
             this.ttl_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pesquisa_pnl
@@ -115,7 +115,7 @@ namespace MRP_SdC.Telas.Producao
             this.pesquisa_pnl.Name = "pesquisa_pnl";
             this.pesquisa_pnl.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
             this.pesquisa_pnl.Size = new System.Drawing.Size(736, 36);
-            this.pesquisa_pnl.TabIndex = 10;
+            this.pesquisa_pnl.TabIndex = 11;
             // 
             // pesquisa_cont_pnl
             // 
@@ -146,7 +146,6 @@ namespace MRP_SdC.Telas.Producao
             this.pesquisa_btn.TabIndex = 1;
             this.pesquisa_btn.Text = "👁";
             this.pesquisa_btn.UseVisualStyleBackColor = true;
-            this.pesquisa_btn.Click += new System.EventHandler(this.pesquisa_btn_Click);
             // 
             // pesquisa_sep_pnl
             // 
@@ -182,8 +181,8 @@ namespace MRP_SdC.Telas.Producao
             this.dados_pnl.Location = new System.Drawing.Point(528, 88);
             this.dados_pnl.Name = "dados_pnl";
             this.dados_pnl.Padding = new System.Windows.Forms.Padding(12, 24, 12, 12);
-            this.dados_pnl.Size = new System.Drawing.Size(240, 398);
-            this.dados_pnl.TabIndex = 11;
+            this.dados_pnl.Size = new System.Drawing.Size(240, 362);
+            this.dados_pnl.TabIndex = 12;
             // 
             // btnAtualizaMRP
             // 
@@ -193,7 +192,6 @@ namespace MRP_SdC.Telas.Producao
             this.btnAtualizaMRP.TabIndex = 0;
             this.btnAtualizaMRP.Text = "Atualizar MRP";
             this.btnAtualizaMRP.UseVisualStyleBackColor = true;
-            this.btnAtualizaMRP.Click += new System.EventHandler(this.btnAtualizaMRP_Click);
             // 
             // button1
             // 
@@ -203,7 +201,6 @@ namespace MRP_SdC.Telas.Producao
             this.button1.TabIndex = 1;
             this.button1.Text = "Exclusão";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel1
             // 
@@ -428,25 +425,25 @@ namespace MRP_SdC.Telas.Producao
             this.mps_dgv.Name = "mps_dgv";
             this.mps_dgv.ReadOnly = true;
             this.mps_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.mps_dgv.Size = new System.Drawing.Size(496, 398);
+            this.mps_dgv.Size = new System.Drawing.Size(496, 362);
             this.mps_dgv.StandardTab = true;
-            this.mps_dgv.TabIndex = 12;
-            this.mps_dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mrp_dgv_CellClick);
+            this.mps_dgv.TabIndex = 13;
+            this.mps_dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mps_dgv_CellClick);
             // 
-            // ConsultaMPS
+            // ConsultaPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 486);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.mps_dgv);
             this.Controls.Add(this.dados_pnl);
             this.Controls.Add(this.pesquisa_pnl);
             this.Controls.Add(this.ttl_lbl);
             this.Controls.Add(this.EspDir_pnl);
             this.Controls.Add(this.EspEsq_pnl);
-            this.Name = "ConsultaMPS";
-            this.Text = "ConsultaMPS";
-            this.Load += new System.EventHandler(this.ConsultaMPS_Load);
+            this.Name = "ConsultaPedido";
+            this.Text = "ConsultaPedido";
+            this.Load += new System.EventHandler(this.ConsultaPedido_Load);
             this.pesquisa_pnl.ResumeLayout(false);
             this.pesquisa_cont_pnl.ResumeLayout(false);
             this.pesquisa_cont_pnl.PerformLayout();
@@ -482,9 +479,12 @@ namespace MRP_SdC.Telas.Producao
         private System.Windows.Forms.Panel pesquisa_sep_pnl;
         private System.Windows.Forms.CheckBox pesquisa_descnt_cbx;
         private System.Windows.Forms.Panel dados_pnl;
+        private System.Windows.Forms.Button btnAtualizaMRP;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnAtualizaMRP;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel dados_estoque_pnl;
         private System.Windows.Forms.Panel estoque_atual_pnl;
         private System.Windows.Forms.Panel panel2;
@@ -502,8 +502,5 @@ namespace MRP_SdC.Telas.Producao
         private System.Windows.Forms.Label dados_subttl_lbl;
         private System.Windows.Forms.Label dados_ttl_lbl;
         private System.Windows.Forms.DataGridView mps_dgv;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
     }
 }
