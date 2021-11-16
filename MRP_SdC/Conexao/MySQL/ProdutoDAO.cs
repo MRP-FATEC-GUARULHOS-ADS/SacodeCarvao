@@ -19,14 +19,15 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO PRODUTO ( " +
-                    "modeloProduto,  descrProduto, valorProduto, qtdeMinEstoque, qtdeMaxEstoque, qtdeAtualEstoque, estado " +
-                    ") VALUES( @modelo, @descricao, @valor, @qntmin, @qntmax, @qntatual, @estado ); ";
+                    "idProduto, modeloProduto,  descrProduto, valorProduto, qtdeMinEstoque, qtdeMaxEstoque, qtdeAtualEstoque, estado " +
+                    ") VALUES(@idProd, @modelo, @descricao, @valor, @qntmin, @qntmax, @qntatual, @estado ); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return false;
                 }
 
+                cmd.Parameters.AddWithValue("@idProd", prod.idProduto);
                 cmd.Parameters.AddWithValue("@modelo", prod.modelo);
                 cmd.Parameters.AddWithValue("@descricao", prod.descricao);
                 cmd.Parameters.AddWithValue("@valor", prod.valor);
@@ -62,15 +63,16 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "UPDATE PRODUTO " +
-                    "SET modeloProduto = @modelo, descrProduto = @descricao, valorProduto = @valor, " +
+                    "SET idProduto = @idProd modeloProduto = @modelo, descrProduto = @descricao, valorProduto = @valor, " +
                     "qtdeMinEstoque = @qntmin, qtdeMaxEstoque = @qntmax, qtdeAtualEstoque = @qntatual, estado = @estado " +
-                    "WHERE idProduto = @id; ";
+                    "WHERE idTabProduto = @idTab; ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return false;
                 }
 
+                cmd.Parameters.AddWithValue("@idProd", prod.idProduto);
                 cmd.Parameters.AddWithValue("@modelo", prod.modelo);
                 cmd.Parameters.AddWithValue("@descricao", prod.descricao);
                 cmd.Parameters.AddWithValue("@valor", prod.valor);
@@ -78,7 +80,7 @@ namespace MRP_SdC.MySQL
                 cmd.Parameters.AddWithValue("@qntmax", prod.qtdeMax);
                 cmd.Parameters.AddWithValue("@qntatual", prod.qtdeAtual);
                 cmd.Parameters.AddWithValue("@estado", (prod.estado ? 'P' : 'D'));
-                cmd.Parameters.AddWithValue("@id", prod.id);
+                cmd.Parameters.AddWithValue("@idTab", prod.idProduto);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -105,7 +107,7 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "UPDATE PRODUTO SET estado = @estado WHERE idProduto = @id;";
+                string query = "UPDATE PRODUTO SET estado = @estado WHERE idTabProduto = @idTab;";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -113,7 +115,7 @@ namespace MRP_SdC.MySQL
                 }
 
                 cmd.Parameters.AddWithValue("@estado", (prod.estado ? 'P' : 'D'));
-                cmd.Parameters.AddWithValue("@id", prod.id);
+                cmd.Parameters.AddWithValue("@idTab", prod.idTabProduto);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -142,7 +144,7 @@ namespace MRP_SdC.MySQL
                 MySqlDataReader reader;
                 string query = "UPDATE PRODUTO SET qtdeMinEstoque = @qntmin, " +
                     "qtdeMaxEstoque = @qntmax, qtdeAtualEstoque = @qntatual " +
-                    "WHERE idProduto = @id; ";
+                    "WHERE idTabProduto = @idTab; ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -152,7 +154,7 @@ namespace MRP_SdC.MySQL
                 cmd.Parameters.AddWithValue("@qntmin", prod.qtdeMin);
                 cmd.Parameters.AddWithValue("@qntmax", prod.qtdeMax);
                 cmd.Parameters.AddWithValue("@qntatual", prod.qtdeAtual);
-                cmd.Parameters.AddWithValue("@id", prod.id);
+                cmd.Parameters.AddWithValue("@idTab", prod.idTabProduto);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -168,7 +170,7 @@ namespace MRP_SdC.MySQL
             return true;
         }
 
-        public Boolean Delete(int id)
+        public Boolean Delete(int idTabProduto)
         {
             Conexao conexao = new Conexao();
 
@@ -181,14 +183,14 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "DELETE from PRODUTO " +
-                    "WHERE idProduto = @id; ";
+                    "WHERE idTabProduto = @idTab; ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return false;
                 }
 
-                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@idTab", idTabProduto);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -232,7 +234,8 @@ namespace MRP_SdC.MySQL
                 {
                     objProduto = new Produto
                     {
-                        id = Convert.ToInt32(reader["idProduto"]),
+                        idTabProduto = Convert.ToInt32(reader["idTabProduto"]),
+                        idProduto = (string)(reader["idProduto"]),
                         modelo = (string)reader["modeloProduto"],
                         descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : ""),
                         valor = Convert.ToDouble(reader["valorProduto"]),
@@ -280,7 +283,8 @@ namespace MRP_SdC.MySQL
                 {
                     objProduto = new Produto
                     {
-                        id = Convert.ToInt32(reader["idProduto"]),
+                        idTabProduto = Convert.ToInt32(reader["idTabProduto"]),
+                        idProduto = (string)(reader["idProduto"]),
                         modelo = (string)reader["modeloProduto"],
                         descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : ""),
                         valor = Convert.ToDouble(reader["valorProduto"]),
@@ -317,7 +321,7 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "SELECT * FROM PRODUTO " +
-                    "WHERE (idProduto LIKE @pesquisa " +
+                    "WHERE (idTabProduto LIKE @pesquisa " +
                         "OR modeloProduto LIKE @pesquisa " +
                         "OR descrProduto LIKE @pesquisa ) " +
                         "AND estado = 'P';";
@@ -337,7 +341,8 @@ namespace MRP_SdC.MySQL
                 {
                     objProduto = new Produto
                     {
-                        id = Convert.ToInt32(reader["idProduto"]),
+                        idTabProduto = Convert.ToInt32(reader["idTabProduto"]),
+                        idProduto = (string)(reader["idProduto"]),
                         modelo = (string)reader["modeloProduto"],
                         descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : ""),
                         valor = Convert.ToDouble(reader["valorProduto"]),
@@ -358,7 +363,7 @@ namespace MRP_SdC.MySQL
             return listaProdutos;
         }
 
-        public Produto Get(int id)
+        public Produto Get(int idTabProduto)
         {
             Produto objProduto;
 
@@ -372,14 +377,14 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "SELECT p.* FROM PRODUTO p WHERE idProduto = (@id);";
+                string query = "SELECT p.* FROM PRODUTO p WHERE idTabProduto = (@idTab);";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return null;
                 }
 
-                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@idTab", idTabProduto);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -387,7 +392,8 @@ namespace MRP_SdC.MySQL
 
                 objProduto = new Produto
                 {
-                    id = Convert.ToInt32(reader["idProduto"]),
+                    idTabProduto = Convert.ToInt32(reader["idTabProduto"]),
+                    idProduto = (string)(reader["idProduto"]),
                     modelo = (string)reader["modeloProduto"],
                     descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : ""),
                     valor = Convert.ToDouble(reader["valorProduto"]),

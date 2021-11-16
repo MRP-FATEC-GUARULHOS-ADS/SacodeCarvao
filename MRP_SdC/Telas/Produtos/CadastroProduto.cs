@@ -20,7 +20,7 @@ namespace MRP_SdC
         // funcoes das text-boxes
         private void Required_TextChanged(object sender, System.EventArgs e)
         {
-            if (modelo_tbx.Text != "")
+            if (txt_IdProduto.Text != "")
             {
                 ok_btn.Enabled = true;
             }
@@ -33,10 +33,10 @@ namespace MRP_SdC
         // funcoes dos botoes
         private void OK_btn_Click(object sender, System.EventArgs e)
         {
-            double valor = double.TryParse(valor_tbx.Text, out _) ? double.Parse(valor_tbx.Text) : 0;
+            double valor = double.TryParse(txt_DescricaoProduto.Text, out _) ? double.Parse(txt_DescricaoProduto.Text) : 0;
 
             Produto myProduto = new Produto(
-                modelo_tbx.Text, descr_tbm.Text, valor
+                txt_IdProduto.Text, txt_ModeloProduto.Text, txt_DescricaoProduto.Text, valor
             );
 
             // confirmando insercao

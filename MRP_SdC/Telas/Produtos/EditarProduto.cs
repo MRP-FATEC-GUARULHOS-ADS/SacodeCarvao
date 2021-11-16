@@ -28,16 +28,18 @@ namespace MRP_SdC
         // adaptando informações
         private void MudaInfos()
         {
-            ttl_lbl.Text = String.Format("{0:D6}", myProd.id);
-            modelo_tbx.Text = myProd.modelo;
-            descr_tbm.Text = myProd.descricao;
-            valor_tbx.Text = myProd.valor.ToString();
+            ttl_lbl.Text = String.Format("{0:D6}", myProd.idProduto);
+
+            txt_IdProduto.Text = myProd.idProduto;
+            txt_ModeloProduto.Text = myProd.modelo;
+            txt_DescricaoProduto.Text = myProd.descricao;
+            txt_ValorProduto.Text = myProd.valor.ToString();
         }
 
         // funcoes das text-boxes
         private void Required_TextChanged(object sender, System.EventArgs e)
         {
-            ok_btn.Enabled = modelo_tbx.Text != "";
+            ok_btn.Enabled = txt_ModeloProduto.Text != "";
         }
 
         // funcoes dos botoes
@@ -49,10 +51,10 @@ namespace MRP_SdC
 
         private void OK_btn_Click(object sender, System.EventArgs e)
         {
-            double valor = double.TryParse(valor_tbx.Text, out _) ? double.Parse(valor_tbx.Text) : 0;
+            double valor = double.TryParse(txt_ValorProduto.Text, out _) ? double.Parse(txt_ValorProduto.Text) : 0;
 
-            myProd.modelo = modelo_tbx.Text;
-            myProd.descricao = descr_tbm.Text;
+            myProd.modelo = txt_ModeloProduto.Text;
+            myProd.descricao = txt_DescricaoProduto.Text;
             myProd.valor = valor;
 
             // messagebox confirmando edicao

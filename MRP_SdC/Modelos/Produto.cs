@@ -4,7 +4,8 @@ namespace MRP_SdC
 {
     public class Produto
     {
-        public int id { get; set; }
+        public int idTabProduto { get; set; }
+        public string idProduto { get; set; }
         public string modelo { get; set; }
         public string descricao { get; set; }
         public double valor { get; set; }
@@ -21,9 +22,10 @@ namespace MRP_SdC
         }
 
         public Produto(
-            string modelo, string descricao, double valor
+            string idProduto, string modelo, string descricao, double valor
         )
         {
+            this.idProduto = idProduto;
             this.modelo = modelo;
             this.descricao = descricao;
             this.valor = valor;
