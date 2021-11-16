@@ -20,15 +20,14 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO PEDIDO ( " +
-                    "idpedido, idproduto, quantidade" +
-                    ") VALUES(@idPed, @idProd, @qntd); ";
+                    "idproduto, quantidade" +
+                    ") VALUES(@idProd, @qntd); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return false;
                 }
 
-                cmd.Parameters.AddWithValue("@idPed", pedido.idPedido);
                 cmd.Parameters.AddWithValue("@idProd", pedido.idProduto);
                 cmd.Parameters.AddWithValue("@qntd", pedido.quantidade);
                 cmd.Prepare();
@@ -73,8 +72,7 @@ namespace MRP_SdC.MySQL
                 {
                     pedido = new Pedido();
                     {
-                        pedido.idtabpedido = Convert.ToInt32(reader["idtabpedido"]);
-                        pedido.idPedido = (string)(reader["idpedido"]);
+                        pedido.idPedido = Convert.ToInt32(reader["idPedido"]);
                         pedido.idProduto = Convert.ToInt32(reader["idproduto"]);
                         pedido.quantidade = Convert.ToInt32(reader["quantidade"]);
                     }
@@ -104,22 +102,21 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "SELECT * FROM PEDIDO WHERE idtabpedido = @idtabPed;";
+                string query = "SELECT * FROM PEDIDO WHERE idPedido = @idPed;";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return null;
                 }
 
-                cmd.Parameters.AddWithValue("@idtabPed", idPedido);
+                cmd.Parameters.AddWithValue("@idPed", idPedido);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
                 reader.Read();
 
                 pedido = new Pedido();
-                pedido.idtabpedido = Convert.ToInt32(reader["idtabpedido"]);
-                pedido.idPedido = (string)(reader["idpedido"]);
+                pedido.idPedido = Convert.ToInt32(reader["idPedido"]);
                 pedido.idProduto = Convert.ToInt32(reader["idproduto"]);
                 pedido.quantidade = Convert.ToInt32(reader["quantidade"]);
             }

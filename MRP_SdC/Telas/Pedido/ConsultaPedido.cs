@@ -27,10 +27,11 @@ namespace MRP_SdC.Telas.Pedido
             pedido = mps_dgv.CurrentRow.DataBoundItem as Modelos.Pedido;
 
             // textos do produto selecionado
-            dados_ttl_lbl.Text = pedido.idtabpedido.ToString();
-            pedido.idPedido = dados_ttl_lbl.Text;
+            dados_ttl_lbl.Text = String.Format(pedido.idPedido.ToString());
+            pedido.idPedido = int.Parse(dados_ttl_lbl.Text);
             dados_subttl_lbl.Text = String.Format(pedido.idProduto.ToString());
-            txtProdId.Text = pedido.quantidade.ToString();
+            txt_IdProduto.Text = pedido.idProduto.ToString();
+            txt_QntdPedido.Text = pedido.quantidade.ToString();
         }
 
         private void ConsultaPedido_Load(object sender, EventArgs e)

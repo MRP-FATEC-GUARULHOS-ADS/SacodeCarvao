@@ -30,7 +30,6 @@ namespace MRP_SdC
         {
             ttl_lbl.Text = String.Format("{0:D6}", myProd.idProduto);
 
-            txt_IdProduto.Text = myProd.idProduto;
             txt_ModeloProduto.Text = myProd.modelo;
             txt_DescricaoProduto.Text = myProd.descricao;
             txt_ValorProduto.Text = myProd.valor.ToString();

@@ -38,23 +38,19 @@ namespace MRP_SdC
             this.cancelar_btn = new System.Windows.Forms.Button();
             this.ok_btn = new System.Windows.Forms.Button();
             this.valor_pnl = new System.Windows.Forms.Panel();
+            this.txt_DescricaoProduto = new System.Windows.Forms.TextBox();
             this.lbl_Descricao = new System.Windows.Forms.Label();
             this.descr_pnl = new System.Windows.Forms.Panel();
+            this.txt_ModeloProduto = new System.Windows.Forms.TextBox();
             this.lbl_ModeloProduto = new System.Windows.Forms.Label();
-            this.modelo_pnl = new System.Windows.Forms.Panel();
-            this.txt_IdProduto = new System.Windows.Forms.TextBox();
-            this.lbl_IdProduto = new System.Windows.Forms.Label();
             this.ttl_lbl = new System.Windows.Forms.Label();
             this.esp_dir_pnl = new System.Windows.Forms.Panel();
             this.esp_esq_pnl = new System.Windows.Forms.Panel();
-            this.txt_DescricaoProduto = new System.Windows.Forms.TextBox();
-            this.txt_ModeloProduto = new System.Windows.Forms.TextBox();
             this.corpo_pnl.SuspendLayout();
             this.panel1.SuspendLayout();
             this.barraInf_pnl.SuspendLayout();
             this.valor_pnl.SuspendLayout();
             this.descr_pnl.SuspendLayout();
-            this.modelo_pnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // corpo_pnl
@@ -65,7 +61,6 @@ namespace MRP_SdC
             this.corpo_pnl.Controls.Add(this.barraInf_pnl);
             this.corpo_pnl.Controls.Add(this.valor_pnl);
             this.corpo_pnl.Controls.Add(this.descr_pnl);
-            this.corpo_pnl.Controls.Add(this.modelo_pnl);
             this.corpo_pnl.Controls.Add(this.ttl_lbl);
             this.corpo_pnl.Controls.Add(this.esp_dir_pnl);
             this.corpo_pnl.Controls.Add(this.esp_esq_pnl);
@@ -80,7 +75,7 @@ namespace MRP_SdC
             this.panel1.Controls.Add(this.txt_ValorProduto);
             this.panel1.Controls.Add(this.lbl_ValorProduto);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(32, 256);
+            this.panel1.Location = new System.Drawing.Point(32, 208);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(240, 48);
             this.panel1.TabIndex = 9;
@@ -142,10 +137,19 @@ namespace MRP_SdC
             this.valor_pnl.Controls.Add(this.txt_DescricaoProduto);
             this.valor_pnl.Controls.Add(this.lbl_Descricao);
             this.valor_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.valor_pnl.Location = new System.Drawing.Point(32, 148);
+            this.valor_pnl.Location = new System.Drawing.Point(32, 100);
             this.valor_pnl.Name = "valor_pnl";
             this.valor_pnl.Size = new System.Drawing.Size(240, 108);
             this.valor_pnl.TabIndex = 3;
+            // 
+            // txt_DescricaoProduto
+            // 
+            this.txt_DescricaoProduto.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txt_DescricaoProduto.Location = new System.Drawing.Point(0, 17);
+            this.txt_DescricaoProduto.Multiline = true;
+            this.txt_DescricaoProduto.Name = "txt_DescricaoProduto";
+            this.txt_DescricaoProduto.Size = new System.Drawing.Size(240, 88);
+            this.txt_DescricaoProduto.TabIndex = 2;
             // 
             // lbl_Descricao
             // 
@@ -163,10 +167,18 @@ namespace MRP_SdC
             this.descr_pnl.Controls.Add(this.txt_ModeloProduto);
             this.descr_pnl.Controls.Add(this.lbl_ModeloProduto);
             this.descr_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.descr_pnl.Location = new System.Drawing.Point(32, 100);
+            this.descr_pnl.Location = new System.Drawing.Point(32, 52);
             this.descr_pnl.Name = "descr_pnl";
             this.descr_pnl.Size = new System.Drawing.Size(240, 48);
             this.descr_pnl.TabIndex = 2;
+            // 
+            // txt_ModeloProduto
+            // 
+            this.txt_ModeloProduto.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txt_ModeloProduto.Location = new System.Drawing.Point(0, 17);
+            this.txt_ModeloProduto.Name = "txt_ModeloProduto";
+            this.txt_ModeloProduto.Size = new System.Drawing.Size(240, 20);
+            this.txt_ModeloProduto.TabIndex = 2;
             // 
             // lbl_ModeloProduto
             // 
@@ -178,36 +190,6 @@ namespace MRP_SdC
             this.lbl_ModeloProduto.Size = new System.Drawing.Size(97, 17);
             this.lbl_ModeloProduto.TabIndex = 0;
             this.lbl_ModeloProduto.Text = "Modelo do Produto";
-            // 
-            // modelo_pnl
-            // 
-            this.modelo_pnl.Controls.Add(this.txt_IdProduto);
-            this.modelo_pnl.Controls.Add(this.lbl_IdProduto);
-            this.modelo_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.modelo_pnl.Location = new System.Drawing.Point(32, 52);
-            this.modelo_pnl.Name = "modelo_pnl";
-            this.modelo_pnl.Size = new System.Drawing.Size(240, 48);
-            this.modelo_pnl.TabIndex = 1;
-            // 
-            // txt_IdProduto
-            // 
-            this.txt_IdProduto.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txt_IdProduto.Location = new System.Drawing.Point(0, 17);
-            this.txt_IdProduto.Name = "txt_IdProduto";
-            this.txt_IdProduto.Size = new System.Drawing.Size(240, 20);
-            this.txt_IdProduto.TabIndex = 1;
-            this.txt_IdProduto.TextChanged += new System.EventHandler(this.Required_TextChanged);
-            // 
-            // lbl_IdProduto
-            // 
-            this.lbl_IdProduto.AutoSize = true;
-            this.lbl_IdProduto.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbl_IdProduto.Location = new System.Drawing.Point(0, 0);
-            this.lbl_IdProduto.Name = "lbl_IdProduto";
-            this.lbl_IdProduto.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.lbl_IdProduto.Size = new System.Drawing.Size(71, 17);
-            this.lbl_IdProduto.TabIndex = 0;
-            this.lbl_IdProduto.Text = "Id do Produto";
             // 
             // ttl_lbl
             // 
@@ -237,23 +219,6 @@ namespace MRP_SdC
             this.esp_esq_pnl.Size = new System.Drawing.Size(32, 409);
             this.esp_esq_pnl.TabIndex = 7;
             // 
-            // txt_DescricaoProduto
-            // 
-            this.txt_DescricaoProduto.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txt_DescricaoProduto.Location = new System.Drawing.Point(0, 17);
-            this.txt_DescricaoProduto.Multiline = true;
-            this.txt_DescricaoProduto.Name = "txt_DescricaoProduto";
-            this.txt_DescricaoProduto.Size = new System.Drawing.Size(240, 88);
-            this.txt_DescricaoProduto.TabIndex = 2;
-            // 
-            // txt_ModeloProduto
-            // 
-            this.txt_ModeloProduto.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txt_ModeloProduto.Location = new System.Drawing.Point(0, 17);
-            this.txt_ModeloProduto.Name = "txt_ModeloProduto";
-            this.txt_ModeloProduto.Size = new System.Drawing.Size(240, 20);
-            this.txt_ModeloProduto.TabIndex = 2;
-            // 
             // CadastroProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -272,8 +237,6 @@ namespace MRP_SdC
             this.valor_pnl.PerformLayout();
             this.descr_pnl.ResumeLayout(false);
             this.descr_pnl.PerformLayout();
-            this.modelo_pnl.ResumeLayout(false);
-            this.modelo_pnl.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,9 +248,6 @@ namespace MRP_SdC
         private System.Windows.Forms.Panel barraInf_pnl;
         private System.Windows.Forms.Button cancelar_btn;
         private System.Windows.Forms.Button ok_btn;
-        private System.Windows.Forms.Panel modelo_pnl;
-        private System.Windows.Forms.TextBox txt_IdProduto;
-        private System.Windows.Forms.Label lbl_IdProduto;
         private System.Windows.Forms.Label ttl_lbl;
         private System.Windows.Forms.Panel esp_dir_pnl;
         private System.Windows.Forms.Panel esp_esq_pnl;

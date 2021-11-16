@@ -6,8 +6,7 @@ namespace MRP_SdC.Modelos
     class Pedido
     {
         //Atributos
-        public int idtabpedido { get; set; }
-        public string idPedido { get; set; }
+        public int idPedido { get; set; }
         public int idProduto { get; set; }
         public int quantidade { get; set; }
 
@@ -19,18 +18,17 @@ namespace MRP_SdC.Modelos
 
         //Construtores
         public Pedido(
-            string idPedido, int idProduto, int quantidade
+            int idProduto, int quantidade
          )
 
         {
-            this.idPedido = idPedido;
             this.idProduto = idProduto;
             this.quantidade = quantidade;
         }
 
         public override string ToString()
         {
-            return this.idtabpedido.ToString();
+            return this.idPedido.ToString();
         }
     }
 }
