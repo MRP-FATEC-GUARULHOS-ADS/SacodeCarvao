@@ -35,7 +35,7 @@ namespace MRP_SdC
             descnt_btn.Enabled = myProd.estado;
 
             // textos do produto selecionado
-            dados_ttl_lbl.Text = String.Format("{0:D6}", myProd.id);
+            dados_ttl_lbl.Text = String.Format("{0:D6}", myProd.idProduto);
             dados_subttl_lbl.Text = myProd.modelo;
             estoque_atual_tbx.Text = myProd.qtdeAtual.ToString();
             estoque_min_tbx.Text = myProd.qtdeMin.ToString();
@@ -48,7 +48,6 @@ namespace MRP_SdC
         private void FormEstProd_Load(object sender, EventArgs e)
         {
             AtualizaLista();
-
             MudaInfos();
             atualizar_btn.Enabled = false;
         }
