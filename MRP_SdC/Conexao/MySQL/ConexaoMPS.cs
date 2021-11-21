@@ -50,7 +50,7 @@ namespace MRP_SdC.MySQL
 
         public List<MPS> GetMPS()
         {
-            List<MPS> listaMPS= new List<MPS>();
+            List<MPS> listaMPS = new List<MPS>();
             MPS mps;
             Conexao conexao = new Conexao();
 
