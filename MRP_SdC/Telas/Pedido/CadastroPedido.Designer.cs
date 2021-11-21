@@ -32,9 +32,6 @@ namespace MRP_SdC.Telas.Pedido
             this.esp_dir_pnl = new System.Windows.Forms.Panel();
             this.esp_esq_pnl = new System.Windows.Forms.Panel();
             this.ttl_lbl = new System.Windows.Forms.Label();
-            this.maos_pnl = new System.Windows.Forms.Panel();
-            this.txt_idPedido = new System.Windows.Forms.TextBox();
-            this.maos_lbl = new System.Windows.Forms.Label();
             this.produzir_pnl = new System.Windows.Forms.Panel();
             this.qntdEstoque_tbx = new System.Windows.Forms.TextBox();
             this.txt_idProduto = new System.Windows.Forms.Label();
@@ -43,7 +40,6 @@ namespace MRP_SdC.Telas.Pedido
             this.txt_Quantidade = new System.Windows.Forms.Label();
             this.cadastrar = new System.Windows.Forms.Button();
             this.cancelar_btn = new System.Windows.Forms.Button();
-            this.maos_pnl.SuspendLayout();
             this.produzir_pnl.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -76,41 +72,12 @@ namespace MRP_SdC.Telas.Pedido
             this.ttl_lbl.Text = "Cadastrar Produção";
             this.ttl_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // maos_pnl
-            // 
-            this.maos_pnl.Controls.Add(this.txt_idPedido);
-            this.maos_pnl.Controls.Add(this.maos_lbl);
-            this.maos_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.maos_pnl.Location = new System.Drawing.Point(32, 56);
-            this.maos_pnl.Name = "maos_pnl";
-            this.maos_pnl.Size = new System.Drawing.Size(302, 48);
-            this.maos_pnl.TabIndex = 15;
-            // 
-            // txt_idPedido
-            // 
-            this.txt_idPedido.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txt_idPedido.Location = new System.Drawing.Point(0, 17);
-            this.txt_idPedido.Name = "txt_idPedido";
-            this.txt_idPedido.Size = new System.Drawing.Size(302, 20);
-            this.txt_idPedido.TabIndex = 1;
-            // 
-            // maos_lbl
-            // 
-            this.maos_lbl.AutoSize = true;
-            this.maos_lbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.maos_lbl.Location = new System.Drawing.Point(0, 0);
-            this.maos_lbl.Name = "maos_lbl";
-            this.maos_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.maos_lbl.Size = new System.Drawing.Size(52, 17);
-            this.maos_lbl.TabIndex = 0;
-            this.maos_lbl.Text = "Id Pedido";
-            // 
             // produzir_pnl
             // 
             this.produzir_pnl.Controls.Add(this.qntdEstoque_tbx);
             this.produzir_pnl.Controls.Add(this.txt_idProduto);
             this.produzir_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.produzir_pnl.Location = new System.Drawing.Point(32, 104);
+            this.produzir_pnl.Location = new System.Drawing.Point(32, 56);
             this.produzir_pnl.Name = "produzir_pnl";
             this.produzir_pnl.Size = new System.Drawing.Size(302, 48);
             this.produzir_pnl.TabIndex = 16;
@@ -139,7 +106,7 @@ namespace MRP_SdC.Telas.Pedido
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.txt_Quantidade);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(32, 152);
+            this.panel1.Location = new System.Drawing.Point(32, 104);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(302, 48);
             this.panel1.TabIndex = 18;
@@ -194,14 +161,11 @@ namespace MRP_SdC.Telas.Pedido
             this.Controls.Add(this.cadastrar);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.produzir_pnl);
-            this.Controls.Add(this.maos_pnl);
             this.Controls.Add(this.ttl_lbl);
             this.Controls.Add(this.esp_esq_pnl);
             this.Controls.Add(this.esp_dir_pnl);
             this.Name = "CadastroPedido";
             this.Text = "CadastroPedido";
-            this.maos_pnl.ResumeLayout(false);
-            this.maos_pnl.PerformLayout();
             this.produzir_pnl.ResumeLayout(false);
             this.produzir_pnl.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -215,9 +179,6 @@ namespace MRP_SdC.Telas.Pedido
         private System.Windows.Forms.Panel esp_dir_pnl;
         private System.Windows.Forms.Panel esp_esq_pnl;
         private System.Windows.Forms.Label ttl_lbl;
-        private System.Windows.Forms.Panel maos_pnl;
-        private System.Windows.Forms.TextBox txt_idPedido;
-        private System.Windows.Forms.Label maos_lbl;
         private System.Windows.Forms.Panel produzir_pnl;
         private System.Windows.Forms.TextBox qntdEstoque_tbx;
         private System.Windows.Forms.Label txt_idProduto;
