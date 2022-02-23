@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using MRP_SdC.Modelos;
 
 namespace MRP_SdC.Telas.Pedido
 {
@@ -27,11 +28,12 @@ namespace MRP_SdC.Telas.Pedido
             pedido = mps_dgv.CurrentRow.DataBoundItem as Modelos.Pedido;
 
             // textos do produto selecionado
-            dados_ttl_lbl.Text = String.Format(pedido.idPedido.ToString());
+            dados_ttl_lbl.Text = pedido.idPedido.ToString();
             pedido.idPedido = int.Parse(dados_ttl_lbl.Text);
             dados_subttl_lbl.Text = String.Format(pedido.idProduto.ToString());
-            txt_IdProduto.Text = pedido.idProduto.ToString();
-            txt_QntdPedido.Text = pedido.quantidade.ToString();
+            txtIdProduto.Text = pedido.idProduto.ToString();
+            txtQuantidade.Text = pedido.quantidade.ToString();
+            txtValor.Text = pedido.valor.ToString();
         }
 
         private void ConsultaPedido_Load(object sender, EventArgs e)
@@ -40,11 +42,36 @@ namespace MRP_SdC.Telas.Pedido
             MudaInfos();
         }
 
-        private void mps_dgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void pedido_dgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1 && mps_dgv.CurrentRow != null)
             {
                 MudaInfos();
+            }
+        }
+
+        private void btnAtualizaPedido_Click(object sender, EventArgs e)
+        {
+
+            Modelos.Pedido pedido = new Modelos.Pedido();
+
+            pedido.idPedido = (int.Parse(dados_ttl_lbl.Text));
+
+            pedido = new Modelos.Pedido(int.Parse(txtIdProduto.Text), int.Parse(txtQuantidade.Text),
+            int.Parse(txtValor.Text));
+
+       
+            DialogResult confirmarUpdate = MessageBox.Show(
+                "( ﾉ ﾟｰﾟ)ﾉ " + pedido.idProduto + " ?!", "Confirmar Update",
+                MessageBoxButtons.YesNo
+            );
+            if (confirmarUpdate == DialogResult.Yes)
+            {
+                MySQL.DAOPedido pedcon = new MySQL.DAOPedido();
+
+                pedcon.Update(pedido);
+
+                AtualizaListas();
             }
         }
     }

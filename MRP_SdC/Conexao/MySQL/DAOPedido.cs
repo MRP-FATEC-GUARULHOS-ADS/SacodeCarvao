@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using MRP_SdC.Modelos;
-using MRP_SdC.MySQL;
 using MySql.Data.MySqlClient;
 
 
@@ -23,8 +22,8 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO PEDIDO ( " +
-                    "idproduto, quantidade, valor" +
-                    ") VALUES(@idProd, @qntd, @valor); ";
+                    "idProduto, quantidade, valor" +
+                    ") VALUES(@idProd, @quant, @val); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -32,8 +31,8 @@ namespace MRP_SdC.MySQL
                 }
 
                 cmd.Parameters.AddWithValue("@idProd", pedido.idProduto);
-                cmd.Parameters.AddWithValue("@qntd", pedido.quantidade);
-                cmd.Parameters.AddWithValue("@valor", pedido.valor);
+                cmd.Parameters.AddWithValue("@quant", pedido.quantidade);
+                cmd.Parameters.AddWithValue("@val", pedido.valor);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -77,8 +76,9 @@ namespace MRP_SdC.MySQL
                     pedido = new Pedido();
                     {
                         pedido.idPedido = Convert.ToInt32(reader["idPedido"]);
-                        pedido.idProduto = Convert.ToInt32(reader["idproduto"]);
+                        pedido.idProduto = Convert.ToInt32(reader["idProduto"]);
                         pedido.quantidade = Convert.ToInt32(reader["quantidade"]);
+                        pedido.valor = Convert.ToInt32(reader["valor"]);
                     }
 
                     listaPedido.Add(pedido);
@@ -121,8 +121,9 @@ namespace MRP_SdC.MySQL
 
                 pedido = new Pedido();
                 pedido.idPedido = Convert.ToInt32(reader["idPedido"]);
-                pedido.idProduto = Convert.ToInt32(reader["idproduto"]);
+                pedido.idProduto = Convert.ToInt32(reader["idProduto"]);
                 pedido.quantidade = Convert.ToInt32(reader["quantidade"]);
+                pedido.valor = Convert.ToInt32(reader["valor"]);
             }
             catch (MySqlException e)
             {
@@ -146,7 +147,7 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "UPDATE PEDIDO " +
-                    "SET idProduto = @idProd, quantidade = @quant, valor = @val, " +
+                    "SET idProduto = @idProd, quantidade = @quant, valor = @val " + 
                     "WHERE idPedido = @idPed; ";
 
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
