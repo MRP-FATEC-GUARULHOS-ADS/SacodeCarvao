@@ -9,6 +9,7 @@ namespace MRP_SdC.Modelos
         public int idPedido { get; set; }
         public int idProduto { get; set; }
         public int quantidade { get; set; }
+        public int valor { get; set; }
 
         //Construtores
         public Pedido()
@@ -18,12 +19,13 @@ namespace MRP_SdC.Modelos
 
         //Construtores
         public Pedido(
-            int idProduto, int quantidade
+            int idProduto, int quantidade, int valor
          )
 
         {
             this.idProduto = idProduto;
             this.quantidade = quantidade;
+            this.valor = valor;
         }
 
         public override string ToString()

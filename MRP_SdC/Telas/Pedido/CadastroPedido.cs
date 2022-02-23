@@ -13,7 +13,7 @@ namespace MRP_SdC.Telas.Pedido
         private void cadastrar_Click(object sender, EventArgs e)
         {
             Modelos.Pedido pedido = new Modelos.Pedido(int.Parse(qntdEstoque_tbx.Text),
-            int.Parse(textBox1.Text));
+            int.Parse(textBox1.Text), int.Parse(txtValor.Text));
 
             DialogResult confirmarInsert = MessageBox.Show(
                 "( ﾉ ﾟｰﾟ)ﾉ " + pedido.idPedido + " ?!", "Confirmar Inserção",

@@ -23,8 +23,8 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO PEDIDO ( " +
-                    "idproduto, quantidade" +
-                    ") VALUES(@idProd, @qntd); ";
+                    "idproduto, quantidade, valor" +
+                    ") VALUES(@idProd, @qntd, @valor); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -33,6 +33,7 @@ namespace MRP_SdC.MySQL
 
                 cmd.Parameters.AddWithValue("@idProd", pedido.idProduto);
                 cmd.Parameters.AddWithValue("@qntd", pedido.quantidade);
+                cmd.Parameters.AddWithValue("@valor", pedido.valor);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
