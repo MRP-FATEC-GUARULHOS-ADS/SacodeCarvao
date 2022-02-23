@@ -15,7 +15,7 @@ namespace MRP_SdC.Telas.Pedido
         // funcoes personalizadas
         private void AtualizaListas()
         {
-            MySQL.ConexaoPedido pedido = new MySQL.ConexaoPedido();
+            MySQL.DAOPedido pedido = new MySQL.DAOPedido();
             List<Modelos.Pedido> listaPedido = pedido.GetPedido();
 
             mps_dgv.DataSource = listaPedido;

@@ -53,7 +53,7 @@ namespace MRP_SdC
         // funcoes personalizadas
         private void atualizalistaspedido()
         {
-            MySQL.ConexaoPedido pedido = new MySQL.ConexaoPedido();
+            MySQL.DAOPedido pedido = new MySQL.DAOPedido();
             List<Modelos.Pedido> listaPedido = pedido.GetPedido();
 
             dem_lista_dgv.DataSource = listaPedido;

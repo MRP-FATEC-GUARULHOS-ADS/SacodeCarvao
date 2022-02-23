@@ -21,7 +21,7 @@ namespace MRP_SdC.Telas.Pedido
             );
             if (confirmarInsert == DialogResult.Yes)
             {
-                MySQL.ConexaoPedido pedidocon = new MySQL.ConexaoPedido();
+                MySQL.DAOPedido pedidocon = new MySQL.DAOPedido();
 
                 pedidocon.Insert(pedido);
 

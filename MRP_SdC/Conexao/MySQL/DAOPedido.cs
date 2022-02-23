@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using MRP_SdC.Modelos;
+using MRP_SdC.MySQL;
 using MySql.Data.MySqlClient;
 
+
 namespace MRP_SdC.MySQL
+
 {
-    class ConexaoPedido
+    class DAOPedido
     {
         public Boolean Insert(Modelos.Pedido pedido)
         {

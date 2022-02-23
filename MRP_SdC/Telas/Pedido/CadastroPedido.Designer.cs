@@ -31,7 +31,7 @@ namespace MRP_SdC.Telas.Pedido
         {
             this.esp_dir_pnl = new System.Windows.Forms.Panel();
             this.esp_esq_pnl = new System.Windows.Forms.Panel();
-            this.ttl_lbl = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.produzir_pnl = new System.Windows.Forms.Panel();
             this.qntdEstoque_tbx = new System.Windows.Forms.TextBox();
             this.txt_idProduto = new System.Windows.Forms.Label();
@@ -40,8 +40,12 @@ namespace MRP_SdC.Telas.Pedido
             this.txt_Quantidade = new System.Windows.Forms.Label();
             this.cadastrar = new System.Windows.Forms.Button();
             this.cancelar_btn = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtValor = new System.Windows.Forms.TextBox();
+            this.lblValor = new System.Windows.Forms.Label();
             this.produzir_pnl.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // esp_dir_pnl
@@ -60,17 +64,17 @@ namespace MRP_SdC.Telas.Pedido
             this.esp_esq_pnl.Size = new System.Drawing.Size(32, 450);
             this.esp_esq_pnl.TabIndex = 12;
             // 
-            // ttl_lbl
+            // lblTitulo
             // 
-            this.ttl_lbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ttl_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ttl_lbl.Location = new System.Drawing.Point(32, 0);
-            this.ttl_lbl.Name = "ttl_lbl";
-            this.ttl_lbl.Padding = new System.Windows.Forms.Padding(0, 16, 0, 12);
-            this.ttl_lbl.Size = new System.Drawing.Size(302, 56);
-            this.ttl_lbl.TabIndex = 13;
-            this.ttl_lbl.Text = "Cadastrar Produção";
-            this.ttl_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(32, 0);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Padding = new System.Windows.Forms.Padding(0, 16, 0, 12);
+            this.lblTitulo.Size = new System.Drawing.Size(302, 56);
+            this.lblTitulo.TabIndex = 13;
+            this.lblTitulo.Text = "Cadastrar Pedido";
+            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // produzir_pnl
             // 
@@ -152,16 +156,46 @@ namespace MRP_SdC.Telas.Pedido
             this.cancelar_btn.Text = "Cancelar";
             this.cancelar_btn.UseVisualStyleBackColor = false;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.txtValor);
+            this.panel2.Controls.Add(this.lblValor);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(32, 152);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(302, 48);
+            this.panel2.TabIndex = 22;
+            // 
+            // txtValor
+            // 
+            this.txtValor.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtValor.Location = new System.Drawing.Point(0, 17);
+            this.txtValor.Name = "txtValor";
+            this.txtValor.Size = new System.Drawing.Size(302, 20);
+            this.txtValor.TabIndex = 1;
+            // 
+            // lblValor
+            // 
+            this.lblValor.AutoSize = true;
+            this.lblValor.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblValor.Location = new System.Drawing.Point(0, 0);
+            this.lblValor.Name = "lblValor";
+            this.lblValor.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.lblValor.Size = new System.Drawing.Size(31, 17);
+            this.lblValor.TabIndex = 0;
+            this.lblValor.Text = "Valor";
+            // 
             // CadastroPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(366, 450);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.cancelar_btn);
             this.Controls.Add(this.cadastrar);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.produzir_pnl);
-            this.Controls.Add(this.ttl_lbl);
+            this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.esp_esq_pnl);
             this.Controls.Add(this.esp_dir_pnl);
             this.Name = "CadastroPedido";
@@ -170,6 +204,8 @@ namespace MRP_SdC.Telas.Pedido
             this.produzir_pnl.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -178,7 +214,7 @@ namespace MRP_SdC.Telas.Pedido
 
         private System.Windows.Forms.Panel esp_dir_pnl;
         private System.Windows.Forms.Panel esp_esq_pnl;
-        private System.Windows.Forms.Label ttl_lbl;
+        private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel produzir_pnl;
         private System.Windows.Forms.TextBox qntdEstoque_tbx;
         private System.Windows.Forms.Label txt_idProduto;
@@ -187,5 +223,8 @@ namespace MRP_SdC.Telas.Pedido
         private System.Windows.Forms.Label txt_Quantidade;
         private System.Windows.Forms.Button cadastrar;
         private System.Windows.Forms.Button cancelar_btn;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox txtValor;
+        private System.Windows.Forms.Label lblValor;
     }
 }
