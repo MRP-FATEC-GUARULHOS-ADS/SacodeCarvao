@@ -10,7 +10,7 @@ namespace MRP_SdC.Telas.Pedido
             InitializeComponent();
         }
 
-        private void cadastrar_Click(object sender, EventArgs e)
+        private void btnCadastro_Click(object sender, EventArgs e)
         {
             Modelos.Pedido pedido = new Modelos.Pedido(int.Parse(qntdEstoque_tbx.Text),
             int.Parse(textBox1.Text), int.Parse(txtValor.Text));

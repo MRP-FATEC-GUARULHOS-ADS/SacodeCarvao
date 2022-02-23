@@ -38,11 +38,11 @@ namespace MRP_SdC.Telas.Pedido
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.txt_Quantidade = new System.Windows.Forms.Label();
-            this.cadastrar = new System.Windows.Forms.Button();
-            this.cancelar_btn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtValor = new System.Windows.Forms.TextBox();
             this.lblValor = new System.Windows.Forms.Label();
+            this.btnCadastro = new System.Windows.Forms.Button();
+            this.btnCancela = new System.Windows.Forms.Button();
             this.produzir_pnl.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -134,28 +134,6 @@ namespace MRP_SdC.Telas.Pedido
             this.txt_Quantidade.TabIndex = 0;
             this.txt_Quantidade.Text = "Quantidade ";
             // 
-            // cadastrar
-            // 
-            this.cadastrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cadastrar.BackColor = System.Drawing.Color.Lime;
-            this.cadastrar.Location = new System.Drawing.Point(65, 386);
-            this.cadastrar.Name = "cadastrar";
-            this.cadastrar.Size = new System.Drawing.Size(81, 32);
-            this.cadastrar.TabIndex = 20;
-            this.cadastrar.Text = "Cadastrar";
-            this.cadastrar.UseVisualStyleBackColor = false;
-            this.cadastrar.Click += new System.EventHandler(this.cadastrar_Click);
-            // 
-            // cancelar_btn
-            // 
-            this.cancelar_btn.BackColor = System.Drawing.Color.Red;
-            this.cancelar_btn.Location = new System.Drawing.Point(203, 386);
-            this.cancelar_btn.Name = "cancelar_btn";
-            this.cancelar_btn.Size = new System.Drawing.Size(90, 32);
-            this.cancelar_btn.TabIndex = 21;
-            this.cancelar_btn.Text = "Cancelar";
-            this.cancelar_btn.UseVisualStyleBackColor = false;
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.txtValor);
@@ -185,14 +163,35 @@ namespace MRP_SdC.Telas.Pedido
             this.lblValor.TabIndex = 0;
             this.lblValor.Text = "Valor";
             // 
+            // btnCadastro
+            // 
+            this.btnCadastro.BackColor = System.Drawing.Color.Lime;
+            this.btnCadastro.Location = new System.Drawing.Point(72, 386);
+            this.btnCadastro.Name = "btnCadastro";
+            this.btnCadastro.Size = new System.Drawing.Size(75, 23);
+            this.btnCadastro.TabIndex = 23;
+            this.btnCadastro.Text = "Cadastrar";
+            this.btnCadastro.UseVisualStyleBackColor = false;
+            this.btnCadastro.Click += new System.EventHandler(this.btnCadastro_Click);
+            // 
+            // btnCancela
+            // 
+            this.btnCancela.BackColor = System.Drawing.Color.Red;
+            this.btnCancela.Location = new System.Drawing.Point(211, 386);
+            this.btnCancela.Name = "btnCancela";
+            this.btnCancela.Size = new System.Drawing.Size(75, 23);
+            this.btnCancela.TabIndex = 24;
+            this.btnCancela.Text = "Cancelar";
+            this.btnCancela.UseVisualStyleBackColor = false;
+            // 
             // CadastroPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(366, 450);
+            this.Controls.Add(this.btnCancela);
+            this.Controls.Add(this.btnCadastro);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.cancelar_btn);
-            this.Controls.Add(this.cadastrar);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.produzir_pnl);
             this.Controls.Add(this.lblTitulo);
@@ -221,10 +220,10 @@ namespace MRP_SdC.Telas.Pedido
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label txt_Quantidade;
-        private System.Windows.Forms.Button cadastrar;
-        private System.Windows.Forms.Button cancelar_btn;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.Label lblValor;
+        private System.Windows.Forms.Button btnCadastro;
+        private System.Windows.Forms.Button btnCancela;
     }
 }
