@@ -132,5 +132,46 @@ namespace MRP_SdC.MySQL
             conexao.CloseConexao();
             return pedido;
         }
+
+        public Boolean Update(Pedido pedido)
+        {
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return false;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "UPDATE PEDIDO " +
+                    "SET idProduto = @idProd, quantidade = @quant, valor = @val, " +
+                    "WHERE idPedido = @idPed; ";
+
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return false;
+                }
+
+                cmd.Parameters.AddWithValue("@idProd", pedido.idProduto);
+                cmd.Parameters.AddWithValue("@quant", pedido.quantidade);
+                cmd.Parameters.AddWithValue("@val", pedido.valor);
+                cmd.Parameters.AddWithValue("@idPed", pedido.idPedido);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            conexao.CloseConexao();
+            return true;
+        }
     }
 }
