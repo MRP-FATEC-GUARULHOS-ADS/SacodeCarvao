@@ -102,7 +102,7 @@ namespace MRP_SdC.Telas.Producao
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnExclusao_Click(object sender, EventArgs e)
         {
             MRP mrp = new MRP();
 

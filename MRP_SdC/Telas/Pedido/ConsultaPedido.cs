@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
-using MRP_SdC.Modelos;
+using MRP_SdC.MySQL;
 
 namespace MRP_SdC.Telas.Pedido
 {
@@ -16,16 +16,16 @@ namespace MRP_SdC.Telas.Pedido
         // funcoes personalizadas
         private void AtualizaListas()
         {
-            MySQL.DAOPedido pedido = new MySQL.DAOPedido();
+            DAOPedido pedido = new DAOPedido();
             List<Modelos.Pedido> listaPedido = pedido.GetPedido();
 
-            mps_dgv.DataSource = listaPedido;
+            dgvPedido.DataSource = listaPedido;
         }
 
         private void MudaInfos()
         {
             Modelos.Pedido pedido = new Modelos.Pedido();
-            pedido = mps_dgv.CurrentRow.DataBoundItem as Modelos.Pedido;
+            pedido = dgvPedido.CurrentRow.DataBoundItem as Modelos.Pedido;
 
             // textos do produto selecionado
             dados_ttl_lbl.Text = pedido.idPedido.ToString();
@@ -44,33 +44,75 @@ namespace MRP_SdC.Telas.Pedido
 
         private void pedido_dgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != -1 && mps_dgv.CurrentRow != null)
+            if (e.RowIndex != -1 && dgvPedido.CurrentRow != null)
             {
                 MudaInfos();
             }
         }
 
+        // funcoes de pesquisa
+        private void PesquisarProdutos()
+        {
+            if (pesquisa_tbx.Text != "")
+            {
+                DAOPedido conexaoped = new DAOPedido();
+                List<Modelos.Pedido> listaPedido = conexaoped.PesquisaPedido(pesquisa_tbx.Text);
+                var bindingPedidos = new BindingList<Modelos.Pedido>(listaPedido);
+                dgvPedido.DataSource = bindingPedidos;
+            }
+            else
+            {
+                AtualizaListas();
+            }
+        }
+
+        //funcoes da lista
+        private void mrp_dgv_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                btnAtualizaPedido.Enabled = true;
+            }
+        }
+
+        private void pesquisa_btn_Click(object sender, EventArgs e)
+        {
+            PesquisarProdutos();
+        }
+
         private void btnAtualizaPedido_Click(object sender, EventArgs e)
         {
 
-            Modelos.Pedido pedido = new Modelos.Pedido();
-
-            pedido.idPedido = (int.Parse(dados_ttl_lbl.Text));
-
-            pedido = new Modelos.Pedido(int.Parse(txtIdProduto.Text), int.Parse(txtQuantidade.Text),
+            Modelos.Pedido pedido = new Modelos.Pedido(int.Parse(txtIdProduto.Text), int.Parse(txtQuantidade.Text),
             int.Parse(txtValor.Text));
 
-       
+            pedido.idPedido = int.Parse(dados_ttl_lbl.Text);
             DialogResult confirmarUpdate = MessageBox.Show(
-                "( ﾉ ﾟｰﾟ)ﾉ " + pedido.idProduto + " ?!", "Confirmar Update",
+                "( ﾉ ﾟｰﾟ)ﾉ " + pedido.idPedido + " ?!", "Confirmar Update",
                 MessageBoxButtons.YesNo
             );
             if (confirmarUpdate == DialogResult.Yes)
             {
-                MySQL.DAOPedido pedcon = new MySQL.DAOPedido();
+                DAOPedido pedcon = new DAOPedido();
 
                 pedcon.Update(pedido);
 
+                AtualizaListas();
+            }
+        }
+
+        private void btnExclusao_Click(object sender, EventArgs e)
+        {
+            Modelos.Pedido pedido = new Modelos.Pedido();
+
+            DialogResult confirmarDelete = MessageBox.Show(
+                "( ﾉ ﾟｰﾟ)ﾉ " + pedido.idPedido + " ?!", "Confirmar Delete",
+                MessageBoxButtons.YesNo);
+
+            if (confirmarDelete == DialogResult.Yes)
+            {
+                DAOPedido conexaoped = new DAOPedido();
+                conexaoped.Delete(int.Parse(dados_ttl_lbl.Text));
                 AtualizaListas();
             }
         }

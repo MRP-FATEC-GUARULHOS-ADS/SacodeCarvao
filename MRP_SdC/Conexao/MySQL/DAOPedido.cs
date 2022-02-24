@@ -9,7 +9,7 @@ namespace MRP_SdC.MySQL
 {
     class DAOPedido
     {
-        public Boolean Insert(Modelos.Pedido pedido)
+        public Boolean Insert(Pedido pedido)
         {
             Conexao conexao = new Conexao();
 
@@ -134,6 +134,58 @@ namespace MRP_SdC.MySQL
             return pedido;
         }
 
+        public List<Pedido> PesquisaPedido(string pesquisa)
+        {
+            List<Pedido> listaPedido = new List<Pedido>();
+            Pedido pedido;
+
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT * FROM PEDIDO " +
+                    "WHERE (idProduto LIKE @pesquisa " +
+                        "OR quantidade LIKE @pesquisa " +
+                        "OR valor LIKE @pesquisa )";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Parameters.AddWithValue("@pesquisa", pesquisa);
+                cmd.Prepare();
+                Console.WriteLine(query);
+
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    pedido = new Pedido
+                    {
+                        idPedido = Convert.ToInt32(reader["idPedido"]),
+                        idProduto = Convert.ToInt32(reader["idProduto"]),
+                        quantidade = Convert.ToInt32(reader["quantidade"]),
+                        valor = Convert.ToInt32(reader["valor"]),
+                    };
+
+                    listaPedido.Add(pedido);
+                }
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+            }
+            conexao.CloseConexao();
+            return listaPedido;
+        }
+
         public Boolean Update(Pedido pedido)
         {
             Conexao conexao = new Conexao();
@@ -147,7 +199,7 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "UPDATE PEDIDO " +
-                    "SET idProduto = @idProd, quantidade = @quant, valor = @val " + 
+                    "SET idProduto = @idProd, quantidade = @quant, valor = @val " +
                     "WHERE idPedido = @idPed; ";
 
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
@@ -160,6 +212,42 @@ namespace MRP_SdC.MySQL
                 cmd.Parameters.AddWithValue("@quant", pedido.quantidade);
                 cmd.Parameters.AddWithValue("@val", pedido.valor);
                 cmd.Parameters.AddWithValue("@idPed", pedido.idPedido);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            conexao.CloseConexao();
+            return true;
+        }
+
+        public Boolean Delete(int idPedido)
+        {
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return false;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "DELETE FROM PEDIDO " +
+                    "WHERE idPedido= @idPed; ";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return false;
+                }
+
+                cmd.Parameters.AddWithValue("@idPed", idPedido);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();

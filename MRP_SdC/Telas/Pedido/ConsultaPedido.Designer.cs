@@ -29,9 +29,9 @@ namespace MRP_SdC.Telas.Pedido
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.EspEsq_pnl = new System.Windows.Forms.Panel();
             this.EspDir_pnl = new System.Windows.Forms.Panel();
             this.ttl_lbl = new System.Windows.Forms.Label();
@@ -46,7 +46,7 @@ namespace MRP_SdC.Telas.Pedido
             this.txtValor = new System.Windows.Forms.TextBox();
             this.lblValor = new System.Windows.Forms.Label();
             this.btnAtualizaPedido = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnExclusao = new System.Windows.Forms.Button();
             this.dados_estoque_pnl = new System.Windows.Forms.Panel();
             this.txt_Quantidade = new System.Windows.Forms.Panel();
             this.txtQuantidade = new System.Windows.Forms.TextBox();
@@ -57,7 +57,7 @@ namespace MRP_SdC.Telas.Pedido
             this.chart_cht = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dados_subttl_lbl = new System.Windows.Forms.Label();
             this.dados_ttl_lbl = new System.Windows.Forms.Label();
-            this.mps_dgv = new System.Windows.Forms.DataGridView();
+            this.dgvPedido = new System.Windows.Forms.DataGridView();
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
             this.dados_pnl.SuspendLayout();
@@ -66,7 +66,7 @@ namespace MRP_SdC.Telas.Pedido
             this.txt_Quantidade.SuspendLayout();
             this.estoque_min_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mps_dgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.SuspendLayout();
             // 
             // EspEsq_pnl
@@ -162,7 +162,7 @@ namespace MRP_SdC.Telas.Pedido
             this.dados_pnl.AutoScroll = true;
             this.dados_pnl.Controls.Add(this.panel1);
             this.dados_pnl.Controls.Add(this.btnAtualizaPedido);
-            this.dados_pnl.Controls.Add(this.button1);
+            this.dados_pnl.Controls.Add(this.btnExclusao);
             this.dados_pnl.Controls.Add(this.dados_estoque_pnl);
             this.dados_pnl.Controls.Add(this.chart_cht);
             this.dados_pnl.Controls.Add(this.dados_subttl_lbl);
@@ -213,14 +213,15 @@ namespace MRP_SdC.Telas.Pedido
             this.btnAtualizaPedido.UseVisualStyleBackColor = true;
             this.btnAtualizaPedido.Click += new System.EventHandler(this.btnAtualizaPedido_Click);
             // 
-            // button1
+            // btnExclusao
             // 
-            this.button1.Location = new System.Drawing.Point(15, 465);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(171, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Exclusão";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnExclusao.Location = new System.Drawing.Point(15, 465);
+            this.btnExclusao.Name = "btnExclusao";
+            this.btnExclusao.Size = new System.Drawing.Size(171, 23);
+            this.btnExclusao.TabIndex = 1;
+            this.btnExclusao.Text = "Exclusão";
+            this.btnExclusao.UseVisualStyleBackColor = true;
+            this.btnExclusao.Click += new System.EventHandler(this.btnExclusao_Click);
             // 
             // dados_estoque_pnl
             // 
@@ -294,21 +295,21 @@ namespace MRP_SdC.Telas.Pedido
             // chart_cht
             // 
             this.chart_cht.BackColor = System.Drawing.SystemColors.Control;
-            chartArea1.BackColor = System.Drawing.SystemColors.Control;
-            chartArea1.Name = "ChartArea1";
-            this.chart_cht.ChartAreas.Add(chartArea1);
+            chartArea2.BackColor = System.Drawing.SystemColors.Control;
+            chartArea2.Name = "ChartArea1";
+            this.chart_cht.ChartAreas.Add(chartArea2);
             this.chart_cht.Dock = System.Windows.Forms.DockStyle.Top;
-            legend1.BackColor = System.Drawing.SystemColors.Control;
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend1.Name = "Legend1";
-            this.chart_cht.Legends.Add(legend1);
+            legend2.BackColor = System.Drawing.SystemColors.Control;
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend2.Name = "Legend1";
+            this.chart_cht.Legends.Add(legend2);
             this.chart_cht.Location = new System.Drawing.Point(12, 58);
             this.chart_cht.Name = "chart_cht";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart_cht.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart_cht.Series.Add(series2);
             this.chart_cht.Size = new System.Drawing.Size(199, 135);
             this.chart_cht.TabIndex = 2;
             this.chart_cht.Text = "chart1";
@@ -335,29 +336,29 @@ namespace MRP_SdC.Telas.Pedido
             this.dados_ttl_lbl.TabIndex = 0;
             this.dados_ttl_lbl.Text = "codigo";
             // 
-            // mps_dgv
+            // dgvPedido
             // 
-            this.mps_dgv.AllowUserToAddRows = false;
-            this.mps_dgv.AllowUserToDeleteRows = false;
-            this.mps_dgv.BackgroundColor = System.Drawing.Color.White;
-            this.mps_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.mps_dgv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mps_dgv.Location = new System.Drawing.Point(32, 88);
-            this.mps_dgv.MultiSelect = false;
-            this.mps_dgv.Name = "mps_dgv";
-            this.mps_dgv.ReadOnly = true;
-            this.mps_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.mps_dgv.Size = new System.Drawing.Size(496, 362);
-            this.mps_dgv.StandardTab = true;
-            this.mps_dgv.TabIndex = 13;
-            this.mps_dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pedido_dgv_CellClick);
+            this.dgvPedido.AllowUserToAddRows = false;
+            this.dgvPedido.AllowUserToDeleteRows = false;
+            this.dgvPedido.BackgroundColor = System.Drawing.Color.White;
+            this.dgvPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPedido.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPedido.Location = new System.Drawing.Point(32, 88);
+            this.dgvPedido.MultiSelect = false;
+            this.dgvPedido.Name = "dgvPedido";
+            this.dgvPedido.ReadOnly = true;
+            this.dgvPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPedido.Size = new System.Drawing.Size(496, 362);
+            this.dgvPedido.StandardTab = true;
+            this.dgvPedido.TabIndex = 13;
+            this.dgvPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pedido_dgv_CellClick);
             // 
             // ConsultaPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.mps_dgv);
+            this.Controls.Add(this.dgvPedido);
             this.Controls.Add(this.dados_pnl);
             this.Controls.Add(this.pesquisa_pnl);
             this.Controls.Add(this.ttl_lbl);
@@ -379,7 +380,7 @@ namespace MRP_SdC.Telas.Pedido
             this.estoque_min_pnl.ResumeLayout(false);
             this.estoque_min_pnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mps_dgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -397,7 +398,7 @@ namespace MRP_SdC.Telas.Pedido
         private System.Windows.Forms.CheckBox pesquisa_descnt_cbx;
         private System.Windows.Forms.Panel dados_pnl;
         private System.Windows.Forms.Button btnAtualizaPedido;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnExclusao;
         private System.Windows.Forms.Panel dados_estoque_pnl;
         private System.Windows.Forms.Panel estoque_min_pnl;
         private System.Windows.Forms.TextBox txtIdProduto;
@@ -405,12 +406,12 @@ namespace MRP_SdC.Telas.Pedido
         private System.Windows.Forms.DataVisualization.Charting.Chart chart_cht;
         private System.Windows.Forms.Label dados_subttl_lbl;
         private System.Windows.Forms.Label dados_ttl_lbl;
-        private System.Windows.Forms.DataGridView mps_dgv;
         private System.Windows.Forms.Panel txt_Quantidade;
         private System.Windows.Forms.TextBox txtQuantidade;
         private System.Windows.Forms.Label lbl_Quantidade;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.Label lblValor;
+        public System.Windows.Forms.DataGridView dgvPedido;
     }
 }
