@@ -20,18 +20,19 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO BOM ( " +
-                    "numeroreferencia, idProduto, quantidade, nivel" +
-                    ") VALUES(@numreferenc, @idprod, @qntd, @niv); ";
+                    "idBOM, idProduto, nomeComponente, nivelComponente, quantidade" +
+                    ") VALUES(@id, @idprod, @nomeComp, @nvl, @qntd); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return false;
                 }
 
-                cmd.Parameters.AddWithValue("@numreferenc", bom.idBOM);
+                cmd.Parameters.AddWithValue("@id", bom.idBOM);
                 cmd.Parameters.AddWithValue("@idprod", bom.idProduto);
+                cmd.Parameters.AddWithValue("@nomeComp", bom.nomeComponente);
+                cmd.Parameters.AddWithValue("@nvl", bom.nivelComponente);
                 cmd.Parameters.AddWithValue("@qntd", bom.quantidade);
-                cmd.Parameters.AddWithValue("@niv", bom.nivelComponente);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
