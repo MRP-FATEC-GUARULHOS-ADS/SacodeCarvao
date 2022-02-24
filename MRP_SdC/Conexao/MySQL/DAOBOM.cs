@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
+using MRP_SdC.Modelos;
 
 namespace MRP_SdC.MySQL
 {
-    class ConexaoBOM
+    class DAOBOM
     {
         public Boolean Insert(BOM bom)
         {
@@ -30,7 +31,7 @@ namespace MRP_SdC.MySQL
                 cmd.Parameters.AddWithValue("@numreferenc", bom.idBOM);
                 cmd.Parameters.AddWithValue("@idprod", bom.idProduto);
                 cmd.Parameters.AddWithValue("@qntd", bom.quantidade);
-                cmd.Parameters.AddWithValue("@niv", bom.nivel);
+                cmd.Parameters.AddWithValue("@niv", bom.nivelComponente);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();

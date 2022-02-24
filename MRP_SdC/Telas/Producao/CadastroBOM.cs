@@ -13,7 +13,7 @@ namespace MRP_SdC.Telas.Producao
         private void cadastrar_Click(object sender, EventArgs e)
         {
             BOM bom = new BOM(maos_tbx.Text, int.Parse(qntdEstoque_tbx.Text),
-            int.Parse(textBox1.Text), comboBox1.Text);
+            txtNomeComponente.Text, int.Parse(cmbNivelComponente.Text), int.Parse(txtQuantidade.Text));
 
             DialogResult confirmarInsert = MessageBox.Show(
                 "( ﾉ ﾟｰﾟ)ﾉ " + bom.idBOM + " ?!", "Confirmar Inserção",
@@ -21,7 +21,7 @@ namespace MRP_SdC.Telas.Producao
             );
             if (confirmarInsert == DialogResult.Yes)
             {
-                MySQL.ConexaoBOM bomcon = new MySQL.ConexaoBOM();
+                MySQL.DAOBOM bomcon = new MySQL.DAOBOM();
 
                 bomcon.Insert(bom);
 
