@@ -16,5 +16,12 @@ namespace MRP_SdC.Telas.Producao
         {
             InitializeComponent();
         }
+
+
+
+        private void ConsultaBOM_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
