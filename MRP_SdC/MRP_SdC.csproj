@@ -151,6 +151,12 @@
     <Compile Include="Telas\Producao\CadastroMRP.Designer.cs">
       <DependentUpon>CadastroMRP.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Producao\ConsultaBOM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Producao\ConsultaBOM.Designer.cs">
+      <DependentUpon>ConsultaBOM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Producao\ConsultaMPS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Producao\CadastroMRP.resx">
       <DependentUpon>CadastroMRP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Producao\ConsultaBOM.resx">
+      <DependentUpon>ConsultaBOM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Producao\ConsultaMPS.resx">
       <DependentUpon>ConsultaMPS.cs</DependentUpon>

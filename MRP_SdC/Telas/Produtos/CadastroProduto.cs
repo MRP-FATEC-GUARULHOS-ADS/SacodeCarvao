@@ -17,19 +17,19 @@ namespace MRP_SdC
             InitializeComponent();
         }
 
-        // funcoes das text-boxes
-        private void Required_TextChanged(object sender, System.EventArgs e)
+        /* funcoes das text-boxes
+        private void Required_TextChanged(object sender, EventArgs e)
         {
             if (txt_ModeloProduto.Text != "")
             {
-                ok_btn.Enabled = true;
+                ok_btn.Enabled = false;
             }
             else
             {
-                ok_btn.Enabled = false;
+                ok_btn.Enabled = true;
             }
         }
-
+        */
         // funcoes dos botoes
         private void OK_btn_Click(object sender, System.EventArgs e)
         {

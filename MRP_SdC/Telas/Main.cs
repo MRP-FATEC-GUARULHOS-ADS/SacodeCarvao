@@ -216,6 +216,12 @@ namespace MRP_SdC
             formConsultaMRP.ShowDialog();
         }
 
+        private void consultarToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Telas.Producao.ConsultaBOM formConsultaBOM = new Telas.Producao.ConsultaBOM();
+            formConsultaBOM.ShowDialog();
+        }
+
         private void UsuarioSair_TSMI_Click(object sender, EventArgs e)
         {
             myUser = Logar();

@@ -123,7 +123,6 @@ namespace MRP_SdC
             // ok_btn
             // 
             this.ok_btn.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.ok_btn.Enabled = false;
             this.ok_btn.Location = new System.Drawing.Point(125, 10);
             this.ok_btn.Name = "ok_btn";
             this.ok_btn.Size = new System.Drawing.Size(112, 23);
@@ -247,7 +246,6 @@ namespace MRP_SdC
         private System.Windows.Forms.Panel corpo_pnl;
         private System.Windows.Forms.Panel barraInf_pnl;
         private System.Windows.Forms.Button cancelar_btn;
-        private System.Windows.Forms.Button ok_btn;
         private System.Windows.Forms.Label ttl_lbl;
         private System.Windows.Forms.Panel esp_dir_pnl;
         private System.Windows.Forms.Panel esp_esq_pnl;
@@ -260,5 +258,6 @@ namespace MRP_SdC
         private System.Windows.Forms.Label lbl_ValorProduto;
         private System.Windows.Forms.TextBox txt_DescricaoProduto;
         private System.Windows.Forms.TextBox txt_ModeloProduto;
+        public System.Windows.Forms.Button ok_btn;
     }
 }
