@@ -93,6 +93,46 @@ namespace MRP_SdC.MySQL
             return listaBOM;
         }
 
+        public BOM Get(int idBOM)
+        {
+            BOM bom = new BOM();
+            Conexao conexao = new Conexao();
 
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT * FROM BOM WHERE idPedido = @idBOM;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Parameters.AddWithValue("@idBOM", idBOM);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                bom = new BOM();
+                bom.idBOM = Convert.ToInt32(reader["idBOM"]);
+                bom.idProduto = Convert.ToInt32(reader["idProduto"]);
+                bom.nomeComponente = "nomeComponente";
+                bom.nivelComponente = Convert.ToInt32(reader["nivelComponente"]);
+                bom.quantidade = Convert.ToInt32(reader["quantidade"]);
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+            conexao.CloseConexao();
+            return bom;
+        }
     }
 }
