@@ -36,6 +36,8 @@ namespace MRP_SdC
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EstoqueProduto));
             this.corpo_pnl = new System.Windows.Forms.Panel();
             this.prod_lista_dgv = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.árvoreDoProdutoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dados_pnl = new System.Windows.Forms.Panel();
             this.atualizar_pnl = new System.Windows.Forms.Panel();
             this.atualizar_btn = new System.Windows.Forms.Button();
@@ -66,10 +68,9 @@ namespace MRP_SdC
             this.ttl_lbl = new System.Windows.Forms.Label();
             this.EspDir_pnl = new System.Windows.Forms.Panel();
             this.EspEsq_pnl = new System.Windows.Forms.Panel();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.árvoreDoProdutoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.corpo_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prod_lista_dgv)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.dados_pnl.SuspendLayout();
             this.atualizar_pnl.SuspendLayout();
             this.dados_estoque_pnl.SuspendLayout();
@@ -80,7 +81,6 @@ namespace MRP_SdC
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
             this.barraInf_pnl.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // corpo_pnl
@@ -117,6 +117,20 @@ namespace MRP_SdC
             this.prod_lista_dgv.StandardTab = true;
             this.prod_lista_dgv.TabIndex = 2;
             this.prod_lista_dgv.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Lista_DGV_RowEnter);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.árvoreDoProdutoToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(171, 26);
+            // 
+            // árvoreDoProdutoToolStripMenuItem
+            // 
+            this.árvoreDoProdutoToolStripMenuItem.Name = "árvoreDoProdutoToolStripMenuItem";
+            this.árvoreDoProdutoToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.árvoreDoProdutoToolStripMenuItem.Text = "árvore do produto";
+            this.árvoreDoProdutoToolStripMenuItem.Click += new System.EventHandler(this.árvoreDoProdutoToolStripMenuItem_Click);
             // 
             // dados_pnl
             // 
@@ -449,20 +463,6 @@ namespace MRP_SdC
             this.EspEsq_pnl.Size = new System.Drawing.Size(32, 481);
             this.EspEsq_pnl.TabIndex = 5;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.árvoreDoProdutoToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(171, 26);
-            // 
-            // árvoreDoProdutoToolStripMenuItem
-            // 
-            this.árvoreDoProdutoToolStripMenuItem.Name = "árvoreDoProdutoToolStripMenuItem";
-            this.árvoreDoProdutoToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.árvoreDoProdutoToolStripMenuItem.Text = "árvore do produto";
-            this.árvoreDoProdutoToolStripMenuItem.Click += new System.EventHandler(this.árvoreDoProdutoToolStripMenuItem_Click);
-            // 
             // EstoqueProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -476,6 +476,7 @@ namespace MRP_SdC
             this.Load += new System.EventHandler(this.FormEstProd_Load);
             this.corpo_pnl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.prod_lista_dgv)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.dados_pnl.ResumeLayout(false);
             this.dados_pnl.PerformLayout();
             this.atualizar_pnl.ResumeLayout(false);
@@ -491,7 +492,6 @@ namespace MRP_SdC
             this.pesquisa_cont_pnl.ResumeLayout(false);
             this.pesquisa_cont_pnl.PerformLayout();
             this.barraInf_pnl.ResumeLayout(false);
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

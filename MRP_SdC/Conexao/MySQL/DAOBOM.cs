@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using MRP_SdC.Modelos;
+using System.Windows.Forms;
 
 namespace MRP_SdC.MySQL
 {
@@ -133,6 +134,58 @@ namespace MRP_SdC.MySQL
             }
             conexao.CloseConexao();
             return bom;
+        }
+
+        public List<BOM> PesquisaBOMPedido(string pesquisa)
+        {
+            List<BOM> listaBOM = new List<BOM>();
+            BOM bom;
+
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT * FROM BOM" +
+                    "WHERE idProduto = @pesquisa"; 
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Parameters.AddWithValue("@pesquisa", pesquisa);
+                cmd.Prepare();
+                Console.WriteLine(query);
+
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    bom = new BOM
+                    {
+
+                        idBOM = Convert.ToInt32(reader["idBOM"]),
+                        idProduto = Convert.ToInt32(reader["idProduto"]),
+                        nomeComponente = "nomeComponente",
+                        nivelComponente = Convert.ToInt32(reader["nivelComponente"]),
+                        quantidade = Convert.ToInt32(reader["quantidade"])
+                    };
+
+                    listaBOM.Add(bom);
+                }
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+            }
+            conexao.CloseConexao();
+            return listaBOM;
         }
     }
 }

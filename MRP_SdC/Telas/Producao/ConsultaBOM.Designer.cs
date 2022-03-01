@@ -29,9 +29,9 @@ namespace MRP_SdC.Telas.Producao
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.EspDir_pnl = new System.Windows.Forms.Panel();
             this.EspEsq_pnl = new System.Windows.Forms.Panel();
             this.ttl_lbl = new System.Windows.Forms.Label();
@@ -50,7 +50,7 @@ namespace MRP_SdC.Telas.Producao
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtQuantidade = new System.Windows.Forms.TextBox();
             this.lblQuantidade = new System.Windows.Forms.Label();
-            this.txtQntdEstoque = new System.Windows.Forms.TextBox();
+            this.txtNivelComponente = new System.Windows.Forms.TextBox();
             this.lblNivelComponente = new System.Windows.Forms.Label();
             this.estoque_max_pnl = new System.Windows.Forms.Panel();
             this.txtNomeComponente = new System.Windows.Forms.TextBox();
@@ -61,7 +61,7 @@ namespace MRP_SdC.Telas.Producao
             this.chart_cht = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dados_subttl_lbl = new System.Windows.Forms.Label();
             this.dados_ttl_lbl = new System.Windows.Forms.Label();
-            this.mrp_dgv = new System.Windows.Forms.DataGridView();
+            this.dgvBom = new System.Windows.Forms.DataGridView();
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
             this.dados_pnl.SuspendLayout();
@@ -72,7 +72,7 @@ namespace MRP_SdC.Telas.Producao
             this.estoque_max_pnl.SuspendLayout();
             this.estoque_min_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mrp_dgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBom)).BeginInit();
             this.SuspendLayout();
             // 
             // EspDir_pnl
@@ -221,7 +221,7 @@ namespace MRP_SdC.Telas.Producao
             // estoque_atual_pnl
             // 
             this.estoque_atual_pnl.Controls.Add(this.panel2);
-            this.estoque_atual_pnl.Controls.Add(this.txtQntdEstoque);
+            this.estoque_atual_pnl.Controls.Add(this.txtNivelComponente);
             this.estoque_atual_pnl.Controls.Add(this.lblNivelComponente);
             this.estoque_atual_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.estoque_atual_pnl.Location = new System.Drawing.Point(0, 96);
@@ -258,13 +258,13 @@ namespace MRP_SdC.Telas.Producao
             this.lblQuantidade.TabIndex = 0;
             this.lblQuantidade.Text = "Quantidade";
             // 
-            // txtQntdEstoque
+            // txtNivelComponente
             // 
-            this.txtQntdEstoque.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtQntdEstoque.Location = new System.Drawing.Point(0, 17);
-            this.txtQntdEstoque.Name = "txtQntdEstoque";
-            this.txtQntdEstoque.Size = new System.Drawing.Size(199, 20);
-            this.txtQntdEstoque.TabIndex = 1;
+            this.txtNivelComponente.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtNivelComponente.Location = new System.Drawing.Point(0, 17);
+            this.txtNivelComponente.Name = "txtNivelComponente";
+            this.txtNivelComponente.Size = new System.Drawing.Size(199, 20);
+            this.txtNivelComponente.TabIndex = 1;
             // 
             // lblNivelComponente
             // 
@@ -338,21 +338,21 @@ namespace MRP_SdC.Telas.Producao
             // chart_cht
             // 
             this.chart_cht.BackColor = System.Drawing.SystemColors.Control;
-            chartArea2.BackColor = System.Drawing.SystemColors.Control;
-            chartArea2.Name = "ChartArea1";
-            this.chart_cht.ChartAreas.Add(chartArea2);
+            chartArea1.BackColor = System.Drawing.SystemColors.Control;
+            chartArea1.Name = "ChartArea1";
+            this.chart_cht.ChartAreas.Add(chartArea1);
             this.chart_cht.Dock = System.Windows.Forms.DockStyle.Top;
-            legend2.BackColor = System.Drawing.SystemColors.Control;
-            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend2.Name = "Legend1";
-            this.chart_cht.Legends.Add(legend2);
+            legend1.BackColor = System.Drawing.SystemColors.Control;
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend1.Name = "Legend1";
+            this.chart_cht.Legends.Add(legend1);
             this.chart_cht.Location = new System.Drawing.Point(12, 58);
             this.chart_cht.Name = "chart_cht";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart_cht.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart_cht.Series.Add(series1);
             this.chart_cht.Size = new System.Drawing.Size(199, 160);
             this.chart_cht.TabIndex = 2;
             this.chart_cht.Text = "chart1";
@@ -379,28 +379,28 @@ namespace MRP_SdC.Telas.Producao
             this.dados_ttl_lbl.TabIndex = 0;
             this.dados_ttl_lbl.Text = "codigo";
             // 
-            // mrp_dgv
+            // dgvBom
             // 
-            this.mrp_dgv.AllowUserToAddRows = false;
-            this.mrp_dgv.AllowUserToDeleteRows = false;
-            this.mrp_dgv.BackgroundColor = System.Drawing.Color.White;
-            this.mrp_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.mrp_dgv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mrp_dgv.Location = new System.Drawing.Point(32, 88);
-            this.mrp_dgv.MultiSelect = false;
-            this.mrp_dgv.Name = "mrp_dgv";
-            this.mrp_dgv.ReadOnly = true;
-            this.mrp_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.mrp_dgv.Size = new System.Drawing.Size(496, 362);
-            this.mrp_dgv.StandardTab = true;
-            this.mrp_dgv.TabIndex = 13;
+            this.dgvBom.AllowUserToAddRows = false;
+            this.dgvBom.AllowUserToDeleteRows = false;
+            this.dgvBom.BackgroundColor = System.Drawing.Color.White;
+            this.dgvBom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvBom.Location = new System.Drawing.Point(32, 88);
+            this.dgvBom.MultiSelect = false;
+            this.dgvBom.Name = "dgvBom";
+            this.dgvBom.ReadOnly = true;
+            this.dgvBom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvBom.Size = new System.Drawing.Size(496, 362);
+            this.dgvBom.StandardTab = true;
+            this.dgvBom.TabIndex = 13;
             // 
             // ConsultaBOM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.mrp_dgv);
+            this.Controls.Add(this.dgvBom);
             this.Controls.Add(this.dados_pnl);
             this.Controls.Add(this.pesquisa_pnl);
             this.Controls.Add(this.ttl_lbl);
@@ -425,7 +425,7 @@ namespace MRP_SdC.Telas.Producao
             this.estoque_min_pnl.ResumeLayout(false);
             this.estoque_min_pnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mrp_dgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBom)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -450,7 +450,7 @@ namespace MRP_SdC.Telas.Producao
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtQuantidade;
         private System.Windows.Forms.Label lblQuantidade;
-        private System.Windows.Forms.TextBox txtQntdEstoque;
+        private System.Windows.Forms.TextBox txtNivelComponente;
         private System.Windows.Forms.Label lblNivelComponente;
         private System.Windows.Forms.Panel estoque_max_pnl;
         private System.Windows.Forms.TextBox txtNomeComponente;
@@ -461,6 +461,6 @@ namespace MRP_SdC.Telas.Producao
         private System.Windows.Forms.DataVisualization.Charting.Chart chart_cht;
         private System.Windows.Forms.Label dados_subttl_lbl;
         private System.Windows.Forms.Label dados_ttl_lbl;
-        private System.Windows.Forms.DataGridView mrp_dgv;
+        public System.Windows.Forms.DataGridView dgvBom;
     }
 }

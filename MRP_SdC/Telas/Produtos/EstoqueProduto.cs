@@ -152,20 +152,27 @@ namespace MRP_SdC
             AtualizaLista();
         }
 
+        Telas.Producao.ConsultaBOM bom = new Telas.Producao.ConsultaBOM();
+
+        // funcoes de pesquisa
+        public void PesquisarProdutosBOM()
+        {
+
+            string pesquisa = dados_ttl_lbl.Text;
+
+            if (pesquisa_tbx.Text != "")
+            {
+                MySQL.DAOBOM daoBom = new MySQL.DAOBOM();
+                List<BOM> listaBom = daoBom.PesquisaBOMPedido(pesquisa);
+                var bindingProdutos = new BindingList<BOM>(listaBom);
+                bom.dgvBom.DataSource = bindingProdutos;
+            }
+        }
+
         private void árvoreDoProdutoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string chave = prod_lista_dgv.SelectedCells[0].Value.ToString();
-
-            List<BOM> listaBOM = new List<BOM>();
-            BOM bom;
-            MySQL.Conexao conexao = new MySQL.Conexao();
-
-            MySqlDataReader reader;
-            string query = "SELECT * FROM BOM WHERE idBOM = " + chave;
-            MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
-
-
-            reader = cmd.ExecuteReader();
+            bom.ShowDialog();
+            bom.PesquisarProdutosBOM();
         }
     }
 }

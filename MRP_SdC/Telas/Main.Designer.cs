@@ -172,7 +172,7 @@ namespace MRP_SdC
             this.cadastrarToolStripMenuItem1,
             this.consultarToolStripMenuItem});
             this.mPSToolStripMenuItem1.Name = "mPSToolStripMenuItem1";
-            this.mPSToolStripMenuItem1.Size = new System.Drawing.Size(101, 22);
+            this.mPSToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.mPSToolStripMenuItem1.Text = "MPS";
             // 
             // cadastrarToolStripMenuItem1
@@ -195,7 +195,7 @@ namespace MRP_SdC
             this.cadastrarToolStripMenuItem2,
             this.consultarToolStripMenuItem1});
             this.mRPToolStripMenuItem.Name = "mRPToolStripMenuItem";
-            this.mRPToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.mRPToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mRPToolStripMenuItem.Text = "MRP";
             // 
             // cadastrarToolStripMenuItem2
@@ -218,20 +218,20 @@ namespace MRP_SdC
             this.cadastrarToolStripMenuItem3,
             this.consultarToolStripMenuItem2});
             this.bOMToolStripMenuItem.Name = "bOMToolStripMenuItem";
-            this.bOMToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.bOMToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bOMToolStripMenuItem.Text = "BOM";
             // 
             // cadastrarToolStripMenuItem3
             // 
             this.cadastrarToolStripMenuItem3.Name = "cadastrarToolStripMenuItem3";
-            this.cadastrarToolStripMenuItem3.Size = new System.Drawing.Size(125, 22);
+            this.cadastrarToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.cadastrarToolStripMenuItem3.Text = "Cadastrar";
             this.cadastrarToolStripMenuItem3.Click += new System.EventHandler(this.cadastrarToolStripMenuItem3_Click);
             // 
             // consultarToolStripMenuItem2
             // 
             this.consultarToolStripMenuItem2.Name = "consultarToolStripMenuItem2";
-            this.consultarToolStripMenuItem2.Size = new System.Drawing.Size(125, 22);
+            this.consultarToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.consultarToolStripMenuItem2.Text = "Consultar";
             this.consultarToolStripMenuItem2.Click += new System.EventHandler(this.consultarToolStripMenuItem2_Click);
             // 
