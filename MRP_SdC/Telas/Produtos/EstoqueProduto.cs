@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace MRP_SdC
 {
@@ -149,6 +150,22 @@ namespace MRP_SdC
             atualizar_btn.Enabled = false;
 
             AtualizaLista();
+        }
+
+        private void árvoreDoProdutoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string chave = prod_lista_dgv.SelectedCells[0].Value.ToString();
+
+            List<BOM> listaBOM = new List<BOM>();
+            BOM bom;
+            MySQL.Conexao conexao = new MySQL.Conexao();
+
+            MySqlDataReader reader;
+            string query = "SELECT * FROM BOM WHERE idBOM = " + chave;
+            MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+
+
+            reader = cmd.ExecuteReader();
         }
     }
 }

@@ -29,6 +29,7 @@ namespace MRP_SdC
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -65,6 +66,8 @@ namespace MRP_SdC
             this.ttl_lbl = new System.Windows.Forms.Label();
             this.EspDir_pnl = new System.Windows.Forms.Panel();
             this.EspEsq_pnl = new System.Windows.Forms.Panel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.árvoreDoProdutoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.corpo_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prod_lista_dgv)).BeginInit();
             this.dados_pnl.SuspendLayout();
@@ -77,6 +80,7 @@ namespace MRP_SdC
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
             this.barraInf_pnl.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // corpo_pnl
@@ -102,6 +106,7 @@ namespace MRP_SdC
             this.prod_lista_dgv.AllowUserToDeleteRows = false;
             this.prod_lista_dgv.BackgroundColor = System.Drawing.Color.White;
             this.prod_lista_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.prod_lista_dgv.ContextMenuStrip = this.contextMenuStrip1;
             this.prod_lista_dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.prod_lista_dgv.Location = new System.Drawing.Point(32, 88);
             this.prod_lista_dgv.MultiSelect = false;
@@ -111,7 +116,6 @@ namespace MRP_SdC
             this.prod_lista_dgv.Size = new System.Drawing.Size(400, 345);
             this.prod_lista_dgv.StandardTab = true;
             this.prod_lista_dgv.TabIndex = 2;
-            this.prod_lista_dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Produtos_DGV_CellClick);
             this.prod_lista_dgv.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Lista_DGV_RowEnter);
             // 
             // dados_pnl
@@ -445,6 +449,20 @@ namespace MRP_SdC
             this.EspEsq_pnl.Size = new System.Drawing.Size(32, 481);
             this.EspEsq_pnl.TabIndex = 5;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.árvoreDoProdutoToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(171, 26);
+            // 
+            // árvoreDoProdutoToolStripMenuItem
+            // 
+            this.árvoreDoProdutoToolStripMenuItem.Name = "árvoreDoProdutoToolStripMenuItem";
+            this.árvoreDoProdutoToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.árvoreDoProdutoToolStripMenuItem.Text = "árvore do produto";
+            this.árvoreDoProdutoToolStripMenuItem.Click += new System.EventHandler(this.árvoreDoProdutoToolStripMenuItem_Click);
+            // 
             // EstoqueProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -473,6 +491,7 @@ namespace MRP_SdC
             this.pesquisa_cont_pnl.ResumeLayout(false);
             this.pesquisa_cont_pnl.PerformLayout();
             this.barraInf_pnl.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -512,5 +531,7 @@ namespace MRP_SdC
         private System.Windows.Forms.Button atualizar_btn;
         private System.Windows.Forms.Button editar_btn;
         private System.Windows.Forms.Panel EspEsq_pnl;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem árvoreDoProdutoToolStripMenuItem;
     }
 }

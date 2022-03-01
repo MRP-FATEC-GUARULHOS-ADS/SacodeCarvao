@@ -52,6 +52,8 @@ namespace MRP_SdC
             this.ttl_lbl = new System.Windows.Forms.Label();
             this.esp_dir_pnl = new System.Windows.Forms.Panel();
             this.esp_esq_pnl = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnConsultaArvoreProduto = new System.Windows.Forms.Button();
             this.corpo_pnl.SuspendLayout();
             this.estado_pnl.SuspendLayout();
             this.barraInf_pnl.SuspendLayout();
@@ -61,12 +63,14 @@ namespace MRP_SdC
             this.comp_nome_pnl.SuspendLayout();
             this.comp_qnt_pnl.SuspendLayout();
             this.fechar_pnl.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // corpo_pnl
             // 
             this.corpo_pnl.AutoScroll = true;
             this.corpo_pnl.AutoSize = true;
+            this.corpo_pnl.Controls.Add(this.panel1);
             this.corpo_pnl.Controls.Add(this.estado_pnl);
             this.corpo_pnl.Controls.Add(this.barraInf_pnl);
             this.corpo_pnl.Controls.Add(this.comps_pnl);
@@ -319,6 +323,26 @@ namespace MRP_SdC
             this.esp_esq_pnl.Size = new System.Drawing.Size(32, 537);
             this.esp_esq_pnl.TabIndex = 11;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnConsultaArvoreProduto);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(32, 188);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(288, 68);
+            this.panel1.TabIndex = 14;
+            // 
+            // btnConsultaArvoreProduto
+            // 
+            this.btnConsultaArvoreProduto.Location = new System.Drawing.Point(24, 14);
+            this.btnConsultaArvoreProduto.Margin = new System.Windows.Forms.Padding(0);
+            this.btnConsultaArvoreProduto.Name = "btnConsultaArvoreProduto";
+            this.btnConsultaArvoreProduto.Size = new System.Drawing.Size(240, 41);
+            this.btnConsultaArvoreProduto.TabIndex = 0;
+            this.btnConsultaArvoreProduto.Text = "consultar árvore produto";
+            this.btnConsultaArvoreProduto.UseVisualStyleBackColor = true;
+            this.btnConsultaArvoreProduto.Click += new System.EventHandler(this.btnConsultaArvoreProduto_Click);
+            // 
             // ExplosaoProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -342,6 +366,7 @@ namespace MRP_SdC
             this.comp_qnt_pnl.ResumeLayout(false);
             this.comp_qnt_pnl.PerformLayout();
             this.fechar_pnl.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -371,5 +396,7 @@ namespace MRP_SdC
         private System.Windows.Forms.Panel estado_pnl;
         private System.Windows.Forms.CheckedListBox estado_clb;
         private System.Windows.Forms.Label estado_lbl;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnConsultaArvoreProduto;
     }
 }

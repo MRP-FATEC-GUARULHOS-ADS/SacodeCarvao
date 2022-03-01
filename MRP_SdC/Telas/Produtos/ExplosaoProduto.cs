@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MRP_SdC.Telas.Producao;
 
 namespace MRP_SdC
 {
@@ -59,6 +60,20 @@ namespace MRP_SdC
         private void Cancel_btn_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void AtualizaListasBOM()
+        {
+            MySQL.DAOBOM daoBom = new MySQL.DAOBOM();
+            List<BOM> listaBom = daoBom.GetBOM();
+            var bindingBom = new BindingList<BOM>(listaBom);
+        }
+
+        private void btnConsultaArvoreProduto_Click(object sender, EventArgs e)
+        {
+            ConsultaBOM consultabom = new ConsultaBOM();
+            consultabom.ShowDialog();
+            AtualizaListasBOM();
         }
     }
 }
