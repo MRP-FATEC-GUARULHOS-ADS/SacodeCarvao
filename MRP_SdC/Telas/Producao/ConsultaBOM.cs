@@ -16,7 +16,7 @@ namespace MRP_SdC.Telas.Producao
         {
             InitializeComponent();
         }
-
+        
         // funcoes personalizadas
         private void AtualizaListas()
         {
@@ -40,8 +40,8 @@ namespace MRP_SdC.Telas.Producao
             txtNivelComponente.Text = bom.nivelComponente.ToString();
             txtQuantidade.Text = bom.quantidade.ToString();
         }
-
-        private void ConsultaBOM_Load(object sender, EventArgs e)
+        
+        public void ConsultaBOM_Load(object sender, EventArgs e)
         {
             AtualizaListas();
 
@@ -50,15 +50,15 @@ namespace MRP_SdC.Telas.Producao
         }
 
         // funcoes de pesquisa
-        public void PesquisarProdutosBOM()
+        public void PesquisarProdutosBOM(String pesquisa)
         {
 
-            string pesquisa = dados_ttl_lbl.Text;
+            pesquisa = pesquisa_tbx.Text;
 
             if (pesquisa_tbx.Text != "")
             {
                 MySQL.DAOBOM daoBom = new MySQL.DAOBOM();
-                List<BOM> listaBom = daoBom.PesquisaBOMPedido(pesquisa);
+                List<BOM> listaBom = daoBom.PesquisaBOM(pesquisa);
                 var bindingProdutos = new BindingList<BOM>(listaBom);
                 dgvBom.DataSource = bindingProdutos;
             }
@@ -66,6 +66,18 @@ namespace MRP_SdC.Telas.Producao
             {
                 AtualizaListas();
             }
+            
         }
+
+        private void pesquisa_btn_Click(object sender, EventArgs e)
+        {
+            PesquisarProdutosBOM(pesquisa_tbx.Text);
+        }
+
+        public void pesquisaBOMProduto()
+        {
+            PesquisarProdutosBOM(pesquisa_tbx.Text);
+        }
+
     }
 }

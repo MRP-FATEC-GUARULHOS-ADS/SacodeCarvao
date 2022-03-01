@@ -22,7 +22,7 @@ namespace MRP_SdC
             myProd = prod;
 
             MudaInfos();
-            ok_btn.Enabled = false;
+            ok_btn.Enabled = true;
         }
 
         // adaptando informações

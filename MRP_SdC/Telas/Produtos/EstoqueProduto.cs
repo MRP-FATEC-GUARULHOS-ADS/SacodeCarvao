@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace MRP_SdC
 {
@@ -30,19 +24,20 @@ namespace MRP_SdC
             var bindingProdutos = new BindingList<Produto>(listaProdutos);
             prod_lista_dgv.DataSource = bindingProdutos;
         }
+
         private void MudaInfos()
         {
             myProd = prod_lista_dgv.CurrentRow.DataBoundItem as Produto;
             descnt_btn.Enabled = myProd.estado;
 
             // textos do produto selecionado
-            dados_ttl_lbl.Text = String.Format("{0:D6}", myProd.idProduto);
+            dados_ttl_lbl.Text = myProd.idProduto.ToString();
             dados_subttl_lbl.Text = myProd.modelo;
             estoque_atual_tbx.Text = myProd.qtdeAtual.ToString();
             estoque_min_tbx.Text = myProd.qtdeMin.ToString();
             estoque_max_tbx.Text = myProd.qtdeMax.ToString();
 
-            atualizar_btn.Enabled = false;
+            atualizar_btn.Enabled = true;
         }
 
         // funcoes do formulario
@@ -50,7 +45,7 @@ namespace MRP_SdC
         {
             AtualizaLista();
             MudaInfos();
-            atualizar_btn.Enabled = false;
+            atualizar_btn.Enabled = true;
         }
 
         // funcoes da lista
@@ -63,7 +58,7 @@ namespace MRP_SdC
             }
         }
 
-        private void Produtos_DGV_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void prod_lista_dgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1 && prod_lista_dgv.CurrentRow != null)
             {
@@ -94,10 +89,12 @@ namespace MRP_SdC
                 PesquisarProdutos();
             }
         }
+
         private void Pesquisar_BTN_Click(object sender, EventArgs e)
         {
             PesquisarProdutos();
         }
+
         /// funcoes da checkbox da pesquisa
         private void Pesquisar_CBX_CheckedChanged(object sender, EventArgs e)
         {
@@ -157,22 +154,28 @@ namespace MRP_SdC
         // funcoes de pesquisa
         public void PesquisarProdutosBOM()
         {
-
             string pesquisa = dados_ttl_lbl.Text;
 
-            if (pesquisa_tbx.Text != "")
-            {
                 MySQL.DAOBOM daoBom = new MySQL.DAOBOM();
-                List<BOM> listaBom = daoBom.PesquisaBOMPedido(pesquisa);
+                List<BOM> listaBom = daoBom.PesquisaBOM(pesquisa);
                 var bindingProdutos = new BindingList<BOM>(listaBom);
                 bom.dgvBom.DataSource = bindingProdutos;
-            }
+            
+        }
+
+        private void AtualizaListasBOM()
+        {
+            MySQL.DAOBOM daoBom = new MySQL.DAOBOM();
+            List<BOM> listaBom = daoBom.GetBOM();
+            var bindingBom = new BindingList<BOM>(listaBom);
         }
 
         private void árvoreDoProdutoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bom.ShowDialog();
-            bom.PesquisarProdutosBOM();
+            Telas.Producao.ConsultaBOM consultabom = new Telas.Producao.ConsultaBOM();
+            consultabom.pesquisa_tbx.Text = dados_ttl_lbl.Text;
+            consultabom.Show();
+            consultabom.pesquisaBOMProduto();
         }
     }
 }

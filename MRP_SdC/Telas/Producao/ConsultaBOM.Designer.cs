@@ -142,6 +142,7 @@ namespace MRP_SdC.Telas.Producao
             this.pesquisa_btn.TabIndex = 1;
             this.pesquisa_btn.Text = "👁";
             this.pesquisa_btn.UseVisualStyleBackColor = true;
+            this.pesquisa_btn.Click += new System.EventHandler(this.pesquisa_btn_Click);
             // 
             // pesquisa_sep_pnl
             // 
@@ -437,7 +438,6 @@ namespace MRP_SdC.Telas.Producao
         private System.Windows.Forms.Label ttl_lbl;
         private System.Windows.Forms.Panel pesquisa_pnl;
         private System.Windows.Forms.Panel pesquisa_cont_pnl;
-        private System.Windows.Forms.TextBox pesquisa_tbx;
         private System.Windows.Forms.Button pesquisa_btn;
         private System.Windows.Forms.Panel pesquisa_sep_pnl;
         private System.Windows.Forms.CheckBox pesquisa_descnt_cbx;
@@ -462,5 +462,6 @@ namespace MRP_SdC.Telas.Producao
         private System.Windows.Forms.Label dados_subttl_lbl;
         private System.Windows.Forms.Label dados_ttl_lbl;
         public System.Windows.Forms.DataGridView dgvBom;
+        public System.Windows.Forms.TextBox pesquisa_tbx;
     }
 }

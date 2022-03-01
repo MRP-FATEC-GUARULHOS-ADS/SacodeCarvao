@@ -21,15 +21,14 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO BOM ( " +
-                    "idBOM, idProduto, nomeComponente, nivelComponente, quantidade" +
-                    ") VALUES(@id, @idprod, @nomeComp, @nvl, @qntd); ";
+                    "idProduto, nomeComponente, nivelComponente, quantidade" +
+                    ") VALUES(@idprod, @nomeComp, @nvl, @qntd); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return false;
                 }
 
-                cmd.Parameters.AddWithValue("@id", bom.idBOM);
                 cmd.Parameters.AddWithValue("@idprod", bom.idProduto);
                 cmd.Parameters.AddWithValue("@nomeComp", bom.nomeComponente);
                 cmd.Parameters.AddWithValue("@nvl", bom.nivelComponente);
@@ -136,7 +135,7 @@ namespace MRP_SdC.MySQL
             return bom;
         }
 
-        public List<BOM> PesquisaBOMPedido(string pesquisa)
+        public List<BOM> PesquisaBOM(String pesquisa)
         {
             List<BOM> listaBOM = new List<BOM>();
             BOM bom;
@@ -151,8 +150,8 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "SELECT * FROM BOM" +
-                    "WHERE idProduto = @pesquisa"; 
+                String query = "SELECT * FROM BOM " +
+                    "WHERE idProduto LIKE @pesquisa"; 
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {

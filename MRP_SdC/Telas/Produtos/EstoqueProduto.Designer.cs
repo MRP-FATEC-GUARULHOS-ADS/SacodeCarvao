@@ -116,6 +116,7 @@ namespace MRP_SdC
             this.prod_lista_dgv.Size = new System.Drawing.Size(400, 345);
             this.prod_lista_dgv.StandardTab = true;
             this.prod_lista_dgv.TabIndex = 2;
+            this.prod_lista_dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.prod_lista_dgv_CellClick);
             this.prod_lista_dgv.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Lista_DGV_RowEnter);
             // 
             // contextMenuStrip1
