@@ -7,7 +7,7 @@ namespace MRP_SdC
         public int idProduto { get; set; }
         public string modelo { get; set; }
         public string descricao { get; set; }
-        public double valor { get; set; }
+        public decimal valor { get; set; }
         public int qtdeMin { get; set; }
         public int qtdeMax { get; set; }
         public int qtdeAtual { get; set; }
@@ -21,7 +21,7 @@ namespace MRP_SdC
         }
 
         public Produto(
-           string modelo, string descricao, double valor
+           string modelo, string descricao, int valor
         )
         {
             this.modelo = modelo;

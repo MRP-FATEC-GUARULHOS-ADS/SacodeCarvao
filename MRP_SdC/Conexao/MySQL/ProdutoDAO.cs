@@ -19,15 +19,14 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO PRODUTO ( " +
-                    "idProduto, modeloProduto,  descrProduto, valorProduto, qtdeMinEstoque, qtdeMaxEstoque, qtdeAtualEstoque, estado " +
-                    ") VALUES(@idProd, @modelo, @descricao, @valor, @qntmin, @qntmax, @qntatual, @estado ); ";
+                    "modeloProduto, descrProduto, valorProduto, qtdeMinEstoque, qtdeMaxEstoque, qtdeAtualEstoque, estado " +
+                    ") VALUES(@modelo, @descricao, @valor, @qntmin, @qntmax, @qntatual, @estado); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return false;
                 }
 
-                cmd.Parameters.AddWithValue("@idProd", prod.idProduto);
                 cmd.Parameters.AddWithValue("@modelo", prod.modelo);
                 cmd.Parameters.AddWithValue("@descricao", prod.descricao);
                 cmd.Parameters.AddWithValue("@valor", prod.valor);
@@ -63,9 +62,9 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "UPDATE PRODUTO " +
-                    "SET idProduto = @idProd modeloProduto = @modelo, descrProduto = @descricao, valorProduto = @valor, " +
+                    "SET modeloProduto = @modelo, descrProduto = @descricao, valorProduto = @valor, " +
                     "qtdeMinEstoque = @qntmin, qtdeMaxEstoque = @qntmax, qtdeAtualEstoque = @qntatual, estado = @estado " +
-                    "WHERE idTabProduto = @idTab; ";
+                    "WHERE idProduto = @idProd; ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -95,6 +94,7 @@ namespace MRP_SdC.MySQL
             conexao.CloseConexao();
             return true;
         }
+
         public Boolean UpdateEstado(Produto produto)
         {
             Conexao conexao = new Conexao();
@@ -154,7 +154,7 @@ namespace MRP_SdC.MySQL
                 cmd.Parameters.AddWithValue("@qntmin", produto.qtdeMin);
                 cmd.Parameters.AddWithValue("@qntmax", produto.qtdeMax);
                 cmd.Parameters.AddWithValue("@qntatual", produto.qtdeAtual);
-                cmd.Parameters.AddWithValue("@idTab", produto.idProduto);
+                cmd.Parameters.AddWithValue("@idProd", produto.idProduto);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -237,7 +237,7 @@ namespace MRP_SdC.MySQL
                         idProduto = Convert.ToInt32(reader["idProduto"]),
                         modelo = (string)reader["modeloProduto"],
                         descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : ""),
-                        valor = Convert.ToDouble(reader["valorProduto"]),
+                        valor = Convert.ToDecimal(reader["valorProduto"]),
                         qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]),
                         qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]),
                         qtdeAtual = ((reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0),
@@ -285,7 +285,7 @@ namespace MRP_SdC.MySQL
                         idProduto = Convert.ToInt32(reader["idProduto"]),
                         modelo = (string)reader["modeloProduto"],
                         descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : ""),
-                        valor = Convert.ToDouble(reader["valorProduto"]),
+                        valor = Convert.ToDecimal(reader["valorProduto"]),
                         qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]),
                         qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]),
                         qtdeAtual = ((reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0),
@@ -342,7 +342,7 @@ namespace MRP_SdC.MySQL
                         idProduto = Convert.ToInt32(reader["idProduto"]),
                         modelo = (string)reader["modeloProduto"],
                         descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : ""),
-                        valor = Convert.ToDouble(reader["valorProduto"]),
+                        valor = Convert.ToDecimal(reader["valorProduto"]),
                         qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]),
                         qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]),
                         qtdeAtual = ( (reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0 ),
@@ -392,7 +392,7 @@ namespace MRP_SdC.MySQL
                     idProduto = Convert.ToInt32(reader["idProduto"]),
                     modelo = (string)reader["modeloProduto"],
                     descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : ""),
-                    valor = Convert.ToDouble(reader["valorProduto"]),
+                    valor = Convert.ToDecimal(reader["valorProduto"]),
                     qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]),
                     qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]),
                     qtdeAtual = ( (reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0 ),

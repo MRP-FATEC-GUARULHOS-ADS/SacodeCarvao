@@ -17,7 +17,7 @@ namespace MRP_SdC
             InitializeComponent();
         }
 
-        /* funcoes das text-boxes
+        //funcoes das text-boxes
         private void Required_TextChanged(object sender, EventArgs e)
         {
             if (txt_ModeloProduto.Text != "")
@@ -29,14 +29,13 @@ namespace MRP_SdC
                 ok_btn.Enabled = true;
             }
         }
-        */
-        // funcoes dos botoes
+
         private void OK_btn_Click(object sender, System.EventArgs e)
         {
-            double valor = double.TryParse(txt_DescricaoProduto.Text, out _) ? double.Parse(txt_DescricaoProduto.Text) : 0;
+            
 
             Produto myProduto = new Produto(
-                txt_ModeloProduto.Text, txt_DescricaoProduto.Text, valor
+                txt_ModeloProduto.Text, txt_DescricaoProduto.Text, int.Parse(txt_ValorProduto.Text)
             );
 
             // confirmando insercao

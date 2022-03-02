@@ -28,11 +28,11 @@ namespace MRP_SdC
         // adaptando informações
         private void MudaInfos()
         {
-            ttl_lbl.Text = String.Format("{0:D6}", myProd.idProduto);
+            ttl_lbl.Text = myProd.idProduto.ToString();
 
             txt_ModeloProduto.Text = myProd.modelo;
             txt_DescricaoProduto.Text = myProd.descricao;
-            txt_ValorProduto.Text = myProd.valor.ToString();
+            txt_ValorProduto.Text = Convert.ToString(myProd.valor);
         }
 
         // funcoes das text-boxes
@@ -50,15 +50,14 @@ namespace MRP_SdC
 
         private void OK_btn_Click(object sender, System.EventArgs e)
         {
-            double valor = double.TryParse(txt_ValorProduto.Text, out _) ? double.Parse(txt_ValorProduto.Text) : 0;
 
             myProd.modelo = txt_ModeloProduto.Text;
             myProd.descricao = txt_DescricaoProduto.Text;
-            myProd.valor = valor;
+            myProd.valor = decimal.Parse(txt_ValorProduto.Text);
 
             // messagebox confirmando edicao
             DialogResult confirmarEdit = MessageBox.Show(
-                "(′д｀σ)σ " + myProd + " ?!", "Confirmar Edição",
+                "(′д｀σ)σ " + myProd.idProduto + " ?!", "Confirmar Edição",
                 MessageBoxButtons.YesNo
             );
             if (confirmarEdit == DialogResult.Yes)
@@ -68,6 +67,7 @@ namespace MRP_SdC
             }
 
             Close();
+            MudaInfos();
         }
 
         private void Cancelar_btn_Click(object sender, System.EventArgs e)
