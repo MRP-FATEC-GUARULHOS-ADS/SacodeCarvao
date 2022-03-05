@@ -21,18 +21,20 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO BOM ( " +
-                    "idProduto, nomeComponente, nivelComponente, quantidade" +
-                    ") VALUES(@idprod, @nomeComp, @nvl, @qntd); ";
+                    "saidaFinal, idProduto, categoria, nome, quantidade, custoUnidade" +
+                    ") VALUES(@saidaFim, @idprod, @categ, @nomeComp, @qntd, @custo); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return false;
                 }
 
+                cmd.Parameters.AddWithValue("@saidaFim", bom.saidaFinal);
                 cmd.Parameters.AddWithValue("@idprod", bom.idProduto);
-                cmd.Parameters.AddWithValue("@nomeComp", bom.nomeComponente);
-                cmd.Parameters.AddWithValue("@nvl", bom.nivelComponente);
+                cmd.Parameters.AddWithValue("@categ", bom.categoria);
+                cmd.Parameters.AddWithValue("@nomeComp", bom.nome);
                 cmd.Parameters.AddWithValue("@qntd", bom.quantidade);
+                cmd.Parameters.AddWithValue("@custo", bom.custoUnidade);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -75,11 +77,14 @@ namespace MRP_SdC.MySQL
                 {
                     bom = new BOM();
                     {
+                        bom = new BOM();
                         bom.idBOM = Convert.ToInt32(reader["idBOM"]);
+                        bom.saidaFinal = Convert.ToString(reader["saidaFinal"]);
                         bom.idProduto = Convert.ToInt32(reader["idProduto"]);
-                        bom.nomeComponente = "nomeComponente";
-                        bom.nivelComponente = Convert.ToInt32(reader["nivelComponente"]);
+                        bom.categoria = Convert.ToString(reader["categoria"]);
+                        bom.nome = Convert.ToString(reader["nome"]);
                         bom.quantidade = Convert.ToInt32(reader["quantidade"]);
+                        bom.custoUnidade = Convert.ToInt32(reader["custoUnidade"]);
                     }
 
                     listaBOM.Add(bom);
@@ -106,7 +111,7 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "SELECT * FROM BOM WHERE idPedido = @idBOM;";
+                string query = "SELECT * FROM BOM WHERE idProduto = @idBOM;";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -121,10 +126,12 @@ namespace MRP_SdC.MySQL
 
                 bom = new BOM();
                 bom.idBOM = Convert.ToInt32(reader["idBOM"]);
+                bom.saidaFinal = "saidaFinal";
                 bom.idProduto = Convert.ToInt32(reader["idProduto"]);
-                bom.nomeComponente = "nomeComponente";
-                bom.nivelComponente = Convert.ToInt32(reader["nivelComponente"]);
+                bom.categoria = "categoria";
+                bom.nome = "nome";
                 bom.quantidade = Convert.ToInt32(reader["quantidade"]);
+                bom.custoUnidade = Convert.ToInt32(reader["custoUnidade"]);
             }
             catch (MySqlException e)
             {
@@ -171,8 +178,7 @@ namespace MRP_SdC.MySQL
 
                         idBOM = Convert.ToInt32(reader["idBOM"]),
                         idProduto = Convert.ToInt32(reader["idProduto"]),
-                        nomeComponente = "nomeComponente",
-                        nivelComponente = Convert.ToInt32(reader["nivelComponente"]),
+                        nome = "nomeComponente",
                         quantidade = Convert.ToInt32(reader["quantidade"])
                     };
 

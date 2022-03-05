@@ -35,10 +35,12 @@ namespace MRP_SdC.Telas.Producao
             dados_ttl_lbl.Text = bom.idBOM.ToString();
             bom.idBOM = int.Parse(dados_ttl_lbl.Text);
             dados_subttl_lbl.Text = String.Format(bom.idProduto.ToString());
-            txtProdId.Text = bom.idProduto.ToString();
-            txtNomeComponente.Text = bom.nomeComponente.ToString();
-            txtNivelComponente.Text = bom.nivelComponente.ToString();
+            txtSaidaFinal.Text = bom.saidaFinal.ToString();
+            txtIdProduto.Text = bom.nome.ToString();
+            txtCategoria.Text = bom.categoria.ToString();
+            txtNome.Text = bom.quantidade.ToString();
             txtQuantidade.Text = bom.quantidade.ToString();
+            txtCustoUnidade.Text = bom.custoUnidade.ToString();
         }
         
         public void ConsultaBOM_Load(object sender, EventArgs e)

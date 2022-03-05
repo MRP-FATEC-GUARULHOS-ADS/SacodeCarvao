@@ -206,7 +206,6 @@ namespace MRP_SdC.Telas.Producao
             this.btnAtualizaMRP.TabIndex = 0;
             this.btnAtualizaMRP.Text = "Atualizar MRP";
             this.btnAtualizaMRP.UseVisualStyleBackColor = true;
-            this.btnAtualizaMRP.Click += new System.EventHandler(this.btnAtualizaMRP_Click);
             // 
             // dados_estoque_pnl
             // 

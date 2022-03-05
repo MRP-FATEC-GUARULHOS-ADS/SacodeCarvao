@@ -12,8 +12,9 @@ namespace MRP_SdC.Telas.Producao
 
         private void cadastrar_Click(object sender, EventArgs e)
         {
-            BOM bom = new BOM(int.Parse(qntdEstoque_tbx.Text),
-            txtNomeComponente.Text, int.Parse(cmbNivelComponente.Text), int.Parse(txtQuantidade.Text));
+            BOM bom = new BOM(txtSaidaFinal.Text,
+            int.Parse(txtIdProduto.Text), txtCategoria.Text, txtNome.Text, int.Parse(txtQuantidade.Text),
+            int.Parse(txtCustoUnidade.Text));
 
             DialogResult confirmarInsert = MessageBox.Show(
                 "( ﾉ ﾟｰﾟ)ﾉ " + bom.idBOM + " ?!", "Confirmar Inserção",
@@ -28,5 +29,6 @@ namespace MRP_SdC.Telas.Producao
                 Close();
             }
         }
+
     }
 }

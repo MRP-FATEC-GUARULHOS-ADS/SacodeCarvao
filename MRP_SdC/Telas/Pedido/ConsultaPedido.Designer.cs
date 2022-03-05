@@ -29,9 +29,9 @@ namespace MRP_SdC.Telas.Pedido
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.EspEsq_pnl = new System.Windows.Forms.Panel();
             this.EspDir_pnl = new System.Windows.Forms.Panel();
             this.ttl_lbl = new System.Windows.Forms.Label();
@@ -184,7 +184,6 @@ namespace MRP_SdC.Telas.Pedido
             this.btnProduzir.TabIndex = 5;
             this.btnProduzir.Text = "Produzir";
             this.btnProduzir.UseVisualStyleBackColor = true;
-            this.btnProduzir.Click += new System.EventHandler(this.btnProduzir_Click);
             // 
             // panel1
             // 
@@ -307,21 +306,21 @@ namespace MRP_SdC.Telas.Pedido
             // chart_cht
             // 
             this.chart_cht.BackColor = System.Drawing.SystemColors.Control;
-            chartArea3.BackColor = System.Drawing.SystemColors.Control;
-            chartArea3.Name = "ChartArea1";
-            this.chart_cht.ChartAreas.Add(chartArea3);
+            chartArea1.BackColor = System.Drawing.SystemColors.Control;
+            chartArea1.Name = "ChartArea1";
+            this.chart_cht.ChartAreas.Add(chartArea1);
             this.chart_cht.Dock = System.Windows.Forms.DockStyle.Top;
-            legend3.BackColor = System.Drawing.SystemColors.Control;
-            legend3.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend3.Name = "Legend1";
-            this.chart_cht.Legends.Add(legend3);
+            legend1.BackColor = System.Drawing.SystemColors.Control;
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend1.Name = "Legend1";
+            this.chart_cht.Legends.Add(legend1);
             this.chart_cht.Location = new System.Drawing.Point(12, 58);
             this.chart_cht.Name = "chart_cht";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart_cht.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart_cht.Series.Add(series1);
             this.chart_cht.Size = new System.Drawing.Size(199, 135);
             this.chart_cht.TabIndex = 2;
             this.chart_cht.Text = "chart1";

@@ -19,9 +19,9 @@ namespace MRP_SdC
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int qntdNecesLiq = int.Parse(maos_tbx.Text) - int.Parse(qntdEstoque_tbx.Text);
-            MRP mrp = new MRP(int.Parse(id_tbx.Text), int.Parse(maos_tbx.Text),
-            int.Parse(qntdEstoque_tbx.Text), qntdNecesLiq);
+            int qntdFinal = int.Parse(maos_tbx.Text) - int.Parse(qntdEstoque_tbx.Text);
+            MRP mrp = new MRP(1, 1, int.Parse(id_tbx.Text), int.Parse(maos_tbx.Text),
+            int.Parse(qntdEstoque_tbx.Text), qntdFinal);
 
             DialogResult confirmarInsert = MessageBox.Show(
                 "( ﾉ ﾟｰﾟ)ﾉ " + mrp.idProduto + " ?!", "Confirmar Inserção",

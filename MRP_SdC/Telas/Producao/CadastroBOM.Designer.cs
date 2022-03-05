@@ -33,25 +33,33 @@ namespace MRP_SdC.Telas.Producao
             this.esp_esq_pnl = new System.Windows.Forms.Panel();
             this.ttl_lbl = new System.Windows.Forms.Label();
             this.produzir_pnl = new System.Windows.Forms.Panel();
-            this.qntdEstoque_tbx = new System.Windows.Forms.TextBox();
-            this.produzir_lbl = new System.Windows.Forms.Label();
+            this.txtSaidaFinal = new System.Windows.Forms.TextBox();
+            this.lblSaidaFinal = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtNomeComponente = new System.Windows.Forms.TextBox();
-            this.lblNomeComponente = new System.Windows.Forms.Label();
-            this.cmbNivelComponente = new System.Windows.Forms.ComboBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lblNivelComponente = new System.Windows.Forms.Label();
+            this.txtIdProduto = new System.Windows.Forms.TextBox();
+            this.lblIdProduto = new System.Windows.Forms.Label();
             this.barraInf_pnl = new System.Windows.Forms.Panel();
             this.cancelar_btn = new System.Windows.Forms.Button();
             this.cadastrar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtCategoria = new System.Windows.Forms.TextBox();
+            this.lblCategoria = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtNome = new System.Windows.Forms.TextBox();
+            this.lblNome = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.txtQuantidade = new System.Windows.Forms.TextBox();
             this.lblQuantidade = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.txtCustoUnidade = new System.Windows.Forms.TextBox();
+            this.lblCustoUnidade = new System.Windows.Forms.Label();
             this.produzir_pnl.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.barraInf_pnl.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // esp_dir_pnl
@@ -84,95 +92,61 @@ namespace MRP_SdC.Telas.Producao
             // 
             // produzir_pnl
             // 
-            this.produzir_pnl.Controls.Add(this.qntdEstoque_tbx);
-            this.produzir_pnl.Controls.Add(this.produzir_lbl);
+            this.produzir_pnl.Controls.Add(this.txtSaidaFinal);
+            this.produzir_pnl.Controls.Add(this.lblSaidaFinal);
             this.produzir_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.produzir_pnl.Location = new System.Drawing.Point(32, 56);
             this.produzir_pnl.Name = "produzir_pnl";
             this.produzir_pnl.Size = new System.Drawing.Size(315, 48);
             this.produzir_pnl.TabIndex = 16;
             // 
-            // qntdEstoque_tbx
+            // txtSaidaFinal
             // 
-            this.qntdEstoque_tbx.Dock = System.Windows.Forms.DockStyle.Top;
-            this.qntdEstoque_tbx.Location = new System.Drawing.Point(0, 17);
-            this.qntdEstoque_tbx.Name = "qntdEstoque_tbx";
-            this.qntdEstoque_tbx.Size = new System.Drawing.Size(315, 20);
-            this.qntdEstoque_tbx.TabIndex = 1;
+            this.txtSaidaFinal.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtSaidaFinal.Location = new System.Drawing.Point(0, 17);
+            this.txtSaidaFinal.Name = "txtSaidaFinal";
+            this.txtSaidaFinal.Size = new System.Drawing.Size(315, 20);
+            this.txtSaidaFinal.TabIndex = 1;
             // 
-            // produzir_lbl
+            // lblSaidaFinal
             // 
-            this.produzir_lbl.AutoSize = true;
-            this.produzir_lbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.produzir_lbl.Location = new System.Drawing.Point(0, 0);
-            this.produzir_lbl.Name = "produzir_lbl";
-            this.produzir_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.produzir_lbl.Size = new System.Drawing.Size(56, 17);
-            this.produzir_lbl.TabIndex = 0;
-            this.produzir_lbl.Text = "Id Produto";
+            this.lblSaidaFinal.AutoSize = true;
+            this.lblSaidaFinal.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblSaidaFinal.Location = new System.Drawing.Point(0, 0);
+            this.lblSaidaFinal.Name = "lblSaidaFinal";
+            this.lblSaidaFinal.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.lblSaidaFinal.Size = new System.Drawing.Size(61, 17);
+            this.lblSaidaFinal.TabIndex = 0;
+            this.lblSaidaFinal.Text = "Saída Final";
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.txtNomeComponente);
-            this.panel1.Controls.Add(this.lblNomeComponente);
+            this.panel1.Controls.Add(this.txtIdProduto);
+            this.panel1.Controls.Add(this.lblIdProduto);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(32, 104);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(315, 48);
             this.panel1.TabIndex = 17;
             // 
-            // txtNomeComponente
+            // txtIdProduto
             // 
-            this.txtNomeComponente.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtNomeComponente.Location = new System.Drawing.Point(0, 17);
-            this.txtNomeComponente.Name = "txtNomeComponente";
-            this.txtNomeComponente.Size = new System.Drawing.Size(315, 20);
-            this.txtNomeComponente.TabIndex = 1;
+            this.txtIdProduto.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtIdProduto.Location = new System.Drawing.Point(0, 17);
+            this.txtIdProduto.Name = "txtIdProduto";
+            this.txtIdProduto.Size = new System.Drawing.Size(315, 20);
+            this.txtIdProduto.TabIndex = 1;
             // 
-            // lblNomeComponente
+            // lblIdProduto
             // 
-            this.lblNomeComponente.AutoSize = true;
-            this.lblNomeComponente.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblNomeComponente.Location = new System.Drawing.Point(0, 0);
-            this.lblNomeComponente.Name = "lblNomeComponente";
-            this.lblNomeComponente.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.lblNomeComponente.Size = new System.Drawing.Size(96, 17);
-            this.lblNomeComponente.TabIndex = 0;
-            this.lblNomeComponente.Text = "nome Componente";
-            // 
-            // cmbNivelComponente
-            // 
-            this.cmbNivelComponente.FormattingEnabled = true;
-            this.cmbNivelComponente.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "2",
-            "3"});
-            this.cmbNivelComponente.Location = new System.Drawing.Point(6, 20);
-            this.cmbNivelComponente.Name = "cmbNivelComponente";
-            this.cmbNivelComponente.Size = new System.Drawing.Size(121, 21);
-            this.cmbNivelComponente.TabIndex = 18;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.lblNivelComponente);
-            this.panel2.Controls.Add(this.cmbNivelComponente);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(32, 152);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(315, 48);
-            this.panel2.TabIndex = 19;
-            // 
-            // lblNivelComponente
-            // 
-            this.lblNivelComponente.AutoSize = true;
-            this.lblNivelComponente.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblNivelComponente.Location = new System.Drawing.Point(0, 0);
-            this.lblNivelComponente.Name = "lblNivelComponente";
-            this.lblNivelComponente.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.lblNivelComponente.Size = new System.Drawing.Size(92, 17);
-            this.lblNivelComponente.TabIndex = 0;
-            this.lblNivelComponente.Text = "nivel Componente";
+            this.lblIdProduto.AutoSize = true;
+            this.lblIdProduto.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblIdProduto.Location = new System.Drawing.Point(0, 0);
+            this.lblIdProduto.Name = "lblIdProduto";
+            this.lblIdProduto.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.lblIdProduto.Size = new System.Drawing.Size(56, 17);
+            this.lblIdProduto.TabIndex = 0;
+            this.lblIdProduto.Text = "Id Produto";
             // 
             // barraInf_pnl
             // 
@@ -208,13 +182,71 @@ namespace MRP_SdC.Telas.Producao
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.txtQuantidade);
-            this.panel3.Controls.Add(this.lblQuantidade);
+            this.panel3.Controls.Add(this.txtCategoria);
+            this.panel3.Controls.Add(this.lblCategoria);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(32, 200);
+            this.panel3.Location = new System.Drawing.Point(32, 152);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(315, 48);
             this.panel3.TabIndex = 21;
+            // 
+            // txtCategoria
+            // 
+            this.txtCategoria.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtCategoria.Location = new System.Drawing.Point(0, 17);
+            this.txtCategoria.Name = "txtCategoria";
+            this.txtCategoria.Size = new System.Drawing.Size(315, 20);
+            this.txtCategoria.TabIndex = 1;
+            // 
+            // lblCategoria
+            // 
+            this.lblCategoria.AutoSize = true;
+            this.lblCategoria.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblCategoria.Location = new System.Drawing.Point(0, 0);
+            this.lblCategoria.Name = "lblCategoria";
+            this.lblCategoria.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.lblCategoria.Size = new System.Drawing.Size(52, 17);
+            this.lblCategoria.TabIndex = 0;
+            this.lblCategoria.Text = "Categoria";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.txtNome);
+            this.panel2.Controls.Add(this.lblNome);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(32, 200);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(315, 48);
+            this.panel2.TabIndex = 22;
+            // 
+            // txtNome
+            // 
+            this.txtNome.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtNome.Location = new System.Drawing.Point(0, 17);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(315, 20);
+            this.txtNome.TabIndex = 1;
+            // 
+            // lblNome
+            // 
+            this.lblNome.AutoSize = true;
+            this.lblNome.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblNome.Location = new System.Drawing.Point(0, 0);
+            this.lblNome.Name = "lblNome";
+            this.lblNome.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.lblNome.Size = new System.Drawing.Size(35, 17);
+            this.lblNome.TabIndex = 0;
+            this.lblNome.Text = "Nome";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.txtQuantidade);
+            this.panel4.Controls.Add(this.lblQuantidade);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(32, 248);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(315, 48);
+            this.panel4.TabIndex = 23;
             // 
             // txtQuantidade
             // 
@@ -231,18 +263,49 @@ namespace MRP_SdC.Telas.Producao
             this.lblQuantidade.Location = new System.Drawing.Point(0, 0);
             this.lblQuantidade.Name = "lblQuantidade";
             this.lblQuantidade.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.lblQuantidade.Size = new System.Drawing.Size(60, 17);
+            this.lblQuantidade.Size = new System.Drawing.Size(62, 17);
             this.lblQuantidade.TabIndex = 0;
-            this.lblQuantidade.Text = "quantidade";
+            this.lblQuantidade.Text = "Quantidade";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.txtCustoUnidade);
+            this.panel5.Controls.Add(this.lblCustoUnidade);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(32, 296);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(315, 48);
+            this.panel5.TabIndex = 24;
+            // 
+            // txtCustoUnidade
+            // 
+            this.txtCustoUnidade.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtCustoUnidade.Location = new System.Drawing.Point(0, 17);
+            this.txtCustoUnidade.Name = "txtCustoUnidade";
+            this.txtCustoUnidade.Size = new System.Drawing.Size(315, 20);
+            this.txtCustoUnidade.TabIndex = 1;
+            // 
+            // lblCustoUnidade
+            // 
+            this.lblCustoUnidade.AutoSize = true;
+            this.lblCustoUnidade.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblCustoUnidade.Location = new System.Drawing.Point(0, 0);
+            this.lblCustoUnidade.Name = "lblCustoUnidade";
+            this.lblCustoUnidade.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.lblCustoUnidade.Size = new System.Drawing.Size(77, 17);
+            this.lblCustoUnidade.TabIndex = 0;
+            this.lblCustoUnidade.Text = "Custo Unidade";
             // 
             // CadastroBOM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(379, 406);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.barraInf_pnl);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.produzir_pnl);
             this.Controls.Add(this.ttl_lbl);
@@ -254,11 +317,15 @@ namespace MRP_SdC.Telas.Producao
             this.produzir_pnl.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.barraInf_pnl.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -269,19 +336,25 @@ namespace MRP_SdC.Telas.Producao
         private System.Windows.Forms.Panel esp_esq_pnl;
         private System.Windows.Forms.Label ttl_lbl;
         private System.Windows.Forms.Panel produzir_pnl;
-        private System.Windows.Forms.TextBox qntdEstoque_tbx;
-        private System.Windows.Forms.Label produzir_lbl;
+        private System.Windows.Forms.TextBox txtSaidaFinal;
+        private System.Windows.Forms.Label lblSaidaFinal;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtNomeComponente;
-        private System.Windows.Forms.Label lblNomeComponente;
-        private System.Windows.Forms.ComboBox cmbNivelComponente;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lblNivelComponente;
+        private System.Windows.Forms.TextBox txtIdProduto;
+        private System.Windows.Forms.Label lblIdProduto;
         private System.Windows.Forms.Panel barraInf_pnl;
         private System.Windows.Forms.Button cancelar_btn;
         private System.Windows.Forms.Button cadastrar;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TextBox txtCategoria;
+        private System.Windows.Forms.Label lblCategoria;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox txtNome;
+        private System.Windows.Forms.Label lblNome;
+        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox txtQuantidade;
         private System.Windows.Forms.Label lblQuantidade;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.TextBox txtCustoUnidade;
+        private System.Windows.Forms.Label lblCustoUnidade;
     }
 }

@@ -117,6 +117,7 @@ namespace MRP_SdC.Telas.Pedido
             }
         }
         
+        /*
         private void btnProduzir_Click(object sender, EventArgs e)
         {
             string idProdutoPedido = dgvPedido.SelectedCells[1].Value.ToString();
@@ -128,7 +129,7 @@ namespace MRP_SdC.Telas.Pedido
 
             daoMrp.Insert(mrp);
 
-        }
+        }*/
 
         private void dgvPedido_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

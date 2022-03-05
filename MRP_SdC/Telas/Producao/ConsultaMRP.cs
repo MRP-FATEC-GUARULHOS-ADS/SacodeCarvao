@@ -27,13 +27,13 @@ namespace MRP_SdC.Telas.Producao
             mrp = mrp_dgv.CurrentRow.DataBoundItem as MRP;
 
             // textos do produto selecionado
-            dados_ttl_lbl.Text = mrp.idNecesLiq.ToString();
-            mrp.idNecesLiq = int.Parse(dados_ttl_lbl.Text);
+            dados_ttl_lbl.Text = mrp.idMRP.ToString();
+            mrp.idMRP = int.Parse(dados_ttl_lbl.Text);
             dados_subttl_lbl.Text = String.Format(mrp.idProduto.ToString());
             txtProdId.Text = mrp.idProduto.ToString();
-            txtQntdPedido.Text = mrp.qntdPedido.ToString();
-            txtQntdEstoque.Text = mrp.qntdEstoque.ToString();
-            txtQntdNecesLiq.Text = mrp.qntdNecesLiq.ToString();
+            txtQntdPedido.Text = mrp.quantidadePedido.ToString();
+            txtQntdEstoque.Text = mrp.quantidadeBom.ToString();
+            txtQntdNecesLiq.Text = mrp.quantidadeFinal.ToString();
         }
 
         private void ConsultaMRP_Load(object sender, EventArgs e)
@@ -82,6 +82,7 @@ namespace MRP_SdC.Telas.Producao
             PesquisarProdutos();
         }
 
+        /*
         private void btnAtualizaMRP_Click(object sender, EventArgs e)
         {
             MRP mrp = new MRP(int.Parse(txtProdId.Text), int.Parse(txtQntdPedido.Text),
@@ -101,6 +102,7 @@ namespace MRP_SdC.Telas.Producao
                 AtualizaListas();
             }
         }
+        */
 
         private void btnExclusao_Click(object sender, EventArgs e)
         {
