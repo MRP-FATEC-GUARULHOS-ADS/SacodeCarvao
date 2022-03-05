@@ -116,5 +116,23 @@ namespace MRP_SdC.Telas.Pedido
                 AtualizaListas();
             }
         }
+        
+        private void btnProduzir_Click(object sender, EventArgs e)
+        {
+            string idProdutoPedido = dgvPedido.SelectedCells[1].Value.ToString();
+
+
+            MRP mrp = new MRP(int.Parse(idProdutoPedido), 100, 50, 50);
+
+            DAOMRP daoMrp = new DAOMRP();
+
+            daoMrp.Insert(mrp);
+
+        }
+
+        private void dgvPedido_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

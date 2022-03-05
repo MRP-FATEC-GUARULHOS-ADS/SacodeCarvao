@@ -29,9 +29,9 @@ namespace MRP_SdC.Telas.Pedido
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.EspEsq_pnl = new System.Windows.Forms.Panel();
             this.EspDir_pnl = new System.Windows.Forms.Panel();
             this.ttl_lbl = new System.Windows.Forms.Label();
@@ -42,6 +42,7 @@ namespace MRP_SdC.Telas.Pedido
             this.pesquisa_sep_pnl = new System.Windows.Forms.Panel();
             this.pesquisa_descnt_cbx = new System.Windows.Forms.CheckBox();
             this.dados_pnl = new System.Windows.Forms.Panel();
+            this.btnProduzir = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtValor = new System.Windows.Forms.TextBox();
             this.lblValor = new System.Windows.Forms.Label();
@@ -160,6 +161,7 @@ namespace MRP_SdC.Telas.Pedido
             // dados_pnl
             // 
             this.dados_pnl.AutoScroll = true;
+            this.dados_pnl.Controls.Add(this.btnProduzir);
             this.dados_pnl.Controls.Add(this.panel1);
             this.dados_pnl.Controls.Add(this.btnAtualizaPedido);
             this.dados_pnl.Controls.Add(this.btnExclusao);
@@ -173,6 +175,16 @@ namespace MRP_SdC.Telas.Pedido
             this.dados_pnl.Padding = new System.Windows.Forms.Padding(12, 24, 12, 12);
             this.dados_pnl.Size = new System.Drawing.Size(240, 362);
             this.dados_pnl.TabIndex = 12;
+            // 
+            // btnProduzir
+            // 
+            this.btnProduzir.Location = new System.Drawing.Point(15, 407);
+            this.btnProduzir.Name = "btnProduzir";
+            this.btnProduzir.Size = new System.Drawing.Size(171, 23);
+            this.btnProduzir.TabIndex = 5;
+            this.btnProduzir.Text = "Produzir";
+            this.btnProduzir.UseVisualStyleBackColor = true;
+            this.btnProduzir.Click += new System.EventHandler(this.btnProduzir_Click);
             // 
             // panel1
             // 
@@ -295,21 +307,21 @@ namespace MRP_SdC.Telas.Pedido
             // chart_cht
             // 
             this.chart_cht.BackColor = System.Drawing.SystemColors.Control;
-            chartArea2.BackColor = System.Drawing.SystemColors.Control;
-            chartArea2.Name = "ChartArea1";
-            this.chart_cht.ChartAreas.Add(chartArea2);
+            chartArea3.BackColor = System.Drawing.SystemColors.Control;
+            chartArea3.Name = "ChartArea1";
+            this.chart_cht.ChartAreas.Add(chartArea3);
             this.chart_cht.Dock = System.Windows.Forms.DockStyle.Top;
-            legend2.BackColor = System.Drawing.SystemColors.Control;
-            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend2.Name = "Legend1";
-            this.chart_cht.Legends.Add(legend2);
+            legend3.BackColor = System.Drawing.SystemColors.Control;
+            legend3.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend3.Name = "Legend1";
+            this.chart_cht.Legends.Add(legend3);
             this.chart_cht.Location = new System.Drawing.Point(12, 58);
             this.chart_cht.Name = "chart_cht";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart_cht.Series.Add(series2);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart_cht.Series.Add(series3);
             this.chart_cht.Size = new System.Drawing.Size(199, 135);
             this.chart_cht.TabIndex = 2;
             this.chart_cht.Text = "chart1";
@@ -352,6 +364,7 @@ namespace MRP_SdC.Telas.Pedido
             this.dgvPedido.StandardTab = true;
             this.dgvPedido.TabIndex = 13;
             this.dgvPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pedido_dgv_CellClick);
+            this.dgvPedido.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellContentClick);
             // 
             // ConsultaPedido
             // 
@@ -413,5 +426,6 @@ namespace MRP_SdC.Telas.Pedido
         private System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.Label lblValor;
         public System.Windows.Forms.DataGridView dgvPedido;
+        private System.Windows.Forms.Button btnProduzir;
     }
 }
