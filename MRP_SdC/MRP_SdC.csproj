@@ -50,7 +50,6 @@
   <ItemGroup>
     <Compile Include="Conexao\MySQL\ComponenteDAO.cs" />
     <Compile Include="Conexao\MySQL\Conexao.cs" />
-    <Compile Include="Conexao\MySQL\ConexaoMRP.cs" />
     <Compile Include="Conexao\MySQL\DAOBOM.cs" />
     <Compile Include="Conexao\MySQL\DAOMRP.cs" />
     <Compile Include="Conexao\MySQL\DAOPedido.cs" />

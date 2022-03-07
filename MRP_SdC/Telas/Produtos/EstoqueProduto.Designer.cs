@@ -517,7 +517,6 @@ namespace MRP_SdC
         private System.Windows.Forms.Label dados_ttl_lbl;
         private System.Windows.Forms.Panel pesquisa_pnl;
         private System.Windows.Forms.Panel pesquisa_cont_pnl;
-        private System.Windows.Forms.TextBox pesquisa_tbx;
         private System.Windows.Forms.Button pesquisa_btn;
         private System.Windows.Forms.Panel barraInf_pnl;
         private System.Windows.Forms.Button ok_btn;
@@ -534,5 +533,6 @@ namespace MRP_SdC
         private System.Windows.Forms.Panel EspEsq_pnl;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem árvoreDoProdutoToolStripMenuItem;
+        public System.Windows.Forms.TextBox pesquisa_tbx;
     }
 }

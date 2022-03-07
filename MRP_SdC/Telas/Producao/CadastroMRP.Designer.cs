@@ -1,5 +1,5 @@
 ﻿
-namespace MRP_SdC
+namespace MRP_SdC.MySQL
 {
     partial class CadastroMRP
     {
@@ -155,7 +155,7 @@ namespace MRP_SdC
             this.cadastrar.TabIndex = 18;
             this.cadastrar.Text = "Cadastrar";
             this.cadastrar.UseVisualStyleBackColor = false;
-            this.cadastrar.Click += new System.EventHandler(this.button1_Click);
+            this.cadastrar.Click += new System.EventHandler(this.cadastrar_Click);
             // 
             // cancelar_btn
             // 
@@ -224,6 +224,7 @@ namespace MRP_SdC
             this.Name = "CadastroMRP";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cadastrar Produção";
+            this.Load += new System.EventHandler(this.CadastroMRP_Load);
             this.id_pnl.ResumeLayout(false);
             this.id_pnl.PerformLayout();
             this.maos_pnl.ResumeLayout(false);
@@ -242,15 +243,15 @@ namespace MRP_SdC
         private System.Windows.Forms.Panel id_pnl;
         private System.Windows.Forms.Label id_lbl;
         private System.Windows.Forms.Panel maos_pnl;
-        private System.Windows.Forms.TextBox maos_tbx;
         private System.Windows.Forms.Label maos_lbl;
         private System.Windows.Forms.Panel barraInf_pnl;
         private System.Windows.Forms.Button cancelar_btn;
-        private System.Windows.Forms.TextBox id_tbx;
         private System.Windows.Forms.Button cadastrar;
         private System.Windows.Forms.Panel produzir_pnl;
         private System.Windows.Forms.TextBox qntdEstoque_tbx;
         private System.Windows.Forms.Label produzir_lbl;
         private System.Windows.Forms.Panel qntdNecesLiq_tbx;
+        public System.Windows.Forms.TextBox id_tbx;
+        public System.Windows.Forms.TextBox maos_tbx;
     }
 }

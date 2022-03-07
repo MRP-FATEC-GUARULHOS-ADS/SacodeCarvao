@@ -22,7 +22,7 @@ namespace MRP_SdC.MySQL
                 MySqlDataReader reader;
                 string query = "INSERT INTO BOM ( " +
                     "saidaFinal, idProduto, categoria, nome, quantidade, custoUnidade" +
-                    ") VALUES(@saidaFim, @idprod, @categ, @nomeComp, @qntd, @custo); ";
+                    ") VALUES(@saidaFim, @idProd, @categ, @nomeComp, @qntd, @custo); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -30,7 +30,7 @@ namespace MRP_SdC.MySQL
                 }
 
                 cmd.Parameters.AddWithValue("@saidaFim", bom.saidaFinal);
-                cmd.Parameters.AddWithValue("@idprod", bom.idProduto);
+                cmd.Parameters.AddWithValue("@idProd", bom.idProduto);
                 cmd.Parameters.AddWithValue("@categ", bom.categoria);
                 cmd.Parameters.AddWithValue("@nomeComp", bom.nome);
                 cmd.Parameters.AddWithValue("@qntd", bom.quantidade);
@@ -111,7 +111,7 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "SELECT * FROM BOM WHERE idProduto = @idBOM;";
+                string query = "SELECT * FROM BOM WHERE idProduto = @idProd;";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {

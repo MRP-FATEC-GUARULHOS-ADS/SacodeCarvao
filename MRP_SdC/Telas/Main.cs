@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MRP_SdC.MySQL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -43,7 +44,7 @@ namespace MRP_SdC
 
         private void AtualizaListas()
         {
-            MySQL.ConexaoMRP mrpDAO = new MySQL.ConexaoMRP();
+            MySQL.DAOMRP mrpDAO = new MySQL.DAOMRP();
             List<MRP> listaMRP = mrpDAO.GetMRP();
             var bindingMRP = new BindingList<MRP>(listaMRP);
 

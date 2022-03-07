@@ -15,7 +15,7 @@ namespace MRP_SdC.Telas.Producao
         // funcoes personalizadas
         private void AtualizaListas()
         {
-            MySQL.ConexaoMRP mrp = new MySQL.ConexaoMRP();
+            MySQL.DAOMRP mrp = new MySQL.DAOMRP();
             List<MRP> listaMRP = mrp.GetMRP();
 
             mrp_dgv.DataSource = listaMRP;
@@ -57,7 +57,7 @@ namespace MRP_SdC.Telas.Producao
         {
             if (pesquisa_tbx.Text != "")
             {
-                MySQL.ConexaoMRP conexaomrp = new MySQL.ConexaoMRP();
+                MySQL.DAOMRP conexaomrp = new MySQL.DAOMRP();
                 List<MRP> listaMRP = conexaomrp.PesquisaMRP(pesquisa_tbx.Text);
                 var bindingProdutos = new BindingList<MRP>(listaMRP);
                 mrp_dgv.DataSource = bindingProdutos;
@@ -114,7 +114,7 @@ namespace MRP_SdC.Telas.Producao
 
             if (confirmarUpdate == DialogResult.Yes)
             {
-                MySQL.ConexaoMRP conexaomrp = new MySQL.ConexaoMRP();
+                MySQL.DAOMRP conexaomrp = new MySQL.DAOMRP();
                 conexaomrp.Delete(int.Parse(dados_ttl_lbl.Text));
                 AtualizaListas();
             }

@@ -29,6 +29,7 @@ namespace MRP_SdC.Telas.Pedido
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -59,6 +60,8 @@ namespace MRP_SdC.Telas.Pedido
             this.dados_subttl_lbl = new System.Windows.Forms.Label();
             this.dados_ttl_lbl = new System.Windows.Forms.Label();
             this.dgvPedido = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.buscarListaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
             this.dados_pnl.SuspendLayout();
@@ -68,6 +71,7 @@ namespace MRP_SdC.Telas.Pedido
             this.estoque_min_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // EspEsq_pnl
@@ -182,8 +186,9 @@ namespace MRP_SdC.Telas.Pedido
             this.btnProduzir.Name = "btnProduzir";
             this.btnProduzir.Size = new System.Drawing.Size(171, 23);
             this.btnProduzir.TabIndex = 5;
-            this.btnProduzir.Text = "Produzir";
+            this.btnProduzir.Text = "Buscar Produto";
             this.btnProduzir.UseVisualStyleBackColor = true;
+            this.btnProduzir.Click += new System.EventHandler(this.btnProduzir_Click);
             // 
             // panel1
             // 
@@ -353,6 +358,7 @@ namespace MRP_SdC.Telas.Pedido
             this.dgvPedido.AllowUserToDeleteRows = false;
             this.dgvPedido.BackgroundColor = System.Drawing.Color.White;
             this.dgvPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPedido.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvPedido.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPedido.Location = new System.Drawing.Point(32, 88);
             this.dgvPedido.MultiSelect = false;
@@ -363,7 +369,20 @@ namespace MRP_SdC.Telas.Pedido
             this.dgvPedido.StandardTab = true;
             this.dgvPedido.TabIndex = 13;
             this.dgvPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pedido_dgv_CellClick);
-            this.dgvPedido.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellContentClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.buscarListaToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 26);
+            // 
+            // buscarListaToolStripMenuItem
+            // 
+            this.buscarListaToolStripMenuItem.Name = "buscarListaToolStripMenuItem";
+            this.buscarListaToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.buscarListaToolStripMenuItem.Text = "Buscar Lista";
+            this.buscarListaToolStripMenuItem.Click += new System.EventHandler(this.buscarListaToolStripMenuItem_Click);
             // 
             // ConsultaPedido
             // 
@@ -393,6 +412,7 @@ namespace MRP_SdC.Telas.Pedido
             this.estoque_min_pnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -413,18 +433,20 @@ namespace MRP_SdC.Telas.Pedido
         private System.Windows.Forms.Button btnExclusao;
         private System.Windows.Forms.Panel dados_estoque_pnl;
         private System.Windows.Forms.Panel estoque_min_pnl;
-        private System.Windows.Forms.TextBox txtIdProduto;
         private System.Windows.Forms.Label estoque_min_lbl;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart_cht;
         private System.Windows.Forms.Label dados_subttl_lbl;
         private System.Windows.Forms.Label dados_ttl_lbl;
         private System.Windows.Forms.Panel txt_Quantidade;
-        private System.Windows.Forms.TextBox txtQuantidade;
         private System.Windows.Forms.Label lbl_Quantidade;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.Label lblValor;
         public System.Windows.Forms.DataGridView dgvPedido;
         private System.Windows.Forms.Button btnProduzir;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem buscarListaToolStripMenuItem;
+        public System.Windows.Forms.TextBox txtIdProduto;
+        public System.Windows.Forms.TextBox txtQuantidade;
     }
 }

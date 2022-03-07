@@ -177,5 +177,6 @@ namespace MRP_SdC
             consultabom.Show();
             consultabom.pesquisaBOMProduto();
         }
+
     }
 }

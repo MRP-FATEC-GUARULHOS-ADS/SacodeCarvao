@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MRP_SdC
+namespace MRP_SdC.MySQL
 {
     public partial class CadastroMRP : Form
     {
@@ -16,22 +16,25 @@ namespace MRP_SdC
         {
             InitializeComponent();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        
+        public int quantidadePedido = 0;
+        private void cadastrar_Click(object sender, EventArgs e)
         {
-            int qntdFinal = int.Parse(maos_tbx.Text) - int.Parse(qntdEstoque_tbx.Text);
-            MRP mrp = new MRP(1, 1, int.Parse(id_tbx.Text), int.Parse(maos_tbx.Text),
-            int.Parse(qntdEstoque_tbx.Text), qntdFinal);
+            Telas.Pedido.ConsultaPedido consPed = new Telas.Pedido.ConsultaPedido();
+
+            MRP mrpObjeto = new MRP(1, 1, int.Parse(id_tbx.Text), int.Parse(maos_tbx.Text), 100, 100);
+
+            DAOMRP daoMrp = new DAOMRP();
 
             DialogResult confirmarInsert = MessageBox.Show(
-                "( ﾉ ﾟｰﾟ)ﾉ " + mrp.idProduto + " ?!", "Confirmar Inserção",
+                "( ﾉ ﾟｰﾟ)ﾉ " + mrpObjeto.idMRP+ " ?!", "Confirmar Inserção",
                 MessageBoxButtons.YesNo
             );
             if (confirmarInsert == DialogResult.Yes)
             {
-                MySQL.ConexaoMRP mrpcon = new MySQL.ConexaoMRP();
+                DAOMRP daoMrpInsert = new DAOMRP();
 
-                mrpcon.Insert(mrp);
+                daoMrp.Insert(mrpObjeto);
 
                 Close();
             }
@@ -40,6 +43,11 @@ namespace MRP_SdC
         private void Cancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void CadastroMRP_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -33,7 +33,7 @@ namespace MRP_SdC.Telas.Pedido
             dados_subttl_lbl.Text = String.Format(pedido.idProduto.ToString());
             txtIdProduto.Text = pedido.idProduto.ToString();
             txtQuantidade.Text = pedido.quantidade.ToString();
-            txtValor.Text = pedido.valor.ToString();
+            txtValor.Text = pedido.valor.ToString(); 
         }
 
         private void ConsultaPedido_Load(object sender, EventArgs e)
@@ -116,24 +116,27 @@ namespace MRP_SdC.Telas.Pedido
                 AtualizaListas();
             }
         }
-        
-        /*
+  
         private void btnProduzir_Click(object sender, EventArgs e)
         {
-            string idProdutoPedido = dgvPedido.SelectedCells[1].Value.ToString();
+            EstoqueProduto telaProduto = new EstoqueProduto();
+            telaProduto.pesquisa_tbx.Text = txtIdProduto.Text;
 
+            telaProduto.Show();
+        }
 
-            MRP mrp = new MRP(int.Parse(idProdutoPedido), 100, 50, 50);
-
-            DAOMRP daoMrp = new DAOMRP();
-
-            daoMrp.Insert(mrp);
-
-        }*/
-
-        private void dgvPedido_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void buscarListaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Producao.ConsultaBOM consultabom = new Producao.ConsultaBOM();
+            consultabom.q = int.Parse(txtQuantidade.Text);
+            consultabom.pesquisa_tbx.Text = dados_ttl_lbl.Text;
+            consultabom.Show();
+            consultabom.pesquisaBOMProduto();
         }
     }
 }

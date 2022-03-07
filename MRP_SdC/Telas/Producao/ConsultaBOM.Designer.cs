@@ -29,6 +29,7 @@ namespace MRP_SdC.Telas.Producao
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -42,9 +43,15 @@ namespace MRP_SdC.Telas.Producao
             this.pesquisa_sep_pnl = new System.Windows.Forms.Panel();
             this.pesquisa_descnt_cbx = new System.Windows.Forms.CheckBox();
             this.dados_pnl = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.txtCustoUnidade = new System.Windows.Forms.TextBox();
+            this.lblCustoUnidade = new System.Windows.Forms.Label();
+            this.btnAtualizaMRP = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnAtualizaMRP = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.txtQuantidade = new System.Windows.Forms.TextBox();
+            this.lblQuantidade = new System.Windows.Forms.Label();
             this.dados_estoque_pnl = new System.Windows.Forms.Panel();
             this.estoque_atual_pnl = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -62,16 +69,14 @@ namespace MRP_SdC.Telas.Producao
             this.dados_subttl_lbl = new System.Windows.Forms.Label();
             this.dados_ttl_lbl = new System.Windows.Forms.Label();
             this.dgvBom = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.txtQuantidade = new System.Windows.Forms.TextBox();
-            this.lblQuantidade = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.txtCustoUnidade = new System.Windows.Forms.TextBox();
-            this.lblCustoUnidade = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.produzirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
             this.dados_pnl.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.dados_estoque_pnl.SuspendLayout();
             this.estoque_atual_pnl.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -79,8 +84,7 @@ namespace MRP_SdC.Telas.Producao
             this.estoque_min_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBom)).BeginInit();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // EspDir_pnl
@@ -190,6 +194,44 @@ namespace MRP_SdC.Telas.Producao
             this.dados_pnl.Size = new System.Drawing.Size(240, 485);
             this.dados_pnl.TabIndex = 12;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.txtCustoUnidade);
+            this.panel4.Controls.Add(this.lblCustoUnidade);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(12, 385);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(199, 48);
+            this.panel4.TabIndex = 7;
+            // 
+            // txtCustoUnidade
+            // 
+            this.txtCustoUnidade.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtCustoUnidade.Location = new System.Drawing.Point(0, 17);
+            this.txtCustoUnidade.Name = "txtCustoUnidade";
+            this.txtCustoUnidade.Size = new System.Drawing.Size(199, 20);
+            this.txtCustoUnidade.TabIndex = 1;
+            // 
+            // lblCustoUnidade
+            // 
+            this.lblCustoUnidade.AutoSize = true;
+            this.lblCustoUnidade.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblCustoUnidade.Location = new System.Drawing.Point(0, 0);
+            this.lblCustoUnidade.Name = "lblCustoUnidade";
+            this.lblCustoUnidade.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.lblCustoUnidade.Size = new System.Drawing.Size(77, 17);
+            this.lblCustoUnidade.TabIndex = 0;
+            this.lblCustoUnidade.Text = "Custo Unidade";
+            // 
+            // btnAtualizaMRP
+            // 
+            this.btnAtualizaMRP.Location = new System.Drawing.Point(15, 436);
+            this.btnAtualizaMRP.Name = "btnAtualizaMRP";
+            this.btnAtualizaMRP.Size = new System.Drawing.Size(171, 23);
+            this.btnAtualizaMRP.TabIndex = 0;
+            this.btnAtualizaMRP.Text = "Atualizar MRP";
+            this.btnAtualizaMRP.UseVisualStyleBackColor = true;
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(15, 465);
@@ -208,14 +250,34 @@ namespace MRP_SdC.Telas.Producao
             this.panel1.Size = new System.Drawing.Size(199, 48);
             this.panel1.TabIndex = 6;
             // 
-            // btnAtualizaMRP
+            // panel3
             // 
-            this.btnAtualizaMRP.Location = new System.Drawing.Point(15, 436);
-            this.btnAtualizaMRP.Name = "btnAtualizaMRP";
-            this.btnAtualizaMRP.Size = new System.Drawing.Size(171, 23);
-            this.btnAtualizaMRP.TabIndex = 0;
-            this.btnAtualizaMRP.Text = "Atualizar MRP";
-            this.btnAtualizaMRP.UseVisualStyleBackColor = true;
+            this.panel3.Controls.Add(this.txtQuantidade);
+            this.panel3.Controls.Add(this.lblQuantidade);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(199, 48);
+            this.panel3.TabIndex = 4;
+            // 
+            // txtQuantidade
+            // 
+            this.txtQuantidade.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtQuantidade.Location = new System.Drawing.Point(0, 17);
+            this.txtQuantidade.Name = "txtQuantidade";
+            this.txtQuantidade.Size = new System.Drawing.Size(199, 20);
+            this.txtQuantidade.TabIndex = 1;
+            // 
+            // lblQuantidade
+            // 
+            this.lblQuantidade.AutoSize = true;
+            this.lblQuantidade.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblQuantidade.Location = new System.Drawing.Point(0, 0);
+            this.lblQuantidade.Name = "lblQuantidade";
+            this.lblQuantidade.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.lblQuantidade.Size = new System.Drawing.Size(62, 17);
+            this.lblQuantidade.TabIndex = 0;
+            this.lblQuantidade.Text = "Quantidade";
             // 
             // dados_estoque_pnl
             // 
@@ -396,6 +458,7 @@ namespace MRP_SdC.Telas.Producao
             this.dgvBom.AllowUserToDeleteRows = false;
             this.dgvBom.BackgroundColor = System.Drawing.Color.White;
             this.dgvBom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBom.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvBom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvBom.Location = new System.Drawing.Point(32, 88);
             this.dgvBom.MultiSelect = false;
@@ -406,63 +469,19 @@ namespace MRP_SdC.Telas.Producao
             this.dgvBom.StandardTab = true;
             this.dgvBom.TabIndex = 13;
             // 
-            // panel3
+            // contextMenuStrip1
             // 
-            this.panel3.Controls.Add(this.txtQuantidade);
-            this.panel3.Controls.Add(this.lblQuantidade);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(199, 48);
-            this.panel3.TabIndex = 4;
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.produzirToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(172, 26);
             // 
-            // txtQuantidade
+            // produzirToolStripMenuItem
             // 
-            this.txtQuantidade.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtQuantidade.Location = new System.Drawing.Point(0, 17);
-            this.txtQuantidade.Name = "txtQuantidade";
-            this.txtQuantidade.Size = new System.Drawing.Size(199, 20);
-            this.txtQuantidade.TabIndex = 1;
-            // 
-            // lblQuantidade
-            // 
-            this.lblQuantidade.AutoSize = true;
-            this.lblQuantidade.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblQuantidade.Location = new System.Drawing.Point(0, 0);
-            this.lblQuantidade.Name = "lblQuantidade";
-            this.lblQuantidade.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.lblQuantidade.Size = new System.Drawing.Size(62, 17);
-            this.lblQuantidade.TabIndex = 0;
-            this.lblQuantidade.Text = "Quantidade";
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.txtCustoUnidade);
-            this.panel4.Controls.Add(this.lblCustoUnidade);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(12, 385);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(199, 48);
-            this.panel4.TabIndex = 7;
-            // 
-            // txtCustoUnidade
-            // 
-            this.txtCustoUnidade.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtCustoUnidade.Location = new System.Drawing.Point(0, 17);
-            this.txtCustoUnidade.Name = "txtCustoUnidade";
-            this.txtCustoUnidade.Size = new System.Drawing.Size(199, 20);
-            this.txtCustoUnidade.TabIndex = 1;
-            // 
-            // lblCustoUnidade
-            // 
-            this.lblCustoUnidade.AutoSize = true;
-            this.lblCustoUnidade.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblCustoUnidade.Location = new System.Drawing.Point(0, 0);
-            this.lblCustoUnidade.Name = "lblCustoUnidade";
-            this.lblCustoUnidade.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.lblCustoUnidade.Size = new System.Drawing.Size(77, 17);
-            this.lblCustoUnidade.TabIndex = 0;
-            this.lblCustoUnidade.Text = "Custo Unidade";
+            this.produzirToolStripMenuItem.Name = "produzirToolStripMenuItem";
+            this.produzirToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.produzirToolStripMenuItem.Text = "Calcular Producao";
+            this.produzirToolStripMenuItem.Click += new System.EventHandler(this.produzirToolStripMenuItem_Click);
             // 
             // ConsultaBOM
             // 
@@ -483,7 +502,11 @@ namespace MRP_SdC.Telas.Producao
             this.pesquisa_cont_pnl.PerformLayout();
             this.dados_pnl.ResumeLayout(false);
             this.dados_pnl.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.dados_estoque_pnl.ResumeLayout(false);
             this.estoque_atual_pnl.ResumeLayout(false);
             this.estoque_atual_pnl.PerformLayout();
@@ -495,10 +518,7 @@ namespace MRP_SdC.Telas.Producao
             this.estoque_min_pnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBom)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -541,5 +561,7 @@ namespace MRP_SdC.Telas.Producao
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox txtQuantidade;
         private System.Windows.Forms.Label lblQuantidade;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem produzirToolStripMenuItem;
     }
 }

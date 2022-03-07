@@ -81,5 +81,15 @@ namespace MRP_SdC.Telas.Producao
             PesquisarProdutosBOM(pesquisa_tbx.Text);
         }
 
+
+        public int q;
+        public void produzirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MySQL.CadastroMRP cadMrp = new MySQL.CadastroMRP();
+            Pedido.ConsultaPedido consPed = new Pedido.ConsultaPedido();
+            cadMrp.id_tbx.Text = dados_subttl_lbl.Text;
+            cadMrp.maos_tbx.Text = q.ToString();
+            cadMrp.Show();
+        }
     }
 }

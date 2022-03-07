@@ -20,7 +20,7 @@ namespace MRP_SdC.MySQL
                 MySqlDataReader reader;
                 string query = "INSERT INTO MRP ( " +
                     "idPedido, idBom, idProduto, quantidadePedido, quantidadeBom, quantidadeFinal" +
-                    ") VALUES(@idPed, @idBo, @idProd @qntdPed, @qntdBom, @qntdFinal); ";
+                    ") VALUES(@idPed, @idBo, @idProd, @qntdPed, @qntdBom, @qntdFinal);";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -31,8 +31,8 @@ namespace MRP_SdC.MySQL
                 cmd.Parameters.AddWithValue("@idBo", mrp.idBom);
                 cmd.Parameters.AddWithValue("@idProd", mrp.idProduto);
                 cmd.Parameters.AddWithValue("@qntdPed", mrp.quantidadePedido);
-                cmd.Parameters.AddWithValue("@qntdEstoq", mrp.quantidadeBom);
-                cmd.Parameters.AddWithValue("@qntdNecLiq", mrp.quantidadeFinal);
+                cmd.Parameters.AddWithValue("@qntdBom", mrp.quantidadeBom);
+                cmd.Parameters.AddWithValue("@qntdFinal", mrp.quantidadeFinal);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -164,11 +164,13 @@ namespace MRP_SdC.MySQL
                 {
                     mrp = new MRP();
                     {
-                        mrp.idMRP= Convert.ToInt32(reader["idNecesLiq"]);
+                        mrp.idMRP = Convert.ToInt32(reader["idMRP"]);
+                        mrp.idPedido = Convert.ToInt32(reader["idPedido"]);
+                        mrp.idBom = Convert.ToInt32(reader["idBom"]);
                         mrp.idProduto = Convert.ToInt32(reader["idProduto"]);
-                        mrp.quantidadePedido = Convert.ToInt32(reader["qntdPedido"]);
-                        mrp.quantidadeBom = Convert.ToInt32(reader["qntdEstoque"]);
-                        mrp.quantidadeFinal = Convert.ToInt32(reader["qntdNecesLiq"]);
+                        mrp.quantidadePedido = Convert.ToInt32(reader["quantidadePedido"]);
+                        mrp.quantidadeBom = Convert.ToInt32(reader["quantidadeBom"]);
+                        mrp.quantidadeFinal = Convert.ToInt32(reader["quantidadeFinal"]);
                     }
 
                     listaMRP.Add(mrp);
