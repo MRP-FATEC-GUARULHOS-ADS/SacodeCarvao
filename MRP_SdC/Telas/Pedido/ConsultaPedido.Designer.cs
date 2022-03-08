@@ -62,6 +62,7 @@ namespace MRP_SdC.Telas.Pedido
             this.dgvPedido = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.buscarListaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
             this.dados_pnl.SuspendLayout();
@@ -141,6 +142,7 @@ namespace MRP_SdC.Telas.Pedido
             this.pesquisa_btn.TabIndex = 1;
             this.pesquisa_btn.Text = "👁";
             this.pesquisa_btn.UseVisualStyleBackColor = true;
+            this.pesquisa_btn.Click += new System.EventHandler(this.pesquisa_btn_Click_1);
             // 
             // pesquisa_sep_pnl
             // 
@@ -165,6 +167,7 @@ namespace MRP_SdC.Telas.Pedido
             // dados_pnl
             // 
             this.dados_pnl.AutoScroll = true;
+            this.dados_pnl.Controls.Add(this.textBox1);
             this.dados_pnl.Controls.Add(this.btnProduzir);
             this.dados_pnl.Controls.Add(this.panel1);
             this.dados_pnl.Controls.Add(this.btnAtualizaPedido);
@@ -384,6 +387,14 @@ namespace MRP_SdC.Telas.Pedido
             this.buscarListaToolStripMenuItem.Text = "Buscar Lista";
             this.buscarListaToolStripMenuItem.Click += new System.EventHandler(this.buscarListaToolStripMenuItem_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.textBox1.Location = new System.Drawing.Point(12, 337);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(199, 20);
+            this.textBox1.TabIndex = 6;
+            // 
             // ConsultaPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -448,5 +459,6 @@ namespace MRP_SdC.Telas.Pedido
         private System.Windows.Forms.ToolStripMenuItem buscarListaToolStripMenuItem;
         public System.Windows.Forms.TextBox txtIdProduto;
         public System.Windows.Forms.TextBox txtQuantidade;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

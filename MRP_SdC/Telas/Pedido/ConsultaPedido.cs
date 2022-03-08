@@ -24,8 +24,8 @@ namespace MRP_SdC.Telas.Pedido
 
         private void MudaInfos()
         {
-            Modelos.Pedido pedido = new Modelos.Pedido();
-            pedido = dgvPedido.CurrentRow.DataBoundItem as Modelos.Pedido;
+           Modelos.Pedido pedido = new Modelos.Pedido();
+           pedido = dgvPedido.CurrentRow.DataBoundItem as Modelos.Pedido;
 
             // textos do produto selecionado
             dados_ttl_lbl.Text = pedido.idPedido.ToString();
@@ -137,6 +137,36 @@ namespace MRP_SdC.Telas.Pedido
             consultabom.pesquisa_tbx.Text = dados_ttl_lbl.Text;
             consultabom.Show();
             consultabom.pesquisaBOMProduto();
+        }
+
+        // funcoes de pesquisa
+        public void PesquisarProdutosPedido(String pesquisa)
+        {
+
+            pesquisa = pesquisa_tbx.Text;
+
+            if (pesquisa_tbx.Text != "")
+            {
+                DAOPedido daoPed = new DAOPedido();
+                List<Modelos.Pedido> listaPedido = daoPed.PesquisaPedido(pesquisa);
+                var bindingProdutos = new BindingList<Modelos.Pedido>(listaPedido);
+                dgvPedido.DataSource = bindingProdutos;
+            }
+            else
+            {
+                AtualizaListas();
+            }
+
+        }
+
+        private void pesquisa_btn_Click_1(object sender, EventArgs e)
+        {
+            PesquisarProdutosPedido(pesquisa_tbx.Text);
+            DAOPedido daoPed = new DAOPedido();
+            daoPed.PesquisaPedido(pesquisa_tbx.Text);
+            Modelos.Pedido ped = new Modelos.Pedido();
+            int xiaomi = ped.idPedido;
+            textBox1.Text = xiaomi.ToString();
         }
     }
 }
