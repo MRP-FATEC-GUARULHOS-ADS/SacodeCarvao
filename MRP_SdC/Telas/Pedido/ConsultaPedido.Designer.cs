@@ -43,6 +43,7 @@ namespace MRP_SdC.Telas.Pedido
             this.pesquisa_sep_pnl = new System.Windows.Forms.Panel();
             this.pesquisa_descnt_cbx = new System.Windows.Forms.CheckBox();
             this.dados_pnl = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnProduzir = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtValor = new System.Windows.Forms.TextBox();
@@ -62,7 +63,6 @@ namespace MRP_SdC.Telas.Pedido
             this.dgvPedido = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.buscarListaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
             this.dados_pnl.SuspendLayout();
@@ -182,6 +182,14 @@ namespace MRP_SdC.Telas.Pedido
             this.dados_pnl.Padding = new System.Windows.Forms.Padding(12, 24, 12, 12);
             this.dados_pnl.Size = new System.Drawing.Size(240, 362);
             this.dados_pnl.TabIndex = 12;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.textBox1.Location = new System.Drawing.Point(12, 337);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(199, 20);
+            this.textBox1.TabIndex = 6;
             // 
             // btnProduzir
             // 
@@ -386,14 +394,6 @@ namespace MRP_SdC.Telas.Pedido
             this.buscarListaToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.buscarListaToolStripMenuItem.Text = "Buscar Lista";
             this.buscarListaToolStripMenuItem.Click += new System.EventHandler(this.buscarListaToolStripMenuItem_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox1.Location = new System.Drawing.Point(12, 337);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(199, 20);
-            this.textBox1.TabIndex = 6;
             // 
             // ConsultaPedido
             // 

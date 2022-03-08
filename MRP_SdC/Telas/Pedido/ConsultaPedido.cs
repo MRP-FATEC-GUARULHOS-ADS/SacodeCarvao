@@ -14,7 +14,7 @@ namespace MRP_SdC.Telas.Pedido
         }
 
         // funcoes personalizadas
-        private void AtualizaListas()
+        public void AtualizaListas()
         {
             DAOPedido pedido = new DAOPedido();
             List<Modelos.Pedido> listaPedido = pedido.GetPedido();
@@ -22,7 +22,7 @@ namespace MRP_SdC.Telas.Pedido
             dgvPedido.DataSource = listaPedido;
         }
 
-        private void MudaInfos()
+        public void MudaInfos()
         {
            Modelos.Pedido pedido = new Modelos.Pedido();
            pedido = dgvPedido.CurrentRow.DataBoundItem as Modelos.Pedido;

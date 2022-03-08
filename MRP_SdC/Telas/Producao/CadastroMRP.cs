@@ -22,6 +22,9 @@ namespace MRP_SdC.MySQL
         {
             Telas.Pedido.ConsultaPedido consPed = new Telas.Pedido.ConsultaPedido();
 
+            consPed.AtualizaListas();
+
+
             MRP mrpObjeto = new MRP(1, 1, int.Parse(id_tbx.Text), int.Parse(maos_tbx.Text), 100, 100);
 
             DAOMRP daoMrp = new DAOMRP();
