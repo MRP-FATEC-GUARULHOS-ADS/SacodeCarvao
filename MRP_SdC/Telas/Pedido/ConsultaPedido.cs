@@ -51,7 +51,7 @@ namespace MRP_SdC.Telas.Pedido
         }
 
         // funcoes de pesquisa
-        private void PesquisarProdutos()
+        public void PesquisarProdutos()
         {
             if (pesquisa_tbx.Text != "")
             {

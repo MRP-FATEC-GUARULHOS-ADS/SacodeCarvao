@@ -16,17 +16,30 @@ namespace MRP_SdC.MySQL
         {
             InitializeComponent();
         }
-        
-        public int quantidadePedido = 0;
+
+
+
         private void cadastrar_Click(object sender, EventArgs e)
         {
-            Telas.Pedido.ConsultaPedido consPed = new Telas.Pedido.ConsultaPedido();
 
-            consPed.AtualizaListas();
+            Modelos.Pedido ped = new Modelos.Pedido();
+            ped.idPedido = int.Parse(id_tbx.Text);
 
+            DAOPedido daoPed = new DAOPedido();
+            daoPed.Get(int.Parse(id_tbx.Text));
+            maos_tbx.Text = daoPed.qnt.ToString();
 
-            MRP mrpObjeto = new MRP(1, 1, int.Parse(id_tbx.Text), int.Parse(maos_tbx.Text), 100, 100);
+            Produto prod = new Produto();
+            prod.idProduto = int.Parse(id_tbx.Text);
 
+            ProdutoDAO prodDao = new ProdutoDAO();
+            prodDao.Get(int.Parse(id_tbx.Text));
+            qntdEstoque_tbx.Text = prodDao.qntEst.ToString();
+
+            MRP mrpObjeto = new MRP(1, 1, int.Parse(id_tbx.Text), int.Parse(maos_tbx.Text), int.Parse(qntdEstoque_tbx.Text),
+            100);
+
+            
             DAOMRP daoMrp = new DAOMRP();
 
             DialogResult confirmarInsert = MessageBox.Show(

@@ -360,6 +360,8 @@ namespace MRP_SdC.MySQL
             return listaProdutos;
         }
 
+        public int qntEst = 0;
+
         public Produto Get(int idProduto)
         {
             Produto objProduto;
@@ -374,14 +376,14 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "SELECT p.* FROM PRODUTO p WHERE idProduto = (@idProd);";
+                string query = "SELECT p.* FROM PRODUTO p WHERE idProduto = @idProd;";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return null;
                 }
 
-                cmd.Parameters.AddWithValue("@idTab", idProduto);
+                cmd.Parameters.AddWithValue("@idProd", idProduto);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -395,16 +397,18 @@ namespace MRP_SdC.MySQL
                     valor = Convert.ToDecimal(reader["valorProduto"]),
                     qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]),
                     qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]),
-                    qtdeAtual = ( (reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0 ),
+                    qtdeAtual = ((reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0),
                     estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false)
+              
             };
-
+            
             }
             catch (MySqlException e)
             {
                 Console.WriteLine(e);
                 return null;
             }
+            qntEst = objProduto.qtdeAtual;
             conexao.CloseConexao();
             return objProduto;
         }

@@ -92,11 +92,14 @@ namespace MRP_SdC.MySQL
             return listaPedido;
         }
 
+        public int qnt = 0;
 
         public Pedido Get(int idPedido)
         {
             Pedido pedido = new Pedido();
             Conexao conexao = new Conexao();
+            CadastroMRP cadMrp = new CadastroMRP();
+
 
             if (conexao.mErro.Length > 0)
             {
@@ -123,13 +126,16 @@ namespace MRP_SdC.MySQL
                 pedido.idPedido = Convert.ToInt32(reader["idPedido"]);
                 pedido.idProduto = Convert.ToInt32(reader["idProduto"]);
                 pedido.quantidade = Convert.ToInt32(reader["quantidade"]);
+                qnt = pedido.quantidade;
                 pedido.valor = Convert.ToInt32(reader["valor"]);
             }
+
             catch (MySqlException e)
             {
                 Console.WriteLine(e);
                 return null;
             }
+
             conexao.CloseConexao();
             return pedido;
         }
