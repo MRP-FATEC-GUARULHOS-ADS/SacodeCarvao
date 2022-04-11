@@ -19,8 +19,8 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO MRP ( " +
-                    "idPedido, idBom, idProduto, quantidadePedido, quantidadeBom, quantidadeFinal" +
-                    ") VALUES(@idPed, @idBo, @idProd, @qntdPed, @qntdBom, @qntdFinal);";
+                    "idPedido, idProduto, quantidadePedido, quantidadeEstoque, quantidadeFinal" +
+                    ") VALUES(@idPed, @idProd, @qntdPed, @qntdEst, @qntdFinal);";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -28,10 +28,9 @@ namespace MRP_SdC.MySQL
                 }
 
                 cmd.Parameters.AddWithValue("@idPed", mrp.idPedido);
-                cmd.Parameters.AddWithValue("@idBo", mrp.idBom);
                 cmd.Parameters.AddWithValue("@idProd", mrp.idProduto);
                 cmd.Parameters.AddWithValue("@qntdPed", mrp.quantidadePedido);
-                cmd.Parameters.AddWithValue("@qntdBom", mrp.quantidadeBom);
+                cmd.Parameters.AddWithValue("@qntdEst", mrp.quantidadeEstoque);
                 cmd.Parameters.AddWithValue("@qntdFinal", mrp.quantidadeFinal);
                 cmd.Prepare();
 
@@ -61,14 +60,14 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "DELETE FROM MRP " +
-                    "WHERE idNecesLiq = @idNecesLiq; ";
+                    "WHERE idMRP = @id; ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return false;
                 }
 
-                cmd.Parameters.AddWithValue("@idNecesLiq", idNecesLiq);
+                cmd.Parameters.AddWithValue("@id", idNecesLiq);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -119,10 +118,10 @@ namespace MRP_SdC.MySQL
                 {
                     mrp = new MRP
                     {
-                        idMRP = Convert.ToInt32(reader["idNecesLiq"]),
+                        idMRP = Convert.ToInt32(reader["id"]),
                         idProduto = Convert.ToInt32(reader["idProduto"]),
                         quantidadePedido = Convert.ToInt32(reader["qntdPedido"]),
-                        quantidadeBom = Convert.ToInt32(reader["qntdEstoque"]),
+                        quantidadeEstoque = Convert.ToInt32(reader["qntdEst"]),
                         quantidadeFinal = Convert.ToInt32(reader["qntdNecesLiq"])
                     };
 
@@ -166,10 +165,9 @@ namespace MRP_SdC.MySQL
                     {
                         mrp.idMRP = Convert.ToInt32(reader["idMRP"]);
                         mrp.idPedido = Convert.ToInt32(reader["idPedido"]);
-                        mrp.idBom = Convert.ToInt32(reader["idBom"]);
                         mrp.idProduto = Convert.ToInt32(reader["idProduto"]);
                         mrp.quantidadePedido = Convert.ToInt32(reader["quantidadePedido"]);
-                        mrp.quantidadeBom = Convert.ToInt32(reader["quantidadeBom"]);
+                        mrp.quantidadeEstoque = Convert.ToInt32(reader["quantidadeEstoque"]);
                         mrp.quantidadeFinal = Convert.ToInt32(reader["quantidadeFinal"]);
                     }
 
@@ -197,14 +195,14 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "SELECT * FROM MRP WHERE idNecesLiq = @idNecLiq;";
+                string query = "SELECT * FROM MRP WHERE idMRP = @id;";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return null;
                 }
 
-                cmd.Parameters.AddWithValue("@idNecLiq", idNecesLiq);
+                cmd.Parameters.AddWithValue("@id", idNecesLiq);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -213,7 +211,7 @@ namespace MRP_SdC.MySQL
                 mrp = new MRP();
                 mrp.idProduto = Convert.ToInt32(reader["idProduto"]);
                 mrp.quantidadePedido = Convert.ToInt32(reader["qntdPedido"]);
-                mrp.quantidadeBom = Convert.ToInt32(reader["qntdEstoque"]);
+                mrp.quantidadeEstoque = Convert.ToInt32(reader["qntdEstoque"]);
                 mrp.quantidadeFinal = Convert.ToInt32(reader["qntdNecesLiq"]);
             }
             catch (MySqlException e)
@@ -240,7 +238,7 @@ namespace MRP_SdC.MySQL
                 string query = "UPDATE MRP " +
                     "SET idProduto = @idProd, qntdPedido = @qntdPed, qntdEstoque= @qntdEstoq, " +
                     "qntdNecesLiq = @qntdNecLiq " +
-                    "WHERE idNecesLiq = @idNecesLiq; ";
+                    "WHERE idMRP = @id; ";
 
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
@@ -250,7 +248,7 @@ namespace MRP_SdC.MySQL
 
                 cmd.Parameters.AddWithValue("@idProd", mrp.idProduto);
                 cmd.Parameters.AddWithValue("@qntdPed", mrp.quantidadePedido);
-                cmd.Parameters.AddWithValue("@qntdEstoq", mrp.quantidadeBom);
+                cmd.Parameters.AddWithValue("@qntdEstoq", mrp.quantidadeEstoque);
                 cmd.Parameters.AddWithValue("@qntdNecLiq", mrp.quantidadeFinal);
                 cmd.Parameters.AddWithValue("@idNecesLiq", mrp.idMRP);
                 cmd.Prepare();

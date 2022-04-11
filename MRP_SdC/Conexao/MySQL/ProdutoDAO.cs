@@ -376,7 +376,7 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "SELECT p.* FROM PRODUTO p WHERE idProduto = @idProd;";
+                string query = "SELECT * FROM PRODUTO WHERE idProduto = @idProd;";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -389,18 +389,17 @@ namespace MRP_SdC.MySQL
                 reader = cmd.ExecuteReader();
                 reader.Read();
 
-                objProduto = new Produto
-                {
-                    idProduto = Convert.ToInt32(reader["idProduto"]),
-                    modelo = (string)reader["modeloProduto"],
-                    descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : ""),
-                    valor = Convert.ToDecimal(reader["valorProduto"]),
-                    qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]),
-                    qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]),
-                    qtdeAtual = ((reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0),
-                    estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false)
-              
-            };
+                objProduto = new Produto();
+                idProduto = Convert.ToInt32(reader["idProduto"]);
+                objProduto.modelo = (string)reader["modeloProduto"];
+                objProduto.descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : "");
+                objProduto.valor = Convert.ToDecimal(reader["valorProduto"]);
+                objProduto.qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]);
+                objProduto.qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]);
+                objProduto.qtdeAtual = ((reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0);
+                qntEst = objProduto.qtdeAtual;
+                objProduto.estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false);
+            
             
             }
             catch (MySqlException e)
@@ -408,7 +407,6 @@ namespace MRP_SdC.MySQL
                 Console.WriteLine(e);
                 return null;
             }
-            qntEst = objProduto.qtdeAtual;
             conexao.CloseConexao();
             return objProduto;
         }

@@ -17,27 +17,31 @@ namespace MRP_SdC.MySQL
             InitializeComponent();
         }
 
-
-
         private void cadastrar_Click(object sender, EventArgs e)
         {
 
             Modelos.Pedido ped = new Modelos.Pedido();
-            ped.idPedido = int.Parse(id_tbx.Text);
+            ped.idPedido = int.Parse(txtIdPedido.Text);
 
             DAOPedido daoPed = new DAOPedido();
-            daoPed.Get(int.Parse(id_tbx.Text));
-            maos_tbx.Text = daoPed.qnt.ToString();
+            daoPed.Get(int.Parse(txtIdPedido.Text));
+            int estoquePedido = daoPed.qnt;
 
             Produto prod = new Produto();
-            prod.idProduto = int.Parse(id_tbx.Text);
+            prod.idProduto = int.Parse(txtIdPedido.Text);
 
             ProdutoDAO prodDao = new ProdutoDAO();
-            prodDao.Get(int.Parse(id_tbx.Text));
-            qntdEstoque_tbx.Text = prodDao.qntEst.ToString();
+            prodDao.Get(int.Parse(txtIdProduto.Text));
+            int estoqueAtual = prodDao.qntEst;
 
-            MRP mrpObjeto = new MRP(1, 1, int.Parse(id_tbx.Text), int.Parse(maos_tbx.Text), int.Parse(qntdEstoque_tbx.Text),
-            100);
+            int qntdFinal = estoquePedido - estoqueAtual;
+
+            if(qntdFinal < 0)
+            {
+                qntdFinal = 0;
+            }
+            MRP mrpObjeto = new MRP(int.Parse(txtIdPedido.Text), int.Parse(txtIdProduto.Text), estoquePedido, estoqueAtual, 
+            qntdFinal);
 
             
             DAOMRP daoMrp = new DAOMRP();

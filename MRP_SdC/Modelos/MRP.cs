@@ -5,10 +5,9 @@
         //Atributos
         public int idMRP { get; set; }
         public int idPedido { get; set; }
-        public int idBom { get; set; }
         public int idProduto { get; set; }
         public int quantidadePedido { get; set; }
-        public int quantidadeBom { get; set; }
+        public int quantidadeEstoque { get; set; }
         public int quantidadeFinal { get; set; }
 
         //Construtores
@@ -19,16 +18,15 @@
 
         //Construtores
         public MRP(
-            int idPedido, int idBom, int idProduto, int quantidadePedido, 
-            int quantidadeBom, int quantidadeFinal
+            int idPedido, int idProduto, int quantidadePedido, 
+            int quantidadeEstoque, int quantidadeFinal
         )
 
         {
             this.idPedido = idPedido;
-            this.idBom = idBom;
             this.idProduto = idProduto;
             this.quantidadePedido = quantidadePedido;
-            this.quantidadeBom = quantidadeBom;
+            this.quantidadeEstoque = quantidadeEstoque;
             this.quantidadeFinal = quantidadeFinal;
 
         }

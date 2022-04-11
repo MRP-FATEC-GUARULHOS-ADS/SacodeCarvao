@@ -32,7 +32,7 @@ namespace MRP_SdC.Telas.Producao
             dados_subttl_lbl.Text = String.Format(mrp.idProduto.ToString());
             txtProdId.Text = mrp.idProduto.ToString();
             txtQntdPedido.Text = mrp.quantidadePedido.ToString();
-            txtQntdEstoque.Text = mrp.quantidadeBom.ToString();
+            txtQntdEstoque.Text = mrp.quantidadeEstoque.ToString();
             txtQntdNecesLiq.Text = mrp.quantidadeFinal.ToString();
         }
 

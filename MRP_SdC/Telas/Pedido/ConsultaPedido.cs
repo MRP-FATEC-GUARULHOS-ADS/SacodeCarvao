@@ -22,6 +22,8 @@ namespace MRP_SdC.Telas.Pedido
             dgvPedido.DataSource = listaPedido;
         }
 
+        public int QntdPedMRP = 0; 
+
         public void MudaInfos()
         {
            Modelos.Pedido pedido = new Modelos.Pedido();
@@ -33,7 +35,8 @@ namespace MRP_SdC.Telas.Pedido
             dados_subttl_lbl.Text = String.Format(pedido.idProduto.ToString());
             txtIdProduto.Text = pedido.idProduto.ToString();
             txtQuantidade.Text = pedido.quantidade.ToString();
-            txtValor.Text = pedido.valor.ToString(); 
+            txtValor.Text = pedido.valor.ToString();
+            QntdPedMRP = int.Parse(txtQuantidade.Text);
         }
 
         private void ConsultaPedido_Load(object sender, EventArgs e)
