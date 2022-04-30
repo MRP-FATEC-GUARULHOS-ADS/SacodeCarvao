@@ -95,6 +95,45 @@ namespace MRP_SdC.MySQL
             return true;
         }
 
+        public Boolean UpdateSaldo(int saldoAtual, int idProduto)
+        {
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return false;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "UPDATE PRODUTO " +
+                    "SET qtdeAtualEstoque = @qntatual " +
+                    "WHERE idProduto = @idProd; ";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return false;
+                }
+
+                cmd.Parameters.AddWithValue("@idProd", idProduto); 
+                cmd.Parameters.AddWithValue("@qntatual", saldoAtual);
+
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            conexao.CloseConexao();
+            return true;
+        }
+
         public Boolean UpdateEstado(Produto produto)
         {
             Conexao conexao = new Conexao();

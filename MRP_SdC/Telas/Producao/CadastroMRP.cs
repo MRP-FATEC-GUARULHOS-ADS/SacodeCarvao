@@ -34,6 +34,9 @@ namespace MRP_SdC.MySQL
             prodDao.Get(int.Parse(txtIdProduto.Text));
             int estoqueAtual = prodDao.qntEst;
 
+            int subtraiEstoque = prodDao.qntEst - estoquePedido;
+            prodDao.UpdateSaldo(subtraiEstoque, int.Parse(txtIdProduto.Text));
+
             int qntdFinal = estoquePedido - estoqueAtual;
 
             if(qntdFinal < 0)
