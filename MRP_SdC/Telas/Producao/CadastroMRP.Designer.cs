@@ -34,7 +34,6 @@ namespace MRP_SdC.MySQL
             this.esp_esq_pnl = new System.Windows.Forms.Panel();
             this.ttl_lbl = new System.Windows.Forms.Label();
             this.id_pnl = new System.Windows.Forms.Panel();
-            this.txtIdPedido = new System.Windows.Forms.TextBox();
             this.lblIdPedido = new System.Windows.Forms.Label();
             this.maos_pnl = new System.Windows.Forms.Panel();
             this.txtIdProduto = new System.Windows.Forms.TextBox();
@@ -43,6 +42,8 @@ namespace MRP_SdC.MySQL
             this.cadastrar = new System.Windows.Forms.Button();
             this.cancelar_btn = new System.Windows.Forms.Button();
             this.qntdNecesLiq_tbx = new System.Windows.Forms.Panel();
+            this.cmbIdPedido = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.id_pnl.SuspendLayout();
             this.maos_pnl.SuspendLayout();
             this.SuspendLayout();
@@ -77,21 +78,13 @@ namespace MRP_SdC.MySQL
             // 
             // id_pnl
             // 
-            this.id_pnl.Controls.Add(this.txtIdPedido);
+            this.id_pnl.Controls.Add(this.cmbIdPedido);
             this.id_pnl.Controls.Add(this.lblIdPedido);
             this.id_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.id_pnl.Location = new System.Drawing.Point(32, 56);
             this.id_pnl.Name = "id_pnl";
             this.id_pnl.Size = new System.Drawing.Size(228, 48);
             this.id_pnl.TabIndex = 1;
-            // 
-            // txtIdPedido
-            // 
-            this.txtIdPedido.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtIdPedido.Location = new System.Drawing.Point(0, 17);
-            this.txtIdPedido.Name = "txtIdPedido";
-            this.txtIdPedido.Size = new System.Drawing.Size(228, 20);
-            this.txtIdPedido.TabIndex = 1;
             // 
             // lblIdPedido
             // 
@@ -172,11 +165,33 @@ namespace MRP_SdC.MySQL
             this.qntdNecesLiq_tbx.Size = new System.Drawing.Size(228, 10);
             this.qntdNecesLiq_tbx.TabIndex = 4;
             // 
+            // cmbIdPedido
+            // 
+            this.cmbIdPedido.FormattingEnabled = true;
+            this.cmbIdPedido.Location = new System.Drawing.Point(6, 17);
+            this.cmbIdPedido.Name = "cmbIdPedido";
+            this.cmbIdPedido.Size = new System.Drawing.Size(121, 21);
+            this.cmbIdPedido.TabIndex = 3;
+            this.cmbIdPedido.SelectedIndexChanged += new System.EventHandler(this.cmbIdPedido_SelectedIndexChanged);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.Lime;
+            this.button1.Location = new System.Drawing.Point(62, 202);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(81, 32);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Cadastrar";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // CadastroMRP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 395);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cancelar_btn);
             this.Controls.Add(this.cadastrar);
             this.Controls.Add(this.barraInf_pnl);
@@ -212,7 +227,8 @@ namespace MRP_SdC.MySQL
         private System.Windows.Forms.Button cancelar_btn;
         private System.Windows.Forms.Button cadastrar;
         private System.Windows.Forms.Panel qntdNecesLiq_tbx;
-        public System.Windows.Forms.TextBox txtIdPedido;
         public System.Windows.Forms.TextBox txtIdProduto;
+        public System.Windows.Forms.ComboBox cmbIdPedido;
+        private System.Windows.Forms.Button button1;
     }
 }

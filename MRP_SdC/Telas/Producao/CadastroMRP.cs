@@ -21,14 +21,14 @@ namespace MRP_SdC.MySQL
         {
 
             Modelos.Pedido ped = new Modelos.Pedido();
-            ped.idPedido = int.Parse(txtIdPedido.Text);
+            ped.idPedido = int.Parse(cmbIdPedido.Text);
 
             DAOPedido daoPed = new DAOPedido();
-            daoPed.Get(int.Parse(txtIdPedido.Text));
+            daoPed.Get(int.Parse(cmbIdPedido.Text));
             int estoquePedido = daoPed.qnt;
 
             Produto prod = new Produto();
-            prod.idProduto = int.Parse(txtIdPedido.Text);
+            prod.idProduto = int.Parse(cmbIdPedido.Text);
 
             ProdutoDAO prodDao = new ProdutoDAO();
             prodDao.Get(int.Parse(txtIdProduto.Text));
@@ -43,7 +43,7 @@ namespace MRP_SdC.MySQL
             {
                 qntdFinal = 0;
             }
-            MRP mrpObjeto = new MRP(int.Parse(txtIdPedido.Text), int.Parse(txtIdProduto.Text), estoquePedido, estoqueAtual, 
+            MRP mrpObjeto = new MRP(int.Parse(cmbIdPedido.Text), int.Parse(txtIdProduto.Text), estoquePedido, estoqueAtual, 
             qntdFinal);
 
             
@@ -71,6 +71,27 @@ namespace MRP_SdC.MySQL
         private void CadastroMRP_Load(object sender, EventArgs e)
         {
 
+        }
+        
+        public void cmbIdPedido_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DAOPedido daoPed = new DAOPedido();
+            daoPed.GetIdPedido();
+            int idPedido = daoPed.idPed;
+            cmbIdPedido.Items.Add(10);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DAOPedido daoPed = new DAOPedido();
+            daoPed.GetIdPedido();
+            int idPedido = daoPed.idPed;
+            int i=0;
+            while (i < 100){
+                cmbIdPedido.Items.Add(idPedido);
+                idPedido += 1;
+                i++;
+            }
         }
     }
 }

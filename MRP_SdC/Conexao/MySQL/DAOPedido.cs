@@ -140,6 +140,50 @@ namespace MRP_SdC.MySQL
             return pedido;
         }
 
+        public int idPed;
+
+        public Pedido GetIdPedido()
+        {
+            Pedido pedido = new Pedido();
+            Conexao conexao = new Conexao();
+            CadastroMRP cadMrp = new CadastroMRP();
+
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT idPedido FROM PEDIDO;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                pedido = new Pedido();
+                pedido.idPedido = Convert.ToInt32(reader["idPedido"]);
+                idPed = pedido.idPedido;
+            }
+
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+
+            conexao.CloseConexao();
+            return pedido;
+        }
+
         public List<Pedido> PesquisaPedido(string pesquisa)
         {
             List<Pedido> listaPedido = new List<Pedido>();

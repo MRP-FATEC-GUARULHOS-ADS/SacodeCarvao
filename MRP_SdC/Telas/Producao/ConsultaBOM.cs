@@ -82,7 +82,7 @@ namespace MRP_SdC.Telas.Producao
         {
             MySQL.CadastroMRP cadMrp = new MySQL.CadastroMRP();
             Pedido.ConsultaPedido consPed = new Pedido.ConsultaPedido();
-            cadMrp.txtIdPedido.Text = dados_subttl_lbl.Text;
+            cadMrp.cmbIdPedido.Text = dados_subttl_lbl.Text;
             cadMrp.txtIdProduto.Text = q.ToString();
             cadMrp.Show();
         }
