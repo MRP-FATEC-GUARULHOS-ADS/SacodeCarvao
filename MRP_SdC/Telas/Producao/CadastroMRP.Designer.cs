@@ -34,16 +34,16 @@ namespace MRP_SdC.MySQL
             this.esp_esq_pnl = new System.Windows.Forms.Panel();
             this.ttl_lbl = new System.Windows.Forms.Label();
             this.id_pnl = new System.Windows.Forms.Panel();
+            this.cmbIdPedido = new System.Windows.Forms.ComboBox();
             this.lblIdPedido = new System.Windows.Forms.Label();
             this.maos_pnl = new System.Windows.Forms.Panel();
-            this.txtIdProduto = new System.Windows.Forms.TextBox();
             this.maos_lbl = new System.Windows.Forms.Label();
             this.barraInf_pnl = new System.Windows.Forms.Panel();
             this.cadastrar = new System.Windows.Forms.Button();
             this.cancelar_btn = new System.Windows.Forms.Button();
             this.qntdNecesLiq_tbx = new System.Windows.Forms.Panel();
-            this.cmbIdPedido = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAtualizarLista = new System.Windows.Forms.Button();
+            this.cmbIdProduto = new System.Windows.Forms.ComboBox();
             this.id_pnl.SuspendLayout();
             this.maos_pnl.SuspendLayout();
             this.SuspendLayout();
@@ -86,6 +86,15 @@ namespace MRP_SdC.MySQL
             this.id_pnl.Size = new System.Drawing.Size(228, 48);
             this.id_pnl.TabIndex = 1;
             // 
+            // cmbIdPedido
+            // 
+            this.cmbIdPedido.FormattingEnabled = true;
+            this.cmbIdPedido.Location = new System.Drawing.Point(6, 17);
+            this.cmbIdPedido.Name = "cmbIdPedido";
+            this.cmbIdPedido.Size = new System.Drawing.Size(121, 21);
+            this.cmbIdPedido.TabIndex = 3;
+            this.cmbIdPedido.SelectedIndexChanged += new System.EventHandler(this.cmbIdPedido_SelectedIndexChanged);
+            // 
             // lblIdPedido
             // 
             this.lblIdPedido.AutoSize = true;
@@ -99,21 +108,14 @@ namespace MRP_SdC.MySQL
             // 
             // maos_pnl
             // 
-            this.maos_pnl.Controls.Add(this.txtIdProduto);
+            this.maos_pnl.Controls.Add(this.btnAtualizarLista);
+            this.maos_pnl.Controls.Add(this.cmbIdProduto);
             this.maos_pnl.Controls.Add(this.maos_lbl);
             this.maos_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.maos_pnl.Location = new System.Drawing.Point(32, 104);
             this.maos_pnl.Name = "maos_pnl";
             this.maos_pnl.Size = new System.Drawing.Size(228, 48);
             this.maos_pnl.TabIndex = 2;
-            // 
-            // txtIdProduto
-            // 
-            this.txtIdProduto.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtIdProduto.Location = new System.Drawing.Point(0, 17);
-            this.txtIdProduto.Name = "txtIdProduto";
-            this.txtIdProduto.Size = new System.Drawing.Size(228, 20);
-            this.txtIdProduto.TabIndex = 1;
             // 
             // maos_lbl
             // 
@@ -165,33 +167,31 @@ namespace MRP_SdC.MySQL
             this.qntdNecesLiq_tbx.Size = new System.Drawing.Size(228, 10);
             this.qntdNecesLiq_tbx.TabIndex = 4;
             // 
-            // cmbIdPedido
+            // btnAtualizarLista
             // 
-            this.cmbIdPedido.FormattingEnabled = true;
-            this.cmbIdPedido.Location = new System.Drawing.Point(6, 17);
-            this.cmbIdPedido.Name = "cmbIdPedido";
-            this.cmbIdPedido.Size = new System.Drawing.Size(121, 21);
-            this.cmbIdPedido.TabIndex = 3;
-            this.cmbIdPedido.SelectedIndexChanged += new System.EventHandler(this.cmbIdPedido_SelectedIndexChanged);
+            this.btnAtualizarLista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAtualizarLista.BackColor = System.Drawing.Color.Lime;
+            this.btnAtualizarLista.Location = new System.Drawing.Point(141, 13);
+            this.btnAtualizarLista.Name = "btnAtualizarLista";
+            this.btnAtualizarLista.Size = new System.Drawing.Size(81, 32);
+            this.btnAtualizarLista.TabIndex = 19;
+            this.btnAtualizarLista.Text = "Atualizar Lista";
+            this.btnAtualizarLista.UseVisualStyleBackColor = false;
+            this.btnAtualizarLista.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button1
+            // cmbIdProduto
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.Lime;
-            this.button1.Location = new System.Drawing.Point(62, 202);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 32);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Cadastrar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.cmbIdProduto.FormattingEnabled = true;
+            this.cmbIdProduto.Location = new System.Drawing.Point(3, 20);
+            this.cmbIdProduto.Name = "cmbIdProduto";
+            this.cmbIdProduto.Size = new System.Drawing.Size(121, 21);
+            this.cmbIdProduto.TabIndex = 4;
             // 
             // CadastroMRP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 395);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.cancelar_btn);
             this.Controls.Add(this.cadastrar);
             this.Controls.Add(this.barraInf_pnl);
@@ -227,8 +227,8 @@ namespace MRP_SdC.MySQL
         private System.Windows.Forms.Button cancelar_btn;
         private System.Windows.Forms.Button cadastrar;
         private System.Windows.Forms.Panel qntdNecesLiq_tbx;
-        public System.Windows.Forms.TextBox txtIdProduto;
         public System.Windows.Forms.ComboBox cmbIdPedido;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAtualizarLista;
+        public System.Windows.Forms.ComboBox cmbIdProduto;
     }
 }

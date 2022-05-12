@@ -449,5 +449,49 @@ namespace MRP_SdC.MySQL
             conexao.CloseConexao();
             return objProduto;
         }
+
+        public int idProd;
+
+        public Produto GetIdProduto()
+        {
+            Produto objProduto;
+
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT idProduto FROM PRODUTO;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                objProduto = new Produto();
+                objProduto.idProduto = Convert.ToInt32(reader["idProduto"]);
+                idProd = objProduto.idProduto;
+
+
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+            conexao.CloseConexao();
+            return objProduto;
+        }
     }
 }

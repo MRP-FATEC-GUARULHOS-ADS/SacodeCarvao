@@ -31,11 +31,11 @@ namespace MRP_SdC.MySQL
             prod.idProduto = int.Parse(cmbIdPedido.Text);
 
             ProdutoDAO prodDao = new ProdutoDAO();
-            prodDao.Get(int.Parse(txtIdProduto.Text));
+            prodDao.Get(int.Parse(cmbIdProduto.Text));
             int estoqueAtual = prodDao.qntEst;
 
             int subtraiEstoque = prodDao.qntEst - estoquePedido;
-            prodDao.UpdateSaldo(subtraiEstoque, int.Parse(txtIdProduto.Text));
+            prodDao.UpdateSaldo(subtraiEstoque, int.Parse(cmbIdProduto.Text));
 
             int qntdFinal = estoquePedido - estoqueAtual;
 
@@ -43,7 +43,7 @@ namespace MRP_SdC.MySQL
             {
                 qntdFinal = 0;
             }
-            MRP mrpObjeto = new MRP(int.Parse(cmbIdPedido.Text), int.Parse(txtIdProduto.Text), estoquePedido, estoqueAtual, 
+            MRP mrpObjeto = new MRP(int.Parse(cmbIdPedido.Text), int.Parse(cmbIdProduto.Text), estoquePedido, estoqueAtual, 
             qntdFinal);
 
             
@@ -91,6 +91,17 @@ namespace MRP_SdC.MySQL
                 cmbIdPedido.Items.Add(idPedido);
                 idPedido += 1;
                 i++;
+            }
+
+            ProdutoDAO daoProd = new ProdutoDAO();
+            daoProd.GetIdProduto();
+            int idProduto = daoProd.idProd;
+            int j=0;
+            while (j < 100)
+            {
+                cmbIdProduto.Items.Add(idProduto);
+                idProduto += 1;
+                j++;
             }
         }
     }
