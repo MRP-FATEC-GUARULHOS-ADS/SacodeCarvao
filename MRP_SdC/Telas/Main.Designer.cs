@@ -172,20 +172,20 @@ namespace MRP_SdC
             this.cadastrarToolStripMenuItem1,
             this.consultarToolStripMenuItem});
             this.mPSToolStripMenuItem1.Name = "mPSToolStripMenuItem1";
-            this.mPSToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.mPSToolStripMenuItem1.Size = new System.Drawing.Size(101, 22);
             this.mPSToolStripMenuItem1.Text = "MPS";
             // 
             // cadastrarToolStripMenuItem1
             // 
             this.cadastrarToolStripMenuItem1.Name = "cadastrarToolStripMenuItem1";
-            this.cadastrarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.cadastrarToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
             this.cadastrarToolStripMenuItem1.Text = "Cadastrar";
             this.cadastrarToolStripMenuItem1.Click += new System.EventHandler(this.cadastrarToolStripMenuItem1_Click);
             // 
             // consultarToolStripMenuItem
             // 
             this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.consultarToolStripMenuItem.Text = "Consultar";
             this.consultarToolStripMenuItem.Click += new System.EventHandler(this.consultarToolStripMenuItem_Click);
             // 
@@ -195,7 +195,7 @@ namespace MRP_SdC
             this.cadastrarToolStripMenuItem2,
             this.consultarToolStripMenuItem1});
             this.mRPToolStripMenuItem.Name = "mRPToolStripMenuItem";
-            this.mRPToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mRPToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
             this.mRPToolStripMenuItem.Text = "MRP";
             // 
             // cadastrarToolStripMenuItem2
@@ -218,7 +218,7 @@ namespace MRP_SdC
             this.cadastrarToolStripMenuItem3,
             this.consultarToolStripMenuItem2});
             this.bOMToolStripMenuItem.Name = "bOMToolStripMenuItem";
-            this.bOMToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bOMToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
             this.bOMToolStripMenuItem.Text = "BOM";
             // 
             // cadastrarToolStripMenuItem3

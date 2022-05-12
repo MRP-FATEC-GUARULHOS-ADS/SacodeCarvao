@@ -16,7 +16,7 @@ namespace MRP_SdC
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main_frm());
+            Application.Run(new Login());
         }
     }
 }
