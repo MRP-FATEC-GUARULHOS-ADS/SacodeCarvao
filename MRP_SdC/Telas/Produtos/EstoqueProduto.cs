@@ -172,11 +172,20 @@ namespace MRP_SdC
 
         private void árvoreDoProdutoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            MySQL.DAOBOM dao = new MySQL.DAOBOM();
+            dao.GetCodigoLista(dados_subttl_lbl.Text);
+            BOM bom = new BOM();
+            
+            
             Telas.Producao.ConsultaBOM consultabom = new Telas.Producao.ConsultaBOM();
-            consultabom.pesquisa_tbx.Text = dados_ttl_lbl.Text;
+            consultabom.pesquisa_tbx.Text = dao.codigoListaVar.ToString();
             consultabom.Show();
             consultabom.pesquisaBOMProduto();
         }
 
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
     }
 }

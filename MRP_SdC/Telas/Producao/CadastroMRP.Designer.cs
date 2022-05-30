@@ -37,13 +37,13 @@ namespace MRP_SdC.MySQL
             this.cmbIdPedido = new System.Windows.Forms.ComboBox();
             this.lblIdPedido = new System.Windows.Forms.Label();
             this.maos_pnl = new System.Windows.Forms.Panel();
+            this.btnAtualizarLista = new System.Windows.Forms.Button();
+            this.cmbIdProduto = new System.Windows.Forms.ComboBox();
             this.maos_lbl = new System.Windows.Forms.Label();
             this.barraInf_pnl = new System.Windows.Forms.Panel();
             this.cadastrar = new System.Windows.Forms.Button();
             this.cancelar_btn = new System.Windows.Forms.Button();
             this.qntdNecesLiq_tbx = new System.Windows.Forms.Panel();
-            this.btnAtualizarLista = new System.Windows.Forms.Button();
-            this.cmbIdProduto = new System.Windows.Forms.ComboBox();
             this.id_pnl.SuspendLayout();
             this.maos_pnl.SuspendLayout();
             this.SuspendLayout();
@@ -117,6 +117,26 @@ namespace MRP_SdC.MySQL
             this.maos_pnl.Size = new System.Drawing.Size(228, 48);
             this.maos_pnl.TabIndex = 2;
             // 
+            // btnAtualizarLista
+            // 
+            this.btnAtualizarLista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAtualizarLista.BackColor = System.Drawing.Color.Lime;
+            this.btnAtualizarLista.Location = new System.Drawing.Point(141, 13);
+            this.btnAtualizarLista.Name = "btnAtualizarLista";
+            this.btnAtualizarLista.Size = new System.Drawing.Size(81, 32);
+            this.btnAtualizarLista.TabIndex = 19;
+            this.btnAtualizarLista.Text = "Atualizar Lista";
+            this.btnAtualizarLista.UseVisualStyleBackColor = false;
+            this.btnAtualizarLista.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // cmbIdProduto
+            // 
+            this.cmbIdProduto.FormattingEnabled = true;
+            this.cmbIdProduto.Location = new System.Drawing.Point(3, 20);
+            this.cmbIdProduto.Name = "cmbIdProduto";
+            this.cmbIdProduto.Size = new System.Drawing.Size(121, 21);
+            this.cmbIdProduto.TabIndex = 4;
+            // 
             // maos_lbl
             // 
             this.maos_lbl.AutoSize = true;
@@ -166,26 +186,6 @@ namespace MRP_SdC.MySQL
             this.qntdNecesLiq_tbx.Name = "qntdNecesLiq_tbx";
             this.qntdNecesLiq_tbx.Size = new System.Drawing.Size(228, 10);
             this.qntdNecesLiq_tbx.TabIndex = 4;
-            // 
-            // btnAtualizarLista
-            // 
-            this.btnAtualizarLista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAtualizarLista.BackColor = System.Drawing.Color.Lime;
-            this.btnAtualizarLista.Location = new System.Drawing.Point(141, 13);
-            this.btnAtualizarLista.Name = "btnAtualizarLista";
-            this.btnAtualizarLista.Size = new System.Drawing.Size(81, 32);
-            this.btnAtualizarLista.TabIndex = 19;
-            this.btnAtualizarLista.Text = "Atualizar Lista";
-            this.btnAtualizarLista.UseVisualStyleBackColor = false;
-            this.btnAtualizarLista.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // cmbIdProduto
-            // 
-            this.cmbIdProduto.FormattingEnabled = true;
-            this.cmbIdProduto.Location = new System.Drawing.Point(3, 20);
-            this.cmbIdProduto.Name = "cmbIdProduto";
-            this.cmbIdProduto.Size = new System.Drawing.Size(121, 21);
-            this.cmbIdProduto.TabIndex = 4;
             // 
             // CadastroMRP
             // 

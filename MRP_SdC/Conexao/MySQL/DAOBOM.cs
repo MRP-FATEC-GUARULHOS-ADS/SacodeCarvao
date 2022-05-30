@@ -186,7 +186,6 @@ namespace MRP_SdC.MySQL
                         nome = "nome",
                         nivel = Convert.ToInt32(reader["nivel"]),
                         quantidadeLista = Convert.ToInt32(reader["quantidadeLista"])
-
                     };
 
                     listaBOM.Add(bom);
@@ -198,6 +197,51 @@ namespace MRP_SdC.MySQL
             }
             conexao.CloseConexao();
             return listaBOM;
+        }
+
+        public int codigoListaVar;
+        public BOM GetCodigoLista(string nome)
+        {
+            BOM objBom = new BOM();
+
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT * FROM BOM WHERE nome = @nomeComp;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Parameters.AddWithValue("@nomeComp", nome);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                objBom = new BOM();
+                objBom.codigoLista = Convert.ToInt32(reader["codigoLista"]);
+                codigoListaVar = objBom.codigoLista;
+
+
+
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+            conexao.CloseConexao();
+            return objBom;
         }
     }
 }
