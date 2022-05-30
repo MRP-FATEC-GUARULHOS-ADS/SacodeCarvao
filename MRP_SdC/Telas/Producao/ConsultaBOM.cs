@@ -29,13 +29,13 @@ namespace MRP_SdC.Telas.Producao
             // textos do produto selecionado
             dados_ttl_lbl.Text = bom.idBOM.ToString();
             bom.idBOM = int.Parse(dados_ttl_lbl.Text);
-            dados_subttl_lbl.Text = String.Format(bom.idProduto.ToString());
-            txtSaidaFinal.Text = bom.saidaFinal.ToString();
-            txtIdProduto.Text = bom.nome.ToString();
-            txtCategoria.Text = bom.categoria.ToString();
-            txtNome.Text = bom.quantidade.ToString();
-            txtQuantidade.Text = bom.quantidade.ToString();
-            txtCustoUnidade.Text = bom.custoUnidade.ToString();
+            dados_subttl_lbl.Text = String.Format(bom.nome.ToString());
+            txtNoPai.Text = bom.noPai.ToString();
+            txtNoFilho.Text = bom.noFilho.ToString();
+            txtNome.Text = bom.nome.ToString();
+            txtCodigoLista.Text = bom.codigoLista.ToString();
+            txtNivel.Text = bom.nivel.ToString();
+            txtQuantidadeLista.Text = bom.quantidadeLista.ToString();
         }
         
         public void ConsultaBOM_Load(object sender, EventArgs e)

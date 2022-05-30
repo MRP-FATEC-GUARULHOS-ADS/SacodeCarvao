@@ -4,12 +4,13 @@
     {
         //atributos
         public int idBOM { get; set; }
-        public string saidaFinal { get; set; }
-        public int idProduto { get; set; }
-        public string categoria { get; set; }
+        public int noProduto { get; set; }
+        public int noPai { get; set; }
+        public int noFilho { get; set; }
+        public int codigoLista { get; set; }
         public string nome { get; set; }
-        public int quantidade { get; set; }
-        public int custoUnidade { get; set; }
+        public int nivel { get; set; }
+        public int quantidadeLista { get; set; }
 
         public BOM()
         {
@@ -18,21 +19,23 @@
 
         //construtores
         public BOM(
-            string saidaFinal, int idProduto, string categoria, string nome, int quantidade, int custoUnidade
+            int noPai, int noFilho, int codigoLista, string nome, int nivel, int quantidadeLista,
+            int noProduto
         )
 
         {
-            this.saidaFinal = saidaFinal;
-            this.idProduto = idProduto;
-            this.categoria = categoria;
+            this.noProduto = noProduto;
+            this.noPai = noPai;
+            this.noFilho = noFilho;
+            this.codigoLista = codigoLista;
             this.nome = nome;
-            this.quantidade = quantidade;
-            this.custoUnidade = custoUnidade;
+            this.nivel = nivel;
+            this.quantidadeLista = quantidadeLista;
         }
 
         public override string ToString()
         {
-            return this.idProduto.ToString();
+            return this.nome.ToString();
         }
     }  
 }

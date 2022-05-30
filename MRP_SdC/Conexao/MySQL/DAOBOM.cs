@@ -21,20 +21,21 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO BOM ( " +
-                    "saidaFinal, idProduto, categoria, nome, quantidade, custoUnidade" +
-                    ") VALUES(@saidaFim, @idProd, @categ, @nomeComp, @qntd, @custo); ";
+                    "noProduto, noPai, noFilho, codigoLista, nome, nivel, quantidadeLista" +
+                    ") VALUES(@noProd, @noP, @noF, @codLista, @nomeComp, @nvl, @qntdList); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return false;
                 }
 
-                cmd.Parameters.AddWithValue("@saidaFim", bom.saidaFinal);
-                cmd.Parameters.AddWithValue("@idProd", bom.idProduto);
-                cmd.Parameters.AddWithValue("@categ", bom.categoria);
+                cmd.Parameters.AddWithValue("@noProd", bom.noProduto);
+                cmd.Parameters.AddWithValue("@noP", bom.noPai);
+                cmd.Parameters.AddWithValue("@noF", bom.noFilho);
+                cmd.Parameters.AddWithValue("@codLista", bom.codigoLista);
                 cmd.Parameters.AddWithValue("@nomeComp", bom.nome);
-                cmd.Parameters.AddWithValue("@qntd", bom.quantidade);
-                cmd.Parameters.AddWithValue("@custo", bom.custoUnidade);
+                cmd.Parameters.AddWithValue("@nvl", bom.nivel);
+                cmd.Parameters.AddWithValue("@qntdList", bom.quantidadeLista);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -78,13 +79,14 @@ namespace MRP_SdC.MySQL
                     bom = new BOM();
                     {
                         bom = new BOM();
-                        bom.idBOM = Convert.ToInt32(reader["idBOM"]);
-                        bom.saidaFinal = Convert.ToString(reader["saidaFinal"]);
-                        bom.idProduto = Convert.ToInt32(reader["idProduto"]);
-                        bom.categoria = Convert.ToString(reader["categoria"]);
+                        bom.idBOM = Convert.ToInt32(reader["idBom"]);
+                        bom.noProduto = Convert.ToInt32(reader["noProduto"]);
+                        bom.noPai = Convert.ToInt32(reader["noPai"]);
+                        bom.noFilho = Convert.ToInt32(reader["noFilho"]);
+                        bom.codigoLista = Convert.ToInt32(reader["codigoLista"]);
                         bom.nome = Convert.ToString(reader["nome"]);
-                        bom.quantidade = Convert.ToInt32(reader["quantidade"]);
-                        bom.custoUnidade = Convert.ToInt32(reader["custoUnidade"]);
+                        bom.nivel = Convert.ToInt32(reader["nivel"]);
+                        bom.quantidadeLista = Convert.ToInt32(reader["quantidadeLista"]);
                     }
 
                     listaBOM.Add(bom);
@@ -111,27 +113,28 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "SELECT * FROM BOM WHERE idProduto = @idProd;";
+                string query = "SELECT * FROM BOM WHERE noProduto = @noProd;";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return null;
                 }
 
-                cmd.Parameters.AddWithValue("@idBOM", idBOM);
+                cmd.Parameters.AddWithValue("@id", idBOM);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
                 reader.Read();
 
                 bom = new BOM();
-                bom.idBOM = Convert.ToInt32(reader["idBOM"]);
-                bom.saidaFinal = "saidaFinal";
-                bom.idProduto = Convert.ToInt32(reader["idProduto"]);
-                bom.categoria = "categoria";
+                bom.idBOM = Convert.ToInt32(reader["idBom"]);
+                bom.noProduto = Convert.ToInt32(reader["noProduto"]);
+                bom.noPai = Convert.ToInt32(reader["noPai"]);
+                bom.noFilho = Convert.ToInt32(reader["noFilho"]);
+                bom.codigoLista = Convert.ToInt32(reader["codigoLista"]);
                 bom.nome = "nome";
-                bom.quantidade = Convert.ToInt32(reader["quantidade"]);
-                bom.custoUnidade = Convert.ToInt32(reader["custoUnidade"]);
+                bom.nivel = Convert.ToInt32(reader["nivel"]);
+                bom.quantidadeLista = Convert.ToInt32(reader["quantidadeLista"]);
             }
             catch (MySqlException e)
             {
@@ -158,7 +161,7 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 String query = "SELECT * FROM BOM " +
-                    "WHERE idProduto LIKE @pesquisa"; 
+                    "WHERE codigoLista LIKE @pesquisa"; 
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -175,11 +178,15 @@ namespace MRP_SdC.MySQL
                 {
                     bom = new BOM
                     {
+                        idBOM = Convert.ToInt32(reader["idBom"]),
+                        noProduto = Convert.ToInt32(reader["noProduto"]),
+                        noPai = Convert.ToInt32(reader["noPai"]),
+                        noFilho = Convert.ToInt32(reader["noFilho"]),
+                        codigoLista = Convert.ToInt32(reader["codigoLista"]),
+                        nome = "nome",
+                        nivel = Convert.ToInt32(reader["nivel"]),
+                        quantidadeLista = Convert.ToInt32(reader["quantidadeLista"])
 
-                        idBOM = Convert.ToInt32(reader["idBOM"]),
-                        idProduto = Convert.ToInt32(reader["idProduto"]),
-                        nome = "nomeComponente",
-                        quantidade = Convert.ToInt32(reader["quantidade"])
                     };
 
                     listaBOM.Add(bom);

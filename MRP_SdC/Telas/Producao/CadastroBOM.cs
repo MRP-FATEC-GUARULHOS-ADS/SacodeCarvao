@@ -12,9 +12,9 @@ namespace MRP_SdC.Telas.Producao
 
         private void cadastrar_Click(object sender, EventArgs e)
         {
-            BOM bom = new BOM(txtSaidaFinal.Text,
-            int.Parse(txtIdProduto.Text), txtCategoria.Text, txtNome.Text, int.Parse(txtQuantidade.Text),
-            int.Parse(txtCustoUnidade.Text));
+            BOM bom = new BOM(int.Parse(txtNoPai.Text),
+            int.Parse(txtNoFilho.Text), int.Parse(txtCodigoLista.Text), txtNome.Text, int.Parse(txtNivel.Text),
+            int.Parse(txtQuantidadeUnidade.Text), int.Parse(txtNoProduto.Text));
 
             DialogResult confirmarInsert = MessageBox.Show(
                 "( ﾉ ﾟｰﾟ)ﾉ " + bom.idBOM + " ?!", "Confirmar Inserção",
@@ -30,5 +30,14 @@ namespace MRP_SdC.Telas.Producao
             }
         }
 
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
