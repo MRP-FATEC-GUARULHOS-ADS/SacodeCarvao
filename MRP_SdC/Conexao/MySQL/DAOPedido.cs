@@ -22,8 +22,8 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO PEDIDO ( " +
-                    "idProduto, quantidade, valor" +
-                    ") VALUES(@idProd, @quant, @val); ";
+                    "idProduto, nomeProduto, quantidade, valor" +
+                    ") VALUES(@idProd, @nomeProd, @quant, @val); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -31,6 +31,7 @@ namespace MRP_SdC.MySQL
                 }
 
                 cmd.Parameters.AddWithValue("@idProd", pedido.idProduto);
+                cmd.Parameters.AddWithValue("@nomeProd", pedido.nomeProduto);
                 cmd.Parameters.AddWithValue("@quant", pedido.quantidade);
                 cmd.Parameters.AddWithValue("@val", pedido.valor);
                 cmd.Prepare();
@@ -77,6 +78,7 @@ namespace MRP_SdC.MySQL
                     {
                         pedido.idPedido = Convert.ToInt32(reader["idPedido"]);
                         pedido.idProduto = Convert.ToInt32(reader["idProduto"]);
+                        pedido.nomeProduto = Convert.ToString(reader["nomeProduto"]);
                         pedido.quantidade = Convert.ToInt32(reader["quantidade"]);
                         pedido.valor = Convert.ToInt32(reader["valor"]);
                     }
@@ -94,7 +96,7 @@ namespace MRP_SdC.MySQL
 
         public int qnt = 0;
 
-        public Pedido Get(int idPedido)
+        public Pedido Get(string nomeP)
         {
             Pedido pedido = new Pedido();
             Conexao conexao = new Conexao();
@@ -109,14 +111,14 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "SELECT * FROM PEDIDO WHERE idPedido = @idPed;";
+                string query = "SELECT * FROM PEDIDO WHERE nomeProduto = @nomeProd;";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return null;
                 }
 
-                cmd.Parameters.AddWithValue("@idPed", idPedido);
+                cmd.Parameters.AddWithValue("@nomeProd", nomeP);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -125,6 +127,7 @@ namespace MRP_SdC.MySQL
                 pedido = new Pedido();
                 pedido.idPedido = Convert.ToInt32(reader["idPedido"]);
                 pedido.idProduto = Convert.ToInt32(reader["idProduto"]);
+                pedido.nomeProduto = Convert.ToString(reader["nomeProduto"]);
                 pedido.quantidade = Convert.ToInt32(reader["quantidade"]);
                 qnt = pedido.quantidade;
                 pedido.valor = Convert.ToInt32(reader["valor"]);
@@ -201,6 +204,7 @@ namespace MRP_SdC.MySQL
                 MySqlDataReader reader;
                 string query = "SELECT * FROM PEDIDO " +
                     "WHERE (idProduto LIKE @pesquisa " +
+                        "OR nomeProduto LIKE @pesquisa " +
                         "OR quantidade LIKE @pesquisa " +
                         "OR valor LIKE @pesquisa )";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
@@ -221,6 +225,7 @@ namespace MRP_SdC.MySQL
                     {
                         idPedido = Convert.ToInt32(reader["idPedido"]),
                         idProduto = Convert.ToInt32(reader["idProduto"]),
+                        nomeProduto = Convert.ToString(reader["nomeProduto"]),
                         quantidade = Convert.ToInt32(reader["quantidade"]),
                         valor = Convert.ToInt32(reader["valor"]),
                     };
@@ -249,7 +254,7 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "UPDATE PEDIDO " +
-                    "SET idProduto = @idProd, quantidade = @quant, valor = @val " +
+                    "SET idProduto = @idProd, nomeProduto = @nomeProd quantidade = @quant, valor = @val " +
                     "WHERE idPedido = @idPed; ";
 
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
@@ -259,6 +264,7 @@ namespace MRP_SdC.MySQL
                 }
 
                 cmd.Parameters.AddWithValue("@idProd", pedido.idProduto);
+                cmd.Parameters.AddWithValue("@nomeProd", pedido.nomeProduto);
                 cmd.Parameters.AddWithValue("@quant", pedido.quantidade);
                 cmd.Parameters.AddWithValue("@val", pedido.valor);
                 cmd.Parameters.AddWithValue("@idPed", pedido.idPedido);

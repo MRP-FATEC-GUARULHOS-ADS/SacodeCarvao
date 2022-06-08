@@ -34,9 +34,9 @@ namespace MRP_SdC.Telas.Pedido
             pedido.idPedido = int.Parse(dados_ttl_lbl.Text);
             dados_subttl_lbl.Text = String.Format(pedido.idProduto.ToString());
             txtIdProduto.Text = pedido.idProduto.ToString();
-            txtQuantidade.Text = pedido.quantidade.ToString();
-            txtValor.Text = pedido.valor.ToString();
-            QntdPedMRP = int.Parse(txtQuantidade.Text);
+            txtNomeProduto.Text = pedido.quantidade.ToString();
+            txtQuantidade.Text = pedido.valor.ToString();
+            QntdPedMRP = int.Parse(txtNomeProduto.Text);
         }
 
         private void ConsultaPedido_Load(object sender, EventArgs e)
@@ -86,8 +86,8 @@ namespace MRP_SdC.Telas.Pedido
         private void btnAtualizaPedido_Click(object sender, EventArgs e)
         {
 
-            Modelos.Pedido pedido = new Modelos.Pedido(int.Parse(txtIdProduto.Text), int.Parse(txtQuantidade.Text),
-            int.Parse(txtValor.Text));
+            Modelos.Pedido pedido = new Modelos.Pedido(int.Parse(txtIdProduto.Text), txtNomeProduto.Text,
+            int.Parse(txtQuantidade.Text), int.Parse(txtQuantidade.Text));
 
             pedido.idPedido = int.Parse(dados_ttl_lbl.Text);
             DialogResult confirmarUpdate = MessageBox.Show(
@@ -136,7 +136,7 @@ namespace MRP_SdC.Telas.Pedido
         private void buscarListaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Producao.ConsultaBOM consultabom = new Producao.ConsultaBOM();
-            consultabom.q = int.Parse(txtQuantidade.Text);
+            consultabom.q = int.Parse(txtNomeProduto.Text);
             consultabom.pesquisa_tbx.Text = dados_ttl_lbl.Text;
             consultabom.Show();
             consultabom.pesquisaBOMProduto();
@@ -169,7 +169,7 @@ namespace MRP_SdC.Telas.Pedido
             daoPed.PesquisaPedido(pesquisa_tbx.Text);
             Modelos.Pedido ped = new Modelos.Pedido();
             int xiaomi = ped.idPedido;
-            textBox1.Text = xiaomi.ToString();
+            txtIdProduto.Text = xiaomi.ToString();
         }
     }
 }

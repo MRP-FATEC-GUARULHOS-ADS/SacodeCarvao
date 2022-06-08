@@ -401,7 +401,7 @@ namespace MRP_SdC.MySQL
 
         public int qntEst = 0;
 
-        public Produto Get(int idProduto)
+        public Produto Get(string modProd)
         {
             Produto objProduto;
 
@@ -415,22 +415,23 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "SELECT * FROM PRODUTO WHERE idProduto = @idProd;";
+                string query = "SELECT * FROM PRODUTO WHERE modeloProduto = @modProd;";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return null;
                 }
 
-                cmd.Parameters.AddWithValue("@idProd", idProduto);
+                cmd.Parameters.AddWithValue("@modProd", modProd);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
                 reader.Read();
 
                 objProduto = new Produto();
-                idProduto = Convert.ToInt32(reader["idProduto"]);
+                
                 objProduto.modelo = (string)reader["modeloProduto"];
+                modProd = objProduto.modelo;
                 objProduto.descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : "");
                 objProduto.valor = Convert.ToDecimal(reader["valorProduto"]);
                 objProduto.qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]);

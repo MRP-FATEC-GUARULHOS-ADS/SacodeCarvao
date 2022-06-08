@@ -29,6 +29,7 @@ namespace MRP_SdC.MySQL
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadastroMRP));
             this.esp_dir_pnl = new System.Windows.Forms.Panel();
             this.esp_esq_pnl = new System.Windows.Forms.Panel();
@@ -44,6 +45,9 @@ namespace MRP_SdC.MySQL
             this.cadastrar = new System.Windows.Forms.Button();
             this.cancelar_btn = new System.Windows.Forms.Button();
             this.qntdNecesLiq_tbx = new System.Windows.Forms.Panel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.txtIdBom = new System.Windows.Forms.TextBox();
+            this.lblIdBom = new System.Windows.Forms.Label();
             this.id_pnl.SuspendLayout();
             this.maos_pnl.SuspendLayout();
             this.SuspendLayout();
@@ -187,11 +191,36 @@ namespace MRP_SdC.MySQL
             this.qntdNecesLiq_tbx.Size = new System.Drawing.Size(228, 10);
             this.qntdNecesLiq_tbx.TabIndex = 4;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // txtIdBom
+            // 
+            this.txtIdBom.Location = new System.Drawing.Point(35, 185);
+            this.txtIdBom.Name = "txtIdBom";
+            this.txtIdBom.Size = new System.Drawing.Size(100, 20);
+            this.txtIdBom.TabIndex = 21;
+            // 
+            // lblIdBom
+            // 
+            this.lblIdBom.AutoSize = true;
+            this.lblIdBom.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblIdBom.Location = new System.Drawing.Point(32, 162);
+            this.lblIdBom.Name = "lblIdBom";
+            this.lblIdBom.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.lblIdBom.Size = new System.Drawing.Size(40, 17);
+            this.lblIdBom.TabIndex = 22;
+            this.lblIdBom.Text = "Id Bom";
+            // 
             // CadastroMRP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 395);
+            this.Controls.Add(this.lblIdBom);
+            this.Controls.Add(this.txtIdBom);
             this.Controls.Add(this.cancelar_btn);
             this.Controls.Add(this.cadastrar);
             this.Controls.Add(this.barraInf_pnl);
@@ -211,6 +240,7 @@ namespace MRP_SdC.MySQL
             this.maos_pnl.ResumeLayout(false);
             this.maos_pnl.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -227,8 +257,11 @@ namespace MRP_SdC.MySQL
         private System.Windows.Forms.Button cancelar_btn;
         private System.Windows.Forms.Button cadastrar;
         private System.Windows.Forms.Panel qntdNecesLiq_tbx;
-        public System.Windows.Forms.ComboBox cmbIdPedido;
         private System.Windows.Forms.Button btnAtualizarLista;
         public System.Windows.Forms.ComboBox cmbIdProduto;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.TextBox txtIdBom;
+        private System.Windows.Forms.Label lblIdBom;
+        public System.Windows.Forms.ComboBox cmbIdPedido;
     }
 }

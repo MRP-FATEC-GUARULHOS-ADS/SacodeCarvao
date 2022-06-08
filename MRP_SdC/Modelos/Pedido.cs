@@ -8,6 +8,7 @@ namespace MRP_SdC.Modelos
         //Atributos
         public int idPedido { get; set; }
         public int idProduto { get; set; }
+        public string nomeProduto { get; set; }
         public int quantidade { get; set; }
         public int valor { get; set; }
 
@@ -19,11 +20,12 @@ namespace MRP_SdC.Modelos
 
         //Construtores
         public Pedido(
-            int idProduto, int quantidade, int valor
+            int idProduto, string nomeProduto, int quantidade, int valor
          )
 
         {
             this.idProduto = idProduto;
+            this.nomeProduto = nomeProduto;
             this.quantidade = quantidade;
             this.valor = valor;
         }

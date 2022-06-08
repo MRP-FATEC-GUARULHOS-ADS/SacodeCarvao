@@ -11,6 +11,7 @@ using System.Windows.Forms;
 namespace MRP_SdC.MySQL
 {
     public partial class CadastroMRP : Form
+    
     {
         public CadastroMRP()
         {
@@ -19,48 +20,59 @@ namespace MRP_SdC.MySQL
 
         private void cadastrar_Click(object sender, EventArgs e)
         {
-
             Modelos.Pedido ped = new Modelos.Pedido();
-            ped.idPedido = int.Parse(cmbIdPedido.Text);
-
             DAOPedido daoPed = new DAOPedido();
-            daoPed.Get(int.Parse(cmbIdPedido.Text));
-            int estoquePedido = daoPed.qnt;
 
             Produto prod = new Produto();
-            prod.idProduto = int.Parse(cmbIdPedido.Text);
-
             ProdutoDAO prodDao = new ProdutoDAO();
-            prodDao.Get(int.Parse(cmbIdProduto.Text));
-            int estoqueAtual = prodDao.qntEst;
 
-            int subtraiEstoque = prodDao.qntEst - estoquePedido;
-            prodDao.UpdateSaldo(subtraiEstoque, int.Parse(cmbIdProduto.Text));
+            DAOBOM daobom = new DAOBOM();
+            BOM bom = new BOM();
 
-            int qntdFinal = estoquePedido - estoqueAtual;
-
-            if(qntdFinal < 0)
+            var model = daobom.Get(int.Parse(txtIdBom.Text));
+            foreach(BOM item in model)
             {
-                qntdFinal = 0;
-            }
-            MRP mrpObjeto = new MRP(int.Parse(cmbIdPedido.Text), int.Parse(cmbIdProduto.Text), estoquePedido, estoqueAtual, 
-            qntdFinal);
+                ped.idPedido = int.Parse(cmbIdPedido.Text);
 
+                daoPed.Get(item.nome);
+                int estoquePedido = daoPed.qnt;
+
+
+                prod.idProduto = int.Parse(cmbIdPedido.Text);
+
+         
+                prodDao.Get(item.nome);
+                int estoqueAtual = prodDao.qntEst;
+
+                int subtraiEstoque = prodDao.qntEst - estoquePedido;
+                prodDao.UpdateSaldo(subtraiEstoque, int.Parse(cmbIdProduto.Text));
+
+                int qntdFinal = estoquePedido - estoqueAtual;
+
+                if (qntdFinal < 0)
+                {
+                    qntdFinal = 0;
+                }
+                MRP mrpObjeto = new MRP(int.Parse(cmbIdPedido.Text), int.Parse(cmbIdProduto.Text), estoquePedido, estoqueAtual,
+                qntdFinal);
+
+
+                DAOMRP daoMrp = new DAOMRP();
+
+                DialogResult confirmarInsert = MessageBox.Show(
+                    "( ﾉ ﾟｰﾟ)ﾉ " + mrpObjeto.idMRP + " ?!", "Confirmar Inserção",
+                    MessageBoxButtons.YesNo
+                );
+                if (confirmarInsert == DialogResult.Yes)
+                {
+                    DAOMRP daoMrpInsert = new DAOMRP();
+
+                    daoMrp.Insert(mrpObjeto);
+
+                    Close();
+                }
+            }
             
-            DAOMRP daoMrp = new DAOMRP();
-
-            DialogResult confirmarInsert = MessageBox.Show(
-                "( ﾉ ﾟｰﾟ)ﾉ " + mrpObjeto.idMRP+ " ?!", "Confirmar Inserção",
-                MessageBoxButtons.YesNo
-            );
-            if (confirmarInsert == DialogResult.Yes)
-            {
-                DAOMRP daoMrpInsert = new DAOMRP();
-
-                daoMrp.Insert(mrpObjeto);
-
-                Close();
-            }
         }
 
         private void Cancelar_Click(object sender, EventArgs e)
