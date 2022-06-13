@@ -119,5 +119,21 @@ namespace MRP_SdC.Telas.Producao
                 AtualizaListas();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MRP mrp = new MRP();
+
+            DialogResult confirmarUpdate = MessageBox.Show(
+                "( ﾉ ﾟｰﾟ)ﾉ " + mrp.idProduto + " ?!", "Confirmar Delete",
+                MessageBoxButtons.YesNo);
+
+            if (confirmarUpdate == DialogResult.Yes)
+            {
+                MySQL.DAOMRP conexaomrp = new MySQL.DAOMRP();
+                conexaomrp.Delete(int.Parse(dados_ttl_lbl.Text));
+                AtualizaListas();
+            }
+        }
     }
 }

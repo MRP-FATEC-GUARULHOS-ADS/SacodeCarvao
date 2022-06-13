@@ -46,6 +46,14 @@ namespace MRP_SdC.Telas.Producao
             btnAtualizaMRP.Enabled = false;
         }
 
+        private void dgvBom_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1 && dgvBom.CurrentRow != null)
+            {
+                MudaInfos();
+            }
+        }
+
         // funcoes de pesquisa
         public void PesquisarProdutosBOM(String pesquisa)
         {
@@ -85,6 +93,30 @@ namespace MRP_SdC.Telas.Producao
             cadMrp.cmbIdPedido.Text = dados_subttl_lbl.Text;
             cadMrp.cmbIdProduto.Text = q.ToString();
             cadMrp.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            BOM bom = new BOM();
+
+            DialogResult confirmarUpdate = MessageBox.Show(
+                "( ﾉ ﾟｰﾟ)ﾉ " + bom.nome + " ?!", "Confirmar Delete",
+                MessageBoxButtons.YesNo);
+
+            if (confirmarUpdate == DialogResult.Yes)
+            {
+                MySQL.DAOBOM conexaobom = new MySQL.DAOBOM();
+                conexaobom.Delete(int.Parse(dados_ttl_lbl.Text));
+                AtualizaListas();
+            }
+        }
+
+        private void dgvBom_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1 && dgvBom.CurrentRow != null)
+            {
+                MudaInfos();
+            }
         }
     }
 }

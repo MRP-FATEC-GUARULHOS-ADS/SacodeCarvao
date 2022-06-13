@@ -52,6 +52,42 @@ namespace MRP_SdC.MySQL
             return true;
         }
 
+        public Boolean Delete(int id)
+        {
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return false;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "DELETE FROM BOM " +
+                    "WHERE idbom = @id; ";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return false;
+                }
+
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            conexao.CloseConexao();
+            return true;
+        }
+
         public List<BOM> GetBOM()
         {
             List<BOM> listaBOM = new List<BOM>();
@@ -79,11 +115,10 @@ namespace MRP_SdC.MySQL
                 {
                     bom = new BOM();
                     {
-                        bom = new BOM();
                         bom.idBOM = Convert.ToInt32(reader["idBom"]);
                         bom.noProduto = Convert.ToInt32(reader["noProduto"]);
-                        bom.noPai = Convert.ToInt32(reader["noPai"]);
                         bom.noFilho = Convert.ToInt32(reader["noFilho"]);
+                        bom.noPai = Convert.ToInt32(reader["noPai"]);
                         bom.codigoLista = Convert.ToInt32(reader["codigoLista"]);
                         bom.nome = Convert.ToString(reader["nome"]);
                         bom.nivel = Convert.ToInt32(reader["nivel"]);

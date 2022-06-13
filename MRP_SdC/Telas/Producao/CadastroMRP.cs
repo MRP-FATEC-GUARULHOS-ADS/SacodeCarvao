@@ -37,15 +37,15 @@ namespace MRP_SdC.MySQL
                 daoPed.Get(item.nome);
                 int estoquePedido = daoPed.qnt;
 
-
-                prod.idProduto = int.Parse(cmbIdPedido.Text);
+                prodDao.GetModeloProduto(item.nome);
+                prod.idProduto = prodDao.id;
 
          
                 prodDao.Get(item.nome);
                 int estoqueAtual = prodDao.qntEst;
 
                 int subtraiEstoque = prodDao.qntEst - estoquePedido;
-                prodDao.UpdateSaldo(subtraiEstoque, int.Parse(cmbIdProduto.Text));
+                prodDao.UpdateSaldo(subtraiEstoque, prod.idProduto);
 
                 int qntdFinal = estoquePedido - estoqueAtual;
 
@@ -53,7 +53,7 @@ namespace MRP_SdC.MySQL
                 {
                     qntdFinal = 0;
                 }
-                MRP mrpObjeto = new MRP(int.Parse(cmbIdPedido.Text), int.Parse(cmbIdProduto.Text), estoquePedido, estoqueAtual,
+                MRP mrpObjeto = new MRP(int.Parse(cmbIdPedido.Text), prod.idProduto, estoquePedido, estoqueAtual,
                 qntdFinal);
 
 
