@@ -75,5 +75,51 @@ namespace MRP_SdC
             consultabom.ShowDialog();
             AtualizaListasBOM();
         }
+
+        private void comp_qnt_cbb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            for(int i=0; i<11; i++)
+            {
+                comboBox1.Items.Add(i);
+            }
+        }
+
+        private void ExplosaoProduto_Load(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 11; i++)
+            {
+                comboBox1.Items.Add(i);
+                comboBox2.Items.Add(i);
+                comboBox3.Items.Add(i);
+                comboBox4.Items.Add(i);
+                comboBox5.Items.Add(i);
+                comboBox7.Items.Add(i);
+            }
+        }
+
+        private void comboBox7_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void add_btn_Click(object sender, EventArgs e)
+        {
+            BOM bom = new BOM(int.Parse(comboBox1.Text),
+            int.Parse(comboBox7.Text), int.Parse(comboBox2.Text), comp_nome_cbb.Text, int.Parse(comboBox3.Text),
+            int.Parse(comboBox4.Text), int.Parse(comboBox5.Text));
+
+            DialogResult confirmarInsert = MessageBox.Show(
+                "( ﾉ ﾟｰﾟ)ﾉ " + bom.idBOM + " ?!", "Confirmar Inserção",
+                MessageBoxButtons.YesNo
+            );
+            if (confirmarInsert == DialogResult.Yes)
+            {
+                MySQL.DAOBOM bomcon = new MySQL.DAOBOM();
+
+                bomcon.Insert(bom);
+
+                Close();
+            }
+        }
     }
 }
