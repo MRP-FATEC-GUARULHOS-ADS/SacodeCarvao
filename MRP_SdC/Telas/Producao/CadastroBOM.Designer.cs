@@ -34,9 +34,6 @@ namespace MRP_SdC.Telas.Producao
             this.produzir_pnl = new System.Windows.Forms.Panel();
             this.txtNoPai = new System.Windows.Forms.TextBox();
             this.lblNoPai = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.txtNoFilho = new System.Windows.Forms.TextBox();
-            this.lblNoFilho = new System.Windows.Forms.Label();
             this.barraInf_pnl = new System.Windows.Forms.Panel();
             this.cancelar_btn = new System.Windows.Forms.Button();
             this.cadastrar = new System.Windows.Forms.Button();
@@ -57,7 +54,6 @@ namespace MRP_SdC.Telas.Producao
             this.txtNoProduto = new System.Windows.Forms.TextBox();
             this.lblNoProduto = new System.Windows.Forms.Label();
             this.produzir_pnl.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.barraInf_pnl.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -111,35 +107,6 @@ namespace MRP_SdC.Telas.Producao
             this.lblNoPai.TabIndex = 0;
             this.lblNoPai.Text = "no Pai";
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.txtNoFilho);
-            this.panel1.Controls.Add(this.lblNoFilho);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(32, 112);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(315, 48);
-            this.panel1.TabIndex = 17;
-            // 
-            // txtNoFilho
-            // 
-            this.txtNoFilho.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtNoFilho.Location = new System.Drawing.Point(0, 17);
-            this.txtNoFilho.Name = "txtNoFilho";
-            this.txtNoFilho.Size = new System.Drawing.Size(315, 20);
-            this.txtNoFilho.TabIndex = 1;
-            // 
-            // lblNoFilho
-            // 
-            this.lblNoFilho.AutoSize = true;
-            this.lblNoFilho.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblNoFilho.Location = new System.Drawing.Point(0, 0);
-            this.lblNoFilho.Name = "lblNoFilho";
-            this.lblNoFilho.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.lblNoFilho.Size = new System.Drawing.Size(46, 17);
-            this.lblNoFilho.TabIndex = 0;
-            this.lblNoFilho.Text = "No Filho";
-            // 
             // barraInf_pnl
             // 
             this.barraInf_pnl.Controls.Add(this.cancelar_btn);
@@ -177,7 +144,7 @@ namespace MRP_SdC.Telas.Producao
             this.panel3.Controls.Add(this.txtCodigoLista);
             this.panel3.Controls.Add(this.lblCodigoLista);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(32, 160);
+            this.panel3.Location = new System.Drawing.Point(32, 112);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(315, 48);
             this.panel3.TabIndex = 21;
@@ -206,7 +173,7 @@ namespace MRP_SdC.Telas.Producao
             this.panel2.Controls.Add(this.txtNome);
             this.panel2.Controls.Add(this.lblNome);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(32, 208);
+            this.panel2.Location = new System.Drawing.Point(32, 160);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(315, 48);
             this.panel2.TabIndex = 22;
@@ -235,7 +202,7 @@ namespace MRP_SdC.Telas.Producao
             this.panel4.Controls.Add(this.txtNivel);
             this.panel4.Controls.Add(this.lblNivel);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(32, 256);
+            this.panel4.Location = new System.Drawing.Point(32, 208);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(315, 48);
             this.panel4.TabIndex = 23;
@@ -264,7 +231,7 @@ namespace MRP_SdC.Telas.Producao
             this.panel5.Controls.Add(this.txtQuantidadeUnidade);
             this.panel5.Controls.Add(this.lblQuantidadeLista);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(32, 304);
+            this.panel5.Location = new System.Drawing.Point(32, 256);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(315, 48);
             this.panel5.TabIndex = 24;
@@ -306,7 +273,7 @@ namespace MRP_SdC.Telas.Producao
             this.panel6.Controls.Add(this.txtNoProduto);
             this.panel6.Controls.Add(this.lblNoProduto);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(32, 352);
+            this.panel6.Location = new System.Drawing.Point(32, 304);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(315, 48);
             this.panel6.TabIndex = 25;
@@ -342,7 +309,6 @@ namespace MRP_SdC.Telas.Producao
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.barraInf_pnl);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.produzir_pnl);
             this.Controls.Add(this.ttl_lbl);
             this.Controls.Add(this.esp_esq_pnl);
@@ -351,8 +317,6 @@ namespace MRP_SdC.Telas.Producao
             this.Text = "CadastroBOM";
             this.produzir_pnl.ResumeLayout(false);
             this.produzir_pnl.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.barraInf_pnl.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -375,9 +339,6 @@ namespace MRP_SdC.Telas.Producao
         private System.Windows.Forms.Panel produzir_pnl;
         private System.Windows.Forms.TextBox txtNoPai;
         private System.Windows.Forms.Label lblNoPai;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtNoFilho;
-        private System.Windows.Forms.Label lblNoFilho;
         private System.Windows.Forms.Panel barraInf_pnl;
         private System.Windows.Forms.Button cancelar_btn;
         private System.Windows.Forms.Button cadastrar;

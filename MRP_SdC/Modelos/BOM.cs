@@ -6,7 +6,6 @@
         public int idBOM { get; set; }
         public int noProduto { get; set; }
         public int noPai { get; set; }
-        public int noFilho { get; set; }
         public int codigoLista { get; set; }
         public string nome { get; set; }
         public int nivel { get; set; }
@@ -19,14 +18,13 @@
 
         //construtores
         public BOM(
-            int noPai, int noFilho, int codigoLista, string nome, int nivel, int quantidadeLista,
+            int noPai, int codigoLista, string nome, int nivel, int quantidadeLista,
             int noProduto
         )
 
         {
             this.noProduto = noProduto;
             this.noPai = noPai;
-            this.noFilho = noFilho;
             this.codigoLista = codigoLista;
             this.nome = nome;
             this.nivel = nivel;

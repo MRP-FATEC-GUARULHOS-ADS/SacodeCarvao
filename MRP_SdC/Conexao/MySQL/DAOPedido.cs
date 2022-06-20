@@ -95,10 +95,11 @@ namespace MRP_SdC.MySQL
         }
 
         public int qnt = 0;
-
-        public Pedido Get(string nomeP)
+        public int GetId = 0;
+        public List<Pedido> Get(string nomeP)
         {
-            Pedido pedido = new Pedido();
+            List<Pedido> listaPedido = new List<Pedido>();
+            Pedido pedido;
             Conexao conexao = new Conexao();
             CadastroMRP cadMrp = new CadastroMRP();
 
@@ -126,6 +127,7 @@ namespace MRP_SdC.MySQL
 
                 pedido = new Pedido();
                 pedido.idPedido = Convert.ToInt32(reader["idPedido"]);
+                GetId = pedido.idPedido;
                 pedido.idProduto = Convert.ToInt32(reader["idProduto"]);
                 pedido.nomeProduto = Convert.ToString(reader["nomeProduto"]);
                 pedido.quantidade = Convert.ToInt32(reader["quantidade"]);
@@ -140,7 +142,7 @@ namespace MRP_SdC.MySQL
             }
 
             conexao.CloseConexao();
-            return pedido;
+            return listaPedido;
         }
 
         public int idPed;

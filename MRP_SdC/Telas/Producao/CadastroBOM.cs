@@ -13,7 +13,7 @@ namespace MRP_SdC.Telas.Producao
         private void cadastrar_Click(object sender, EventArgs e)
         {
             BOM bom = new BOM(int.Parse(txtNoPai.Text),
-            int.Parse(txtNoFilho.Text), int.Parse(txtCodigoLista.Text), txtNome.Text, int.Parse(txtNivel.Text),
+            int.Parse(txtCodigoLista.Text), txtNome.Text, int.Parse(txtNivel.Text),
             int.Parse(txtQuantidadeUnidade.Text), int.Parse(txtNoProduto.Text));
 
             DialogResult confirmarInsert = MessageBox.Show(

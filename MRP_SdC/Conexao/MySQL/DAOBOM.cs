@@ -22,8 +22,8 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO BOM ( " +
-                    "noProduto, noPai, noFilho, codigoLista, nome, nivel, quantidadeLista" +
-                    ") VALUES(@noProd, @noP, @noF, @codLista, @nomeComp, @nvl, @qntdList); ";
+                    "noProduto, noPai, codigoLista, nome, nivel, quantidadeLista" +
+                    ") VALUES(@noProd, @noP, @codLista, @nomeComp, @nvl, @qntdList); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -32,7 +32,6 @@ namespace MRP_SdC.MySQL
 
                 cmd.Parameters.AddWithValue("@noProd", bom.noProduto);
                 cmd.Parameters.AddWithValue("@noP", bom.noPai);
-                cmd.Parameters.AddWithValue("@noF", bom.noFilho);
                 cmd.Parameters.AddWithValue("@codLista", bom.codigoLista);
                 cmd.Parameters.AddWithValue("@nomeComp", bom.nome);
                 cmd.Parameters.AddWithValue("@nvl", bom.nivel);
@@ -117,7 +116,6 @@ namespace MRP_SdC.MySQL
                     {
                         bom.idBOM = Convert.ToInt32(reader["idBom"]);
                         bom.noProduto = Convert.ToInt32(reader["noProduto"]);
-                        bom.noFilho = Convert.ToInt32(reader["noFilho"]);
                         bom.noPai = Convert.ToInt32(reader["noPai"]);
                         bom.codigoLista = Convert.ToInt32(reader["codigoLista"]);
                         bom.nome = Convert.ToString(reader["nome"]);
@@ -169,7 +167,6 @@ namespace MRP_SdC.MySQL
                         bom.idBOM = Convert.ToInt32(reader["idBom"]);
                         bom.noProduto = Convert.ToInt32(reader["noProduto"]);
                         bom.noPai = Convert.ToInt32(reader["noPai"]);
-                        bom.noFilho = Convert.ToInt32(reader["noFilho"]);
                         bom.codigoLista = Convert.ToInt32(reader["codigoLista"]);
                         bom.nome = Convert.ToString(reader["nome"]);
                         bom.nivel = Convert.ToInt32(reader["nivel"]);
@@ -224,7 +221,6 @@ namespace MRP_SdC.MySQL
                         idBOM = Convert.ToInt32(reader["idBom"]),
                         noProduto = Convert.ToInt32(reader["noProduto"]),
                         noPai = Convert.ToInt32(reader["noPai"]),
-                        noFilho = Convert.ToInt32(reader["noFilho"]),
                         codigoLista = Convert.ToInt32(reader["codigoLista"]),
                         nome = "nome",
                         nivel = Convert.ToInt32(reader["nivel"]),
@@ -273,10 +269,6 @@ namespace MRP_SdC.MySQL
                 objBom = new BOM();
                 objBom.codigoLista = Convert.ToInt32(reader["codigoLista"]);
                 codigoListaVar = objBom.codigoLista;
-
-
-
-
             }
             catch (MySqlException e)
             {
@@ -285,6 +277,51 @@ namespace MRP_SdC.MySQL
             }
             conexao.CloseConexao();
             return objBom;
+        }
+
+        public Boolean Update(BOM bom)
+        {
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return false;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "UPDATE BOM " +
+                    "SET noProduto = @noProd, noPai = @noP, " +
+                    "codigoLista = @codLista, nome = @nomeComp, nivel = @nvl, quantidadeLista = @qntdList " +
+                    "WHERE idBom = @id; ";
+
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return false;
+                }
+
+                cmd.Parameters.AddWithValue("@noProd", bom.noProduto);
+                cmd.Parameters.AddWithValue("@noP", bom.noPai);
+                cmd.Parameters.AddWithValue("@codLista", bom.codigoLista);
+                cmd.Parameters.AddWithValue("@nomeComp", bom.nome);
+                cmd.Parameters.AddWithValue("@nvl", bom.nivel);
+                cmd.Parameters.AddWithValue("@qntdList", bom.quantidadeLista);
+                cmd.Parameters.AddWithValue("@id", bom.idBOM);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            conexao.CloseConexao();
+            return true;
         }
     }
 }

@@ -104,7 +104,7 @@ namespace MRP_SdC.Telas.Producao
         }
         */
 
-        private void btnExclusao_Click(object sender, EventArgs e)
+        private void btnAtualizaMRP_Click(object sender, EventArgs e)
         {
             MRP mrp = new MRP();
 
@@ -115,7 +115,9 @@ namespace MRP_SdC.Telas.Producao
             if (confirmarUpdate == DialogResult.Yes)
             {
                 MySQL.DAOMRP conexaomrp = new MySQL.DAOMRP();
-                conexaomrp.Delete(int.Parse(dados_ttl_lbl.Text));
+
+                conexaomrp.Update(mrp);
+
                 AtualizaListas();
             }
         }

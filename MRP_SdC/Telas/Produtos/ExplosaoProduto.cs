@@ -93,7 +93,6 @@ namespace MRP_SdC
                 comboBox3.Items.Add(i);
                 comboBox4.Items.Add(i);
                 comboBox5.Items.Add(i);
-                comboBox7.Items.Add(i);
             }
         }
 
@@ -105,7 +104,7 @@ namespace MRP_SdC
         private void add_btn_Click(object sender, EventArgs e)
         {
             BOM bom = new BOM(int.Parse(comboBox1.Text),
-            int.Parse(comboBox7.Text), int.Parse(comboBox2.Text), comp_nome_cbb.Text, int.Parse(comboBox3.Text),
+            int.Parse(comboBox2.Text), comp_nome_cbb.Text, int.Parse(comboBox3.Text),
             int.Parse(comboBox4.Text), int.Parse(comboBox5.Text));
 
             DialogResult confirmarInsert = MessageBox.Show(

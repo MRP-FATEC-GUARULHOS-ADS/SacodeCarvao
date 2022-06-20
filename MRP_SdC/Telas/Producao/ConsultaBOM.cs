@@ -30,8 +30,8 @@ namespace MRP_SdC.Telas.Producao
             dados_ttl_lbl.Text = bom.idBOM.ToString();
             bom.idBOM = int.Parse(dados_ttl_lbl.Text);
             dados_subttl_lbl.Text = String.Format(bom.nome.ToString());
+            txtNoProduto.Text = bom.noProduto.ToString();
             txtNoPai.Text = bom.noPai.ToString();
-            txtNoFilho.Text = bom.noFilho.ToString();
             txtNome.Text = bom.nome.ToString();
             txtCodigoLista.Text = bom.codigoLista.ToString();
             txtNivel.Text = bom.nivel.ToString();
@@ -43,7 +43,8 @@ namespace MRP_SdC.Telas.Producao
             AtualizaListas();
 
             MudaInfos();
-            btnAtualizaMRP.Enabled = false;
+
+            //btnAtualizaMRP.Enabled = false;
         }
 
         private void dgvBom_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -116,6 +117,27 @@ namespace MRP_SdC.Telas.Producao
             if (e.RowIndex != -1 && dgvBom.CurrentRow != null)
             {
                 MudaInfos();
+            }
+        }
+
+        private void btnAtualizaMRP_Click(object sender, EventArgs e)
+        {
+            BOM bom = new BOM(int.Parse(txtNoPai.Text), int.Parse(txtCodigoLista.Text),
+            txtNome.Text, int.Parse(txtNivel.Text),
+            int.Parse(txtQuantidadeLista.Text), int.Parse(txtNoProduto.Text));
+
+            bom.idBOM = int.Parse(dados_ttl_lbl.Text);
+            DialogResult confirmarUpdate = MessageBox.Show(
+                "( ﾉ ﾟｰﾟ)ﾉ " + bom.nome + " ?!", "Confirmar Update",
+                MessageBoxButtons.YesNo);
+
+            if (confirmarUpdate == DialogResult.Yes)
+            {
+                MySQL.DAOBOM conexaodao = new MySQL.DAOBOM();
+
+                conexaodao.Update(bom);
+
+                AtualizaListas();
             }
         }
     }
