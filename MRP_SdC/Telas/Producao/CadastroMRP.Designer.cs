@@ -37,10 +37,6 @@ namespace MRP_SdC.MySQL
             this.id_pnl = new System.Windows.Forms.Panel();
             this.cmbIdPedido = new System.Windows.Forms.ComboBox();
             this.lblIdPedido = new System.Windows.Forms.Label();
-            this.maos_pnl = new System.Windows.Forms.Panel();
-            this.btnAtualizarLista = new System.Windows.Forms.Button();
-            this.cmbIdProduto = new System.Windows.Forms.ComboBox();
-            this.maos_lbl = new System.Windows.Forms.Label();
             this.barraInf_pnl = new System.Windows.Forms.Panel();
             this.cadastrar = new System.Windows.Forms.Button();
             this.cancelar_btn = new System.Windows.Forms.Button();
@@ -49,7 +45,6 @@ namespace MRP_SdC.MySQL
             this.txtIdBom = new System.Windows.Forms.TextBox();
             this.lblIdBom = new System.Windows.Forms.Label();
             this.id_pnl.SuspendLayout();
-            this.maos_pnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // esp_dir_pnl
@@ -97,7 +92,6 @@ namespace MRP_SdC.MySQL
             this.cmbIdPedido.Name = "cmbIdPedido";
             this.cmbIdPedido.Size = new System.Drawing.Size(121, 21);
             this.cmbIdPedido.TabIndex = 3;
-            this.cmbIdPedido.SelectedIndexChanged += new System.EventHandler(this.cmbIdPedido_SelectedIndexChanged);
             // 
             // lblIdPedido
             // 
@@ -109,48 +103,6 @@ namespace MRP_SdC.MySQL
             this.lblIdPedido.Size = new System.Drawing.Size(52, 17);
             this.lblIdPedido.TabIndex = 0;
             this.lblIdPedido.Text = "Id Pedido";
-            // 
-            // maos_pnl
-            // 
-            this.maos_pnl.Controls.Add(this.btnAtualizarLista);
-            this.maos_pnl.Controls.Add(this.cmbIdProduto);
-            this.maos_pnl.Controls.Add(this.maos_lbl);
-            this.maos_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.maos_pnl.Location = new System.Drawing.Point(32, 104);
-            this.maos_pnl.Name = "maos_pnl";
-            this.maos_pnl.Size = new System.Drawing.Size(228, 48);
-            this.maos_pnl.TabIndex = 2;
-            // 
-            // btnAtualizarLista
-            // 
-            this.btnAtualizarLista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAtualizarLista.BackColor = System.Drawing.Color.Lime;
-            this.btnAtualizarLista.Location = new System.Drawing.Point(141, 13);
-            this.btnAtualizarLista.Name = "btnAtualizarLista";
-            this.btnAtualizarLista.Size = new System.Drawing.Size(81, 32);
-            this.btnAtualizarLista.TabIndex = 19;
-            this.btnAtualizarLista.Text = "Atualizar Lista";
-            this.btnAtualizarLista.UseVisualStyleBackColor = false;
-            this.btnAtualizarLista.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // cmbIdProduto
-            // 
-            this.cmbIdProduto.FormattingEnabled = true;
-            this.cmbIdProduto.Location = new System.Drawing.Point(3, 20);
-            this.cmbIdProduto.Name = "cmbIdProduto";
-            this.cmbIdProduto.Size = new System.Drawing.Size(121, 21);
-            this.cmbIdProduto.TabIndex = 4;
-            // 
-            // maos_lbl
-            // 
-            this.maos_lbl.AutoSize = true;
-            this.maos_lbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.maos_lbl.Location = new System.Drawing.Point(0, 0);
-            this.maos_lbl.Name = "maos_lbl";
-            this.maos_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.maos_lbl.Size = new System.Drawing.Size(56, 17);
-            this.maos_lbl.TabIndex = 0;
-            this.maos_lbl.Text = "Id Produto";
             // 
             // barraInf_pnl
             // 
@@ -181,12 +133,12 @@ namespace MRP_SdC.MySQL
             this.cancelar_btn.TabIndex = 2;
             this.cancelar_btn.Text = "Cancelar";
             this.cancelar_btn.UseVisualStyleBackColor = false;
-            this.cancelar_btn.Click += new System.EventHandler(this.Cancelar_Click);
+            this.cancelar_btn.Click += new System.EventHandler(this.cancelar_btn_Click);
             // 
             // qntdNecesLiq_tbx
             // 
             this.qntdNecesLiq_tbx.Dock = System.Windows.Forms.DockStyle.Top;
-            this.qntdNecesLiq_tbx.Location = new System.Drawing.Point(32, 152);
+            this.qntdNecesLiq_tbx.Location = new System.Drawing.Point(32, 104);
             this.qntdNecesLiq_tbx.Name = "qntdNecesLiq_tbx";
             this.qntdNecesLiq_tbx.Size = new System.Drawing.Size(228, 10);
             this.qntdNecesLiq_tbx.TabIndex = 4;
@@ -198,7 +150,7 @@ namespace MRP_SdC.MySQL
             // 
             // txtIdBom
             // 
-            this.txtIdBom.Location = new System.Drawing.Point(35, 185);
+            this.txtIdBom.Location = new System.Drawing.Point(35, 134);
             this.txtIdBom.Name = "txtIdBom";
             this.txtIdBom.Size = new System.Drawing.Size(100, 20);
             this.txtIdBom.TabIndex = 21;
@@ -207,7 +159,7 @@ namespace MRP_SdC.MySQL
             // 
             this.lblIdBom.AutoSize = true;
             this.lblIdBom.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblIdBom.Location = new System.Drawing.Point(32, 162);
+            this.lblIdBom.Location = new System.Drawing.Point(32, 114);
             this.lblIdBom.Name = "lblIdBom";
             this.lblIdBom.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.lblIdBom.Size = new System.Drawing.Size(40, 17);
@@ -225,7 +177,6 @@ namespace MRP_SdC.MySQL
             this.Controls.Add(this.cadastrar);
             this.Controls.Add(this.barraInf_pnl);
             this.Controls.Add(this.qntdNecesLiq_tbx);
-            this.Controls.Add(this.maos_pnl);
             this.Controls.Add(this.id_pnl);
             this.Controls.Add(this.ttl_lbl);
             this.Controls.Add(this.esp_esq_pnl);
@@ -234,11 +185,8 @@ namespace MRP_SdC.MySQL
             this.Name = "CadastroMRP";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cadastrar Produção";
-            this.Load += new System.EventHandler(this.CadastroMRP_Load);
             this.id_pnl.ResumeLayout(false);
             this.id_pnl.PerformLayout();
-            this.maos_pnl.ResumeLayout(false);
-            this.maos_pnl.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,14 +199,10 @@ namespace MRP_SdC.MySQL
         private System.Windows.Forms.Label ttl_lbl;
         private System.Windows.Forms.Panel id_pnl;
         private System.Windows.Forms.Label lblIdPedido;
-        private System.Windows.Forms.Panel maos_pnl;
-        private System.Windows.Forms.Label maos_lbl;
         private System.Windows.Forms.Panel barraInf_pnl;
         private System.Windows.Forms.Button cancelar_btn;
         private System.Windows.Forms.Button cadastrar;
         private System.Windows.Forms.Panel qntdNecesLiq_tbx;
-        private System.Windows.Forms.Button btnAtualizarLista;
-        public System.Windows.Forms.ComboBox cmbIdProduto;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.TextBox txtIdBom;
         private System.Windows.Forms.Label lblIdBom;

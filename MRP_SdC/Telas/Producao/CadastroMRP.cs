@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace MRP_SdC.MySQL
 {
     public partial class CadastroMRP : Form
-    
+
     {
         public CadastroMRP()
         {
@@ -23,18 +24,26 @@ namespace MRP_SdC.MySQL
 
         private void cadastrar_Click(object sender, EventArgs e)
         {
+            //Cria o objeto do tipo Pedido.
             Modelos.Pedido ped = new Modelos.Pedido();
             DAOPedido daoPed = new DAOPedido();
-            
 
             Produto prod = new Produto();
             ProdutoDAO prodDao = new ProdutoDAO();
 
+            //Cria um objeto do tipo componente.
+            Componente componente = new Componente();
+            //Cria um objeto do tipo ComponenteDAO.
+            ComponenteDAO componentedao = new ComponenteDAO();
+
             DAOBOM daobom = new DAOBOM();
             BOM bom = new BOM();
 
+            MRP mrpObjeto = new MRP();
+            DAOMRP daoMrpInsert = new DAOMRP();
+
             var model = daobom.Get(int.Parse(txtIdBom.Text));
-            foreach(BOM item in model)
+            foreach (BOM item in model)
             {
                 //Inicializando Variáveis locais importantes para o cálculo de estoque
                 int estoquePedido = 0;
@@ -43,7 +52,7 @@ namespace MRP_SdC.MySQL
 
 
                 //Realiza se o nível do produto for 0, ou seja se for um produto acabado.
-                if(item.nivel == 0)
+                if (item.nivel == 0)
                 {
                     //Select do Pedido através do nome do produto.
                     daoPed.Get(item.nome);
@@ -57,6 +66,8 @@ namespace MRP_SdC.MySQL
                     prodDao.GetModeloProduto(item.nome);
                     //Variável que recebe o id do Produto.
                     prod.idProduto = prodDao.id;
+                    //Variável que recebe o nome do Produto.
+                    prod.modelo = prodDao.nomeProdutoBom;
 
                     //Método que busca a quantidade atual no Estoque.
                     prodDao.Get(item.nome);
@@ -78,20 +89,17 @@ namespace MRP_SdC.MySQL
                     }
 
                     //Faz a inserção dos valores na tabela.
-                    MRP mrpObjeto = new MRP(ped.idPedido, prod.idProduto, estoquePedido, estoqueAtual,
-                    quantidadeFinal);
+                    mrpObjeto = new MRP(ped.idPedido, prod.idProduto, prod.modelo,
+                    estoquePedido, estoqueAtual, quantidadeFinal);
 
                     //Confirma o cadastro, exibindo uma mensagem.
                     DialogResult confirmarInsert = MessageBox.Show(
-                        "( ﾉ ﾟｰﾟ)ﾉ " + mrpObjeto.idMRP + " ?!", "Confirmar Inserção",
+                        "( ﾉ ﾟｰﾟ)ﾉ " + item.nome + " ?!", "Confirmar Inserção",
                         MessageBoxButtons.YesNo
                     );
                     //Se o usuário confirmar, cadastra.
                     if (confirmarInsert == DialogResult.Yes)
                     {
-                        //Método de Insert no Banco de Dados.
-                        DAOMRP daoMrpInsert = new DAOMRP();
-
                         //Faz o Insert.
                         daoMrpInsert.Insert(mrpObjeto);
 
@@ -99,26 +107,42 @@ namespace MRP_SdC.MySQL
                         Close();
                     }
                 }
+                //senão
+                else
+                {   
+                    //retorna o valor do No Pai.
+                    int noPai = item.noPai;
 
-                //Realiza se o nível do produto for 0, ou seja se for um produto acabado.
-                if (item.nivel != 0)
-                {
-                    estoquePedido = quantidadeFinal * item.quantidadeLista;
+                    //traz o valor do nome do produto.
+                    daobom.GetNomeNoPai(noPai, item.codigoLista);
+                    //atribui o valor do nome do produto a esta variável.
+                    string nomeProduto = daobom.nomeNoPai;
 
-                    //Método que retorna as informações do produto.
-                    prodDao.GetModeloProduto(item.nome);
-                    //Variável que recebe o id do Produto.
-                    prod.idProduto = prodDao.id;
+                    //Busca a necessidade Líquida do produto Nó Pai.
+                    daoMrpInsert.GetNecessidadeLiquida(nomeProduto);
+                    //Atribui o valor da necessidade Líquida a variável abaixo.
+                    int necessidadeLiquida = daoMrpInsert.necessidadeLiquida;
+
+                    //o valor do estoque pedido é o valor da quantidade do nó pai a ser produzido
+                    //* o valor da quantidade da lista.
+                    estoquePedido = necessidadeLiquida * item.quantidadeLista;
+
+                    //Método que retorna as informações do Componente.
+                    componentedao.GetModeloComponente(item.nome);
+                    //Variável que recebe o id do Componente.
+                    componente.id = componentedao.id;
+                    //Variável que recebe o nome do Componente.
+                    componente.modelo = componentedao.nomeComponenteBom;
 
                     //Método que busca a quantidade atual no Estoque.
-                    prodDao.Get(item.nome);
+                    componentedao.GetModelo(item.nome);
                     //Variável que recebe a quantidade atual do produto no Estoque.
-                    estoqueAtual = prodDao.qntEst;
+                    estoqueAtual = componentedao.quantidadeEstoque;
 
                     //Variável que realiza o cálculo de subtração no estoque
-                    subtraiEstoque = prodDao.qntEst - estoquePedido;
+                    subtraiEstoque = componentedao.quantidadeEstoque - estoquePedido;
                     //Método que desconta o valor e atualiza o estoque atual.
-                    prodDao.UpdateSaldo(subtraiEstoque, prod.idProduto);
+                    componentedao.UpdateSaldo(componentedao.id, subtraiEstoque);
 
                     //Variável que recebe o valor da quantidade que tem que ser produzida.
                     quantidadeFinal = estoquePedido - estoqueAtual;
@@ -130,40 +154,42 @@ namespace MRP_SdC.MySQL
                     }
 
                     //Faz a inserção dos valores na tabela.
-                    MRP mrpObjeto = new MRP(ped.idPedido, prod.idProduto, estoquePedido, estoqueAtual,
-                    quantidadeFinal);
+                    MRP mrpObjetoComponente = new MRP(1, componente.id, componente.modelo,
+                    estoquePedido, estoqueAtual, quantidadeFinal);
 
                     //Confirma o cadastro, exibindo uma mensagem.
                     DialogResult confirmarInsert = MessageBox.Show(
-                        "( ﾉ ﾟｰﾟ)ﾉ " + mrpObjeto.idMRP + " ?!", "Confirmar Inserção",
+                        "( ﾉ ﾟｰﾟ)ﾉ " + item.nome + " ?!", "Confirmar Inserção",
                         MessageBoxButtons.YesNo
                     );
                     //Se o usuário confirmar, cadastra.
                     if (confirmarInsert == DialogResult.Yes)
                     {
-                        //Método de Insert no Banco de Dados.
-                        DAOMRP daoMrpInsert = new DAOMRP();
+                        //Cria um objeto do tipo DAOMRP.
+                        DAOMRP daoMrpInsertComponente = new DAOMRP();
 
                         //Faz o Insert.
-                        daoMrpInsert.Insert(mrpObjeto);
+                        daoMrpInsertComponente.Insert(mrpObjetoComponente);
 
                         //Fecha a tela após o Cadastro.
                         Close();
                     }
                 }
-            }   
+            }
         }
 
-        private void Cancelar_Click(object sender, EventArgs e)
+        private void cancelar_btn_Click(object sender, EventArgs e)
         {
             Close();
         }
+
+
 
         private void CadastroMRP_Load(object sender, EventArgs e)
         {
 
         }
-        
+
         public void cmbIdPedido_SelectedIndexChanged(object sender, EventArgs e)
         {
             DAOPedido daoPed = new DAOPedido();
@@ -177,23 +203,14 @@ namespace MRP_SdC.MySQL
             DAOPedido daoPed = new DAOPedido();
             daoPed.GetIdPedido();
             int idPedido = daoPed.idPed;
-            int i=0;
-            while (i < 100){
+            int i = 0;
+            while (i < 100)
+            {
                 cmbIdPedido.Items.Add(idPedido);
                 idPedido += 1;
                 i++;
             }
-
-            ProdutoDAO daoProd = new ProdutoDAO();
-            daoProd.GetIdProduto();
-            int idProduto = daoProd.idProd;
-            int j=0;
-            while (j < 100)
-            {
-                cmbIdProduto.Items.Add(idProduto);
-                idProduto += 1;
-                j++;
-            }
         }
     }
 }
+

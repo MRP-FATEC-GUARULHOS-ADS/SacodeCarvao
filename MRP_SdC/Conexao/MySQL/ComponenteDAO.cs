@@ -170,6 +170,49 @@ namespace MRP_SdC.MySQL
             return true;
         }
 
+        //Método que atualiza o saldo depois do cálculo de Necessidade Líquida.
+        public Boolean UpdateSaldo(int idComponente, int saldoAtual)
+        {
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return false;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                //Atualiza a quantidade atual do estoque de Componentes
+                //quando o id do Componente, for igual ao parâmetro.
+                string query = "UPDATE COMPONENTE " +
+                    "SET qtdeAtualEstoque = @qntatual " +
+                    "WHERE idComponente = @id; ";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return false;
+                }
+
+                //Adiciona um valor ao final do SqlParameterCollection.
+                cmd.Parameters.AddWithValue("@id", idComponente);
+                cmd.Parameters.AddWithValue("@qntatual", saldoAtual);
+
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            conexao.CloseConexao();
+            return true;
+        }
+
         public Boolean Delete(int id)
         {
             Conexao conexao = new Conexao();
@@ -394,6 +437,119 @@ namespace MRP_SdC.MySQL
                 objComponente.qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]);
                 objComponente.qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]);
                 objComponente.qtdeAtual = Convert.ToInt32(reader["qtdeAtualEstoque"]);
+                objComponente.estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false);
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+            conexao.CloseConexao();
+            return objComponente;
+        }
+
+        //Variável Global que recupera o id do componente.
+        public int id;
+        //Variável Global que recupera o nome do componente.
+        public string nomeComponenteBom;
+
+        //Metodo que retorna id e nome do componente.
+        public Componente GetModeloComponente(string nome)
+        {
+            //Cria um objeto do tipo componente
+            Componente objComponente;
+
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                //Seleciona todos os atributos do componente quando o parâmetro for igual ao
+                //modelo do Componente
+                string query = "SELECT * FROM COMPONENTE WHERE modeloComponente = @modelo;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Parameters.AddWithValue("@modelo", nome);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                //cria o objeto componente.
+                objComponente = new Componente();
+                //retorna o id do componente.
+                objComponente.id = Convert.ToInt32(reader["idComponente"]);
+                //retorna o modelo do componente.
+                objComponente.modelo = Convert.ToString(reader["modeloComponente"]);
+                //preenche a variável global id.
+                id = objComponente.id;
+                //preenche a variável global nome do Componente.
+                nomeComponenteBom = objComponente.modelo;
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+            conexao.CloseConexao();
+            //retorna o objComponente
+            return objComponente;
+        }
+
+        //Variável global que indica a quantidade que possui no estoque
+        public int quantidadeEstoque = 0;
+        //Get com parâmetro do tipo String
+        public Componente GetModelo(string modelo)
+        {
+            Componente objComponente = new Componente();
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                //Seleciona todos os atributos do componente QUANDO o modelo do componente 
+                //for igual ao do parâmetro passado.
+                string query = "SELECT * FROM componente c WHERE modeloComponente = @modelo;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                //Adiciona um valor ao final do SqlParameterCollection.
+                cmd.Parameters.AddWithValue("@modelo", modelo);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                objComponente.id = Convert.ToInt32(reader["idComponente"]);
+                objComponente.tipo = (string)reader["tipoComponente"];
+                objComponente.marca = (string)reader["marcaComponente"];
+                objComponente.modelo = (string)reader["modeloComponente"];
+                objComponente.especificacoes = (reader["especificacoes"] != DBNull.Value ? (string)(reader["especificacoes"]) : "");
+                objComponente.qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]);
+                objComponente.qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]);
+                objComponente.qtdeAtual = Convert.ToInt32(reader["qtdeAtualEstoque"]);
+                //preenche o valor da variável global com o valor da quantidade atual do
+                //componente.
+                quantidadeEstoque = objComponente.qtdeAtual;
                 objComponente.estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false);
 
             }

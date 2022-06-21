@@ -323,5 +323,56 @@ namespace MRP_SdC.MySQL
             conexao.CloseConexao();
             return true;
         }
+
+        //retorna o nome do nó Pai.
+        public string nomeNoPai;
+        //Metodo que retorna o nome do produto Nó Pai.
+        public BOM GetNomeNoPai(int noPai, int codigoLista)
+        {
+            BOM objBom = new BOM();
+
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                //Seleciona todos os atributos da linha do BOM, QUANDO o noProduto e o código da
+                //Lista forem iguais aos dos parâmetros.
+                string query = "SELECT * FROM BOM WHERE noProduto = @noProd AND codigoLista = " +
+                    "@codLista;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                //Adiciona um valor ao final do SqlParameterCollection.
+                cmd.Parameters.AddWithValue("@noProd", noPai);
+                //Adiciona um valor ao final do SqlParameterCollection.
+                cmd.Parameters.AddWithValue("@codLista", codigoLista);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                objBom = new BOM();
+                //retorna o nome do produto.
+                objBom.nome = Convert.ToString(reader["nome"]);
+                //Atribui valor a variável nomeNoPai.
+                nomeNoPai = objBom.nome;
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+            conexao.CloseConexao();
+            return objBom;
+        }
     }
 }
