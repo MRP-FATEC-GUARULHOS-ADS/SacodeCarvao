@@ -41,7 +41,8 @@ namespace MRP_SdC.Telas.Producao
             this.txtCodigoLista = new System.Windows.Forms.TextBox();
             this.lblCodigoLista = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtNome = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.cmbNome = new System.Windows.Forms.ComboBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtNivel = new System.Windows.Forms.TextBox();
@@ -170,7 +171,8 @@ namespace MRP_SdC.Telas.Producao
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.txtNome);
+            this.panel2.Controls.Add(this.btnBuscar);
+            this.panel2.Controls.Add(this.cmbNome);
             this.panel2.Controls.Add(this.lblNome);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(32, 160);
@@ -178,13 +180,23 @@ namespace MRP_SdC.Telas.Producao
             this.panel2.Size = new System.Drawing.Size(315, 48);
             this.panel2.TabIndex = 22;
             // 
-            // txtNome
+            // btnBuscar
             // 
-            this.txtNome.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtNome.Location = new System.Drawing.Point(0, 17);
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(315, 20);
-            this.txtNome.TabIndex = 1;
+            this.btnBuscar.Location = new System.Drawing.Point(234, 19);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 2;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // cmbNome
+            // 
+            this.cmbNome.FormattingEnabled = true;
+            this.cmbNome.Location = new System.Drawing.Point(3, 21);
+            this.cmbNome.Name = "cmbNome";
+            this.cmbNome.Size = new System.Drawing.Size(225, 21);
+            this.cmbNome.TabIndex = 1;
             // 
             // lblNome
             // 
@@ -235,7 +247,6 @@ namespace MRP_SdC.Telas.Producao
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(315, 48);
             this.panel5.TabIndex = 24;
-            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
             // txtQuantidadeUnidade
             // 
@@ -277,7 +288,6 @@ namespace MRP_SdC.Telas.Producao
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(315, 48);
             this.panel6.TabIndex = 25;
-            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
             // 
             // txtNoProduto
             // 
@@ -315,6 +325,7 @@ namespace MRP_SdC.Telas.Producao
             this.Controls.Add(this.esp_dir_pnl);
             this.Name = "CadastroBOM";
             this.Text = "CadastroBOM";
+            this.Load += new System.EventHandler(this.CadastroBOM_Load_1);
             this.produzir_pnl.ResumeLayout(false);
             this.produzir_pnl.PerformLayout();
             this.barraInf_pnl.ResumeLayout(false);
@@ -346,7 +357,6 @@ namespace MRP_SdC.Telas.Producao
         private System.Windows.Forms.TextBox txtCodigoLista;
         private System.Windows.Forms.Label lblCodigoLista;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox txtNivel;
@@ -356,7 +366,9 @@ namespace MRP_SdC.Telas.Producao
         private System.Windows.Forms.Label lblQuantidadeLista;
         private System.Windows.Forms.Label ttl_lbl;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.TextBox txtNoProduto;
         private System.Windows.Forms.Label lblNoProduto;
+        private System.Windows.Forms.ComboBox cmbNome;
+        private System.Windows.Forms.TextBox txtNoProduto;
+        private System.Windows.Forms.Button btnBuscar;
     }
 }

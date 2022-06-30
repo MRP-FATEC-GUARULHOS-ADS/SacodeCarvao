@@ -12,8 +12,9 @@ namespace MRP_SdC.Telas.Producao
 
         private void cadastrar_Click(object sender, EventArgs e)
         {
+            //Objeto e seus atributos.
             BOM bom = new BOM(int.Parse(txtNoPai.Text),
-            int.Parse(txtCodigoLista.Text), txtNome.Text, int.Parse(txtNivel.Text),
+            int.Parse(txtCodigoLista.Text), cmbNome.Text, int.Parse(txtNivel.Text),
             int.Parse(txtQuantidadeUnidade.Text), int.Parse(txtNoProduto.Text));
 
             DialogResult confirmarInsert = MessageBox.Show(
@@ -30,14 +31,33 @@ namespace MRP_SdC.Telas.Producao
             }
         }
 
-        private void panel5_Paint(object sender, PaintEventArgs e)
+        private void btnBuscar_Click(object sender, EventArgs e)
         {
+            MySQL.ProdutoDAO produtoDao = new MySQL.ProdutoDAO();
 
+            var model = produtoDao.PesquisaProdutosListaBom(cmbNome.Text);
+
+            foreach (Produto item in model)
+            {
+                cmbNome.Items.Add(item);
+            }
         }
 
-        private void panel6_Paint(object sender, PaintEventArgs e)
+        //Ao carregar form.
+        private void CadastroBOM_Load_1(object sender, EventArgs e)
         {
+            //Objeto Produto.
+            Produto produto = new Produto();
+            //Objeto ProdutoDAO.
+            MySQL.ProdutoDAO produtoDao = new MySQL.ProdutoDAO();
 
+            //Variável que vai trazer os valores do banco de dados.
+            var model = produtoDao.GetListaBom();
+
+            foreach (Produto item in model)
+            {
+                cmbNome.Items.Add(item);
+            }
         }
     }
 }
