@@ -14,6 +14,15 @@ CREATE TABLE PRODUTO (
  estado char(1) not null
 );
 
+CREATE TABLE PEDIDO (
+ idPedido int primary key AUTO_INCREMENT,
+ idProduto int,
+ nomeProduto varchar(100) not null,
+ quantidade int,
+ valor int,
+ FOREIGN KEY idProdut (idProduto) References PRODUTO (idProduto) 
+ );
+
 CREATE TABLE COMPONENTE (
  idComponente int primary key AUTO_INCREMENT,
  tipoComponente varchar(100) not null,
@@ -94,17 +103,26 @@ ALTER TABLE MOVIMENTACAO_COMPONENTE
 ADD CONSTRAINT FK_MOVCOMP_COMPONENTE
 FOREIGN KEY (idComponente) REFERENCES COMPONENTE(idComponente);
 
-CREATE TABLE MRP (
-  idNecesLiq int primary key AUTO_INCREMENT,
-  idProduto int not null,
-  qntdPedido int not null,
-  qntdEstoque int not null,
-  qntdNecesLiq int not null
+CREATE TABLE BOM(
+idBom int PRIMARY KEY AUTO_INCREMENT,
+noProduto int,
+noPai int NULL,
+codigoLista int,
+nome varchar(20),
+nivel int,
+quantidadeLista int
 );
-
-ALTER TABLE MRP
-ADD CONSTRAINT FK_MRP_PRODUTO
-FOREIGN KEY (idProduto) REFERENCES Produto(idProduto);
+drop table mrp;
+CREATE TABLE MRP (
+ idMRP int PRIMARY KEY AUTO_INCREMENT,
+ idPedido int,
+ idProduto int,
+ nome varchar(50),
+ quantidadePedido int,
+ quantidadeEstoque int,
+ quantidadeFinal int,
+ FOREIGN KEY idPed (idPedido) REFERENCES PEDIDO (idPedido)
+);
 
 CREATE TABLE USUARIO (
   idUsuario int primary key AUTO_INCREMENT,
