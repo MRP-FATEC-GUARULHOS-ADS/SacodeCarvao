@@ -80,14 +80,18 @@ namespace MRP_SdC.MySQL
                     prodDao.UpdateSaldo(subtraiEstoque, prod.idProduto);
 
                     //Variável que recebe o valor da quantidade que tem que ser produzida.
-                    quantidadeFinal = estoquePedido - estoqueAtual;
+                    quantidadeFinal = estoqueAtual - estoquePedido;
 
-                    //Se quantidade Final for < 0, retorna esse valor == 0.
+                    /*Se quantidade Final for < 0, retorna esse valor == 0.
                     if (quantidadeFinal < 0)
                     {
                         quantidadeFinal = 0;
                     }
-
+                    */
+                    if(quantidadeFinal < 0)
+                    {
+                        DialogResult falta = MessageBox.Show(item.nome + "Falta Produtos" + MessageBoxButtons.YesNo);
+                    }
                     //Faz a inserção dos valores na tabela.
                     mrpObjeto = new MRP(ped.idPedido, prod.idProduto, prod.modelo,
                     estoquePedido, estoqueAtual, quantidadeFinal);
