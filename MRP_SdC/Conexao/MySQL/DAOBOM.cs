@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using MRP_SdC.Modelos;
 using System.Windows.Forms;
 using System.Collections;
+using MRP_Sdc;
 
 namespace MRP_SdC.MySQL
 {

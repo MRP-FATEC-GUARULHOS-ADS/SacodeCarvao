@@ -29,10 +29,10 @@ namespace MRP_SdC
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_frm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,6 +102,9 @@ namespace MRP_SdC
             this.user_ttl_txb = new System.Windows.Forms.Label();
             this.user_img_pnl = new System.Windows.Forms.Panel();
             this.logo_pnl = new System.Windows.Forms.Panel();
+            this.requisiçãoDeCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadastrarToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultarToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.menu_dir_pnl.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -161,7 +164,8 @@ namespace MRP_SdC
             this.demandaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mPSToolStripMenuItem1,
             this.mRPToolStripMenuItem,
-            this.bOMToolStripMenuItem});
+            this.bOMToolStripMenuItem,
+            this.requisiçãoDeCompraToolStripMenuItem});
             this.demandaToolStripMenuItem.Name = "demandaToolStripMenuItem";
             this.demandaToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
             this.demandaToolStripMenuItem.Text = "Produção";
@@ -172,7 +176,7 @@ namespace MRP_SdC
             this.cadastrarToolStripMenuItem1,
             this.consultarToolStripMenuItem});
             this.mPSToolStripMenuItem1.Name = "mPSToolStripMenuItem1";
-            this.mPSToolStripMenuItem1.Size = new System.Drawing.Size(101, 22);
+            this.mPSToolStripMenuItem1.Size = new System.Drawing.Size(193, 22);
             this.mPSToolStripMenuItem1.Text = "MPS";
             // 
             // cadastrarToolStripMenuItem1
@@ -195,7 +199,7 @@ namespace MRP_SdC
             this.cadastrarToolStripMenuItem2,
             this.consultarToolStripMenuItem1});
             this.mRPToolStripMenuItem.Name = "mRPToolStripMenuItem";
-            this.mRPToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.mRPToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.mRPToolStripMenuItem.Text = "MRP";
             // 
             // cadastrarToolStripMenuItem2
@@ -218,7 +222,7 @@ namespace MRP_SdC
             this.cadastrarToolStripMenuItem3,
             this.consultarToolStripMenuItem2});
             this.bOMToolStripMenuItem.Name = "bOMToolStripMenuItem";
-            this.bOMToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.bOMToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.bOMToolStripMenuItem.Text = "BOM";
             // 
             // cadastrarToolStripMenuItem3
@@ -249,28 +253,28 @@ namespace MRP_SdC
             // produtosToolStripMenuItem
             // 
             this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
-            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.produtosToolStripMenuItem.Text = "Produtos";
             this.produtosToolStripMenuItem.Click += new System.EventHandler(this.EstProdutos_TSMI_Click);
             // 
             // componentesToolStripMenuItem
             // 
             this.componentesToolStripMenuItem.Name = "componentesToolStripMenuItem";
-            this.componentesToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.componentesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.componentesToolStripMenuItem.Text = "Componentes";
             this.componentesToolStripMenuItem.Click += new System.EventHandler(this.EstComponentes_TSMI_Click);
             // 
             // fornecedoresToolStripMenuItem1
             // 
             this.fornecedoresToolStripMenuItem1.Name = "fornecedoresToolStripMenuItem1";
-            this.fornecedoresToolStripMenuItem1.Size = new System.Drawing.Size(149, 22);
+            this.fornecedoresToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.fornecedoresToolStripMenuItem1.Text = "Fornecedores";
             this.fornecedoresToolStripMenuItem1.Click += new System.EventHandler(this.EstFornecedores_TSMI_Click);
             // 
             // pedidoToolStripMenuItem1
             // 
             this.pedidoToolStripMenuItem1.Name = "pedidoToolStripMenuItem1";
-            this.pedidoToolStripMenuItem1.Size = new System.Drawing.Size(149, 22);
+            this.pedidoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.pedidoToolStripMenuItem1.Text = "Pedido";
             this.pedidoToolStripMenuItem1.Click += new System.EventHandler(this.pedidoToolStripMenuItem1_Click);
             // 
@@ -462,37 +466,37 @@ namespace MRP_SdC
             // 
             this.demanda_ago_cht.BackColor = System.Drawing.SystemColors.Control;
             this.demanda_ago_cht.BorderlineColor = System.Drawing.SystemColors.ControlDarkDark;
-            chartArea1.BackColor = System.Drawing.SystemColors.Control;
-            chartArea1.Name = "ChartArea1";
-            this.demanda_ago_cht.ChartAreas.Add(chartArea1);
+            chartArea5.BackColor = System.Drawing.SystemColors.Control;
+            chartArea5.Name = "ChartArea1";
+            this.demanda_ago_cht.ChartAreas.Add(chartArea5);
             this.demanda_ago_cht.Dock = System.Windows.Forms.DockStyle.Top;
-            legend1.BackColor = System.Drawing.SystemColors.Control;
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend1.Name = "Legend1";
-            this.demanda_ago_cht.Legends.Add(legend1);
+            legend5.BackColor = System.Drawing.SystemColors.Control;
+            legend5.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend5.Name = "Legend1";
+            this.demanda_ago_cht.Legends.Add(legend5);
             this.demanda_ago_cht.Location = new System.Drawing.Point(12, 16);
             this.demanda_ago_cht.Name = "demanda_ago_cht";
-            series1.BackImageTransparentColor = System.Drawing.SystemColors.Control;
-            series1.BackSecondaryColor = System.Drawing.SystemColors.Control;
-            series1.BorderColor = System.Drawing.SystemColors.Control;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series1.Color = System.Drawing.SystemColors.Control;
-            series1.LabelBackColor = System.Drawing.SystemColors.Control;
-            series1.LabelBorderColor = System.Drawing.SystemColors.Control;
-            series1.Legend = "Legend1";
-            series1.MarkerBorderColor = System.Drawing.SystemColors.Control;
-            series1.MarkerColor = System.Drawing.SystemColors.Control;
-            series1.Name = "Series1";
-            series1.YValuesPerPoint = 2;
-            this.demanda_ago_cht.Series.Add(series1);
+            series5.BackImageTransparentColor = System.Drawing.SystemColors.Control;
+            series5.BackSecondaryColor = System.Drawing.SystemColors.Control;
+            series5.BorderColor = System.Drawing.SystemColors.Control;
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series5.Color = System.Drawing.SystemColors.Control;
+            series5.LabelBackColor = System.Drawing.SystemColors.Control;
+            series5.LabelBorderColor = System.Drawing.SystemColors.Control;
+            series5.Legend = "Legend1";
+            series5.MarkerBorderColor = System.Drawing.SystemColors.Control;
+            series5.MarkerColor = System.Drawing.SystemColors.Control;
+            series5.Name = "Series1";
+            series5.YValuesPerPoint = 2;
+            this.demanda_ago_cht.Series.Add(series5);
             this.demanda_ago_cht.Size = new System.Drawing.Size(266, 300);
             this.demanda_ago_cht.TabIndex = 0;
             this.demanda_ago_cht.Text = "chart1";
-            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            title1.Name = "Title1";
-            title1.Text = "Demanda de agosto, 2021";
-            this.demanda_ago_cht.Titles.Add(title1);
+            title5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            title5.Name = "Title1";
+            title5.Text = "Demanda de agosto, 2021";
+            this.demanda_ago_cht.Titles.Add(title5);
             // 
             // demanda_gpb
             // 
@@ -832,6 +836,30 @@ namespace MRP_SdC
             this.logo_pnl.Size = new System.Drawing.Size(56, 56);
             this.logo_pnl.TabIndex = 0;
             // 
+            // requisiçãoDeCompraToolStripMenuItem
+            // 
+            this.requisiçãoDeCompraToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cadastrarToolStripMenuItem4,
+            this.consultarToolStripMenuItem3});
+            this.requisiçãoDeCompraToolStripMenuItem.Name = "requisiçãoDeCompraToolStripMenuItem";
+            this.requisiçãoDeCompraToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.requisiçãoDeCompraToolStripMenuItem.Text = "Requisição de Compra";
+            this.requisiçãoDeCompraToolStripMenuItem.Click += new System.EventHandler(this.requisiçãoDeCompraToolStripMenuItem_Click);
+            // 
+            // cadastrarToolStripMenuItem4
+            // 
+            this.cadastrarToolStripMenuItem4.Name = "cadastrarToolStripMenuItem4";
+            this.cadastrarToolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
+            this.cadastrarToolStripMenuItem4.Text = "Cadastrar";
+            this.cadastrarToolStripMenuItem4.Click += new System.EventHandler(this.cadastrarToolStripMenuItem4_Click);
+            // 
+            // consultarToolStripMenuItem3
+            // 
+            this.consultarToolStripMenuItem3.Name = "consultarToolStripMenuItem3";
+            this.consultarToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.consultarToolStripMenuItem3.Text = "Consultar";
+            this.consultarToolStripMenuItem3.Click += new System.EventHandler(this.consultarToolStripMenuItem3_Click);
+            // 
             // Main_frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -952,6 +980,9 @@ namespace MRP_SdC
         private System.Windows.Forms.ToolStripMenuItem cadastrarToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem pedidoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem requisiçãoDeCompraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cadastrarToolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem3;
     }
 }
 

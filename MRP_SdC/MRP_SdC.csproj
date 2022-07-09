@@ -66,6 +66,7 @@
     <Compile Include="Modelos\MRP.cs" />
     <Compile Include="Modelos\Pedido.cs" />
     <Compile Include="Modelos\Produto.cs" />
+    <Compile Include="Modelos\RequisicaoCompra.cs" />
     <Compile Include="Modelos\Usuario.cs" />
     <Compile Include="Telas\Login.cs">
       <SubType>Form</SubType>
@@ -151,6 +152,12 @@
     <Compile Include="Telas\Producao\CadastroMRP.Designer.cs">
       <DependentUpon>CadastroMRP.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Producao\CadastroReqCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Producao\CadastroReqCompra.Designer.cs">
+      <DependentUpon>CadastroReqCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Producao\ConsultaBOM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +175,12 @@
     </Compile>
     <Compile Include="Telas\Producao\ConsultaMRP.Designer.cs">
       <DependentUpon>ConsultaMRP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Producao\ConsultaReqCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Producao\ConsultaReqCompra.Designer.cs">
+      <DependentUpon>ConsultaReqCompra.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\Produtos\EditarProduto.cs">
       <SubType>Form</SubType>
@@ -257,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Producao\ConsultaMRP.resx">
       <DependentUpon>ConsultaMRP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Producao\ConsultaReqCompra.resx">
+      <DependentUpon>ConsultaReqCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Produtos\EditarProduto.resx">
       <DependentUpon>EditarProduto.cs</DependentUpon>

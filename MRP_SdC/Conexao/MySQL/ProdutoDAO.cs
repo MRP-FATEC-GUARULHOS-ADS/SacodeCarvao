@@ -410,8 +410,8 @@ namespace MRP_SdC.MySQL
                 MySqlDataReader reader;
                 string query = "SELECT * FROM PRODUTO " +
                     "WHERE (idProduto LIKE @pesquisa " +
-                        "OR modeloProduto LIKE @pesquisa " +
-                        "OR descrProduto LIKE @pesquisa ) " +
+                        "OR modeloProduto LIKE %'@pesquisa'% " +
+                        "OR descrProduto LIKE @pesquisa) " +
                         "AND estado = 'P';";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
@@ -450,6 +450,7 @@ namespace MRP_SdC.MySQL
             return listaProdutos;
         }
 
+        public string pesquisaModelo;
         //Método que faz busca só para a lista BOM.
         public List<Produto> PesquisaProdutosListaBom(string pesquisa)
         {
@@ -494,7 +495,7 @@ namespace MRP_SdC.MySQL
                         qtdeAtual = ((reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0),
                         estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false)
                     };
-
+                    pesquisaModelo = objProduto.modelo;
                     listaProdutos.Add(objProduto);
                 }
             }

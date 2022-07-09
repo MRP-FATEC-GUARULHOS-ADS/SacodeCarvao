@@ -1,4 +1,10 @@
-﻿namespace MRP_SdC
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MRP_Sdc
 {
     public class BOM
     {
@@ -21,7 +27,6 @@
             int noPai, int codigoLista, string nome, int nivel, int quantidadeLista,
             int noProduto
         )
-
         {
             this.noProduto = noProduto;
             this.noPai = noPai;

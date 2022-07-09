@@ -228,5 +228,21 @@ namespace MRP_SdC
             myUser = Logar();
             AutenticarUsuario();
         }
+
+        private void requisiçãoDeCompraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cadastrarToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void consultarToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            Telas.Producao.ConsultaReqCompra formConsultaReqCompra = new Telas.Producao.ConsultaReqCompra();
+            formConsultaReqCompra.ShowDialog();
+        }
     }
 }

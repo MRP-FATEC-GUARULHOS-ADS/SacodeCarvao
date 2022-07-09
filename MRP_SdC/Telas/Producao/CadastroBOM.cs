@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MRP_Sdc;
+using System;
 using System.Windows.Forms;
 
 namespace MRP_SdC.Telas.Producao
@@ -39,8 +40,8 @@ namespace MRP_SdC.Telas.Producao
 
             foreach (Produto item in model)
             {
-                cmbNome.Items.Add(item);
-            }
+                cmbNome.Items.Add(produtoDao.pesquisaModelo);
+            }                                                                      
         }
 
         //Ao carregar form.

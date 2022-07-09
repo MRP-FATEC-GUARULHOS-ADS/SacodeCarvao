@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MRP_Sdc;
 using MRP_SdC.Telas.Producao;
 
 namespace MRP_SdC
