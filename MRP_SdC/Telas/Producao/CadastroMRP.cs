@@ -42,6 +42,8 @@ namespace MRP_SdC.MySQL
             MRP mrpObjeto = new MRP();
             DAOMRP daoMrpInsert = new DAOMRP();
 
+            Telas.Producao.ConsultaBOM consultaBom = new Telas.Producao.ConsultaBOM();
+            txtIdBom.Text = consultaBom.consultaBomId.ToString();
             var model = daobom.Get(int.Parse(txtIdBom.Text));
             foreach (BOM item in model)
             {

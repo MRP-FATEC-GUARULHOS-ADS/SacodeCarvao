@@ -204,8 +204,8 @@ namespace MRP_SdC.MySQL
         private System.Windows.Forms.Button cadastrar;
         private System.Windows.Forms.Panel qntdNecesLiq_tbx;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.TextBox txtIdBom;
         private System.Windows.Forms.Label lblIdBom;
         public System.Windows.Forms.ComboBox cmbIdPedido;
+        public System.Windows.Forms.TextBox txtIdBom;
     }
 }

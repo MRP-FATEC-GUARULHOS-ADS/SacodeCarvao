@@ -327,6 +327,8 @@ namespace MRP_SdC.MySQL
 
         //retorna o nome do nó Pai.
         public string nomeNoPai;
+        //retorna o código da lista de materiais.
+        public int codigoListaBom;
         //Metodo que retorna o nome do produto Nó Pai.
         public BOM GetNomeNoPai(int noPai, int codigoLista)
         {
@@ -364,6 +366,10 @@ namespace MRP_SdC.MySQL
                 objBom = new BOM();
                 //retorna o nome do produto.
                 objBom.nome = Convert.ToString(reader["nome"]);
+                //retorna o código da lista de materiais.
+                objBom.codigoLista = Convert.ToInt32(reader["codigoLista"]);
+                //Atribui valor a variável codigoLista.
+                codigoListaBom = objBom.codigoLista;
                 //Atribui valor a variável nomeNoPai.
                 nomeNoPai = objBom.nome;
             }

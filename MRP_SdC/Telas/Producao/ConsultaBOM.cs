@@ -22,7 +22,8 @@ namespace MRP_SdC.Telas.Producao
             dgvBom.DataSource = listaBom;
         }
 
-        private void MudaInfos()
+        public int consultaBomId;
+        public void MudaInfos()
         {
             BOM bom = new BOM();
             bom = dgvBom.CurrentRow.DataBoundItem as BOM;
@@ -35,6 +36,7 @@ namespace MRP_SdC.Telas.Producao
             txtNoPai.Text = bom.noPai.ToString();
             txtNome.Text = bom.nome.ToString();
             txtCodigoLista.Text = bom.codigoLista.ToString();
+            consultaBomId = int.Parse(txtCodigoLista.Text);
             txtNivel.Text = bom.nivel.ToString();
             txtQuantidadeLista.Text = bom.quantidadeLista.ToString();
         }
@@ -93,6 +95,7 @@ namespace MRP_SdC.Telas.Producao
             MySQL.CadastroMRP cadMrp = new MySQL.CadastroMRP();
             Pedido.ConsultaPedido consPed = new Pedido.ConsultaPedido();
             cadMrp.cmbIdPedido.Text = dados_subttl_lbl.Text;
+            cadMrp.txtIdBom.Text = txtCodigoLista.Text; 
             cadMrp.Show();
         }
 

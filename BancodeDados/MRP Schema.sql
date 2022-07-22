@@ -112,7 +112,7 @@ nome varchar(20),
 nivel int,
 quantidadeLista int
 );
-drop table mrp;
+
 CREATE TABLE MRP (
  idMRP int PRIMARY KEY AUTO_INCREMENT,
  idPedido int,
@@ -124,6 +124,14 @@ CREATE TABLE MRP (
  FOREIGN KEY idPed (idPedido) REFERENCES PEDIDO (idPedido)
 );
 
+CREATE TABLE REQUISICAOCOMPRA (
+ idReqCompra int PRIMARY KEY AUTO_INCREMENT,
+ idProduto int,
+ nomeProduto varchar(100),
+ quantidade int,
+ FOREIGN KEY idProduto (idProduto) REFERENCES PRODUTO(idProduto)
+ );
+ 
 CREATE TABLE USUARIO (
   idUsuario int primary key AUTO_INCREMENT,
   nomeUsuario varchar(100) not null,

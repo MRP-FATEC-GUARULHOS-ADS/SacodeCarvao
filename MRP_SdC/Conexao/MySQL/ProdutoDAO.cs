@@ -410,7 +410,7 @@ namespace MRP_SdC.MySQL
                 MySqlDataReader reader;
                 string query = "SELECT * FROM PRODUTO " +
                     "WHERE (idProduto LIKE @pesquisa " +
-                        "OR modeloProduto LIKE %'@pesquisa'% " +
+                        "OR modeloProduto LIKE '%" + pesquisa + "%' " +
                         "OR descrProduto LIKE @pesquisa) " +
                         "AND estado = 'P';";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);

@@ -43,6 +43,9 @@ namespace MRP_SdC.Telas.Pedido
             this.pesquisa_sep_pnl = new System.Windows.Forms.Panel();
             this.pesquisa_descnt_cbx = new System.Windows.Forms.CheckBox();
             this.dados_pnl = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtValor = new System.Windows.Forms.TextBox();
+            this.lblValor = new System.Windows.Forms.Label();
             this.btnProduzir = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtQuantidade = new System.Windows.Forms.TextBox();
@@ -62,12 +65,10 @@ namespace MRP_SdC.Telas.Pedido
             this.dgvPedido = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.buscarListaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.txtValor = new System.Windows.Forms.TextBox();
-            this.lblValor = new System.Windows.Forms.Label();
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
             this.dados_pnl.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.dados_estoque_pnl.SuspendLayout();
             this.txt_Quantidade.SuspendLayout();
@@ -75,7 +76,6 @@ namespace MRP_SdC.Telas.Pedido
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // EspEsq_pnl
@@ -185,6 +185,35 @@ namespace MRP_SdC.Telas.Pedido
             this.dados_pnl.Padding = new System.Windows.Forms.Padding(12, 24, 12, 12);
             this.dados_pnl.Size = new System.Drawing.Size(240, 362);
             this.dados_pnl.TabIndex = 12;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.txtValor);
+            this.panel2.Controls.Add(this.lblValor);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(12, 337);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(199, 48);
+            this.panel2.TabIndex = 6;
+            // 
+            // txtValor
+            // 
+            this.txtValor.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtValor.Location = new System.Drawing.Point(0, 17);
+            this.txtValor.Name = "txtValor";
+            this.txtValor.Size = new System.Drawing.Size(199, 20);
+            this.txtValor.TabIndex = 1;
+            // 
+            // lblValor
+            // 
+            this.lblValor.AutoSize = true;
+            this.lblValor.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblValor.Location = new System.Drawing.Point(0, 0);
+            this.lblValor.Name = "lblValor";
+            this.lblValor.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.lblValor.Size = new System.Drawing.Size(31, 17);
+            this.lblValor.TabIndex = 0;
+            this.lblValor.Text = "Valor";
             // 
             // btnProduzir
             // 
@@ -390,35 +419,6 @@ namespace MRP_SdC.Telas.Pedido
             this.buscarListaToolStripMenuItem.Text = "Buscar Lista";
             this.buscarListaToolStripMenuItem.Click += new System.EventHandler(this.buscarListaToolStripMenuItem_Click);
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.txtValor);
-            this.panel2.Controls.Add(this.lblValor);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(12, 337);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(199, 48);
-            this.panel2.TabIndex = 6;
-            // 
-            // txtValor
-            // 
-            this.txtValor.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtValor.Location = new System.Drawing.Point(0, 17);
-            this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(199, 20);
-            this.txtValor.TabIndex = 1;
-            // 
-            // lblValor
-            // 
-            this.lblValor.AutoSize = true;
-            this.lblValor.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblValor.Location = new System.Drawing.Point(0, 0);
-            this.lblValor.Name = "lblValor";
-            this.lblValor.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.lblValor.Size = new System.Drawing.Size(31, 17);
-            this.lblValor.TabIndex = 0;
-            this.lblValor.Text = "Valor";
-            // 
             // ConsultaPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -438,6 +438,8 @@ namespace MRP_SdC.Telas.Pedido
             this.pesquisa_cont_pnl.PerformLayout();
             this.dados_pnl.ResumeLayout(false);
             this.dados_pnl.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.dados_estoque_pnl.ResumeLayout(false);
@@ -448,8 +450,6 @@ namespace MRP_SdC.Telas.Pedido
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
