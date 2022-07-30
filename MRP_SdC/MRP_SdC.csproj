@@ -53,6 +53,7 @@
     <Compile Include="Conexao\MySQL\DAOBOM.cs" />
     <Compile Include="Conexao\MySQL\DAOMRP.cs" />
     <Compile Include="Conexao\MySQL\DAOPedido.cs" />
+    <Compile Include="Conexao\MySQL\DAORequisicao.cs" />
     <Compile Include="Conexao\MySQL\FornecedorComponenteDAO.cs" />
     <Compile Include="Conexao\MySQL\FornecedorDAO.cs" />
     <Compile Include="Conexao\MySQL\UsuarioDAO.cs" />

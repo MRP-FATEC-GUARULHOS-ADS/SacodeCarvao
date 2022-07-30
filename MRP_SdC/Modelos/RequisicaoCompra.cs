@@ -23,6 +23,12 @@ namespace MRP_SdC.Modelos
             this.quantidade = quantidade;
         }
 
+        //Método construtor.
+        public RequisicaoCompra()
+        {
+
+        }
+
         //Método override.
         public override string ToString()
         {
