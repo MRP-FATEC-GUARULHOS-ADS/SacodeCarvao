@@ -12,7 +12,7 @@ namespace MRP_SdC
 {
     public partial class Login : Form
     {
-        public Usuario myUser = null;
+        public Modelos.Usuario myUser = null;
 
         public Login()
         {

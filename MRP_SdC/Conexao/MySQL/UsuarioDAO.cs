@@ -6,9 +6,49 @@ namespace MRP_SdC.MySQL
 {
     class UsuarioDAO
     {
-        public Usuario Get(string nome, string senha)
+        public Boolean Insert(Modelos.Usuario usuario)
         {
-            Usuario objUser;
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return false;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "INSERT INTO USUARIO ( " +
+                    "nomeUsuario, senhaUsuario, acessoUsuario" +
+                    ") VALUES(@nome, @senha, @acesso);";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return false;
+                }
+
+                cmd.Parameters.AddWithValue("@nome", usuario.Nome);
+                cmd.Parameters.AddWithValue("@senha", usuario.Senha);
+                cmd.Parameters.AddWithValue("@acesso", usuario.Acesso);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            conexao.CloseConexao();
+            return true;
+        }
+
+        public Modelos.Usuario Get(string nome, string senha)
+        {
+            //Tipo do objeto.
+            Modelos.Usuario objUser;
 
             Conexao conexao = new Conexao();
 
@@ -34,7 +74,8 @@ namespace MRP_SdC.MySQL
                 reader = cmd.ExecuteReader();
                 reader.Read();
 
-                objUser = new Usuario
+                //Tipo do objeto.
+                objUser = new Modelos.Usuario
                 {
                     Nome = (reader["nomeUsuario"] != DBNull.Value ? (string)(reader["nomeUsuario"]) : ""),
                     Acesso = (reader["acessoUsuario"] != DBNull.Value ? (string)(reader["acessoUsuario"]) : "")

@@ -13,7 +13,8 @@ namespace MRP_SdC
 {
     public partial class Main_frm : Form
     {
-        Usuario myUser = null;
+        //Tipo de objeto e depois iguala a nulo.
+        Modelos.Usuario myUser = null;
 
         public Main_frm()
         {
@@ -25,7 +26,7 @@ namespace MRP_SdC
         }
 
         // funcoes personalizadas
-        private Usuario Logar()
+        private Modelos.Usuario Logar()
         {
             Login formLogin = new Login();
             formLogin.ShowDialog();
@@ -223,12 +224,6 @@ namespace MRP_SdC
             formConsultaBOM.ShowDialog();
         }
 
-        private void UsuarioSair_TSMI_Click(object sender, EventArgs e)
-        {
-            myUser = Logar();
-            AutenticarUsuario();
-        }
-
         private void requisiçãoDeCompraToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -243,6 +238,28 @@ namespace MRP_SdC
         {
             Telas.Producao.ConsultaReqCompra formConsultaReqCompra = new Telas.Producao.ConsultaReqCompra();
             formConsultaReqCompra.ShowDialog();
+        }
+
+        //Desloga o usuário.
+        private void sairToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            myUser = Logar();
+            AutenticarUsuario();
+        }
+
+        //Abre a tela de consultas de usuários.
+        private void consultarToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            Telas.Usuario.ConsultaUsuario formConsultaUsuario = new Telas.Usuario.ConsultaUsuario();
+            formConsultaUsuario.ShowDialog();
+        }
+
+        //Abre a tela de cadastro de usuarios.
+        private void cadastrarToolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            Telas.Usuario.CadastroUsuario formCadastroUsuario = new Telas.Usuario.CadastroUsuario();
+            //Abre o form.
+            formCadastroUsuario.ShowDialog();
         }
     }
 }
