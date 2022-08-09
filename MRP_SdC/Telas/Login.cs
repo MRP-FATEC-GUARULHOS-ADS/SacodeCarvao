@@ -39,12 +39,11 @@ namespace MRP_SdC
             MySQL.UsuarioDAO objUserDAO = new MySQL.UsuarioDAO();
             myUser = objUserDAO.Get(user_tbx.Text, senha_tbx.Text);
 
-            //abre a tela principal do MRP
-            Main_frm main = new Main_frm();
-            main.ShowDialog();
-
             if (myUser != null)
             {
+                //Abre a tela principal do MRP.
+                Main_frm main = new Main_frm();
+                main.ShowDialog();
                 Close();
             }
             else

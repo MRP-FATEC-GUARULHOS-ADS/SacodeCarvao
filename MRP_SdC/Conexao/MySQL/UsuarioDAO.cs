@@ -45,7 +45,7 @@ namespace MRP_SdC.MySQL
             return true;
         }
 
-        public Modelos.Usuario Get(string nome, string senha)
+        public Modelos.Usuario Get(string acesso, string senha)
         {
             //Tipo do objeto.
             Modelos.Usuario objUser;
@@ -60,14 +60,14 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "SELECT u.* FROM USUARIO u WHERE nomeUsuario = (@nome) AND senhaUsuario = (@senha);";
+                string query = "SELECT u.* FROM USUARIO u WHERE acessoUsuario = (@acesso) AND senhaUsuario = (@senha);";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return null;
                 }
 
-                cmd.Parameters.AddWithValue("@nome", nome);
+                cmd.Parameters.AddWithValue("@acesso", acesso);
                 cmd.Parameters.AddWithValue("@senha", senha);
                 cmd.Prepare();
 
@@ -78,7 +78,8 @@ namespace MRP_SdC.MySQL
                 objUser = new Modelos.Usuario
                 {
                     Nome = (reader["nomeUsuario"] != DBNull.Value ? (string)(reader["nomeUsuario"]) : ""),
-                    Acesso = (reader["acessoUsuario"] != DBNull.Value ? (string)(reader["acessoUsuario"]) : "")
+                    Acesso = (reader["acessoUsuario"] != DBNull.Value ? (string)(reader["acessoUsuario"]) : ""),
+                    Senha = (reader["senhaUsuario"] != DBNull.Value ? (string)(reader["senhaUsuario"]) : "")
                 };
 
             }

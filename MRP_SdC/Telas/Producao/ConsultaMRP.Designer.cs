@@ -29,9 +29,9 @@ namespace MRP_SdC.Telas.Producao
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.EspEsq_pnl = new System.Windows.Forms.Panel();
             this.EspDir_pnl = new System.Windows.Forms.Panel();
             this.ttl_lbl = new System.Windows.Forms.Label();
@@ -42,7 +42,8 @@ namespace MRP_SdC.Telas.Producao
             this.pesquisa_sep_pnl = new System.Windows.Forms.Panel();
             this.pesquisa_descnt_cbx = new System.Windows.Forms.CheckBox();
             this.dados_pnl = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnExportar = new System.Windows.Forms.Button();
+            this.btnExclusao = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAtualizaMRP = new System.Windows.Forms.Button();
             this.dados_estoque_pnl = new System.Windows.Forms.Panel();
@@ -53,6 +54,7 @@ namespace MRP_SdC.Telas.Producao
             this.txtQntdEstoque = new System.Windows.Forms.TextBox();
             this.estoque_atual_lbl = new System.Windows.Forms.Label();
             this.estoque_max_pnl = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.txtQntdPedido = new System.Windows.Forms.TextBox();
             this.estoque_max_lbl = new System.Windows.Forms.Label();
             this.estoque_min_pnl = new System.Windows.Forms.Panel();
@@ -167,7 +169,8 @@ namespace MRP_SdC.Telas.Producao
             // dados_pnl
             // 
             this.dados_pnl.AutoScroll = true;
-            this.dados_pnl.Controls.Add(this.button1);
+            this.dados_pnl.Controls.Add(this.btnExportar);
+            this.dados_pnl.Controls.Add(this.btnExclusao);
             this.dados_pnl.Controls.Add(this.panel1);
             this.dados_pnl.Controls.Add(this.dados_estoque_pnl);
             this.dados_pnl.Controls.Add(this.chart_cht);
@@ -180,15 +183,25 @@ namespace MRP_SdC.Telas.Producao
             this.dados_pnl.Size = new System.Drawing.Size(240, 512);
             this.dados_pnl.TabIndex = 10;
             // 
-            // button1
+            // btnExportar
             // 
-            this.button1.Location = new System.Drawing.Point(15, 465);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(171, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Exclusão";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnExportar.Location = new System.Drawing.Point(15, 453);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(171, 23);
+            this.btnExportar.TabIndex = 7;
+            this.btnExportar.Text = "Excel";
+            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click_1);
+            // 
+            // btnExclusao
+            // 
+            this.btnExclusao.Location = new System.Drawing.Point(15, 482);
+            this.btnExclusao.Name = "btnExclusao";
+            this.btnExclusao.Size = new System.Drawing.Size(171, 23);
+            this.btnExclusao.TabIndex = 1;
+            this.btnExclusao.Text = "Exclusão";
+            this.btnExclusao.UseVisualStyleBackColor = true;
+            this.btnExclusao.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel1
             // 
@@ -282,6 +295,7 @@ namespace MRP_SdC.Telas.Producao
             // 
             // estoque_max_pnl
             // 
+            this.estoque_max_pnl.Controls.Add(this.button2);
             this.estoque_max_pnl.Controls.Add(this.txtQntdPedido);
             this.estoque_max_pnl.Controls.Add(this.estoque_max_lbl);
             this.estoque_max_pnl.Dock = System.Windows.Forms.DockStyle.Top;
@@ -289,6 +303,15 @@ namespace MRP_SdC.Telas.Producao
             this.estoque_max_pnl.Name = "estoque_max_pnl";
             this.estoque_max_pnl.Size = new System.Drawing.Size(216, 48);
             this.estoque_max_pnl.TabIndex = 2;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(77, 170);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(171, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Exclusão";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // txtQntdPedido
             // 
@@ -341,21 +364,21 @@ namespace MRP_SdC.Telas.Producao
             // chart_cht
             // 
             this.chart_cht.BackColor = System.Drawing.SystemColors.Control;
-            chartArea1.BackColor = System.Drawing.SystemColors.Control;
-            chartArea1.Name = "ChartArea1";
-            this.chart_cht.ChartAreas.Add(chartArea1);
+            chartArea2.BackColor = System.Drawing.SystemColors.Control;
+            chartArea2.Name = "ChartArea1";
+            this.chart_cht.ChartAreas.Add(chartArea2);
             this.chart_cht.Dock = System.Windows.Forms.DockStyle.Top;
-            legend1.BackColor = System.Drawing.SystemColors.Control;
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend1.Name = "Legend1";
-            this.chart_cht.Legends.Add(legend1);
+            legend2.BackColor = System.Drawing.SystemColors.Control;
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend2.Name = "Legend1";
+            this.chart_cht.Legends.Add(legend2);
             this.chart_cht.Location = new System.Drawing.Point(12, 58);
             this.chart_cht.Name = "chart_cht";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart_cht.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart_cht.Series.Add(series2);
             this.chart_cht.Size = new System.Drawing.Size(216, 160);
             this.chart_cht.TabIndex = 2;
             this.chart_cht.Text = "chart1";
@@ -466,6 +489,8 @@ namespace MRP_SdC.Telas.Producao
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtQntdNecesLiq;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnExclusao;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnExportar;
     }
 }

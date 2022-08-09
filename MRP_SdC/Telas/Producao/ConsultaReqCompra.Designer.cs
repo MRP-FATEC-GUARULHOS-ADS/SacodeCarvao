@@ -58,7 +58,7 @@ namespace MRP_SdC.Telas.Producao
             this.chart_cht = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dados_subttl_lbl = new System.Windows.Forms.Label();
             this.dados_ttl_lbl = new System.Windows.Forms.Label();
-            this.mrp_dgv = new System.Windows.Forms.DataGridView();
+            this.dgvRequisicao = new System.Windows.Forms.DataGridView();
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
             this.dados_pnl.SuspendLayout();
@@ -68,7 +68,7 @@ namespace MRP_SdC.Telas.Producao
             this.estoque_max_pnl.SuspendLayout();
             this.estoque_min_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mrp_dgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRequisicao)).BeginInit();
             this.SuspendLayout();
             // 
             // EspEsq_pnl
@@ -345,28 +345,28 @@ namespace MRP_SdC.Telas.Producao
             this.dados_ttl_lbl.TabIndex = 0;
             this.dados_ttl_lbl.Text = "codigo";
             // 
-            // mrp_dgv
+            // dgvRequisicao
             // 
-            this.mrp_dgv.AllowUserToAddRows = false;
-            this.mrp_dgv.AllowUserToDeleteRows = false;
-            this.mrp_dgv.BackgroundColor = System.Drawing.Color.White;
-            this.mrp_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.mrp_dgv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mrp_dgv.Location = new System.Drawing.Point(32, 88);
-            this.mrp_dgv.MultiSelect = false;
-            this.mrp_dgv.Name = "mrp_dgv";
-            this.mrp_dgv.ReadOnly = true;
-            this.mrp_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.mrp_dgv.Size = new System.Drawing.Size(496, 362);
-            this.mrp_dgv.StandardTab = true;
-            this.mrp_dgv.TabIndex = 12;
+            this.dgvRequisicao.AllowUserToAddRows = false;
+            this.dgvRequisicao.AllowUserToDeleteRows = false;
+            this.dgvRequisicao.BackgroundColor = System.Drawing.Color.White;
+            this.dgvRequisicao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRequisicao.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvRequisicao.Location = new System.Drawing.Point(32, 88);
+            this.dgvRequisicao.MultiSelect = false;
+            this.dgvRequisicao.Name = "dgvRequisicao";
+            this.dgvRequisicao.ReadOnly = true;
+            this.dgvRequisicao.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRequisicao.Size = new System.Drawing.Size(496, 362);
+            this.dgvRequisicao.StandardTab = true;
+            this.dgvRequisicao.TabIndex = 12;
             // 
             // ConsultaReqCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.mrp_dgv);
+            this.Controls.Add(this.dgvRequisicao);
             this.Controls.Add(this.dados_pnl);
             this.Controls.Add(this.pesquisa_pnl);
             this.Controls.Add(this.ttl_lbl);
@@ -374,6 +374,7 @@ namespace MRP_SdC.Telas.Producao
             this.Controls.Add(this.EspEsq_pnl);
             this.Name = "ConsultaReqCompra";
             this.Text = "ConsultaReqCompra";
+            this.Load += new System.EventHandler(this.ConsultaReqCompra_Load);
             this.pesquisa_pnl.ResumeLayout(false);
             this.pesquisa_cont_pnl.ResumeLayout(false);
             this.pesquisa_cont_pnl.PerformLayout();
@@ -388,7 +389,7 @@ namespace MRP_SdC.Telas.Producao
             this.estoque_min_pnl.ResumeLayout(false);
             this.estoque_min_pnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mrp_dgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRequisicao)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -421,6 +422,6 @@ namespace MRP_SdC.Telas.Producao
         private System.Windows.Forms.DataVisualization.Charting.Chart chart_cht;
         private System.Windows.Forms.Label dados_subttl_lbl;
         private System.Windows.Forms.Label dados_ttl_lbl;
-        private System.Windows.Forms.DataGridView mrp_dgv;
+        private System.Windows.Forms.DataGridView dgvRequisicao;
     }
 }

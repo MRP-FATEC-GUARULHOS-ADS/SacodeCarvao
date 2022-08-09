@@ -359,27 +359,27 @@ namespace MRP_SdC
             this.consultarToolStripMenuItem4,
             this.cadastrarToolStripMenuItem5});
             this.sairToolStripMenuItem1.Name = "sairToolStripMenuItem1";
-            this.sairToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.sairToolStripMenuItem1.Size = new System.Drawing.Size(119, 22);
             this.sairToolStripMenuItem1.Text = "Usuários";
             // 
             // consultarToolStripMenuItem4
             // 
             this.consultarToolStripMenuItem4.Name = "consultarToolStripMenuItem4";
-            this.consultarToolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
+            this.consultarToolStripMenuItem4.Size = new System.Drawing.Size(125, 22);
             this.consultarToolStripMenuItem4.Text = "Consultar";
             this.consultarToolStripMenuItem4.Click += new System.EventHandler(this.consultarToolStripMenuItem4_Click);
             // 
             // cadastrarToolStripMenuItem5
             // 
             this.cadastrarToolStripMenuItem5.Name = "cadastrarToolStripMenuItem5";
-            this.cadastrarToolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
+            this.cadastrarToolStripMenuItem5.Size = new System.Drawing.Size(125, 22);
             this.cadastrarToolStripMenuItem5.Text = "Cadastrar";
             this.cadastrarToolStripMenuItem5.Click += new System.EventHandler(this.cadastrarToolStripMenuItem5_Click);
             // 
             // sairToolStripMenuItem2
             // 
             this.sairToolStripMenuItem2.Name = "sairToolStripMenuItem2";
-            this.sairToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.sairToolStripMenuItem2.Size = new System.Drawing.Size(119, 22);
             this.sairToolStripMenuItem2.Text = "Sair";
             this.sairToolStripMenuItem2.Click += new System.EventHandler(this.sairToolStripMenuItem2_Click);
             // 
