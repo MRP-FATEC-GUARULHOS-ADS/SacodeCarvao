@@ -171,5 +171,10 @@ namespace MRP_SdC.Telas.Pedido
             int xiaomi = ped.idPedido;
             txtIdProduto.Text = xiaomi.ToString();
         }
+
+        private void contextMenuStrip1_Opening_1(object sender, CancelEventArgs e)
+        {
+
+        }
     }
 }

@@ -410,12 +410,13 @@ namespace MRP_SdC.Telas.Pedido
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.buscarListaToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening_1);
             // 
             // buscarListaToolStripMenuItem
             // 
             this.buscarListaToolStripMenuItem.Name = "buscarListaToolStripMenuItem";
-            this.buscarListaToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.buscarListaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.buscarListaToolStripMenuItem.Text = "Buscar Lista";
             this.buscarListaToolStripMenuItem.Click += new System.EventHandler(this.buscarListaToolStripMenuItem_Click);
             // 

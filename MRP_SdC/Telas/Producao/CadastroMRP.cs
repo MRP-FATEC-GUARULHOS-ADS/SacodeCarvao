@@ -180,7 +180,28 @@ namespace MRP_SdC.MySQL
                     //Se quantidade Final for < 0, retorna esse valor == 0.
                     if (quantidadeFinal < 0)
                     {
-                        DialogResult falta = MessageBox.Show(item.nome + "Falta Produtos. Emitir ordem de compra???" + MessageBoxButtons.YesNo);
+                        DialogResult faltaComponente = MessageBox.Show(item.nome + "Falta Produtos. Emitir ordem de compra???", "Confirmar Inserção", MessageBoxButtons.YesNo);
+
+                        if (faltaComponente == DialogResult.Yes)
+                        {
+                            //Cria um objeto do tipo DAOMRP.
+                            DAORequisicao daoReqCompra = new DAORequisicao();
+
+                            //Cria um objeto do tipo RequisicaoCompra
+                            Modelos.RequisicaoCompra requisicao = new Modelos.RequisicaoCompra();
+
+                            //Preenche os atributos do objeto requisição.
+                            requisicao.idReqCompra = 0;
+                            requisicao.idProduto = prod.idProduto;
+                            requisicao.nomeProduto = item.nome;
+                            requisicao.quantidade = -(quantidadeFinal);
+
+                            //Faz o Insert.
+                            daoReqCompra.Insert(requisicao);
+
+                            //Fecha a tela após o Cadastro.
+                            Close();
+                        }
                     }
 
                     //Faz a inserção dos valores na tabela.

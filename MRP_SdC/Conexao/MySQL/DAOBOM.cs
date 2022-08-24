@@ -223,7 +223,7 @@ namespace MRP_SdC.MySQL
                         noProduto = Convert.ToInt32(reader["noProduto"]),
                         noPai = Convert.ToInt32(reader["noPai"]),
                         codigoLista = Convert.ToInt32(reader["codigoLista"]),
-                        nome = "nome",
+                        nome = Convert.ToString(reader["nome"]),
                         nivel = Convert.ToInt32(reader["nivel"]),
                         quantidadeLista = Convert.ToInt32(reader["quantidadeLista"])
                     };
