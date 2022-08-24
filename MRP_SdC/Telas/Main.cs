@@ -261,5 +261,13 @@ namespace MRP_SdC
             //Abre o form.
             formCadastroUsuario.ShowDialog();
         }
+
+        //Abre a tela de cadastro de demanda.
+        private void demandaToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Telas.Pedido.CadastroPrevisaoDemanda formCadastroPrevisaoDemanda = new Telas.Pedido.CadastroPrevisaoDemanda();
+            //Abre o form.
+            formCadastroPrevisaoDemanda.ShowDialog();
+        }
     }
 }
