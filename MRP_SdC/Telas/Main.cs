@@ -269,5 +269,13 @@ namespace MRP_SdC
             //Abre o form.
             formCadastroPrevisaoDemanda.ShowDialog();
         }
+
+        //Abre o forms de consulta de previsão de demanda.
+        private void demandaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Telas.Pedido.frmConsultaPrevisaoDemanda frmConsultaPrevisaoDemanda = new Telas.Pedido.frmConsultaPrevisaoDemanda();
+            //Abre o form.
+            frmConsultaPrevisaoDemanda.ShowDialog();
+        }
     }
 }

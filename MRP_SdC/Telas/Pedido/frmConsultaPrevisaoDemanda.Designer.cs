@@ -1,7 +1,7 @@
 ﻿
 namespace MRP_SdC.Telas.Pedido
 {
-    partial class ConsultaPedido
+    partial class frmConsultaPrevisaoDemanda
     {
         /// <summary>
         /// Required designer variable.
@@ -29,13 +29,12 @@ namespace MRP_SdC.Telas.Pedido
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.EspEsq_pnl = new System.Windows.Forms.Panel();
             this.EspDir_pnl = new System.Windows.Forms.Panel();
-            this.ttl_lbl = new System.Windows.Forms.Label();
+            this.EspEsq_pnl = new System.Windows.Forms.Panel();
+            this.lblPrevisaoDemandaConsulta = new System.Windows.Forms.Label();
             this.pesquisa_pnl = new System.Windows.Forms.Panel();
             this.pesquisa_cont_pnl = new System.Windows.Forms.Panel();
             this.pesquisa_tbx = new System.Windows.Forms.TextBox();
@@ -43,9 +42,6 @@ namespace MRP_SdC.Telas.Pedido
             this.pesquisa_sep_pnl = new System.Windows.Forms.Panel();
             this.pesquisa_descnt_cbx = new System.Windows.Forms.CheckBox();
             this.dados_pnl = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.txtValor = new System.Windows.Forms.TextBox();
-            this.lblValor = new System.Windows.Forms.Label();
             this.btnProduzir = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtQuantidade = new System.Windows.Forms.TextBox();
@@ -62,29 +58,17 @@ namespace MRP_SdC.Telas.Pedido
             this.chart_cht = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dados_subttl_lbl = new System.Windows.Forms.Label();
             this.dados_ttl_lbl = new System.Windows.Forms.Label();
-            this.dgvPedido = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.buscarListaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dgvPrevisaoDemanda = new System.Windows.Forms.DataGridView();
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
             this.dados_pnl.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.dados_estoque_pnl.SuspendLayout();
             this.txt_Quantidade.SuspendLayout();
             this.estoque_min_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrevisaoDemanda)).BeginInit();
             this.SuspendLayout();
-            // 
-            // EspEsq_pnl
-            // 
-            this.EspEsq_pnl.Dock = System.Windows.Forms.DockStyle.Left;
-            this.EspEsq_pnl.Location = new System.Drawing.Point(0, 0);
-            this.EspEsq_pnl.Name = "EspEsq_pnl";
-            this.EspEsq_pnl.Size = new System.Drawing.Size(32, 450);
-            this.EspEsq_pnl.TabIndex = 8;
             // 
             // EspDir_pnl
             // 
@@ -92,19 +76,27 @@ namespace MRP_SdC.Telas.Pedido
             this.EspDir_pnl.Location = new System.Drawing.Point(768, 0);
             this.EspDir_pnl.Name = "EspDir_pnl";
             this.EspDir_pnl.Size = new System.Drawing.Size(32, 450);
-            this.EspDir_pnl.TabIndex = 9;
+            this.EspDir_pnl.TabIndex = 10;
             // 
-            // ttl_lbl
+            // EspEsq_pnl
             // 
-            this.ttl_lbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ttl_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ttl_lbl.Location = new System.Drawing.Point(32, 0);
-            this.ttl_lbl.Name = "ttl_lbl";
-            this.ttl_lbl.Padding = new System.Windows.Forms.Padding(0, 16, 0, 12);
-            this.ttl_lbl.Size = new System.Drawing.Size(736, 52);
-            this.ttl_lbl.TabIndex = 10;
-            this.ttl_lbl.Text = "Pedido - Consulta";
-            this.ttl_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.EspEsq_pnl.Dock = System.Windows.Forms.DockStyle.Left;
+            this.EspEsq_pnl.Location = new System.Drawing.Point(0, 0);
+            this.EspEsq_pnl.Name = "EspEsq_pnl";
+            this.EspEsq_pnl.Size = new System.Drawing.Size(32, 450);
+            this.EspEsq_pnl.TabIndex = 11;
+            // 
+            // lblPrevisaoDemandaConsulta
+            // 
+            this.lblPrevisaoDemandaConsulta.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblPrevisaoDemandaConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrevisaoDemandaConsulta.Location = new System.Drawing.Point(32, 0);
+            this.lblPrevisaoDemandaConsulta.Name = "lblPrevisaoDemandaConsulta";
+            this.lblPrevisaoDemandaConsulta.Padding = new System.Windows.Forms.Padding(0, 16, 0, 12);
+            this.lblPrevisaoDemandaConsulta.Size = new System.Drawing.Size(736, 52);
+            this.lblPrevisaoDemandaConsulta.TabIndex = 12;
+            this.lblPrevisaoDemandaConsulta.Text = "Previsão de Demanda - Consulta";
+            this.lblPrevisaoDemandaConsulta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pesquisa_pnl
             // 
@@ -114,7 +106,7 @@ namespace MRP_SdC.Telas.Pedido
             this.pesquisa_pnl.Name = "pesquisa_pnl";
             this.pesquisa_pnl.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
             this.pesquisa_pnl.Size = new System.Drawing.Size(736, 36);
-            this.pesquisa_pnl.TabIndex = 11;
+            this.pesquisa_pnl.TabIndex = 13;
             // 
             // pesquisa_cont_pnl
             // 
@@ -145,7 +137,6 @@ namespace MRP_SdC.Telas.Pedido
             this.pesquisa_btn.TabIndex = 1;
             this.pesquisa_btn.Text = "👁";
             this.pesquisa_btn.UseVisualStyleBackColor = true;
-            this.pesquisa_btn.Click += new System.EventHandler(this.pesquisa_btn_Click_1);
             // 
             // pesquisa_sep_pnl
             // 
@@ -170,7 +161,6 @@ namespace MRP_SdC.Telas.Pedido
             // dados_pnl
             // 
             this.dados_pnl.AutoScroll = true;
-            this.dados_pnl.Controls.Add(this.panel2);
             this.dados_pnl.Controls.Add(this.btnProduzir);
             this.dados_pnl.Controls.Add(this.panel1);
             this.dados_pnl.Controls.Add(this.btnAtualizaPedido);
@@ -184,36 +174,7 @@ namespace MRP_SdC.Telas.Pedido
             this.dados_pnl.Name = "dados_pnl";
             this.dados_pnl.Padding = new System.Windows.Forms.Padding(12, 24, 12, 12);
             this.dados_pnl.Size = new System.Drawing.Size(240, 362);
-            this.dados_pnl.TabIndex = 12;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.txtValor);
-            this.panel2.Controls.Add(this.lblValor);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(12, 337);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(199, 48);
-            this.panel2.TabIndex = 6;
-            // 
-            // txtValor
-            // 
-            this.txtValor.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtValor.Location = new System.Drawing.Point(0, 17);
-            this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(199, 20);
-            this.txtValor.TabIndex = 1;
-            // 
-            // lblValor
-            // 
-            this.lblValor.AutoSize = true;
-            this.lblValor.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblValor.Location = new System.Drawing.Point(0, 0);
-            this.lblValor.Name = "lblValor";
-            this.lblValor.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.lblValor.Size = new System.Drawing.Size(31, 17);
-            this.lblValor.TabIndex = 0;
-            this.lblValor.Text = "Valor";
+            this.dados_pnl.TabIndex = 14;
             // 
             // btnProduzir
             // 
@@ -223,7 +184,6 @@ namespace MRP_SdC.Telas.Pedido
             this.btnProduzir.TabIndex = 5;
             this.btnProduzir.Text = "Buscar Produto";
             this.btnProduzir.UseVisualStyleBackColor = true;
-            this.btnProduzir.Click += new System.EventHandler(this.btnProduzir_Click);
             // 
             // panel1
             // 
@@ -262,7 +222,6 @@ namespace MRP_SdC.Telas.Pedido
             this.btnAtualizaPedido.TabIndex = 0;
             this.btnAtualizaPedido.Text = "Atualizar Pedido";
             this.btnAtualizaPedido.UseVisualStyleBackColor = true;
-            this.btnAtualizaPedido.Click += new System.EventHandler(this.btnAtualizaPedido_Click);
             // 
             // btnExclusao
             // 
@@ -272,7 +231,6 @@ namespace MRP_SdC.Telas.Pedido
             this.btnExclusao.TabIndex = 1;
             this.btnExclusao.Text = "Exclusão";
             this.btnExclusao.UseVisualStyleBackColor = true;
-            this.btnExclusao.Click += new System.EventHandler(this.btnExclusao_Click);
             // 
             // dados_estoque_pnl
             // 
@@ -387,60 +345,41 @@ namespace MRP_SdC.Telas.Pedido
             this.dados_ttl_lbl.TabIndex = 0;
             this.dados_ttl_lbl.Text = "codigo";
             // 
-            // dgvPedido
+            // dgvPrevisaoDemanda
             // 
-            this.dgvPedido.AllowUserToAddRows = false;
-            this.dgvPedido.AllowUserToDeleteRows = false;
-            this.dgvPedido.BackgroundColor = System.Drawing.Color.White;
-            this.dgvPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPedido.ContextMenuStrip = this.contextMenuStrip1;
-            this.dgvPedido.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPedido.Location = new System.Drawing.Point(32, 88);
-            this.dgvPedido.MultiSelect = false;
-            this.dgvPedido.Name = "dgvPedido";
-            this.dgvPedido.ReadOnly = true;
-            this.dgvPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPedido.Size = new System.Drawing.Size(496, 362);
-            this.dgvPedido.StandardTab = true;
-            this.dgvPedido.TabIndex = 13;
-            this.dgvPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pedido_dgv_CellClick);
+            this.dgvPrevisaoDemanda.AllowUserToAddRows = false;
+            this.dgvPrevisaoDemanda.AllowUserToDeleteRows = false;
+            this.dgvPrevisaoDemanda.BackgroundColor = System.Drawing.Color.White;
+            this.dgvPrevisaoDemanda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPrevisaoDemanda.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPrevisaoDemanda.Location = new System.Drawing.Point(32, 88);
+            this.dgvPrevisaoDemanda.MultiSelect = false;
+            this.dgvPrevisaoDemanda.Name = "dgvPrevisaoDemanda";
+            this.dgvPrevisaoDemanda.ReadOnly = true;
+            this.dgvPrevisaoDemanda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPrevisaoDemanda.Size = new System.Drawing.Size(496, 362);
+            this.dgvPrevisaoDemanda.StandardTab = true;
+            this.dgvPrevisaoDemanda.TabIndex = 15;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.buscarListaToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 26);
-            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening_1);
-            // 
-            // buscarListaToolStripMenuItem
-            // 
-            this.buscarListaToolStripMenuItem.Name = "buscarListaToolStripMenuItem";
-            this.buscarListaToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.buscarListaToolStripMenuItem.Text = "Buscar Lista";
-            this.buscarListaToolStripMenuItem.Click += new System.EventHandler(this.buscarListaToolStripMenuItem_Click);
-            // 
-            // ConsultaPedido
+            // frmConsultaPrevisaoDemanda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dgvPedido);
+            this.Controls.Add(this.dgvPrevisaoDemanda);
             this.Controls.Add(this.dados_pnl);
             this.Controls.Add(this.pesquisa_pnl);
-            this.Controls.Add(this.ttl_lbl);
-            this.Controls.Add(this.EspDir_pnl);
+            this.Controls.Add(this.lblPrevisaoDemandaConsulta);
             this.Controls.Add(this.EspEsq_pnl);
-            this.Name = "ConsultaPedido";
-            this.Text = "ConsultaPedido";
-            this.Load += new System.EventHandler(this.ConsultaPedido_Load);
+            this.Controls.Add(this.EspDir_pnl);
+            this.Name = "frmConsultaPrevisaoDemanda";
+            this.Text = "frmConsultaPrevisaoDemanda";
+            this.Load += new System.EventHandler(this.frmConsultaPrevisaoDemanda_Load);
             this.pesquisa_pnl.ResumeLayout(false);
             this.pesquisa_cont_pnl.ResumeLayout(false);
             this.pesquisa_cont_pnl.PerformLayout();
             this.dados_pnl.ResumeLayout(false);
             this.dados_pnl.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.dados_estoque_pnl.ResumeLayout(false);
@@ -449,17 +388,16 @@ namespace MRP_SdC.Telas.Pedido
             this.estoque_min_pnl.ResumeLayout(false);
             this.estoque_min_pnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrevisaoDemanda)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel EspEsq_pnl;
         private System.Windows.Forms.Panel EspDir_pnl;
-        private System.Windows.Forms.Label ttl_lbl;
+        private System.Windows.Forms.Panel EspEsq_pnl;
+        private System.Windows.Forms.Label lblPrevisaoDemandaConsulta;
         private System.Windows.Forms.Panel pesquisa_pnl;
         private System.Windows.Forms.Panel pesquisa_cont_pnl;
         private System.Windows.Forms.TextBox pesquisa_tbx;
@@ -467,27 +405,22 @@ namespace MRP_SdC.Telas.Pedido
         private System.Windows.Forms.Panel pesquisa_sep_pnl;
         private System.Windows.Forms.CheckBox pesquisa_descnt_cbx;
         private System.Windows.Forms.Panel dados_pnl;
+        private System.Windows.Forms.Button btnProduzir;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox txtQuantidade;
+        private System.Windows.Forms.Label lblQuantidade;
         private System.Windows.Forms.Button btnAtualizaPedido;
         private System.Windows.Forms.Button btnExclusao;
         private System.Windows.Forms.Panel dados_estoque_pnl;
+        private System.Windows.Forms.Panel txt_Quantidade;
+        public System.Windows.Forms.TextBox txtNomeProduto;
+        private System.Windows.Forms.Label lblNomeProduto;
         private System.Windows.Forms.Panel estoque_min_pnl;
+        public System.Windows.Forms.TextBox txtIdProduto;
         private System.Windows.Forms.Label estoque_min_lbl;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart_cht;
         private System.Windows.Forms.Label dados_subttl_lbl;
         private System.Windows.Forms.Label dados_ttl_lbl;
-        private System.Windows.Forms.Panel txt_Quantidade;
-        private System.Windows.Forms.Label lblNomeProduto;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtQuantidade;
-        private System.Windows.Forms.Label lblQuantidade;
-        public System.Windows.Forms.DataGridView dgvPedido;
-        private System.Windows.Forms.Button btnProduzir;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem buscarListaToolStripMenuItem;
-        public System.Windows.Forms.TextBox txtIdProduto;
-        public System.Windows.Forms.TextBox txtNomeProduto;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox txtValor;
-        private System.Windows.Forms.Label lblValor;
+        public System.Windows.Forms.DataGridView dgvPrevisaoDemanda;
     }
 }

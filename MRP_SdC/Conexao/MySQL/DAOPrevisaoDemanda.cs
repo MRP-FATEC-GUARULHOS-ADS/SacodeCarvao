@@ -50,5 +50,50 @@ namespace MRP_SdC.MySQL
             conexao.CloseConexao();
             return true;
         }
+
+        //Método Get que traz os valores da tabela.
+        public List<PrevisaoDemanda> GetPrevisaoDemanda()
+        {
+            List<PrevisaoDemanda> listaPrevisaoDemanda = new List<PrevisaoDemanda>();
+            PrevisaoDemanda previsaoDemanda;
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT * FROM PREVISAODEMANDA;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    previsaoDemanda = new PrevisaoDemanda();
+                    {
+                        previsaoDemanda.idPrevisaoDemanda = Convert.ToInt32(reader["idPrevisaoDemanda"]);
+                        previsaoDemanda.idProduto = Convert.ToInt32(reader["idProduto"]);
+                        previsaoDemanda.nomeProduto = Convert.ToString(reader["nomeProduto"]);
+                        previsaoDemanda.quantidade = Convert.ToInt32(reader["quantidade"]);
+                    }
+
+                    listaPrevisaoDemanda.Add(previsaoDemanda);
+                }
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+            }
+            conexao.CloseConexao();
+            return listaPrevisaoDemanda;
+        }
     }
 }

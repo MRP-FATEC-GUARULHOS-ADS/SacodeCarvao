@@ -144,6 +144,12 @@
     <Compile Include="Telas\Pedido\ConsultaPedido.Designer.cs">
       <DependentUpon>ConsultaPedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Pedido\frmConsultaPrevisaoDemanda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Pedido\frmConsultaPrevisaoDemanda.Designer.cs">
+      <DependentUpon>frmConsultaPrevisaoDemanda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Producao\CadastroBOM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Pedido\ConsultaPedido.resx">
       <DependentUpon>ConsultaPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Pedido\frmConsultaPrevisaoDemanda.resx">
+      <DependentUpon>frmConsultaPrevisaoDemanda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Producao\CadastroBOM.resx">
       <DependentUpon>CadastroBOM.cs</DependentUpon>
