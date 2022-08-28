@@ -29,9 +29,9 @@ namespace MRP_SdC.Telas.Usuario
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.EspDir_pnl = new System.Windows.Forms.Panel();
             this.EspEsq_pnl = new System.Windows.Forms.Panel();
             this.ttl_lbl = new System.Windows.Forms.Label();
@@ -55,10 +55,11 @@ namespace MRP_SdC.Telas.Usuario
             this.estoque_min_pnl = new System.Windows.Forms.Panel();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
-            this.chart_cht = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dados_subttl_lbl = new System.Windows.Forms.Label();
             this.dados_ttl_lbl = new System.Windows.Forms.Label();
             this.dgvBom = new System.Windows.Forms.DataGridView();
+            this.pb_Foto = new System.Windows.Forms.PictureBox();
+            this.chart_cht = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
             this.dados_pnl.SuspendLayout();
@@ -66,8 +67,9 @@ namespace MRP_SdC.Telas.Usuario
             this.dados_estoque_pnl.SuspendLayout();
             this.estoque_max_pnl.SuspendLayout();
             this.estoque_min_pnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Foto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).BeginInit();
             this.SuspendLayout();
             // 
             // EspDir_pnl
@@ -162,6 +164,7 @@ namespace MRP_SdC.Telas.Usuario
             // dados_pnl
             // 
             this.dados_pnl.AutoScroll = true;
+            this.dados_pnl.Controls.Add(this.pb_Foto);
             this.dados_pnl.Controls.Add(this.panel1);
             this.dados_pnl.Controls.Add(this.button2);
             this.dados_pnl.Controls.Add(this.btnAtualizaMRP);
@@ -305,28 +308,6 @@ namespace MRP_SdC.Telas.Usuario
             this.lblNome.TabIndex = 0;
             this.lblNome.Text = "Nome";
             // 
-            // chart_cht
-            // 
-            this.chart_cht.BackColor = System.Drawing.SystemColors.Control;
-            chartArea1.BackColor = System.Drawing.SystemColors.Control;
-            chartArea1.Name = "ChartArea1";
-            this.chart_cht.ChartAreas.Add(chartArea1);
-            this.chart_cht.Dock = System.Windows.Forms.DockStyle.Top;
-            legend1.BackColor = System.Drawing.SystemColors.Control;
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend1.Name = "Legend1";
-            this.chart_cht.Legends.Add(legend1);
-            this.chart_cht.Location = new System.Drawing.Point(12, 58);
-            this.chart_cht.Name = "chart_cht";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart_cht.Series.Add(series1);
-            this.chart_cht.Size = new System.Drawing.Size(216, 98);
-            this.chart_cht.TabIndex = 2;
-            this.chart_cht.Text = "chart1";
-            // 
             // dados_subttl_lbl
             // 
             this.dados_subttl_lbl.AutoSize = true;
@@ -364,6 +345,39 @@ namespace MRP_SdC.Telas.Usuario
             this.dgvBom.Size = new System.Drawing.Size(496, 527);
             this.dgvBom.StandardTab = true;
             this.dgvBom.TabIndex = 14;
+            this.dgvBom.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBom_CellClick_1);
+            this.dgvBom.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBom_CellContentClick);
+            this.dgvBom.SelectionChanged += new System.EventHandler(this.dgvBom_SelectionChanged);
+            // 
+            // pb_Foto
+            // 
+            this.pb_Foto.Location = new System.Drawing.Point(15, 58);
+            this.pb_Foto.Name = "pb_Foto";
+            this.pb_Foto.Size = new System.Drawing.Size(210, 92);
+            this.pb_Foto.TabIndex = 5;
+            this.pb_Foto.TabStop = false;
+            // 
+            // chart_cht
+            // 
+            this.chart_cht.BackColor = System.Drawing.SystemColors.Control;
+            chartArea3.BackColor = System.Drawing.SystemColors.Control;
+            chartArea3.Name = "ChartArea1";
+            this.chart_cht.ChartAreas.Add(chartArea3);
+            this.chart_cht.Dock = System.Windows.Forms.DockStyle.Top;
+            legend3.BackColor = System.Drawing.SystemColors.Control;
+            legend3.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend3.Name = "Legend1";
+            this.chart_cht.Legends.Add(legend3);
+            this.chart_cht.Location = new System.Drawing.Point(12, 58);
+            this.chart_cht.Name = "chart_cht";
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart_cht.Series.Add(series3);
+            this.chart_cht.Size = new System.Drawing.Size(216, 98);
+            this.chart_cht.TabIndex = 2;
+            this.chart_cht.Text = "chart1";
             // 
             // ConsultaUsuario
             // 
@@ -378,6 +392,7 @@ namespace MRP_SdC.Telas.Usuario
             this.Controls.Add(this.EspDir_pnl);
             this.Name = "ConsultaUsuario";
             this.Text = "ConsultaUsuario";
+            this.Load += new System.EventHandler(this.ConsultaUsuario_Load);
             this.pesquisa_pnl.ResumeLayout(false);
             this.pesquisa_cont_pnl.ResumeLayout(false);
             this.pesquisa_cont_pnl.PerformLayout();
@@ -390,8 +405,9 @@ namespace MRP_SdC.Telas.Usuario
             this.estoque_max_pnl.PerformLayout();
             this.estoque_min_pnl.ResumeLayout(false);
             this.estoque_min_pnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Foto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -417,7 +433,6 @@ namespace MRP_SdC.Telas.Usuario
         private System.Windows.Forms.Panel estoque_min_pnl;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label lblNome;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart_cht;
         private System.Windows.Forms.Label dados_subttl_lbl;
         private System.Windows.Forms.Label dados_ttl_lbl;
         public System.Windows.Forms.DataGridView dgvBom;
@@ -425,5 +440,7 @@ namespace MRP_SdC.Telas.Usuario
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtAcesso;
         private System.Windows.Forms.Label lblAcesso;
+        private System.Windows.Forms.PictureBox pb_Foto;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart_cht;
     }
 }

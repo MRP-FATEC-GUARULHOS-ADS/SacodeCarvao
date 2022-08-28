@@ -12,17 +12,19 @@ namespace MRP_SdC.Modelos
         public string Nome { get; set; }
         public string Acesso { get; set; }
         public string Senha { get; set; }
+        public string Foto { get; set; }
 
         public Usuario ()
         {
 
         }
 
-        public Usuario(string Nome, string Acesso, string Senha)
+        public Usuario(string Nome, string Acesso, string Senha, string Foto)
         {
             this.Nome = Nome;
             this.Acesso = Acesso;
             this.Senha = Senha;
+            this.Foto = Foto;
         }
 
         public override string ToString()

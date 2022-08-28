@@ -43,17 +43,24 @@ namespace MRP_SdC.Telas.Usuario
             this.lblSenha = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.textbox_foto = new System.Windows.Forms.PictureBox();
+            this.btn_addFoto = new System.Windows.Forms.Button();
+            this.esp_dir_pnl.SuspendLayout();
             this.descr_pnl.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textbox_foto)).BeginInit();
             this.SuspendLayout();
             // 
             // esp_dir_pnl
             // 
+            this.esp_dir_pnl.Controls.Add(this.btn_addFoto);
+            this.esp_dir_pnl.Controls.Add(this.textbox_foto);
             this.esp_dir_pnl.Dock = System.Windows.Forms.DockStyle.Right;
-            this.esp_dir_pnl.Location = new System.Drawing.Point(262, 0);
+            this.esp_dir_pnl.Location = new System.Drawing.Point(345, 0);
             this.esp_dir_pnl.Name = "esp_dir_pnl";
-            this.esp_dir_pnl.Size = new System.Drawing.Size(32, 450);
+            this.esp_dir_pnl.Size = new System.Drawing.Size(192, 450);
             this.esp_dir_pnl.TabIndex = 9;
             // 
             // esp_esq_pnl
@@ -71,7 +78,7 @@ namespace MRP_SdC.Telas.Usuario
             this.lblCadastrarUsuario.Location = new System.Drawing.Point(32, 0);
             this.lblCadastrarUsuario.Name = "lblCadastrarUsuario";
             this.lblCadastrarUsuario.Padding = new System.Windows.Forms.Padding(0, 16, 0, 12);
-            this.lblCadastrarUsuario.Size = new System.Drawing.Size(230, 52);
+            this.lblCadastrarUsuario.Size = new System.Drawing.Size(313, 52);
             this.lblCadastrarUsuario.TabIndex = 11;
             this.lblCadastrarUsuario.Text = "Cadastrar Usuário";
             this.lblCadastrarUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -83,7 +90,7 @@ namespace MRP_SdC.Telas.Usuario
             this.descr_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.descr_pnl.Location = new System.Drawing.Point(32, 52);
             this.descr_pnl.Name = "descr_pnl";
-            this.descr_pnl.Size = new System.Drawing.Size(230, 48);
+            this.descr_pnl.Size = new System.Drawing.Size(313, 48);
             this.descr_pnl.TabIndex = 12;
             // 
             // txtNome
@@ -91,7 +98,7 @@ namespace MRP_SdC.Telas.Usuario
             this.txtNome.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtNome.Location = new System.Drawing.Point(0, 17);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(230, 20);
+            this.txtNome.Size = new System.Drawing.Size(313, 20);
             this.txtNome.TabIndex = 2;
             // 
             // lblNome
@@ -112,7 +119,7 @@ namespace MRP_SdC.Telas.Usuario
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(32, 100);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(230, 48);
+            this.panel1.Size = new System.Drawing.Size(313, 48);
             this.panel1.TabIndex = 13;
             // 
             // txtAcesso
@@ -120,7 +127,7 @@ namespace MRP_SdC.Telas.Usuario
             this.txtAcesso.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtAcesso.Location = new System.Drawing.Point(0, 17);
             this.txtAcesso.Name = "txtAcesso";
-            this.txtAcesso.Size = new System.Drawing.Size(230, 20);
+            this.txtAcesso.Size = new System.Drawing.Size(313, 20);
             this.txtAcesso.TabIndex = 2;
             // 
             // lblAcesso
@@ -141,7 +148,7 @@ namespace MRP_SdC.Telas.Usuario
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(32, 148);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(230, 48);
+            this.panel2.Size = new System.Drawing.Size(313, 48);
             this.panel2.TabIndex = 14;
             // 
             // txtSenha
@@ -149,7 +156,7 @@ namespace MRP_SdC.Telas.Usuario
             this.txtSenha.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtSenha.Location = new System.Drawing.Point(0, 17);
             this.txtSenha.Name = "txtSenha";
-            this.txtSenha.Size = new System.Drawing.Size(230, 20);
+            this.txtSenha.Size = new System.Drawing.Size(313, 20);
             this.txtSenha.TabIndex = 2;
             // 
             // lblSenha
@@ -176,7 +183,7 @@ namespace MRP_SdC.Telas.Usuario
             // btnCadastrar
             // 
             this.btnCadastrar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnCadastrar.Location = new System.Drawing.Point(150, 396);
+            this.btnCadastrar.Location = new System.Drawing.Point(190, 396);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(96, 23);
             this.btnCadastrar.TabIndex = 16;
@@ -184,11 +191,35 @@ namespace MRP_SdC.Telas.Usuario
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "JPG(*jpg)|*.jpg|PNG(*png)|*.png";
+            // 
+            // textbox_foto
+            // 
+            this.textbox_foto.Location = new System.Drawing.Point(17, 83);
+            this.textbox_foto.Name = "textbox_foto";
+            this.textbox_foto.Size = new System.Drawing.Size(85, 113);
+            this.textbox_foto.TabIndex = 0;
+            this.textbox_foto.TabStop = false;
+            // 
+            // btn_addFoto
+            // 
+            this.btn_addFoto.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btn_addFoto.Location = new System.Drawing.Point(17, 46);
+            this.btn_addFoto.Name = "btn_addFoto";
+            this.btn_addFoto.Size = new System.Drawing.Size(96, 23);
+            this.btn_addFoto.TabIndex = 17;
+            this.btn_addFoto.Text = "Add Foto";
+            this.btn_addFoto.UseVisualStyleBackColor = true;
+            this.btn_addFoto.Click += new System.EventHandler(this.btn_addFoto_Click);
+            // 
             // CadastroUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(294, 450);
+            this.ClientSize = new System.Drawing.Size(537, 450);
             this.Controls.Add(this.btnCadastrar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.panel2);
@@ -199,12 +230,14 @@ namespace MRP_SdC.Telas.Usuario
             this.Controls.Add(this.esp_dir_pnl);
             this.Name = "CadastroUsuario";
             this.Text = "CadastroUsuario";
+            this.esp_dir_pnl.ResumeLayout(false);
             this.descr_pnl.ResumeLayout(false);
             this.descr_pnl.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textbox_foto)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -225,5 +258,8 @@ namespace MRP_SdC.Telas.Usuario
         private System.Windows.Forms.Label lblSenha;
         private System.Windows.Forms.Button btnCancelar;
         public System.Windows.Forms.Button btnCadastrar;
+        public System.Windows.Forms.Button btn_addFoto;
+        private System.Windows.Forms.PictureBox textbox_foto;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

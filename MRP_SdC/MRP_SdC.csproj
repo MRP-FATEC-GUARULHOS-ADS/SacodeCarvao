@@ -61,6 +61,7 @@
     <Compile Include="Conexao\MySQL\UsuarioDAO.cs" />
     <Compile Include="Conexao\MySQL\ProdutoDAO.cs" />
     <Compile Include="Conexao\MySQL\ConexaoMPS.cs" />
+    <Compile Include="Globais.cs" />
     <Compile Include="Modelos\BOM.cs" />
     <Compile Include="Modelos\FornecedorComponente.cs" />
     <Compile Include="Modelos\MPS.cs" />
