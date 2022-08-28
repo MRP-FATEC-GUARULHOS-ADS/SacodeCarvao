@@ -145,6 +145,52 @@ namespace MRP_SdC.MySQL
             return listaPedido;
         }
 
+        public int QuantidadePedidoMps;
+        //Método que retorna o get da quantidade de pedido no cadastro do MPS.
+        public Pedido GetQuantidadePedido(string nomeProduto)
+        {
+            Pedido pedido = new Pedido();
+            Conexao conexao = new Conexao();
+            CadastroMRP cadMrp = new CadastroMRP();
+
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT quantidade FROM PEDIDO WHERE nomeProduto = @nomeProd;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                //Realiza o parâmetro do nome do produto.
+                cmd.Parameters.AddWithValue("@nomeProd", nomeProduto);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                pedido = new Pedido();
+                pedido.quantidade = Convert.ToInt32(reader["quantidade"]);
+                QuantidadePedidoMps = pedido.quantidade;
+            }
+
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+
+            conexao.CloseConexao();
+            return pedido;
+        }
+
         public int idPed;
 
         public Pedido GetIdPedido()

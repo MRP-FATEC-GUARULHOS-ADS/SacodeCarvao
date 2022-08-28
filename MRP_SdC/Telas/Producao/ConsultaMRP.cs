@@ -84,28 +84,6 @@ namespace MRP_SdC.Telas.Producao
             PesquisarProdutos();
         }
 
-        /*
-        private void btnAtualizaMRP_Click(object sender, EventArgs e)
-        {
-            MRP mrp = new MRP(int.Parse(txtProdId.Text), int.Parse(txtQntdPedido.Text),
-            int.Parse(txtQntdEstoque.Text), int.Parse(txtQntdNecesLiq.Text));
-
-            mrp.idNecesLiq = int.Parse(dados_ttl_lbl.Text);
-            DialogResult confirmarUpdate = MessageBox.Show(
-                "( ﾉ ﾟｰﾟ)ﾉ " + mrp.idProduto + " ?!", "Confirmar Update",
-                MessageBoxButtons.YesNo
-            );
-            if (confirmarUpdate == DialogResult.Yes)
-            {
-                MySQL.ConexaoMRP mrpcon = new MySQL.ConexaoMRP();
-
-                mrpcon.Update(mrp);
-
-                AtualizaListas();
-            }
-        }
-        */
-
         private void btnAtualizaMRP_Click(object sender, EventArgs e)
         {
             MRP mrp = new MRP();

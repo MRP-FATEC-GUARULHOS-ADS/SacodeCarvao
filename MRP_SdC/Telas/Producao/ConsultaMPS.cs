@@ -9,7 +9,15 @@ namespace MRP_SdC.Telas.Producao
     {
         public ConsultaMPS()
         {
-            InitializeComponent();
+            //Método try catch.
+            try
+            {
+                InitializeComponent();
+            }catch(Exception ex)
+            {
+                //Exibe a mensagem de erro.
+                MessageBox.Show(ex.Message);
+            }
         }
 
         // funcoes personalizadas
@@ -21,26 +29,37 @@ namespace MRP_SdC.Telas.Producao
             mps_dgv.DataSource = listaMPS;
         }
 
+
         private void MudaInfos()
         {
-            MPS mps = new MPS();
-            mps = mps_dgv.CurrentRow.DataBoundItem as MPS;
+            try
+            {
+                MPS mps = new MPS();
+                mps = mps_dgv.CurrentRow.DataBoundItem as MPS;
 
-            // textos do produto selecionado
-            dados_ttl_lbl.Text = mps.idMPS.ToString();
-            mps.idMPS = dados_ttl_lbl.Text;
-            dados_subttl_lbl.Text = String.Format(mps.idProduto.ToString());
-            txtProdId.Text = mps.idProduto.ToString();
-            txtQntdPedido.Text = mps.quantidadeemMaos.ToString();
-            txtQntdEstoque.Text = mps.quantidadeDisponivel.ToString();
-            txtQntdNecesLiq.Text = mps.quantidadeDemanda.ToString();
-            textBox1.Text = mps.quantidadeProduzir.ToString();
+                // textos do produto selecionado
+                dados_ttl_lbl.Text = mps.idMPS.ToString();
+                mps.idMPS = dados_ttl_lbl.Text;
+                dados_subttl_lbl.Text = String.Format(mps.idProduto.ToString());
+                txtProdId.Text = mps.idProduto.ToString();
+                txtNomeProduto.Text = mps.nomeProduto.ToString();
+                txtQuantidadePedido.Text = mps.quantidadePedido.ToString();
+                txtQuantidadePrevisaoDemanda.Text = mps.quantidadePrevisaoDemanda.ToString();
+                txtQuantidadeDemandaConsiderada.Text = mps.quantidadeDemandaConsiderada.ToString();
+                txtEstoqueAtual.Text = mps.estoqueAtual.ToString();
+                txtPlanoMestreProducao.Text = mps.planoMestreProducao.ToString();
+                txtSemana.Text = mps.semana.ToString();
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ConsultaMPS_Load(object sender, EventArgs e)
         {
             AtualizaListas();
             MudaInfos();
+           
         }
 
         private void mrp_dgv_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -53,8 +72,8 @@ namespace MRP_SdC.Telas.Producao
 
 
         // funcoes de pesquisa
-        private void PesquisarProdutos()
-        {
+        private void PesquisarProdutos() 
+        { 
             if (pesquisa_tbx.Text != "")
             {
                 MySQL.ConexaoMPS conexaomps = new MySQL.ConexaoMPS();
@@ -73,39 +92,68 @@ namespace MRP_SdC.Telas.Producao
             PesquisarProdutos();
         }
 
-        public void btnAtualizaMRP_Click(object sender, EventArgs e)
+        private void ConsultaMPS_Load_1(object sender, EventArgs e)
         {
-            MPS mps = new MPS(int.Parse(txtProdId.Text), int.Parse(txtQntdPedido.Text),int.Parse(txtQntdEstoque.Text),
-            int.Parse(txtQntdNecesLiq.Text), int.Parse(textBox1.Text));
+            //Chama o método atualiza listas.
+            AtualizaListas();
+            MudaInfos();
+        }
 
-            mps.idMPS = dados_ttl_lbl.Text;
-            DialogResult confirmarUpdate = MessageBox.Show(
-                "( ﾉ ﾟｰﾟ)ﾉ " + mps.idProduto + " ?!", "Confirmar Update",
-                MessageBoxButtons.YesNo
-            );
-            if (confirmarUpdate == DialogResult.Yes)
+        private void btnAtualizaMRP_Click_1(object sender, EventArgs e)
+        {
+            //Método try catch.
+            try
             {
-                MySQL.ConexaoMPS mpscon = new MySQL.ConexaoMPS();
+                //Passando os parâmetros para o objeto do tipo mps.
+                MPS mps = new MPS(int.Parse(txtProdId.Text), txtNomeProduto.Text, int.Parse(txtQuantidadePedido.Text),
+                int.Parse(txtQuantidadePrevisaoDemanda.Text), int.Parse(txtQuantidadeDemandaConsiderada.Text),
+                int.Parse(txtEstoqueAtual.Text), int.Parse(txtPlanoMestreProducao.Text), int.Parse(txtSemana.Text));
 
-                mpscon.Update(mps);
+                mps.idMPS = dados_ttl_lbl.Text;
+                DialogResult confirmarUpdate = MessageBox.Show(
+                    "( ﾉ ﾟｰﾟ)ﾉ " + mps.idProduto + " ?!", "Confirmar Update",
+                    MessageBoxButtons.YesNo
+                );
+                if (confirmarUpdate == DialogResult.Yes)
+                {
+                    MySQL.ConexaoMPS mpscon = new MySQL.ConexaoMPS();
 
-                AtualizaListas();
+                    mpscon.Update(mps);
+
+                    AtualizaListas();
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
+        //Método de exclusão no mps.
         private void button1_Click(object sender, EventArgs e)
         {
-            MPS mps = new MPS();
-
-            DialogResult confirmarUpdate = MessageBox.Show(
-                "( ﾉ ﾟｰﾟ)ﾉ " + mps.idMPS + " ?!", "Confirmar Delete",
-                MessageBoxButtons.YesNo);
-
-            if(confirmarUpdate == DialogResult.Yes)
+            //Método try catch
+            try
             {
-                MySQL.ConexaoMPS conexaomps = new MySQL.ConexaoMPS();
-                conexaomps.Delete(int.Parse(dados_ttl_lbl.Text));
-                AtualizaListas();
+                MPS mps = new MPS();
+
+                //preenche o valor de idMPS.
+                mps.idMPS = dados_ttl_lbl.Text;
+                //Pergunta se quer realizar a exclusão.
+                DialogResult confirmarUpdate = MessageBox.Show(
+                    "( ﾉ ﾟｰﾟ)ﾉ " + mps.idProduto + " ?!", "Confirmar Delete",
+                    MessageBoxButtons.YesNo);
+
+                if (confirmarUpdate == DialogResult.Yes)
+                {
+                    //Gerar objeto do tipo DAOMRP.
+                    MySQL.ConexaoMPS conexaomps = new MySQL.ConexaoMPS();
+                    conexaomps.Delete(int.Parse(dados_ttl_lbl.Text));
+                    //Atualizar a tabela.
+                    AtualizaListas();
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

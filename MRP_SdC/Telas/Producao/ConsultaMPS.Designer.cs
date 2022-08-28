@@ -42,21 +42,30 @@ namespace MRP_SdC.Telas.Producao
             this.pesquisa_sep_pnl = new System.Windows.Forms.Panel();
             this.pesquisa_descnt_cbx = new System.Windows.Forms.CheckBox();
             this.dados_pnl = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.txtSemana = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.txtPlanoMestreProducao = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.txtEstoqueAtual = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnAtualizaMRP = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtQuantidadeDemandaConsiderada = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dados_estoque_pnl = new System.Windows.Forms.Panel();
             this.estoque_atual_pnl = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtQntdNecesLiq = new System.Windows.Forms.TextBox();
+            this.txtQuantidadePrevisaoDemanda = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtQntdEstoque = new System.Windows.Forms.TextBox();
+            this.txtQuantidadePedido = new System.Windows.Forms.TextBox();
             this.estoque_atual_lbl = new System.Windows.Forms.Label();
             this.estoque_max_pnl = new System.Windows.Forms.Panel();
-            this.txtQntdPedido = new System.Windows.Forms.TextBox();
+            this.txtNomeProduto = new System.Windows.Forms.TextBox();
             this.estoque_max_lbl = new System.Windows.Forms.Label();
             this.estoque_min_pnl = new System.Windows.Forms.Panel();
             this.txtProdId = new System.Windows.Forms.TextBox();
@@ -68,6 +77,9 @@ namespace MRP_SdC.Telas.Producao
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
             this.dados_pnl.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.dados_estoque_pnl.SuspendLayout();
@@ -84,7 +96,7 @@ namespace MRP_SdC.Telas.Producao
             this.EspEsq_pnl.Dock = System.Windows.Forms.DockStyle.Left;
             this.EspEsq_pnl.Location = new System.Drawing.Point(0, 0);
             this.EspEsq_pnl.Name = "EspEsq_pnl";
-            this.EspEsq_pnl.Size = new System.Drawing.Size(32, 486);
+            this.EspEsq_pnl.Size = new System.Drawing.Size(32, 640);
             this.EspEsq_pnl.TabIndex = 7;
             // 
             // EspDir_pnl
@@ -92,7 +104,7 @@ namespace MRP_SdC.Telas.Producao
             this.EspDir_pnl.Dock = System.Windows.Forms.DockStyle.Right;
             this.EspDir_pnl.Location = new System.Drawing.Point(768, 0);
             this.EspDir_pnl.Name = "EspDir_pnl";
-            this.EspDir_pnl.Size = new System.Drawing.Size(32, 486);
+            this.EspDir_pnl.Size = new System.Drawing.Size(32, 640);
             this.EspDir_pnl.TabIndex = 8;
             // 
             // ttl_lbl
@@ -171,6 +183,9 @@ namespace MRP_SdC.Telas.Producao
             // dados_pnl
             // 
             this.dados_pnl.AutoScroll = true;
+            this.dados_pnl.Controls.Add(this.panel8);
+            this.dados_pnl.Controls.Add(this.panel7);
+            this.dados_pnl.Controls.Add(this.panel6);
             this.dados_pnl.Controls.Add(this.btnAtualizaMRP);
             this.dados_pnl.Controls.Add(this.button1);
             this.dados_pnl.Controls.Add(this.panel1);
@@ -182,24 +197,111 @@ namespace MRP_SdC.Telas.Producao
             this.dados_pnl.Location = new System.Drawing.Point(528, 88);
             this.dados_pnl.Name = "dados_pnl";
             this.dados_pnl.Padding = new System.Windows.Forms.Padding(12, 24, 12, 12);
-            this.dados_pnl.Size = new System.Drawing.Size(240, 398);
+            this.dados_pnl.Size = new System.Drawing.Size(240, 552);
             this.dados_pnl.TabIndex = 11;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.txtSemana);
+            this.panel8.Controls.Add(this.label7);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel8.Location = new System.Drawing.Point(12, 458);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(216, 48);
+            this.panel8.TabIndex = 11;
+            // 
+            // txtSemana
+            // 
+            this.txtSemana.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtSemana.Location = new System.Drawing.Point(0, 17);
+            this.txtSemana.Name = "txtSemana";
+            this.txtSemana.Size = new System.Drawing.Size(216, 20);
+            this.txtSemana.TabIndex = 1;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label7.Location = new System.Drawing.Point(0, 0);
+            this.label7.Name = "label7";
+            this.label7.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.label7.Size = new System.Drawing.Size(46, 17);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Semana";
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.txtPlanoMestreProducao);
+            this.panel7.Controls.Add(this.label6);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.Location = new System.Drawing.Point(12, 410);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(216, 48);
+            this.panel7.TabIndex = 10;
+            // 
+            // txtPlanoMestreProducao
+            // 
+            this.txtPlanoMestreProducao.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtPlanoMestreProducao.Location = new System.Drawing.Point(0, 17);
+            this.txtPlanoMestreProducao.Name = "txtPlanoMestreProducao";
+            this.txtPlanoMestreProducao.Size = new System.Drawing.Size(216, 20);
+            this.txtPlanoMestreProducao.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label6.Location = new System.Drawing.Point(0, 0);
+            this.label6.Name = "label6";
+            this.label6.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.label6.Size = new System.Drawing.Size(133, 17);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Plano Mestre de Produção";
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.txtEstoqueAtual);
+            this.panel6.Controls.Add(this.label5);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(12, 362);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(216, 48);
+            this.panel6.TabIndex = 9;
+            // 
+            // txtEstoqueAtual
+            // 
+            this.txtEstoqueAtual.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtEstoqueAtual.Location = new System.Drawing.Point(0, 17);
+            this.txtEstoqueAtual.Name = "txtEstoqueAtual";
+            this.txtEstoqueAtual.Size = new System.Drawing.Size(216, 20);
+            this.txtEstoqueAtual.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label5.Location = new System.Drawing.Point(0, 0);
+            this.label5.Name = "label5";
+            this.label5.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.label5.Size = new System.Drawing.Size(73, 17);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Estoque Atual";
             // 
             // btnAtualizaMRP
             // 
-            this.btnAtualizaMRP.Location = new System.Drawing.Point(15, 436);
+            this.btnAtualizaMRP.Location = new System.Drawing.Point(91, 521);
             this.btnAtualizaMRP.Name = "btnAtualizaMRP";
-            this.btnAtualizaMRP.Size = new System.Drawing.Size(171, 23);
+            this.btnAtualizaMRP.Size = new System.Drawing.Size(107, 23);
             this.btnAtualizaMRP.TabIndex = 0;
-            this.btnAtualizaMRP.Text = "Atualizar MRP";
+            this.btnAtualizaMRP.Text = "Atualizar MPS";
             this.btnAtualizaMRP.UseVisualStyleBackColor = true;
-            this.btnAtualizaMRP.Click += new System.EventHandler(this.btnAtualizaMRP_Click);
+            this.btnAtualizaMRP.Click += new System.EventHandler(this.btnAtualizaMRP_Click_1);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(15, 465);
+            this.button1.Location = new System.Drawing.Point(22, 521);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(171, 23);
+            this.button1.Size = new System.Drawing.Size(63, 23);
             this.button1.TabIndex = 1;
             this.button1.Text = "Exclusão";
             this.button1.UseVisualStyleBackColor = true;
@@ -209,28 +311,28 @@ namespace MRP_SdC.Telas.Producao
             // 
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(12, 374);
+            this.panel1.Location = new System.Drawing.Point(12, 314);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(199, 48);
+            this.panel1.Size = new System.Drawing.Size(216, 48);
             this.panel1.TabIndex = 6;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.txtQuantidadeDemandaConsiderada);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(199, 48);
+            this.panel3.Size = new System.Drawing.Size(216, 48);
             this.panel3.TabIndex = 4;
             // 
-            // textBox1
+            // txtQuantidadeDemandaConsiderada
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox1.Location = new System.Drawing.Point(0, 17);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(199, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtQuantidadeDemandaConsiderada.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtQuantidadeDemandaConsiderada.Location = new System.Drawing.Point(0, 17);
+            this.txtQuantidadeDemandaConsiderada.Name = "txtQuantidadeDemandaConsiderada";
+            this.txtQuantidadeDemandaConsiderada.Size = new System.Drawing.Size(216, 20);
+            this.txtQuantidadeDemandaConsiderada.TabIndex = 1;
             // 
             // label2
             // 
@@ -239,9 +341,9 @@ namespace MRP_SdC.Telas.Producao
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.label2.Size = new System.Drawing.Size(103, 17);
+            this.label2.Size = new System.Drawing.Size(173, 17);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Quantidade Produzir";
+            this.label2.Text = "Quantidade Demanda Considerada";
             // 
             // dados_estoque_pnl
             // 
@@ -250,39 +352,39 @@ namespace MRP_SdC.Telas.Producao
             this.dados_estoque_pnl.Controls.Add(this.estoque_max_pnl);
             this.dados_estoque_pnl.Controls.Add(this.estoque_min_pnl);
             this.dados_estoque_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dados_estoque_pnl.Location = new System.Drawing.Point(12, 193);
+            this.dados_estoque_pnl.Location = new System.Drawing.Point(12, 133);
             this.dados_estoque_pnl.Name = "dados_estoque_pnl";
-            this.dados_estoque_pnl.Size = new System.Drawing.Size(199, 181);
+            this.dados_estoque_pnl.Size = new System.Drawing.Size(216, 181);
             this.dados_estoque_pnl.TabIndex = 3;
             // 
             // estoque_atual_pnl
             // 
             this.estoque_atual_pnl.Controls.Add(this.panel2);
-            this.estoque_atual_pnl.Controls.Add(this.txtQntdEstoque);
+            this.estoque_atual_pnl.Controls.Add(this.txtQuantidadePedido);
             this.estoque_atual_pnl.Controls.Add(this.estoque_atual_lbl);
             this.estoque_atual_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.estoque_atual_pnl.Location = new System.Drawing.Point(0, 96);
             this.estoque_atual_pnl.Name = "estoque_atual_pnl";
-            this.estoque_atual_pnl.Size = new System.Drawing.Size(199, 85);
+            this.estoque_atual_pnl.Size = new System.Drawing.Size(216, 85);
             this.estoque_atual_pnl.TabIndex = 0;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.txtQntdNecesLiq);
+            this.panel2.Controls.Add(this.txtQuantidadePrevisaoDemanda);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 37);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(199, 48);
+            this.panel2.Size = new System.Drawing.Size(216, 48);
             this.panel2.TabIndex = 3;
             // 
-            // txtQntdNecesLiq
+            // txtQuantidadePrevisaoDemanda
             // 
-            this.txtQntdNecesLiq.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtQntdNecesLiq.Location = new System.Drawing.Point(0, 17);
-            this.txtQntdNecesLiq.Name = "txtQntdNecesLiq";
-            this.txtQntdNecesLiq.Size = new System.Drawing.Size(199, 20);
-            this.txtQntdNecesLiq.TabIndex = 1;
+            this.txtQuantidadePrevisaoDemanda.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtQuantidadePrevisaoDemanda.Location = new System.Drawing.Point(0, 17);
+            this.txtQuantidadePrevisaoDemanda.Name = "txtQuantidadePrevisaoDemanda";
+            this.txtQuantidadePrevisaoDemanda.Size = new System.Drawing.Size(216, 20);
+            this.txtQuantidadePrevisaoDemanda.TabIndex = 1;
             // 
             // label1
             // 
@@ -291,17 +393,17 @@ namespace MRP_SdC.Telas.Producao
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.label1.Size = new System.Drawing.Size(111, 17);
+            this.label1.Size = new System.Drawing.Size(158, 17);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Quantidade Demanda";
+            this.label1.Text = "Quantidade  Previsão Demanda";
             // 
-            // txtQntdEstoque
+            // txtQuantidadePedido
             // 
-            this.txtQntdEstoque.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtQntdEstoque.Location = new System.Drawing.Point(0, 17);
-            this.txtQntdEstoque.Name = "txtQntdEstoque";
-            this.txtQntdEstoque.Size = new System.Drawing.Size(199, 20);
-            this.txtQntdEstoque.TabIndex = 1;
+            this.txtQuantidadePedido.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtQuantidadePedido.Location = new System.Drawing.Point(0, 17);
+            this.txtQuantidadePedido.Name = "txtQuantidadePedido";
+            this.txtQuantidadePedido.Size = new System.Drawing.Size(216, 20);
+            this.txtQuantidadePedido.TabIndex = 1;
             // 
             // estoque_atual_lbl
             // 
@@ -310,27 +412,27 @@ namespace MRP_SdC.Telas.Producao
             this.estoque_atual_lbl.Location = new System.Drawing.Point(0, 0);
             this.estoque_atual_lbl.Name = "estoque_atual_lbl";
             this.estoque_atual_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.estoque_atual_lbl.Size = new System.Drawing.Size(114, 17);
+            this.estoque_atual_lbl.Size = new System.Drawing.Size(98, 17);
             this.estoque_atual_lbl.TabIndex = 0;
-            this.estoque_atual_lbl.Text = "Quantidade Disponivel";
+            this.estoque_atual_lbl.Text = "Quantidade Pedido";
             // 
             // estoque_max_pnl
             // 
-            this.estoque_max_pnl.Controls.Add(this.txtQntdPedido);
+            this.estoque_max_pnl.Controls.Add(this.txtNomeProduto);
             this.estoque_max_pnl.Controls.Add(this.estoque_max_lbl);
             this.estoque_max_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.estoque_max_pnl.Location = new System.Drawing.Point(0, 48);
             this.estoque_max_pnl.Name = "estoque_max_pnl";
-            this.estoque_max_pnl.Size = new System.Drawing.Size(199, 48);
+            this.estoque_max_pnl.Size = new System.Drawing.Size(216, 48);
             this.estoque_max_pnl.TabIndex = 2;
             // 
-            // txtQntdPedido
+            // txtNomeProduto
             // 
-            this.txtQntdPedido.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtQntdPedido.Location = new System.Drawing.Point(0, 17);
-            this.txtQntdPedido.Name = "txtQntdPedido";
-            this.txtQntdPedido.Size = new System.Drawing.Size(199, 20);
-            this.txtQntdPedido.TabIndex = 1;
+            this.txtNomeProduto.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtNomeProduto.Location = new System.Drawing.Point(0, 17);
+            this.txtNomeProduto.Name = "txtNomeProduto";
+            this.txtNomeProduto.Size = new System.Drawing.Size(216, 20);
+            this.txtNomeProduto.TabIndex = 1;
             // 
             // estoque_max_lbl
             // 
@@ -339,9 +441,9 @@ namespace MRP_SdC.Telas.Producao
             this.estoque_max_lbl.Location = new System.Drawing.Point(0, 0);
             this.estoque_max_lbl.Name = "estoque_max_lbl";
             this.estoque_max_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.estoque_max_lbl.Size = new System.Drawing.Size(108, 17);
+            this.estoque_max_lbl.Size = new System.Drawing.Size(75, 17);
             this.estoque_max_lbl.TabIndex = 0;
-            this.estoque_max_lbl.Text = "Quantidade em Maos";
+            this.estoque_max_lbl.Text = "Nome Produto";
             // 
             // estoque_min_pnl
             // 
@@ -350,7 +452,7 @@ namespace MRP_SdC.Telas.Producao
             this.estoque_min_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.estoque_min_pnl.Location = new System.Drawing.Point(0, 0);
             this.estoque_min_pnl.Name = "estoque_min_pnl";
-            this.estoque_min_pnl.Size = new System.Drawing.Size(199, 48);
+            this.estoque_min_pnl.Size = new System.Drawing.Size(216, 48);
             this.estoque_min_pnl.TabIndex = 1;
             // 
             // txtProdId
@@ -358,7 +460,7 @@ namespace MRP_SdC.Telas.Producao
             this.txtProdId.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtProdId.Location = new System.Drawing.Point(0, 17);
             this.txtProdId.Name = "txtProdId";
-            this.txtProdId.Size = new System.Drawing.Size(199, 20);
+            this.txtProdId.Size = new System.Drawing.Size(216, 20);
             this.txtProdId.TabIndex = 1;
             // 
             // estoque_min_lbl
@@ -390,7 +492,7 @@ namespace MRP_SdC.Telas.Producao
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart_cht.Series.Add(series1);
-            this.chart_cht.Size = new System.Drawing.Size(199, 135);
+            this.chart_cht.Size = new System.Drawing.Size(216, 75);
             this.chart_cht.TabIndex = 2;
             this.chart_cht.Text = "chart1";
             // 
@@ -428,7 +530,7 @@ namespace MRP_SdC.Telas.Producao
             this.mps_dgv.Name = "mps_dgv";
             this.mps_dgv.ReadOnly = true;
             this.mps_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.mps_dgv.Size = new System.Drawing.Size(496, 398);
+            this.mps_dgv.Size = new System.Drawing.Size(496, 552);
             this.mps_dgv.StandardTab = true;
             this.mps_dgv.TabIndex = 12;
             this.mps_dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mrp_dgv_CellClick);
@@ -437,7 +539,7 @@ namespace MRP_SdC.Telas.Producao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 486);
+            this.ClientSize = new System.Drawing.Size(800, 640);
             this.Controls.Add(this.mps_dgv);
             this.Controls.Add(this.dados_pnl);
             this.Controls.Add(this.pesquisa_pnl);
@@ -446,12 +548,18 @@ namespace MRP_SdC.Telas.Producao
             this.Controls.Add(this.EspEsq_pnl);
             this.Name = "ConsultaMPS";
             this.Text = "ConsultaMPS";
-            this.Load += new System.EventHandler(this.ConsultaMPS_Load);
+            this.Load += new System.EventHandler(this.ConsultaMPS_Load_1);
             this.pesquisa_pnl.ResumeLayout(false);
             this.pesquisa_cont_pnl.ResumeLayout(false);
             this.pesquisa_cont_pnl.PerformLayout();
             this.dados_pnl.ResumeLayout(false);
             this.dados_pnl.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -488,12 +596,12 @@ namespace MRP_SdC.Telas.Producao
         private System.Windows.Forms.Panel dados_estoque_pnl;
         private System.Windows.Forms.Panel estoque_atual_pnl;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox txtQntdNecesLiq;
+        private System.Windows.Forms.TextBox txtQuantidadePrevisaoDemanda;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtQntdEstoque;
+        private System.Windows.Forms.TextBox txtQuantidadePedido;
         private System.Windows.Forms.Label estoque_atual_lbl;
         private System.Windows.Forms.Panel estoque_max_pnl;
-        private System.Windows.Forms.TextBox txtQntdPedido;
+        private System.Windows.Forms.TextBox txtNomeProduto;
         private System.Windows.Forms.Label estoque_max_lbl;
         private System.Windows.Forms.Panel estoque_min_pnl;
         private System.Windows.Forms.TextBox txtProdId;
@@ -503,7 +611,16 @@ namespace MRP_SdC.Telas.Producao
         private System.Windows.Forms.Label dados_ttl_lbl;
         private System.Windows.Forms.DataGridView mps_dgv;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtQuantidadeDemandaConsiderada;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.TextBox txtSemana;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.TextBox txtPlanoMestreProducao;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.TextBox txtEstoqueAtual;
+        private System.Windows.Forms.Label label5;
     }
 }

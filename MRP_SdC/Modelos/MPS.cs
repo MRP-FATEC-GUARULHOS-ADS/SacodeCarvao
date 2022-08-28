@@ -7,10 +7,13 @@ namespace MRP_SdC
         //Atributos
         public string idMPS { get; set; }
         public int idProduto { get; set; }
-        public int quantidadeemMaos { get; set; }
-        public int quantidadeDisponivel { get; set; }
-        public int quantidadeDemanda { get; set; }
-        public int quantidadeProduzir { get; set; }
+        public string nomeProduto { get; set; }
+        public int quantidadePedido { get; set; }
+        public int quantidadePrevisaoDemanda { get; set; }
+        public int quantidadeDemandaConsiderada { get; set; }
+        public int estoqueAtual { get; set; }
+        public int planoMestreProducao { get; set; }
+        public int semana { get; set; }
 
         //Construtores
         public MPS()
@@ -20,16 +23,19 @@ namespace MRP_SdC
 
         //Construtores
         public MPS(
-            int idProduto, int quantidadeemMaos, int quantidadeDisponivel,
-            int quantidadeDemanda, int quantidadeProduzir
+            int idProduto, string nomeProduto, int quantidadePedido, int quantidadePrevisaoDemanda,
+            int quantidadeDemandaConsiderada, int estoqueAtual, int PlanoMestreProducao, int semana
         )
 
         {
             this.idProduto = idProduto;
-            this.quantidadeemMaos = quantidadeemMaos;
-            this.quantidadeDisponivel = quantidadeDisponivel;
-            this.quantidadeDemanda = quantidadeDemanda;
-            this.quantidadeProduzir = quantidadeProduzir;
+            this.nomeProduto = nomeProduto;
+            this.quantidadePedido = quantidadePedido;
+            this.quantidadePrevisaoDemanda = quantidadePrevisaoDemanda;
+            this.quantidadeDemandaConsiderada = quantidadeDemandaConsiderada;
+            this.estoqueAtual = estoqueAtual;
+            this.planoMestreProducao = planoMestreProducao;
+            this.semana = semana;
         }
 
         public override string ToString()

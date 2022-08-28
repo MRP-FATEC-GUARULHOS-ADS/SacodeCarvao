@@ -6,7 +6,7 @@ namespace MRP_SdC.MySQL
 {
     class ConexaoMPS
     {
-        public Boolean Insert(MPS mps, string id)
+        public Boolean Insert(MPS mps)
         {
             Conexao conexao = new Conexao();
             if (conexao.mErro.Length > 0)
@@ -18,20 +18,23 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO MPS ( " +
-                    "idMPS, idProduto, qntdemMaos, qntdDisponivel, qntdDemanda, qntdProduzir" +
-                    ") VALUES(@id, @idProdut, @qntdMaos, @qntdDispon, @qntdDemand, @qntdProduz); ";
+                    "idProduto, nomeProduto, quantidadePedido, quantidadePrevisaoDemanda," +
+                    "quantidadeDemandaConsiderada, estoqueAtual, PlanoMestreProducao, semana" +
+                    ") VALUES(@idProdut, @nomeProd, @qntdPed, @qntdPrev, @qntdDemandaCons, @est, @pmp, @sem); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return false;
                 }
 
-                cmd.Parameters.AddWithValue("@id", mps.idMPS);
                 cmd.Parameters.AddWithValue("@idProdut", mps.idProduto);
-                cmd.Parameters.AddWithValue("@qntdMaos", mps.quantidadeemMaos);
-                cmd.Parameters.AddWithValue("@qntdDispon", mps.quantidadeDisponivel);
-                cmd.Parameters.AddWithValue("@qntdDemand", mps.quantidadeDemanda);
-                cmd.Parameters.AddWithValue("@qntdProduz", mps.quantidadeProduzir);
+                cmd.Parameters.AddWithValue("@nomeProd", mps.nomeProduto);
+                cmd.Parameters.AddWithValue("@qntdPed", mps.quantidadePedido);
+                cmd.Parameters.AddWithValue("@qntdPrev", mps.quantidadePrevisaoDemanda);
+                cmd.Parameters.AddWithValue("@qntdDemandaCons", mps.quantidadeDemandaConsiderada);
+                cmd.Parameters.AddWithValue("@est", mps.quantidadeDemandaConsiderada);
+                cmd.Parameters.AddWithValue("@pmp", mps.quantidadeDemandaConsiderada);
+                cmd.Parameters.AddWithValue("@sem", mps.quantidadeDemandaConsiderada);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -47,6 +50,7 @@ namespace MRP_SdC.MySQL
             return true;
         }
 
+        
         public List<MPS> GetMPS()
         {
             List<MPS> listaMPS = new List<MPS>();
@@ -72,13 +76,17 @@ namespace MRP_SdC.MySQL
 
                 while (reader.Read())
                 {
+                    //Objeto mps.
                     mps = new MPS();
-                    mps.idMPS = (string)reader["idMPS"];
+                    mps.idMPS = Convert.ToString(reader["idMPS"]);
                     mps.idProduto = Convert.ToInt32(reader["idProduto"]);
-                    mps.quantidadeemMaos = Convert.ToInt32(reader["qntdemMaos"]);
-                    mps.quantidadeDisponivel = Convert.ToInt32(reader["qntdDisponivel"]);
-                    mps.quantidadeDemanda = Convert.ToInt32(reader["qntdDemanda"]);
-                    mps.quantidadeProduzir = Convert.ToInt32(reader["qntdProduzir"]);
+                    mps.nomeProduto = Convert.ToString(reader["nomeProduto"]);
+                    mps.quantidadePedido = Convert.ToInt32(reader["quantidadePedido"]);
+                    mps.quantidadePrevisaoDemanda = Convert.ToInt32(reader["quantidadePrevisaoDemanda"]);
+                    mps.quantidadeDemandaConsiderada = Convert.ToInt32(reader["quantidadeDemandaConsiderada"]);
+                    mps.estoqueAtual = Convert.ToInt32(reader["estoqueAtual"]);
+                    mps.planoMestreProducao = Convert.ToInt32(reader["PlanoMestreProducao"]);
+                    mps.semana = Convert.ToInt32(reader["semana"]);
 
                     listaMPS.Add(mps);
                 }
@@ -89,49 +97,6 @@ namespace MRP_SdC.MySQL
             }
             conexao.CloseConexao();
             return listaMPS;
-        }
-
-        public MPS Get(int idProducao)
-        {
-            MPS mps = new MPS();
-            Conexao conexao = new Conexao();
-
-            if (conexao.mErro.Length > 0)
-            {
-                return null;
-            }
-
-            try
-            {
-                MySqlDataReader reader;
-                string query = "SELECT * FROM MPS WHERE idMPS = (@id);";
-                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
-                if (!conexao.OpenConexao())
-                {
-                    return null;
-                }
-
-                cmd.Parameters.AddWithValue("@id", idProducao);
-                cmd.Prepare();
-
-                reader = cmd.ExecuteReader();
-                reader.Read();
-
-                mps = new MPS();
-                mps.idProduto = Convert.ToInt32(reader["idProduto"]);
-                mps.quantidadeemMaos = Convert.ToInt32(reader["qntdemMaos"]);
-                mps.quantidadeDisponivel = Convert.ToInt32(reader["qntdDisponivel"]);
-                mps.quantidadeDemanda = Convert.ToInt32(reader["qntdDemanda"]);
-                mps.quantidadeProduzir = Convert.ToInt32(reader["qntdProduzir"]);
-
-            }
-            catch (MySqlException e)
-            {
-                Console.WriteLine(e);
-                return null;
-            }
-            conexao.CloseConexao();
-            return mps;
         }
 
         public List<MPS> PesquisaMPS(string pesquisa)
@@ -149,12 +114,10 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
+                //SQL de select.
                 string query = "SELECT * FROM MPS " +
                     "WHERE (idProduto LIKE @pesquisa " +
-                        "OR qntdemMaos LIKE @pesquisa " +
-                        "OR qntdDisponivel LIKE @pesquisa " +
-                        "OR qntdDemanda LIKE @pesquisa " +
-                        "OR qntdProduzir LIKE @pesquisa)";
+                        "OR nomeProduto LIKE @pesquisa) "; 
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -173,10 +136,8 @@ namespace MRP_SdC.MySQL
                     {
                         idMPS = "idMPS",
                         idProduto = Convert.ToInt32(reader["idProduto"]),
-                        quantidadeemMaos = Convert.ToInt32(reader["qntdemMaos"]),
-                        quantidadeDisponivel = Convert.ToInt32(reader["qntdDisponivel"]),
-                        quantidadeDemanda = Convert.ToInt32(reader["qntdDemanda"]),
-                        quantidadeProduzir = Convert.ToInt32(reader["qntdProduzir"])
+                        //Pega o nome do produto.
+                        nomeProduto = Convert.ToString(reader["nomeProduto"]),
                     };
 
                     listaMPS.Add(mps);
@@ -203,8 +164,9 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "UPDATE MPS " +
-                    "SET idProduto = @idProd, qntdemMaos = @qntdMaos, qntdDisponivel= @qntdDispon, " +
-                    "qntdDemanda = @qntdDemand, qntdProduzir = @qntdProduz " +
+                    "SET idProduto = @idProd, nomeProduto = @nomeProd, quantidadePedido= @qntdPed, " +
+                    "quantidadePrevisaoDemanda = @qntdPrev, quantidadeDemandaConsiderada = @qntdDemanCons," +
+                    "estoqueAtual = @est, PlanoMestreProducao = @pmp, semana = @sem " +
                     "WHERE idMPS = @id; ";
 
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
@@ -213,12 +175,15 @@ namespace MRP_SdC.MySQL
                     return false;
                 }
 
+                cmd.Parameters.AddWithValue("@id", mps.idMPS);
                 cmd.Parameters.AddWithValue("@idProd", mps.idProduto);
-                cmd.Parameters.AddWithValue("@qntdMaos", mps.quantidadeemMaos);
-                cmd.Parameters.AddWithValue("@qntdDispon", mps.quantidadeDisponivel);
-                cmd.Parameters.AddWithValue("@qntdDemand", mps.quantidadeDemanda);
-                cmd.Parameters.AddWithValue("@qntdProduz", mps.quantidadeProduzir);
-                cmd.Parameters.AddWithValue("@idProduc", mps.idMPS);
+                cmd.Parameters.AddWithValue("@nomeProd", mps.nomeProduto);
+                cmd.Parameters.AddWithValue("@qntdPed", mps.quantidadePedido);
+                cmd.Parameters.AddWithValue("@qntdPrev", mps.quantidadePrevisaoDemanda);
+                cmd.Parameters.AddWithValue("@qntdDemanCons", mps.quantidadeDemandaConsiderada);
+                cmd.Parameters.AddWithValue("@est", mps.estoqueAtual);
+                cmd.Parameters.AddWithValue("@pmp", mps.planoMestreProducao);
+                cmd.Parameters.AddWithValue("@sem", mps.semana);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -254,7 +219,7 @@ namespace MRP_SdC.MySQL
                     return false;
                 }
 
-                cmd.Parameters.AddWithValue("@idMPS", id);
+                cmd.Parameters.AddWithValue("@id", id);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();

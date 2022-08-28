@@ -559,6 +559,61 @@ namespace MRP_SdC.MySQL
             return objProduto;
         }
 
+        //Variável que vai me retornar o nome do produto que vou usar no cadastro do MPS.
+        public string nomeProdutoGetIdEstoque;
+        public int idProdutoGetIdEstoque;
+        //Variável que vai me retornar o estoque atual do produto que vou usar no cadastro do MPS.
+        public int estoqueAtualGetIdEstoque;
+        //Método Get para idProduto e estoque atual a partir do nome do produto.
+        public Produto GetIdEstoque(string modeloProduto)
+        {
+            Produto objProduto;
+
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                //SQL da consulta.
+                string query = "SELECT * FROM PRODUTO WHERE modeloProduto = @modProd;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Parameters.AddWithValue("@modProd", modeloProduto);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                objProduto = new Produto();
+
+                //Recupera os dados usando reader.
+                objProduto.modelo = Convert.ToString(reader["modeloProduto"]);
+                nomeProdutoGetIdEstoque = objProduto.modelo;
+                modeloProduto = objProduto.modelo;
+                objProduto.idProduto = Convert.ToInt32(reader["idProduto"]);
+                //Preenche o valor da variável lá em cima.
+                idProdutoGetIdEstoque = objProduto.idProduto;
+                objProduto.qtdeAtual = ((reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0);
+                estoqueAtualGetIdEstoque = objProduto.qtdeAtual;
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+            conexao.CloseConexao();
+            return objProduto;
+        }
+
         public int idProd;
 
         public Produto GetIdProduto()

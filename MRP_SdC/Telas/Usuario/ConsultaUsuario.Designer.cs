@@ -42,6 +42,10 @@ namespace MRP_SdC.Telas.Usuario
             this.pesquisa_sep_pnl = new System.Windows.Forms.Panel();
             this.pesquisa_descnt_cbx = new System.Windows.Forms.CheckBox();
             this.dados_pnl = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txtAcesso = new System.Windows.Forms.TextBox();
+            this.lblAcesso = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.btnAtualizaMRP = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dados_estoque_pnl = new System.Windows.Forms.Panel();
@@ -55,19 +59,15 @@ namespace MRP_SdC.Telas.Usuario
             this.dados_subttl_lbl = new System.Windows.Forms.Label();
             this.dados_ttl_lbl = new System.Windows.Forms.Label();
             this.dgvBom = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.txtAcesso = new System.Windows.Forms.TextBox();
-            this.lblAcesso = new System.Windows.Forms.Label();
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
             this.dados_pnl.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.dados_estoque_pnl.SuspendLayout();
             this.estoque_max_pnl.SuspendLayout();
             this.estoque_min_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBom)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // EspDir_pnl
@@ -137,6 +137,7 @@ namespace MRP_SdC.Telas.Usuario
             this.pesquisa_btn.TabIndex = 1;
             this.pesquisa_btn.Text = "👁";
             this.pesquisa_btn.UseVisualStyleBackColor = true;
+            this.pesquisa_btn.Click += new System.EventHandler(this.pesquisa_btn_Click);
             // 
             // pesquisa_sep_pnl
             // 
@@ -175,6 +176,45 @@ namespace MRP_SdC.Telas.Usuario
             this.dados_pnl.Padding = new System.Windows.Forms.Padding(12, 24, 12, 12);
             this.dados_pnl.Size = new System.Drawing.Size(240, 527);
             this.dados_pnl.TabIndex = 13;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.txtAcesso);
+            this.panel1.Controls.Add(this.lblAcesso);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(12, 252);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(216, 48);
+            this.panel1.TabIndex = 4;
+            // 
+            // txtAcesso
+            // 
+            this.txtAcesso.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtAcesso.Location = new System.Drawing.Point(0, 17);
+            this.txtAcesso.Name = "txtAcesso";
+            this.txtAcesso.Size = new System.Drawing.Size(216, 20);
+            this.txtAcesso.TabIndex = 1;
+            // 
+            // lblAcesso
+            // 
+            this.lblAcesso.AutoSize = true;
+            this.lblAcesso.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblAcesso.Location = new System.Drawing.Point(0, 0);
+            this.lblAcesso.Name = "lblAcesso";
+            this.lblAcesso.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.lblAcesso.Size = new System.Drawing.Size(42, 17);
+            this.lblAcesso.TabIndex = 0;
+            this.lblAcesso.Text = "Acesso";
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button2.Location = new System.Drawing.Point(30, 384);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(171, 23);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Atualizar Usuário";
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // btnAtualizaMRP
             // 
@@ -325,45 +365,6 @@ namespace MRP_SdC.Telas.Usuario
             this.dgvBom.StandardTab = true;
             this.dgvBom.TabIndex = 14;
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button2.Location = new System.Drawing.Point(30, 384);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(171, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Atualizar Usuário";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.txtAcesso);
-            this.panel1.Controls.Add(this.lblAcesso);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(12, 252);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(216, 48);
-            this.panel1.TabIndex = 4;
-            // 
-            // txtAcesso
-            // 
-            this.txtAcesso.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtAcesso.Location = new System.Drawing.Point(0, 17);
-            this.txtAcesso.Name = "txtAcesso";
-            this.txtAcesso.Size = new System.Drawing.Size(216, 20);
-            this.txtAcesso.TabIndex = 1;
-            // 
-            // lblAcesso
-            // 
-            this.lblAcesso.AutoSize = true;
-            this.lblAcesso.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblAcesso.Location = new System.Drawing.Point(0, 0);
-            this.lblAcesso.Name = "lblAcesso";
-            this.lblAcesso.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.lblAcesso.Size = new System.Drawing.Size(42, 17);
-            this.lblAcesso.TabIndex = 0;
-            this.lblAcesso.Text = "Acesso";
-            // 
             // ConsultaUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -382,6 +383,8 @@ namespace MRP_SdC.Telas.Usuario
             this.pesquisa_cont_pnl.PerformLayout();
             this.dados_pnl.ResumeLayout(false);
             this.dados_pnl.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.dados_estoque_pnl.ResumeLayout(false);
             this.estoque_max_pnl.ResumeLayout(false);
             this.estoque_max_pnl.PerformLayout();
@@ -389,8 +392,6 @@ namespace MRP_SdC.Telas.Usuario
             this.estoque_min_pnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBom)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

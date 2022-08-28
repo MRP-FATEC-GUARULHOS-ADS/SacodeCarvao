@@ -16,5 +16,10 @@ namespace MRP_SdC.Telas.Usuario
         {
             InitializeComponent();
         }
+
+        private void pesquisa_btn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
