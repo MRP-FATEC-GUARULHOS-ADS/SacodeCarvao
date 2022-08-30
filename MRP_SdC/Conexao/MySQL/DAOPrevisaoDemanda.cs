@@ -25,8 +25,8 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO PREVISAODEMANDA ( " +
-                    "idProduto, nomeProduto, quantidade" +
-                    ") VALUES(@idProd, @nomeProd, @quant); ";
+                    "idProduto, nomeProduto, quantidade, semana" +
+                    ") VALUES(@idProd, @nomeProd, @quant, @sem); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -36,6 +36,7 @@ namespace MRP_SdC.MySQL
                 cmd.Parameters.AddWithValue("@idProd", previsao.idProduto);
                 cmd.Parameters.AddWithValue("@nomeProd", previsao.nomeProduto);
                 cmd.Parameters.AddWithValue("@quant", previsao.quantidade);
+                cmd.Parameters.AddWithValue("@sem", previsao.semana);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -94,6 +95,56 @@ namespace MRP_SdC.MySQL
             }
             conexao.CloseConexao();
             return listaPrevisaoDemanda;
+        }
+
+        public int QuantidadePrevisaoMps;
+        public int semanaMps;
+        //Método que retorna o get da quantidade de pedido no cadastro do MPS.
+        public PrevisaoDemanda GetQuantidadePrevisao(string nomeProduto)
+        {
+            PrevisaoDemanda previsao = new PrevisaoDemanda();
+            Conexao conexao = new Conexao();
+
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT * FROM PREVISAODEMANDA PD WHERE " +
+                    "semana = (SELECT MAX(semana) FROM PREVISAODEMANDA X WHERE X.nomeProduto = PD.nomeProduto)" +
+                    "AND PD.nomeProduto = @nomeProd;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                //Realiza o parâmetro do nome do produto.
+                cmd.Parameters.AddWithValue("@nomeProd", nomeProduto);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                previsao = new PrevisaoDemanda();
+                previsao.quantidade = Convert.ToInt32(reader["quantidade"]);
+                previsao.semana = Convert.ToInt32(reader["semana"]);
+                QuantidadePrevisaoMps = previsao.quantidade;
+                semanaMps = previsao.semana;
+            }
+
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+
+            conexao.CloseConexao();
+            return previsao;
         }
 
         //Método update da previsão de Demanda.

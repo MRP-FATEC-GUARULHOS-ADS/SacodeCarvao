@@ -32,9 +32,9 @@ namespace MRP_SdC.MySQL
                 cmd.Parameters.AddWithValue("@qntdPed", mps.quantidadePedido);
                 cmd.Parameters.AddWithValue("@qntdPrev", mps.quantidadePrevisaoDemanda);
                 cmd.Parameters.AddWithValue("@qntdDemandaCons", mps.quantidadeDemandaConsiderada);
-                cmd.Parameters.AddWithValue("@est", mps.quantidadeDemandaConsiderada);
-                cmd.Parameters.AddWithValue("@pmp", mps.quantidadeDemandaConsiderada);
-                cmd.Parameters.AddWithValue("@sem", mps.quantidadeDemandaConsiderada);
+                cmd.Parameters.AddWithValue("@est", mps.estoqueAtual);
+                cmd.Parameters.AddWithValue("@pmp", mps.planoMestreProducao);
+                cmd.Parameters.AddWithValue("@sem", mps.semana);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();

@@ -78,7 +78,7 @@ namespace MRP_SdC.Telas.Pedido
 
 
                 Modelos.PrevisaoDemanda previsao = new Modelos.PrevisaoDemanda(int.Parse(txtIdProduto.Text), txtNomeProduto.Text,
-                int.Parse(txtQuantidade.Text));
+                int.Parse(txtQuantidade.Text), int.Parse(txtSemana.Text));
 
                 //objeto previsão de demanda.
                 previsao.idPrevisaoDemanda = int.Parse(dados_ttl_lbl.Text);

@@ -34,9 +34,9 @@ namespace MRP_SdC.Telas.Producao
                 );
                 if (confirmarInsert == DialogResult.Yes)
                 {
-                    MySQL.ConexaoMPS mrpcon = new MySQL.ConexaoMPS();
+                    MySQL.ConexaoMPS mpscon = new MySQL.ConexaoMPS();
 
-                    mrpcon.Insert(mps);
+                    mpscon.Insert(mps);
 
                     Close();
                 }
@@ -86,6 +86,19 @@ namespace MRP_SdC.Telas.Producao
                 pedidoDao.GetQuantidadePedido(comboBox1.Text);
                 // Preenche o valor do txt com a carteira de pedido retornado da consulta.
                 txtQuantidadePedido.Text = pedidoDao.QuantidadePedidoMps.ToString();
+                MySQL.DAOPrevisaoDemanda previsaoDao = new MySQL.DAOPrevisaoDemanda();
+                previsaoDao.GetQuantidadePrevisao(comboBox1.Text);
+                txtQuantidadePrevisaoDemanda.Text = previsaoDao.QuantidadePrevisaoMps.ToString();
+                txtSemana.Text = previsaoDao.semanaMps.ToString();
+
+                if (pedidoDao.QuantidadePedidoMps > previsaoDao.QuantidadePrevisaoMps)
+                {
+                    txtQuantidadeDemandaConsiderada.Text = pedidoDao.QuantidadePedidoMps.ToString();
+                }
+                else
+                {
+                    txtQuantidadeDemandaConsiderada.Text = previsaoDao.QuantidadePrevisaoMps.ToString();
+                }
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);

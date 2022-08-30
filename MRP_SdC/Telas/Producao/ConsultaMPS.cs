@@ -156,5 +156,20 @@ namespace MRP_SdC.Telas.Producao
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void buscarÁrvoreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ConsultaBOM consultabom = new ConsultaBOM();
+                consultabom.q = int.Parse(txtProdId.Text);
+                consultabom.pesquisa_tbx.Text = txtNomeProduto.Text;
+                consultabom.Show();
+                consultabom.pesquisaBOMProduto();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

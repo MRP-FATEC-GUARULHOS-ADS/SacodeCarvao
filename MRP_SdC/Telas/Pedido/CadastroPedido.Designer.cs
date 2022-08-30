@@ -46,10 +46,14 @@ namespace MRP_SdC.Telas.Pedido
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtValor = new System.Windows.Forms.TextBox();
             this.lblValor = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.txtSemana = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.produzir_pnl.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // esp_dir_pnl
@@ -217,11 +221,41 @@ namespace MRP_SdC.Telas.Pedido
             this.lblValor.TabIndex = 0;
             this.lblValor.Text = "Valor";
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.txtSemana);
+            this.panel4.Controls.Add(this.label1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(32, 248);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(302, 48);
+            this.panel4.TabIndex = 26;
+            // 
+            // txtSemana
+            // 
+            this.txtSemana.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtSemana.Location = new System.Drawing.Point(0, 17);
+            this.txtSemana.Name = "txtSemana";
+            this.txtSemana.Size = new System.Drawing.Size(302, 20);
+            this.txtSemana.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Semana";
+            // 
             // CadastroPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(366, 450);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.btnCancela);
             this.Controls.Add(this.btnCadastro);
@@ -241,6 +275,8 @@ namespace MRP_SdC.Telas.Pedido
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -264,5 +300,8 @@ namespace MRP_SdC.Telas.Pedido
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.Label lblValor;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TextBox txtSemana;
+        private System.Windows.Forms.Label label1;
     }
 }

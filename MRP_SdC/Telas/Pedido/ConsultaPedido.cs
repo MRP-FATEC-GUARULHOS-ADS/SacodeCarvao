@@ -87,7 +87,7 @@ namespace MRP_SdC.Telas.Pedido
         {
 
             Modelos.Pedido pedido = new Modelos.Pedido(int.Parse(txtIdProduto.Text), txtNomeProduto.Text,
-            int.Parse(txtQuantidade.Text), int.Parse(txtQuantidade.Text));
+            int.Parse(txtQuantidade.Text), int.Parse(txtQuantidade.Text), int.Parse(txtSemana.Text));
 
             pedido.idPedido = int.Parse(dados_ttl_lbl.Text);
             DialogResult confirmarUpdate = MessageBox.Show(
@@ -173,6 +173,11 @@ namespace MRP_SdC.Telas.Pedido
         }
 
         private void contextMenuStrip1_Opening_1(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void dgvPedido_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

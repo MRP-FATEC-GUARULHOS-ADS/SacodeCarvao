@@ -36,6 +36,7 @@ namespace MRP_SdC.Telas.Producao
             this.txtIdProduto = new System.Windows.Forms.TextBox();
             this.maos_lbl = new System.Windows.Forms.Label();
             this.produzir_pnl = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.lblNomeProduto = new System.Windows.Forms.Label();
             this.barraInf_pnl = new System.Windows.Forms.Panel();
             this.cancelar_btn = new System.Windows.Forms.Button();
@@ -58,7 +59,6 @@ namespace MRP_SdC.Telas.Producao
             this.panel6 = new System.Windows.Forms.Panel();
             this.txtSemana = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.maos_pnl.SuspendLayout();
             this.produzir_pnl.SuspendLayout();
             this.barraInf_pnl.SuspendLayout();
@@ -136,6 +136,15 @@ namespace MRP_SdC.Telas.Producao
             this.produzir_pnl.Name = "produzir_pnl";
             this.produzir_pnl.Size = new System.Drawing.Size(272, 48);
             this.produzir_pnl.TabIndex = 15;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(3, 21);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(266, 21);
+            this.comboBox1.TabIndex = 23;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // lblNomeProduto
             // 
@@ -355,15 +364,6 @@ namespace MRP_SdC.Telas.Producao
             this.label5.Size = new System.Drawing.Size(46, 17);
             this.label5.TabIndex = 0;
             this.label5.Text = "Semana";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(3, 21);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(266, 21);
-            this.comboBox1.TabIndex = 23;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // CadastroMPS
             // 

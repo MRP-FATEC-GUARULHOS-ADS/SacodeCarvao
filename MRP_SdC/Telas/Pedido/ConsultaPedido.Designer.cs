@@ -43,6 +43,9 @@ namespace MRP_SdC.Telas.Pedido
             this.pesquisa_sep_pnl = new System.Windows.Forms.Panel();
             this.pesquisa_descnt_cbx = new System.Windows.Forms.CheckBox();
             this.dados_pnl = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.txtSemana = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtValor = new System.Windows.Forms.TextBox();
             this.lblValor = new System.Windows.Forms.Label();
@@ -68,6 +71,7 @@ namespace MRP_SdC.Telas.Pedido
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
             this.dados_pnl.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.dados_estoque_pnl.SuspendLayout();
@@ -170,6 +174,7 @@ namespace MRP_SdC.Telas.Pedido
             // dados_pnl
             // 
             this.dados_pnl.AutoScroll = true;
+            this.dados_pnl.Controls.Add(this.panel3);
             this.dados_pnl.Controls.Add(this.panel2);
             this.dados_pnl.Controls.Add(this.btnProduzir);
             this.dados_pnl.Controls.Add(this.panel1);
@@ -185,6 +190,35 @@ namespace MRP_SdC.Telas.Pedido
             this.dados_pnl.Padding = new System.Windows.Forms.Padding(12, 24, 12, 12);
             this.dados_pnl.Size = new System.Drawing.Size(240, 362);
             this.dados_pnl.TabIndex = 12;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.txtSemana);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(12, 385);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(199, 48);
+            this.panel3.TabIndex = 7;
+            // 
+            // txtSemana
+            // 
+            this.txtSemana.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtSemana.Location = new System.Drawing.Point(0, 17);
+            this.txtSemana.Name = "txtSemana";
+            this.txtSemana.Size = new System.Drawing.Size(199, 20);
+            this.txtSemana.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Semana";
             // 
             // panel2
             // 
@@ -217,9 +251,9 @@ namespace MRP_SdC.Telas.Pedido
             // 
             // btnProduzir
             // 
-            this.btnProduzir.Location = new System.Drawing.Point(15, 407);
+            this.btnProduzir.Location = new System.Drawing.Point(127, 436);
             this.btnProduzir.Name = "btnProduzir";
-            this.btnProduzir.Size = new System.Drawing.Size(171, 23);
+            this.btnProduzir.Size = new System.Drawing.Size(91, 23);
             this.btnProduzir.TabIndex = 5;
             this.btnProduzir.Text = "Buscar Produto";
             this.btnProduzir.UseVisualStyleBackColor = true;
@@ -258,7 +292,7 @@ namespace MRP_SdC.Telas.Pedido
             // 
             this.btnAtualizaPedido.Location = new System.Drawing.Point(15, 436);
             this.btnAtualizaPedido.Name = "btnAtualizaPedido";
-            this.btnAtualizaPedido.Size = new System.Drawing.Size(171, 23);
+            this.btnAtualizaPedido.Size = new System.Drawing.Size(100, 23);
             this.btnAtualizaPedido.TabIndex = 0;
             this.btnAtualizaPedido.Text = "Atualizar Pedido";
             this.btnAtualizaPedido.UseVisualStyleBackColor = true;
@@ -404,19 +438,20 @@ namespace MRP_SdC.Telas.Pedido
             this.dgvPedido.StandardTab = true;
             this.dgvPedido.TabIndex = 13;
             this.dgvPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pedido_dgv_CellClick);
+            this.dgvPedido.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellContentClick);
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.buscarListaToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening_1);
             // 
             // buscarListaToolStripMenuItem
             // 
             this.buscarListaToolStripMenuItem.Name = "buscarListaToolStripMenuItem";
-            this.buscarListaToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.buscarListaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.buscarListaToolStripMenuItem.Text = "Buscar Lista";
             this.buscarListaToolStripMenuItem.Click += new System.EventHandler(this.buscarListaToolStripMenuItem_Click);
             // 
@@ -439,6 +474,8 @@ namespace MRP_SdC.Telas.Pedido
             this.pesquisa_cont_pnl.PerformLayout();
             this.dados_pnl.ResumeLayout(false);
             this.dados_pnl.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -489,5 +526,8 @@ namespace MRP_SdC.Telas.Pedido
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.Label lblValor;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TextBox txtSemana;
+        private System.Windows.Forms.Label label1;
     }
 }

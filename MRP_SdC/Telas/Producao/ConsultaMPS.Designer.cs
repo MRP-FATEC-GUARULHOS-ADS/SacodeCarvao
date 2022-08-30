@@ -29,6 +29,7 @@ namespace MRP_SdC.Telas.Producao
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -74,6 +75,8 @@ namespace MRP_SdC.Telas.Producao
             this.dados_subttl_lbl = new System.Windows.Forms.Label();
             this.dados_ttl_lbl = new System.Windows.Forms.Label();
             this.mps_dgv = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.buscarÁrvoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
             this.dados_pnl.SuspendLayout();
@@ -89,6 +92,7 @@ namespace MRP_SdC.Telas.Producao
             this.estoque_min_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mps_dgv)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // EspEsq_pnl
@@ -524,6 +528,7 @@ namespace MRP_SdC.Telas.Producao
             this.mps_dgv.AllowUserToDeleteRows = false;
             this.mps_dgv.BackgroundColor = System.Drawing.Color.White;
             this.mps_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.mps_dgv.ContextMenuStrip = this.contextMenuStrip1;
             this.mps_dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mps_dgv.Location = new System.Drawing.Point(32, 88);
             this.mps_dgv.MultiSelect = false;
@@ -534,6 +539,20 @@ namespace MRP_SdC.Telas.Producao
             this.mps_dgv.StandardTab = true;
             this.mps_dgv.TabIndex = 12;
             this.mps_dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mrp_dgv_CellClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.buscarÁrvoreToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(148, 26);
+            // 
+            // buscarÁrvoreToolStripMenuItem
+            // 
+            this.buscarÁrvoreToolStripMenuItem.Name = "buscarÁrvoreToolStripMenuItem";
+            this.buscarÁrvoreToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.buscarÁrvoreToolStripMenuItem.Text = "Buscar Árvore";
+            this.buscarÁrvoreToolStripMenuItem.Click += new System.EventHandler(this.buscarÁrvoreToolStripMenuItem_Click);
             // 
             // ConsultaMPS
             // 
@@ -574,6 +593,7 @@ namespace MRP_SdC.Telas.Producao
             this.estoque_min_pnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mps_dgv)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -622,5 +642,7 @@ namespace MRP_SdC.Telas.Producao
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.TextBox txtEstoqueAtual;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem buscarÁrvoreToolStripMenuItem;
     }
 }

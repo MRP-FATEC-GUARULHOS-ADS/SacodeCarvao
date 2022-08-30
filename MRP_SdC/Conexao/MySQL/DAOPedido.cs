@@ -22,8 +22,8 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO PEDIDO ( " +
-                    "idProduto, nomeProduto, quantidade, valor" +
-                    ") VALUES(@idProd, @nomeProd, @quant, @val); ";
+                    "idProduto, nomeProduto, quantidade, valor, semana" +
+                    ") VALUES(@idProd, @nomeProd, @quant, @val, @sem); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -34,6 +34,7 @@ namespace MRP_SdC.MySQL
                 cmd.Parameters.AddWithValue("@nomeProd", pedido.nomeProduto);
                 cmd.Parameters.AddWithValue("@quant", pedido.quantidade);
                 cmd.Parameters.AddWithValue("@val", pedido.valor);
+                cmd.Parameters.AddWithValue("@sem", pedido.semana);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -146,6 +147,7 @@ namespace MRP_SdC.MySQL
         }
 
         public int QuantidadePedidoMps;
+        public int semanaMps;
         //Método que retorna o get da quantidade de pedido no cadastro do MPS.
         public Pedido GetQuantidadePedido(string nomeProduto)
         {
@@ -162,7 +164,9 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "SELECT quantidade FROM PEDIDO WHERE nomeProduto = @nomeProd;";
+                string query = "SELECT * FROM PEDIDO P WHERE " +
+                    "semana = (SELECT MAX(semana) FROM PEDIDO Y WHERE Y.nomeProduto = P.nomeProduto)" +
+                    "AND P.nomeProduto = @nomeProd;";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -178,7 +182,9 @@ namespace MRP_SdC.MySQL
 
                 pedido = new Pedido();
                 pedido.quantidade = Convert.ToInt32(reader["quantidade"]);
+                pedido.semana = Convert.ToInt32(reader["semana"]);
                 QuantidadePedidoMps = pedido.quantidade;
+                semanaMps = pedido.semana;
             }
 
             catch (MySqlException e)

@@ -11,6 +11,7 @@ namespace MRP_SdC.Modelos
         public string nomeProduto { get; set; }
         public int quantidade { get; set; }
         public int valor { get; set; }
+        public int semana { get; set; }
 
         //Construtores
         public Pedido()
@@ -20,7 +21,7 @@ namespace MRP_SdC.Modelos
 
         //Construtores
         public Pedido(
-            int idProduto, string nomeProduto, int quantidade, int valor
+            int idProduto, string nomeProduto, int quantidade, int valor, int semana
          )
 
         {
@@ -28,6 +29,7 @@ namespace MRP_SdC.Modelos
             this.nomeProduto = nomeProduto;
             this.quantidade = quantidade;
             this.valor = valor;
+            this.semana = semana;
         }
 
         public override string ToString()

@@ -28,7 +28,7 @@ namespace MRP_SdC.Telas.Pedido
             try
             {
                 Modelos.PrevisaoDemanda previsao = new Modelos.PrevisaoDemanda(int.Parse(txtIdProduto.Text),
-                txtNomeProduto.Text, int.Parse(txtQuantidade.Text));
+                txtNomeProduto.Text, int.Parse(txtQuantidade.Text), int.Parse(txtSemana.Text));
 
                 DialogResult confirmarInsert = MessageBox.Show(
                     "( ﾉ ﾟｰﾟ)ﾉ " + previsao.idPrevisaoDemanda + " ?!", "Confirmar Inserção",
