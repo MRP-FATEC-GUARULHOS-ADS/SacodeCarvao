@@ -78,7 +78,7 @@ namespace MRP_SdC.MySQL
                 {
                     //Objeto mps.
                     mps = new MPS();
-                    mps.idMPS = Convert.ToString(reader["idMPS"]);
+                    mps.idMPS = Convert.ToInt32(reader["idMPS"]);
                     mps.idProduto = Convert.ToInt32(reader["idProduto"]);
                     mps.nomeProduto = Convert.ToString(reader["nomeProduto"]);
                     mps.quantidadePedido = Convert.ToInt32(reader["quantidadePedido"]);
@@ -97,6 +97,56 @@ namespace MRP_SdC.MySQL
             }
             conexao.CloseConexao();
             return listaMPS;
+        }
+
+        public int PlanoMestre = 0;
+        public int GetId = 0;
+        public List<MPS> GetDemandaMPS(string nomeP)
+        {
+            List<MPS> listaMps = new List<MPS>();
+            MPS mps;
+            Conexao conexao = new Conexao();
+            CadastroMRP cadMrp = new CadastroMRP();
+
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT * FROM MPS WHERE nomeProduto = @nomeProd;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Parameters.AddWithValue("@nomeProd", nomeP);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                mps = new MPS();
+                mps.idMPS = Convert.ToInt32(reader["idMPS"]);
+                GetId = mps.idMPS;
+                mps.idProduto = Convert.ToInt32(reader["idProduto"]);
+                mps.nomeProduto = Convert.ToString(reader["nomeProduto"]);
+                mps.planoMestreProducao = Convert.ToInt32(reader["PlanoMestreProducao"]);
+                PlanoMestre = mps.planoMestreProducao;
+            }
+
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+
+            conexao.CloseConexao();
+            return listaMps;
         }
 
         public List<MPS> PesquisaMPS(string pesquisa)
@@ -134,7 +184,7 @@ namespace MRP_SdC.MySQL
                 {
                     mps = new MPS
                     {
-                        idMPS = "idMPS",
+                        idMPS = Convert.ToInt32(reader["idMPS"]),
                         idProduto = Convert.ToInt32(reader["idProduto"]),
                         //Pega o nome do produto.
                         nomeProduto = Convert.ToString(reader["nomeProduto"]),

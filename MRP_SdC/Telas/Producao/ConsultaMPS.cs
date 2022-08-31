@@ -39,7 +39,7 @@ namespace MRP_SdC.Telas.Producao
 
                 // textos do produto selecionado
                 dados_ttl_lbl.Text = mps.idMPS.ToString();
-                mps.idMPS = dados_ttl_lbl.Text;
+                mps.idMPS = int.Parse(dados_ttl_lbl.Text);
                 dados_subttl_lbl.Text = String.Format(mps.idProduto.ToString());
                 txtProdId.Text = mps.idProduto.ToString();
                 txtNomeProduto.Text = mps.nomeProduto.ToString();
@@ -57,8 +57,14 @@ namespace MRP_SdC.Telas.Producao
 
         private void ConsultaMPS_Load(object sender, EventArgs e)
         {
-            AtualizaListas();
-            MudaInfos();
+            try
+            {
+                AtualizaListas();
+                MudaInfos();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
            
         }
 
@@ -109,7 +115,7 @@ namespace MRP_SdC.Telas.Producao
                 int.Parse(txtQuantidadePrevisaoDemanda.Text), int.Parse(txtQuantidadeDemandaConsiderada.Text),
                 int.Parse(txtEstoqueAtual.Text), int.Parse(txtPlanoMestreProducao.Text), int.Parse(txtSemana.Text));
 
-                mps.idMPS = dados_ttl_lbl.Text;
+                mps.idMPS = int.Parse(dados_ttl_lbl.Text);
                 DialogResult confirmarUpdate = MessageBox.Show(
                     "( ﾉ ﾟｰﾟ)ﾉ " + mps.idProduto + " ?!", "Confirmar Update",
                     MessageBoxButtons.YesNo
@@ -137,7 +143,7 @@ namespace MRP_SdC.Telas.Producao
                 MPS mps = new MPS();
 
                 //preenche o valor de idMPS.
-                mps.idMPS = dados_ttl_lbl.Text;
+                mps.idMPS = int.Parse(dados_ttl_lbl.Text);
                 //Pergunta se quer realizar a exclusão.
                 DialogResult confirmarUpdate = MessageBox.Show(
                     "( ﾉ ﾟｰﾟ)ﾉ " + mps.idProduto + " ?!", "Confirmar Delete",
@@ -161,12 +167,17 @@ namespace MRP_SdC.Telas.Producao
         {
             try
             {
+                MySQL.DAOBOM dao = new MySQL.DAOBOM();
+                dao.GetCodigoLista(txtNomeProduto.Text);
+                MRP_Sdc.BOM bom = new MRP_Sdc.BOM();
+
+
                 ConsultaBOM consultabom = new ConsultaBOM();
-                consultabom.q = int.Parse(txtProdId.Text);
-                consultabom.pesquisa_tbx.Text = txtNomeProduto.Text;
+                consultabom.pesquisa_tbx.Text = dao.codigoListaVar.ToString();
                 consultabom.Show();
                 consultabom.pesquisaBOMProduto();
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

@@ -21,12 +21,13 @@ namespace MRP_SdC
         }
 
         public Produto(
-           string modelo, string descricao, int valor
+           string modelo, string descricao, int valor, int qtdeAtual
         )
         {
             this.modelo = modelo;
             this.descricao = descricao;
             this.valor = valor;
+            this.qtdeAtual = qtdeAtual;
         }
 
         public override string ToString()

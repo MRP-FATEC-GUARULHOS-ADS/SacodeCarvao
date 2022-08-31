@@ -93,6 +93,8 @@ namespace MRP_SdC.Telas.Producao
         public void produzirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MySQL.CadastroMRP cadMrp = new MySQL.CadastroMRP();
+            MPS mps = new MPS();
+
             Pedido.ConsultaPedido consPed = new Pedido.ConsultaPedido();
             cadMrp.cmbIdPedido.Text = dados_subttl_lbl.Text;
             cadMrp.txtIdBom.Text = txtCodigoLista.Text; 

@@ -4,7 +4,7 @@
     {
         //Atributos
         public int idMRP { get; set; }
-        public int idPedido { get; set; }
+        public int idMPS { get; set; }
         public int idProduto { get; set; }
         public string nome { get; set; }
         public int quantidadePedido { get; set; }
@@ -19,12 +19,12 @@
 
         //Construtores
         public MRP(
-            int idPedido, int idProduto, string nome, int quantidadePedido, 
+            int idMPS, int idProduto, string nome, int quantidadePedido, 
             int quantidadeEstoque, int quantidadeFinal
         )
 
         {
-            this.idPedido = idPedido;
+            this.idMPS = idMPS;
             this.idProduto = idProduto;
             this.nome = nome;
             this.quantidadePedido = quantidadePedido;

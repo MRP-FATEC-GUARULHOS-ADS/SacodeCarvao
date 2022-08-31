@@ -264,7 +264,6 @@ namespace MRP_SdC.Telas.Producao
             this.txtQuantidadeDemandaConsiderada.Name = "txtQuantidadeDemandaConsiderada";
             this.txtQuantidadeDemandaConsiderada.Size = new System.Drawing.Size(272, 20);
             this.txtQuantidadeDemandaConsiderada.TabIndex = 1;
-            this.txtQuantidadeDemandaConsiderada.TextChanged += new System.EventHandler(this.txtQuantidadeDemandaConsiderada_TextChanged);
             // 
             // label3
             // 
@@ -384,7 +383,7 @@ namespace MRP_SdC.Telas.Producao
             this.Controls.Add(this.esp_dir_pnl);
             this.Name = "CadastroMPS";
             this.Text = "CadastroMPS";
-            this.Load += new System.EventHandler(this.CadastroMPS_Load);
+            this.Load += new System.EventHandler(this.CadastroMPS_Load_1);
             this.maos_pnl.ResumeLayout(false);
             this.maos_pnl.PerformLayout();
             this.produzir_pnl.ResumeLayout(false);

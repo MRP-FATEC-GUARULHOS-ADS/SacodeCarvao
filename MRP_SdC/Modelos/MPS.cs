@@ -5,7 +5,7 @@ namespace MRP_SdC
     public class MPS
     {
         //Atributos
-        public string idMPS { get; set; }
+        public int idMPS { get; set; }
         public int idProduto { get; set; }
         public string nomeProduto { get; set; }
         public int quantidadePedido { get; set; }
@@ -34,7 +34,7 @@ namespace MRP_SdC
             this.quantidadePrevisaoDemanda = quantidadePrevisaoDemanda;
             this.quantidadeDemandaConsiderada = quantidadeDemandaConsiderada;
             this.estoqueAtual = estoqueAtual;
-            this.planoMestreProducao = planoMestreProducao;
+            this.planoMestreProducao = PlanoMestreProducao;
             this.semana = semana;
         }
 

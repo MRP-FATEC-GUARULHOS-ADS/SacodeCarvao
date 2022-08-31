@@ -20,13 +20,16 @@ namespace MRP_SdC.MySQL
         }
 
         //Variável que armazena a quantidade da Necessidade Líquida.
-        public int quantidadeFinal = 0;
+        public int quantidadeFinal;
 
         private void cadastrar_Click(object sender, EventArgs e)
         {
-            //Cria o objeto do tipo Pedido.
-            Modelos.Pedido ped = new Modelos.Pedido();
-            DAOPedido daoPed = new DAOPedido();
+            //Cria o objeto do tipo MPS.
+            MPS mps = new MPS();
+
+
+            ConexaoMPS conMps = new ConexaoMPS();
+
 
             Produto prod = new Produto();
             ProdutoDAO prodDao = new ProdutoDAO();
@@ -48,7 +51,7 @@ namespace MRP_SdC.MySQL
             foreach (BOM item in model)
             {
                 //Inicializando Variáveis locais importantes para o cálculo de estoque
-                int estoquePedido = 0;
+                int planoMestreProducao = 0;
                 int estoqueAtual = 0;
                 int subtraiEstoque = 0;
 
@@ -57,12 +60,12 @@ namespace MRP_SdC.MySQL
                 if (item.nivel == 0)
                 {
                     //Select do Pedido através do nome do produto.
-                    daoPed.Get(item.nome);
+                    conMps.GetDemandaMPS(item.nome);
                     //Retorna o id do Pedido através do Select.
-                    ped.idPedido = daoPed.GetId;
+                    mps.idMPS = conMps.GetId;
 
                     //Variável que recebe a quantidade do pedido.
-                    estoquePedido = daoPed.qnt;
+                    planoMestreProducao = conMps.PlanoMestre;
 
                     //Método que retorna as informações do produto.
                     prodDao.GetModeloProduto(item.nome);
@@ -77,12 +80,12 @@ namespace MRP_SdC.MySQL
                     estoqueAtual = prodDao.qntEst;
 
                     //Variável que realiza o cálculo de subtração no estoque
-                    subtraiEstoque = prodDao.qntEst - estoquePedido;
+                    subtraiEstoque = prodDao.qntEst - planoMestreProducao;
                     //Método que desconta o valor e atualiza o estoque atual.
                     prodDao.UpdateSaldo(subtraiEstoque, prod.idProduto);
 
                     //Variável que recebe o valor da quantidade que tem que ser produzida.
-                    quantidadeFinal = estoqueAtual - estoquePedido;
+                    quantidadeFinal = estoqueAtual - planoMestreProducao;
 
                     /*Se quantidade Final for < 0, retorna esse valor == 0.
                     if (quantidadeFinal < 0)
@@ -92,7 +95,7 @@ namespace MRP_SdC.MySQL
                     */
 
                     //Se a quantidade final for menor do que zero.
-                    if(quantidadeFinal < 0)
+                    if (quantidadeFinal < 0)
                     {
                         //Informa ao usuário que precisa repor o estoque.
                         DialogResult falta = MessageBox.Show(item.nome + "Falta Produtos. Emitir ordem de compra???", "Confirmar Inserção", MessageBoxButtons.YesNo);
@@ -106,8 +109,7 @@ namespace MRP_SdC.MySQL
                             Modelos.RequisicaoCompra requisicao = new Modelos.RequisicaoCompra();
 
                             //Preenche os atributos do objeto requisição.
-                            requisicao.idReqCompra = 0;
-                            requisicao.idProduto=prod.idProduto;
+                            requisicao.idProduto = prod.idProduto;
                             requisicao.nomeProduto = item.nome;
                             requisicao.quantidade = -(quantidadeFinal);
 
@@ -119,8 +121,8 @@ namespace MRP_SdC.MySQL
                         }
                     }
                     //Faz a inserção dos valores na tabela.
-                    mrpObjeto = new MRP(ped.idPedido, prod.idProduto, prod.modelo,
-                    estoquePedido, estoqueAtual, quantidadeFinal);
+                    mrpObjeto = new MRP(mps.idMPS, prod.idProduto, prod.modelo,
+                    planoMestreProducao, estoqueAtual, quantidadeFinal);
 
                     //Confirma o cadastro, exibindo uma mensagem.
                     DialogResult confirmarInsert = MessageBox.Show(
@@ -139,7 +141,7 @@ namespace MRP_SdC.MySQL
                 }
                 //senão
                 else
-                {   
+                {
                     //retorna o valor do No Pai.
                     int noPai = item.noPai;
 
@@ -155,7 +157,7 @@ namespace MRP_SdC.MySQL
 
                     //o valor do estoque pedido é o valor da quantidade do nó pai a ser produzido
                     //* o valor da quantidade da lista.
-                    estoquePedido = necessidadeLiquida * item.quantidadeLista;
+                    planoMestreProducao = necessidadeLiquida * item.quantidadeLista;
 
                     //Método que retorna as informações do Componente.
                     componentedao.GetModeloComponente(item.nome);
@@ -170,12 +172,12 @@ namespace MRP_SdC.MySQL
                     estoqueAtual = componentedao.quantidadeEstoque;
 
                     //Variável que realiza o cálculo de subtração no estoque
-                    subtraiEstoque = componentedao.quantidadeEstoque - estoquePedido;
+                    subtraiEstoque = componentedao.quantidadeEstoque - planoMestreProducao;
                     //Método que desconta o valor e atualiza o estoque atual.
                     componentedao.UpdateSaldo(componentedao.id, subtraiEstoque);
 
                     //Variável que recebe o valor da quantidade que tem que ser produzida.
-                    quantidadeFinal = estoquePedido - estoqueAtual;
+                    quantidadeFinal = planoMestreProducao - estoqueAtual;
 
                     //Se quantidade Final for < 0, retorna esse valor == 0.
                     if (quantidadeFinal < 0)
@@ -191,7 +193,6 @@ namespace MRP_SdC.MySQL
                             Modelos.RequisicaoCompra requisicao = new Modelos.RequisicaoCompra();
 
                             //Preenche os atributos do objeto requisição.
-                            requisicao.idReqCompra = 0;
                             requisicao.idProduto = prod.idProduto;
                             requisicao.nomeProduto = item.nome;
                             requisicao.quantidade = -(quantidadeFinal);
@@ -205,8 +206,8 @@ namespace MRP_SdC.MySQL
                     }
 
                     //Faz a inserção dos valores na tabela.
-                    MRP mrpObjetoComponente = new MRP(1, componente.id, componente.modelo,
-                    estoquePedido, estoqueAtual, quantidadeFinal);
+                    MRP mrpObjetoComponente = new MRP(mps.idMPS, componente.id, componente.modelo,
+                    planoMestreProducao, estoqueAtual, quantidadeFinal);
 
                     //Confirma o cadastro, exibindo uma mensagem.
                     DialogResult confirmarInsert = MessageBox.Show(

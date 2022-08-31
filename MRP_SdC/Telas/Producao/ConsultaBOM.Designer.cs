@@ -477,12 +477,12 @@ namespace MRP_SdC.Telas.Producao
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.produzirToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(172, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
             // 
             // produzirToolStripMenuItem
             // 
             this.produzirToolStripMenuItem.Name = "produzirToolStripMenuItem";
-            this.produzirToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.produzirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.produzirToolStripMenuItem.Text = "Calcular Producao";
             this.produzirToolStripMenuItem.Click += new System.EventHandler(this.produzirToolStripMenuItem_Click);
             // 

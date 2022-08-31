@@ -19,15 +19,15 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO MRP ( " +
-                    "idPedido, idProduto, nome, quantidadePedido, quantidadeEstoque, quantidadeFinal" +
-                    ") VALUES(@idPed, @idProd, @modelo, @qntdPed, @qntdEst, @qntdFinal);";
+                    "idMPS, idProduto, nome, quantidadePedido, quantidadeEstoque, quantidadeFinal" +
+                    ") VALUES(@idMps, @idProd, @modelo, @qntdPed, @qntdEst, @qntdFinal);";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return false;
                 }
 
-                cmd.Parameters.AddWithValue("@idPed", mrp.idPedido);
+                cmd.Parameters.AddWithValue("@idMps", mrp.idMPS);
                 cmd.Parameters.AddWithValue("@idProd", mrp.idProduto);
                 cmd.Parameters.AddWithValue("@modelo", mrp.nome);
                 cmd.Parameters.AddWithValue("@qntdPed", mrp.quantidadePedido);
@@ -167,7 +167,7 @@ namespace MRP_SdC.MySQL
                     mrp = new MRP();
                     {
                         mrp.idMRP = Convert.ToInt32(reader["idMRP"]);
-                        mrp.idPedido = Convert.ToInt32(reader["idPedido"]);
+                        mrp.idMPS = Convert.ToInt32(reader["idMPS"]);
                         mrp.idProduto = Convert.ToInt32(reader["idProduto"]);
                         mrp.nome = Convert.ToString(reader["nome"]);
                         mrp.quantidadePedido = Convert.ToInt32(reader["quantidadePedido"]);
@@ -245,7 +245,9 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
 
-                string query = "SELECT * FROM MRP WHERE nome = @modelo;";
+                string query = "SELECT * FROM MRP M WHERE " +
+                    "idMRP = (SELECT MAX(idMRP) FROM MRP X WHERE X.nome = M.nome)" +
+                    "AND M.nome = @modelo;";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
