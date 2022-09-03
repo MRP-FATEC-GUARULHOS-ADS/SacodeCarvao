@@ -101,6 +101,7 @@ namespace MRP_SdC.MySQL
 
         public int PlanoMestre = 0;
         public int GetId = 0;
+        public int DemandaConsiderada = 0;
         public List<MPS> GetDemandaMPS(string nomeP)
         {
             List<MPS> listaMps = new List<MPS>();
@@ -135,6 +136,8 @@ namespace MRP_SdC.MySQL
                 GetId = mps.idMPS;
                 mps.idProduto = Convert.ToInt32(reader["idProduto"]);
                 mps.nomeProduto = Convert.ToString(reader["nomeProduto"]);
+                mps.quantidadeDemandaConsiderada = Convert.ToInt32(reader["quantidadeDemandaConsiderada"]);
+                DemandaConsiderada = mps.quantidadeDemandaConsiderada;
                 mps.planoMestreProducao = Convert.ToInt32(reader["PlanoMestreProducao"]);
                 PlanoMestre = mps.planoMestreProducao;
             }

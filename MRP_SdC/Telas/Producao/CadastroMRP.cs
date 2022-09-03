@@ -54,6 +54,7 @@ namespace MRP_SdC.MySQL
                 int planoMestreProducao = 0;
                 int estoqueAtual = 0;
                 int subtraiEstoque = 0;
+                int demandaConsiderada = 0;
 
 
                 //Realiza se o nível do produto for 0, ou seja se for um produto acabado.
@@ -66,6 +67,7 @@ namespace MRP_SdC.MySQL
 
                     //Variável que recebe a quantidade do pedido.
                     planoMestreProducao = conMps.PlanoMestre;
+                    demandaConsiderada = conMps.DemandaConsiderada;
 
                     //Método que retorna as informações do produto.
                     prodDao.GetModeloProduto(item.nome);
@@ -80,7 +82,7 @@ namespace MRP_SdC.MySQL
                     estoqueAtual = prodDao.qntEst;
 
                     //Variável que realiza o cálculo de subtração no estoque
-                    subtraiEstoque = prodDao.qntEst - planoMestreProducao;
+                    subtraiEstoque = prodDao.qntEst - demandaConsiderada;
                     //Método que desconta o valor e atualiza o estoque atual.
                     prodDao.UpdateSaldo(subtraiEstoque, prod.idProduto);
 
@@ -94,6 +96,11 @@ namespace MRP_SdC.MySQL
                     }
                     */
 
+                    if(quantidadeFinal == 0)
+                    {
+                        quantidadeFinal = 0;
+                    }
+
                     //Se a quantidade final for menor do que zero.
                     if (quantidadeFinal < 0)
                     {
@@ -102,6 +109,8 @@ namespace MRP_SdC.MySQL
                         //Se ele confirmar a requisição de compra.
                         if (falta == DialogResult.Yes)
                         {
+                            quantidadeFinal = -quantidadeFinal;
+
                             //Cria um objeto do tipo DAOMRP.
                             DAORequisicao daoReqCompra = new DAORequisicao();
 
@@ -177,7 +186,12 @@ namespace MRP_SdC.MySQL
                     componentedao.UpdateSaldo(componentedao.id, subtraiEstoque);
 
                     //Variável que recebe o valor da quantidade que tem que ser produzida.
-                    quantidadeFinal = planoMestreProducao - estoqueAtual;
+                    quantidadeFinal = estoqueAtual - planoMestreProducao;
+
+                    if(quantidadeFinal > 0)
+                    {
+                        quantidadeFinal = 0;
+                    }
 
                     //Se quantidade Final for < 0, retorna esse valor == 0.
                     if (quantidadeFinal < 0)
@@ -186,6 +200,8 @@ namespace MRP_SdC.MySQL
 
                         if (faltaComponente == DialogResult.Yes)
                         {
+                            quantidadeFinal = -quantidadeFinal;
+
                             //Cria um objeto do tipo DAOMRP.
                             DAORequisicao daoReqCompra = new DAORequisicao();
 

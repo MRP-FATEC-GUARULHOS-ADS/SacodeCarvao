@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using MRP_SdC;
 using MRP_SdC.Modelos;
 
 namespace MRP_SdC.MySQL
 {
-    class DAORequisicao
+    class EntregaDAO
     {
-        public Boolean Insert(RequisicaoCompra req)
+        public Boolean Insert(Entrega entrega)
         {
-            Conexao conexao = new MySQL.Conexao();
+            Conexao conexao = new Conexao();
 
             if (conexao.mErro.Length > 0)
             {
@@ -19,18 +23,18 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "INSERT INTO REQUISICAOCOMPRA ( " +
-                    "idProduto, nomeProduto, quantidade" +
-                    ") VALUES(@idProd, @nomeProd, @qntd);";
+                string query = "INSERT INTO ENTREGA ( " +
+                    "idProduto, nome, quantidade" +
+                    ") VALUES(@idProd, @modelo, @qntd);";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return false;
                 }
 
-                cmd.Parameters.AddWithValue("@idProd", req.idProduto);
-                cmd.Parameters.AddWithValue("@nomeProd", req.nomeProduto);
-                cmd.Parameters.AddWithValue("@qntd", req.quantidade);
+                cmd.Parameters.AddWithValue("@idProd", entrega.idProduto);
+                cmd.Parameters.AddWithValue("@modelo", entrega.nomeProduto);
+                cmd.Parameters.AddWithValue("@qntd",   entrega.quantidade);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -46,10 +50,10 @@ namespace MRP_SdC.MySQL
             return true;
         }
 
-        public List<RequisicaoCompra> GetRequisicao()
+        public List <Entrega> GetEntrega()
         {
-            List<RequisicaoCompra> listaRequisicao = new List<RequisicaoCompra>();
-            RequisicaoCompra requisicao;
+            List<Entrega> listaEntrega = new List<Entrega>();
+            Entrega entrega;
             Conexao conexao = new Conexao();
 
             if (conexao.mErro.Length > 0)
@@ -60,7 +64,7 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "SELECT * FROM REQUISICAOCOMPRA;";
+                string query = "SELECT * FROM ENTREGA;";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -71,15 +75,15 @@ namespace MRP_SdC.MySQL
 
                 while (reader.Read())
                 {
-                    requisicao = new RequisicaoCompra();
+                    entrega = new Entrega();
                     {
-                        requisicao.idReqCompra = Convert.ToInt32(reader["idReqCompra"]);
-                        requisicao.idProduto = Convert.ToInt32(reader["idProduto"]);
-                        requisicao.nomeProduto = Convert.ToString(reader["nomeProduto"]);
-                        requisicao.quantidade = Convert.ToInt32(reader["quantidade"]);
+                        entrega.idEntrega = Convert.ToInt32(reader["idEntrega"]);
+                        entrega.idProduto = Convert.ToInt32(reader["idProduto"]);
+                        entrega.nomeProduto = Convert.ToString(reader["nome"]);
+                        entrega.quantidade = Convert.ToInt32(reader["quantidade"]);
                     }
 
-                    listaRequisicao.Add(requisicao);
+                    listaEntrega.Add(entrega);
                 }
             }
             catch (MySqlException e)
@@ -87,7 +91,7 @@ namespace MRP_SdC.MySQL
                 Console.WriteLine(e);
             }
             conexao.CloseConexao();
-            return listaRequisicao;
+            return listaEntrega;
         }
     }
 }

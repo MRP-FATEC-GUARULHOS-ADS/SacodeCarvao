@@ -110,6 +110,7 @@ namespace MRP_SdC
             this.user_ttl_txb = new System.Windows.Forms.Label();
             this.user_img_pnl = new System.Windows.Forms.Panel();
             this.logo_pnl = new System.Windows.Forms.Panel();
+            this.entregaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.menu_dir_pnl.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -296,6 +297,8 @@ namespace MRP_SdC
             // 
             // fornecedoresToolStripMenuItem1
             // 
+            this.fornecedoresToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.entregaToolStripMenuItem});
             this.fornecedoresToolStripMenuItem1.Name = "fornecedoresToolStripMenuItem1";
             this.fornecedoresToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.fornecedoresToolStripMenuItem1.Text = "Fornecedores";
@@ -905,6 +908,13 @@ namespace MRP_SdC
             this.logo_pnl.Size = new System.Drawing.Size(56, 56);
             this.logo_pnl.TabIndex = 0;
             // 
+            // entregaToolStripMenuItem
+            // 
+            this.entregaToolStripMenuItem.Name = "entregaToolStripMenuItem";
+            this.entregaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.entregaToolStripMenuItem.Text = "Entrega";
+            this.entregaToolStripMenuItem.Click += new System.EventHandler(this.entregaToolStripMenuItem_Click);
+            // 
             // Main_frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1033,6 +1043,7 @@ namespace MRP_SdC
         private System.Windows.Forms.ToolStripMenuItem cadastrarToolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem demandaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem demandaToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem entregaToolStripMenuItem;
     }
 }
 

@@ -277,5 +277,11 @@ namespace MRP_SdC
             //Abre o form.
             frmConsultaPrevisaoDemanda.ShowDialog();
         }
+
+        private void entregaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Telas.Fornecedores.frmConsultaEntrega frmConsEntrega = new Telas.Fornecedores.frmConsultaEntrega();
+            frmConsEntrega.ShowDialog();
+        }
     }
 }

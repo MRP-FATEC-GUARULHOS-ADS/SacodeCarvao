@@ -56,6 +56,7 @@
     <Compile Include="Conexao\MySQL\DAOPedido.cs" />
     <Compile Include="Conexao\MySQL\DAOPrevisaoDemanda.cs" />
     <Compile Include="Conexao\MySQL\DAORequisicao.cs" />
+    <Compile Include="Conexao\MySQL\EntregaDAO.cs" />
     <Compile Include="Conexao\MySQL\FornecedorComponenteDAO.cs" />
     <Compile Include="Conexao\MySQL\FornecedorDAO.cs" />
     <Compile Include="Conexao\MySQL\UsuarioDAO.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Conexao\MySQL\ConexaoMPS.cs" />
     <Compile Include="Globais.cs" />
     <Compile Include="Modelos\BOM.cs" />
+    <Compile Include="Modelos\Entrega.cs" />
     <Compile Include="Modelos\FornecedorComponente.cs" />
     <Compile Include="Modelos\MPS.cs" />
     <Compile Include="Modelos\Componente.cs" />
@@ -73,6 +75,12 @@
     <Compile Include="Modelos\Produto.cs" />
     <Compile Include="Modelos\RequisicaoCompra.cs" />
     <Compile Include="Modelos\Usuario.cs" />
+    <Compile Include="Telas\Fornecedores\frmConsultaEntrega.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Fornecedores\frmConsultaEntrega.Designer.cs">
+      <DependentUpon>frmConsultaEntrega.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,6 +257,9 @@
     <Compile Include="Telas\Usuario\ConsultaUsuario.Designer.cs">
       <DependentUpon>ConsultaUsuario.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Telas\Fornecedores\frmConsultaEntrega.resx">
+      <DependentUpon>frmConsultaEntrega.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
