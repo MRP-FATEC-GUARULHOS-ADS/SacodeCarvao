@@ -59,6 +59,7 @@ namespace MRP_SdC.Telas.Producao
             try
             {
                 MySQL.ProdutoDAO produtoDao = new MySQL.ProdutoDAO();
+                produtoDao.PesquisaProdutos(comboBox1.Text);
                 //Chama o get que busca o id do produto e sua quantidade no estoque atual.
                 produtoDao.GetIdEstoque(comboBox1.Text);
                 txtEstoqueAtual.Text = produtoDao.estoqueAtualGetIdEstoque.ToString();

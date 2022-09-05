@@ -37,8 +37,6 @@ namespace MRP_SdC.Telas.Pedido
             this.txt_idProduto = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.txtNomeProduto = new System.Windows.Forms.TextBox();
             this.lblNomeProduto = new System.Windows.Forms.Label();
             this.btnCadastro = new System.Windows.Forms.Button();
             this.btnCancela = new System.Windows.Forms.Button();
@@ -48,6 +46,7 @@ namespace MRP_SdC.Telas.Pedido
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtSemana = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.cmbNomeProduto = new System.Windows.Forms.ComboBox();
             this.produzir_pnl.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -115,7 +114,6 @@ namespace MRP_SdC.Telas.Pedido
             // panel1
             // 
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.txtNomeProduto);
             this.panel1.Controls.Add(this.lblNomeProduto);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(32, 104);
@@ -125,28 +123,12 @@ namespace MRP_SdC.Telas.Pedido
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.cmbNomeProduto);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 37);
+            this.panel2.Location = new System.Drawing.Point(0, 17);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(279, 48);
             this.panel2.TabIndex = 23;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox1.Location = new System.Drawing.Point(0, 0);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(279, 20);
-            this.textBox1.TabIndex = 2;
-            // 
-            // txtNomeProduto
-            // 
-            this.txtNomeProduto.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtNomeProduto.Location = new System.Drawing.Point(0, 17);
-            this.txtNomeProduto.Name = "txtNomeProduto";
-            this.txtNomeProduto.Size = new System.Drawing.Size(279, 20);
-            this.txtNomeProduto.TabIndex = 1;
             // 
             // lblNomeProduto
             // 
@@ -238,6 +220,14 @@ namespace MRP_SdC.Telas.Pedido
             this.label1.TabIndex = 0;
             this.label1.Text = "Semana";
             // 
+            // cmbNomeProduto
+            // 
+            this.cmbNomeProduto.FormattingEnabled = true;
+            this.cmbNomeProduto.Location = new System.Drawing.Point(0, 3);
+            this.cmbNomeProduto.Name = "cmbNomeProduto";
+            this.cmbNomeProduto.Size = new System.Drawing.Size(266, 21);
+            this.cmbNomeProduto.TabIndex = 24;
+            // 
             // CadastroPrevisaoDemanda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -260,7 +250,6 @@ namespace MRP_SdC.Telas.Pedido
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -278,17 +267,16 @@ namespace MRP_SdC.Telas.Pedido
         private System.Windows.Forms.TextBox txtIdProduto;
         private System.Windows.Forms.Label txt_idProduto;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtNomeProduto;
         private System.Windows.Forms.Label lblNomeProduto;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnCadastro;
         private System.Windows.Forms.Button btnCancela;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox txtQuantidade;
         private System.Windows.Forms.Label lblQuantidade;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox txtSemana;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbNomeProduto;
     }
 }

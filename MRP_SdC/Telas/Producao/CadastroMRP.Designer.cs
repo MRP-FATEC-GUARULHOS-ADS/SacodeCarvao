@@ -100,9 +100,9 @@ namespace MRP_SdC.MySQL
             this.lblIdPedido.Location = new System.Drawing.Point(0, 0);
             this.lblIdPedido.Name = "lblIdPedido";
             this.lblIdPedido.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.lblIdPedido.Size = new System.Drawing.Size(52, 17);
+            this.lblIdPedido.Size = new System.Drawing.Size(75, 17);
             this.lblIdPedido.TabIndex = 0;
-            this.lblIdPedido.Text = "Id Pedido";
+            this.lblIdPedido.Text = "Nome Produto";
             // 
             // barraInf_pnl
             // 
@@ -162,9 +162,9 @@ namespace MRP_SdC.MySQL
             this.lblIdBom.Location = new System.Drawing.Point(32, 114);
             this.lblIdBom.Name = "lblIdBom";
             this.lblIdBom.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.lblIdBom.Size = new System.Drawing.Size(40, 17);
+            this.lblIdBom.Size = new System.Drawing.Size(105, 17);
             this.lblIdBom.TabIndex = 22;
-            this.lblIdBom.Text = "Id Bom";
+            this.lblIdBom.Text = "Id Árvore do Produto";
             // 
             // CadastroMRP
             // 

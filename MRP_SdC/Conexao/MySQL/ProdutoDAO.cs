@@ -393,6 +393,7 @@ namespace MRP_SdC.MySQL
             return listaProdutos;
         }
 
+        public string produtoLocalizado;
         public List<Produto> PesquisaProdutos(string pesquisa)
         {
             List<Produto> listaProdutos = new List<Produto>();
@@ -438,7 +439,7 @@ namespace MRP_SdC.MySQL
                         qtdeAtual = ( (reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0 ),
                         estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false)
                     };
-
+                    produtoLocalizado = objProduto.modelo;
                     listaProdutos.Add(objProduto);
                 }
             }
@@ -495,7 +496,6 @@ namespace MRP_SdC.MySQL
                         qtdeAtual = ((reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0),
                         estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false)
                     };
-                    pesquisaModelo = objProduto.modelo;
                     listaProdutos.Add(objProduto);
                 }
             }
@@ -693,6 +693,57 @@ namespace MRP_SdC.MySQL
 
                 id = objProduto.idProduto;
                 nomeProdutoBom = objProduto.modelo;
+
+
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+            conexao.CloseConexao();
+            return objProduto;
+        }
+
+        public Produto GetModeloMPS(string pesquisa)
+        {
+            Produto objProduto;
+
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT * FROM PRODUTO " +
+                    "WHERE (idProduto LIKE @pesquisa " +
+                        "OR modeloProduto LIKE '%" + pesquisa + "%' " +
+                        "OR descrProduto LIKE @pesquisa) " +
+                        "AND estado = 'P';";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Parameters.AddWithValue("@pesquisa", pesquisa);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                objProduto = new Produto();
+                objProduto.idProduto = Convert.ToInt32(reader["idProduto"]);
+                objProduto.modelo = Convert.ToString(reader["modeloProduto"]);
+                //produtoLocalizado = objProduto.modelo;
+
+                id = objProduto.idProduto;
+
 
 
 

@@ -13,7 +13,7 @@ namespace MRP_SdC.Telas.Pedido
         private void btnCadastro_Click(object sender, EventArgs e)
         {
             Modelos.Pedido pedido = new Modelos.Pedido(int.Parse(txtIdProduto.Text),
-            txtNomeProduto.Text, int.Parse(txtQuantidade.Text), int.Parse(txtValor.Text), int.Parse(txtSemana.Text));
+            cmbNomeProduto.Text, int.Parse(txtQuantidade.Text), int.Parse(txtValor.Text), int.Parse(txtSemana.Text));
 
             DialogResult confirmarInsert = MessageBox.Show(
                 "( ﾉ ﾟｰﾟ)ﾉ " + pedido.idPedido + " ?!", "Confirmar Inserção",
@@ -26,6 +26,22 @@ namespace MRP_SdC.Telas.Pedido
                 pedidocon.Insert(pedido);
 
                 Close();
+            }
+        }
+
+        private void CadastroPedido_Load(object sender, EventArgs e)
+        {
+            //Objeto Produto.
+            Produto produto = new Produto();
+            //Objeto ProdutoDAO.
+            MySQL.ProdutoDAO produtoDao = new MySQL.ProdutoDAO();
+
+            //Variável que vai trazer os valores do banco de dados.
+            var model = produtoDao.GetListaBom();
+
+            foreach (Produto item in model)
+            {
+                cmbNomeProduto.Items.Add(item);
             }
         }
     }

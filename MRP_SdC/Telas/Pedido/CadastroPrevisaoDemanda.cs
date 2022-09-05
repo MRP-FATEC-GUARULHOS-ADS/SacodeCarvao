@@ -19,7 +19,18 @@ namespace MRP_SdC.Telas.Pedido
 
         private void CadastroPrevisaoDemanda_Load(object sender, EventArgs e)
         {
+            //Objeto Produto.
+            Produto produto = new Produto();
+            //Objeto ProdutoDAO.
+            MySQL.ProdutoDAO produtoDao = new MySQL.ProdutoDAO();
 
+            //Variável que vai trazer os valores do banco de dados.
+            var model = produtoDao.GetListaBom();
+
+            foreach (Produto item in model)
+            {
+                cmbNomeProduto.Items.Add(item);
+            }
         }
 
         private void btnCadastro_Click(object sender, EventArgs e)
@@ -28,7 +39,7 @@ namespace MRP_SdC.Telas.Pedido
             try
             {
                 Modelos.PrevisaoDemanda previsao = new Modelos.PrevisaoDemanda(int.Parse(txtIdProduto.Text),
-                txtNomeProduto.Text, int.Parse(txtQuantidade.Text), int.Parse(txtSemana.Text));
+                cmbNomeProduto.Text, int.Parse(txtQuantidade.Text), int.Parse(txtSemana.Text));
 
                 DialogResult confirmarInsert = MessageBox.Show(
                     "( ﾉ ﾟｰﾟ)ﾉ " + previsao.idPrevisaoDemanda + " ?!", "Confirmar Inserção",

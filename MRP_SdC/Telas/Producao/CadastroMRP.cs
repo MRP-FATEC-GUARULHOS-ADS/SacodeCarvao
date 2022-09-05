@@ -83,6 +83,12 @@ namespace MRP_SdC.MySQL
 
                     //Variável que realiza o cálculo de subtração no estoque
                     subtraiEstoque = prodDao.qntEst - demandaConsiderada;
+
+                    if(subtraiEstoque < 0)
+                    {
+                        subtraiEstoque = 0;
+                    }
+
                     //Método que desconta o valor e atualiza o estoque atual.
                     prodDao.UpdateSaldo(subtraiEstoque, prod.idProduto);
 
@@ -182,6 +188,13 @@ namespace MRP_SdC.MySQL
 
                     //Variável que realiza o cálculo de subtração no estoque
                     subtraiEstoque = componentedao.quantidadeEstoque - planoMestreProducao;
+
+                    if (subtraiEstoque < 0)
+                    {
+                        subtraiEstoque = 0;
+                    }
+
+
                     //Método que desconta o valor e atualiza o estoque atual.
                     componentedao.UpdateSaldo(componentedao.id, subtraiEstoque);
 

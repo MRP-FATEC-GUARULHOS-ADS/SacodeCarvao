@@ -28,10 +28,16 @@ namespace MRP_SdC
         // funcoes
         private void MudaInfos()
         {
-            ttl_lbl.Text = myFornComp.fornecedor.ToString();
-            comp_cbb.Text = myFornComp.componente.ToString();
-            lead_tbx.Text = myFornComp.leadTime.ToString();
-            custo_tbx.Text = myFornComp.custo.ToString();
+            try
+            {
+                ttl_lbl.Text = myFornComp.fornecedor.ToString();
+                comp_cbb.Text = myFornComp.componente.ToString();
+                lead_tbx.Text = myFornComp.leadTime.ToString();
+                custo_tbx.Text = myFornComp.custo.ToString();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         // funcoes das text-boxes
