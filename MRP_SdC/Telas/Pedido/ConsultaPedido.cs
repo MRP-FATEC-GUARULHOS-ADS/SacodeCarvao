@@ -34,9 +34,10 @@ namespace MRP_SdC.Telas.Pedido
             pedido.idPedido = int.Parse(dados_ttl_lbl.Text);
             dados_subttl_lbl.Text = String.Format(pedido.idProduto.ToString());
             txtIdProduto.Text = pedido.idProduto.ToString();
-            txtNomeProduto.Text = pedido.quantidade.ToString();
-            txtQuantidade.Text = pedido.valor.ToString();
-            QntdPedMRP = int.Parse(txtNomeProduto.Text);
+            txtNomeProduto.Text = pedido.nomeProduto;
+            txtQuantidade.Text = pedido.quantidade.ToString();
+            txtValor.Text = pedido.valor.ToString();
+            txtSemana.Text = pedido.semana.ToString();
         }
 
         private void ConsultaPedido_Load(object sender, EventArgs e)

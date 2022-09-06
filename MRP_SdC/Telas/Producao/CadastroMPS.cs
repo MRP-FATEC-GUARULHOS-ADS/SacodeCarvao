@@ -38,6 +38,24 @@ namespace MRP_SdC.Telas.Producao
 
                     mpscon.Insert(mps);
 
+                    Produto prod = new Produto();
+                    MySQL.ProdutoDAO prodDao = new MySQL.ProdutoDAO();
+                    //Método que retorna as informações do produto.
+                    prodDao.GetIdEstoque(comboBox1.Text);
+                    //Variável que recebe o id do Produto.
+                    prod.idProduto = prodDao.idProdutoGetIdEstoque;
+
+                    //Variável que realiza o cálculo de subtração no estoque
+                    int subtraiEstoque = prodDao.estoqueAtualGetIdEstoque - int.Parse(txtQuantidadeDemandaConsiderada.Text);
+
+                    if (subtraiEstoque < 0)
+                    {
+                        subtraiEstoque = 0;
+                    }
+
+                    //Método que desconta o valor e atualiza o estoque atual.
+                    prodDao.UpdateSaldo(subtraiEstoque, prod.idProduto);
+
                     Close();
                 }
             }catch(Exception ex)
@@ -68,13 +86,12 @@ namespace MRP_SdC.Telas.Producao
 
                 //Cria um objeto do tipo DaoPedido.
                 MySQL.DAOPedido pedidoDao = new MySQL.DAOPedido();
-                pedidoDao.GetQuantidadePedido(comboBox1.Text);
+                pedidoDao.GetQuantidadePedidoSemana(comboBox1.Text, int.Parse(txtSemana.Text));
                 // Preenche o valor do txt com a carteira de pedido retornado da consulta.
                 txtQuantidadePedido.Text = pedidoDao.QuantidadePedidoMps.ToString();
                 MySQL.DAOPrevisaoDemanda previsaoDao = new MySQL.DAOPrevisaoDemanda();
-                previsaoDao.GetQuantidadePrevisao(comboBox1.Text);
+                previsaoDao.GetQuantidadePrevisaoSemana(comboBox1.Text, int.Parse(txtSemana.Text));
                 txtQuantidadePrevisaoDemanda.Text = previsaoDao.QuantidadePrevisaoMps.ToString();
-                txtSemana.Text = previsaoDao.semanaMps.ToString();
 
                 if (pedidoDao.QuantidadePedidoMps > previsaoDao.QuantidadePrevisaoMps)
                 {
@@ -86,6 +103,12 @@ namespace MRP_SdC.Telas.Producao
                 }
 
                 valorPmp = int.Parse(txtEstoqueAtual.Text) - int.Parse(txtQuantidadeDemandaConsiderada.Text);
+
+                //Se o valor do plano mestre de produção é maior que 0 significa que o estoque atende.
+                if(valorPmp > 0)
+                {
+                    valorPmp = 0;
+                }
 
                 //Se o valor do plano mestre de produção for negativo;
                 if (valorPmp < 0)

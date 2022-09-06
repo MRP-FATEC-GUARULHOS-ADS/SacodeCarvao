@@ -82,6 +82,7 @@ namespace MRP_SdC.MySQL
                         pedido.nomeProduto = Convert.ToString(reader["nomeProduto"]);
                         pedido.quantidade = Convert.ToInt32(reader["quantidade"]);
                         pedido.valor = Convert.ToInt32(reader["valor"]);
+                        pedido.semana = Convert.ToInt32(reader["semana"]);
                     }
 
                     listaPedido.Add(pedido);
@@ -146,6 +147,7 @@ namespace MRP_SdC.MySQL
             return listaPedido;
         }
 
+        /*
         public int QuantidadePedidoMps;
         public int semanaMps;
         //Método que retorna o get da quantidade de pedido no cadastro do MPS.
@@ -195,7 +197,7 @@ namespace MRP_SdC.MySQL
 
             conexao.CloseConexao();
             return pedido;
-        }
+        }*/
 
         public int idPed;
 
@@ -229,6 +231,52 @@ namespace MRP_SdC.MySQL
                 pedido = new Pedido();
                 pedido.idPedido = Convert.ToInt32(reader["idPedido"]);
                 idPed = pedido.idPedido;
+            }
+
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+
+            conexao.CloseConexao();
+            return pedido;
+        }
+
+        public int QuantidadePedidoMps;
+        public Pedido GetQuantidadePedidoSemana(string nomeProduto, int semana)
+        {
+            Pedido pedido = new Pedido();
+            Conexao conexao = new Conexao();
+            CadastroMRP cadMrp = new CadastroMRP();
+
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT * FROM PEDIDO WHERE nomeProduto = @nomeProduto AND semana = @semana;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                //Realiza o parâmetro do nome do produto.
+                cmd.Parameters.AddWithValue("@nomeProduto", nomeProduto);
+                cmd.Parameters.AddWithValue("@semana", semana);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                pedido = new Pedido();
+                pedido.quantidade = Convert.ToInt32(reader["quantidade"]);
+                QuantidadePedidoMps = pedido.quantidade;
             }
 
             catch (MySqlException e)

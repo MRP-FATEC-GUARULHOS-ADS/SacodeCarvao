@@ -58,6 +58,7 @@ namespace MRP_SdC.Telas.Pedido
             txtIdProduto.Text = previsao.idProduto.ToString();
             txtNomeProduto.Text = previsao.nomeProduto.ToString();
             txtQuantidade.Text = previsao.quantidade.ToString();
+            txtSemana.Text = previsao.semana.ToString();
         }
 
         //Ao clicar no dgvPrevisaoDemanda.

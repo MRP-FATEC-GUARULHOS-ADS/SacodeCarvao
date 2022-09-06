@@ -42,6 +42,9 @@ namespace MRP_SdC.Telas.Pedido
             this.pesquisa_sep_pnl = new System.Windows.Forms.Panel();
             this.pesquisa_descnt_cbx = new System.Windows.Forms.CheckBox();
             this.dados_pnl = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtSemana = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnProduzir = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtQuantidade = new System.Windows.Forms.TextBox();
@@ -59,20 +62,16 @@ namespace MRP_SdC.Telas.Pedido
             this.dados_subttl_lbl = new System.Windows.Forms.Label();
             this.dados_ttl_lbl = new System.Windows.Forms.Label();
             this.dgvPrevisaoDemanda = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.txtSemana = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
             this.dados_pnl.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.dados_estoque_pnl.SuspendLayout();
             this.txt_Quantidade.SuspendLayout();
             this.estoque_min_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrevisaoDemanda)).BeginInit();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // EspDir_pnl
@@ -182,6 +181,35 @@ namespace MRP_SdC.Telas.Pedido
             this.dados_pnl.Padding = new System.Windows.Forms.Padding(12, 24, 12, 12);
             this.dados_pnl.Size = new System.Drawing.Size(240, 362);
             this.dados_pnl.TabIndex = 14;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.txtSemana);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(12, 337);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(199, 48);
+            this.panel2.TabIndex = 6;
+            // 
+            // txtSemana
+            // 
+            this.txtSemana.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtSemana.Location = new System.Drawing.Point(0, 17);
+            this.txtSemana.Name = "txtSemana";
+            this.txtSemana.Size = new System.Drawing.Size(199, 20);
+            this.txtSemana.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.label2.Size = new System.Drawing.Size(46, 17);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Semana";
             // 
             // btnProduzir
             // 
@@ -371,50 +399,11 @@ namespace MRP_SdC.Telas.Pedido
             this.dgvPrevisaoDemanda.TabIndex = 15;
             this.dgvPrevisaoDemanda.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrevisaoDemanda_CellContentClick);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(398, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "label1";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.txtSemana);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(12, 337);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(199, 48);
-            this.panel2.TabIndex = 6;
-            // 
-            // txtSemana
-            // 
-            this.txtSemana.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtSemana.Location = new System.Drawing.Point(0, 17);
-            this.txtSemana.Name = "txtSemana";
-            this.txtSemana.Size = new System.Drawing.Size(199, 20);
-            this.txtSemana.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.label2.Size = new System.Drawing.Size(46, 17);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Semana";
-            // 
             // frmConsultaPrevisaoDemanda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvPrevisaoDemanda);
             this.Controls.Add(this.dados_pnl);
             this.Controls.Add(this.pesquisa_pnl);
@@ -429,6 +418,8 @@ namespace MRP_SdC.Telas.Pedido
             this.pesquisa_cont_pnl.PerformLayout();
             this.dados_pnl.ResumeLayout(false);
             this.dados_pnl.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.dados_estoque_pnl.ResumeLayout(false);
@@ -438,10 +429,7 @@ namespace MRP_SdC.Telas.Pedido
             this.estoque_min_pnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrevisaoDemanda)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -474,7 +462,6 @@ namespace MRP_SdC.Telas.Pedido
         private System.Windows.Forms.Label dados_subttl_lbl;
         private System.Windows.Forms.Label dados_ttl_lbl;
         public System.Windows.Forms.DataGridView dgvPrevisaoDemanda;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtSemana;
         private System.Windows.Forms.Label label2;

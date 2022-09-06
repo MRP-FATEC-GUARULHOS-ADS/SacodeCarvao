@@ -81,16 +81,7 @@ namespace MRP_SdC.MySQL
                     //Variável que recebe a quantidade atual do produto no Estoque.
                     estoqueAtual = prodDao.qntEst;
 
-                    //Variável que realiza o cálculo de subtração no estoque
-                    subtraiEstoque = prodDao.qntEst - demandaConsiderada;
-
-                    if(subtraiEstoque < 0)
-                    {
-                        subtraiEstoque = 0;
-                    }
-
-                    //Método que desconta o valor e atualiza o estoque atual.
-                    prodDao.UpdateSaldo(subtraiEstoque, prod.idProduto);
+                    
 
                     //Variável que recebe o valor da quantidade que tem que ser produzida.
                     quantidadeFinal = estoqueAtual - planoMestreProducao;
