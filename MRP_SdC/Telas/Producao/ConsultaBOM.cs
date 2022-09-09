@@ -32,8 +32,6 @@ namespace MRP_SdC.Telas.Producao
             dados_ttl_lbl.Text = bom.idBOM.ToString();
             bom.idBOM = int.Parse(dados_ttl_lbl.Text);
             dados_subttl_lbl.Text = String.Format(bom.nome.ToString());
-            txtNoProduto.Text = bom.noProduto.ToString();
-            txtNoPai.Text = bom.noPai.ToString();
             txtNome.Text = bom.nome.ToString();
             txtCodigoLista.Text = bom.codigoLista.ToString();
             consultaBomId = int.Parse(txtCodigoLista.Text);
@@ -127,9 +125,9 @@ namespace MRP_SdC.Telas.Producao
 
         private void btnAtualizaMRP_Click(object sender, EventArgs e)
         {
-            BOM bom = new BOM(int.Parse(txtNoPai.Text), int.Parse(txtCodigoLista.Text),
-            txtNome.Text, int.Parse(txtNivel.Text),
-            int.Parse(txtQuantidadeLista.Text), int.Parse(txtNoProduto.Text));
+            BOM bom = new BOM(int.Parse(txtCodigoLista.Text),
+            txtNome.Text, txtNivel.Text,
+            int.Parse(txtQuantidadeLista.Text));
 
             bom.idBOM = int.Parse(dados_ttl_lbl.Text);
             DialogResult confirmarUpdate = MessageBox.Show(

@@ -1,14 +1,9 @@
-﻿using System;
+﻿using MRP_Sdc;
+using MRP_SdC.Telas.Producao;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MRP_Sdc;
-using MRP_SdC.Telas.Producao;
 
 namespace MRP_SdC
 {
@@ -26,7 +21,7 @@ namespace MRP_SdC
             cbb.DataSource = bindingComp;
         }
 
-        public ExplosaoProduto( Produto prod )
+        public ExplosaoProduto(Produto prod)
         {
             InitializeComponent();
 
@@ -35,7 +30,7 @@ namespace MRP_SdC
             // seleciona o estado de produção do produto
             estado_clb.SetItemChecked((prod.estado ? 0 : 1), true);
 
-            ListaComponentes( comp_nome_cbb );
+            ListaComponentes(comp_nome_cbb);
         }
 
         // funcoes da checklist
@@ -44,7 +39,7 @@ namespace MRP_SdC
         {
             ok_btn.Enabled = true;
 
-            for (int ix=0; ix<estado_clb.Items.Count; ++ix)
+            for (int ix = 0; ix < estado_clb.Items.Count; ++ix)
                 if (ix != e.Index)
                     estado_clb.SetItemChecked(ix, false);
         }
@@ -77,23 +72,13 @@ namespace MRP_SdC
             AtualizaListasBOM();
         }
 
-        private void comp_qnt_cbb_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            for(int i=0; i<11; i++)
-            {
-                comboBox1.Items.Add(i);
-            }
-        }
 
         private void ExplosaoProduto_Load(object sender, EventArgs e)
         {
             for (int i = 0; i < 11; i++)
             {
-                comboBox1.Items.Add(i);
                 comboBox2.Items.Add(i);
-                comboBox3.Items.Add(i);
                 comboBox4.Items.Add(i);
-                comboBox5.Items.Add(i);
             }
         }
 
@@ -104,9 +89,9 @@ namespace MRP_SdC
 
         private void add_btn_Click(object sender, EventArgs e)
         {
-            BOM bom = new BOM(int.Parse(comboBox1.Text),
-            int.Parse(comboBox2.Text), comp_nome_cbb.Text, int.Parse(comboBox3.Text),
-            int.Parse(comboBox4.Text), int.Parse(comboBox5.Text));
+            BOM bom = new BOM(
+            int.Parse(comboBox2.Text), comp_nome_cbb.Text, 
+            textBox1.Text, int.Parse(comboBox4.Text));
 
             DialogResult confirmarInsert = MessageBox.Show(
                 "( ﾉ ﾟｰﾟ)ﾉ " + bom.idBOM + " ?!", "Confirmar Inserção",

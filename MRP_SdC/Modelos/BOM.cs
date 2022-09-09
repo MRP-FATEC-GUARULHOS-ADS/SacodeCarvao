@@ -10,11 +10,9 @@ namespace MRP_Sdc
     {
         //atributos
         public int idBOM { get; set; }
-        public int noProduto { get; set; }
-        public int noPai { get; set; }
         public int codigoLista { get; set; }
         public string nome { get; set; }
-        public int nivel { get; set; }
+        public string nivel { get; set; }
         public int quantidadeLista { get; set; }
 
         public BOM()
@@ -24,12 +22,11 @@ namespace MRP_Sdc
 
         //construtores
         public BOM(
-            int noPai, int codigoLista, string nome, int nivel, int quantidadeLista,
-            int noProduto
+            int codigoLista, string nome, string nivel, int quantidadeLista
+         
         )
         {
-            this.noProduto = noProduto;
-            this.noPai = noPai;
+
             this.codigoLista = codigoLista;
             this.nome = nome;
             this.nivel = nivel;

@@ -58,7 +58,7 @@ namespace MRP_SdC.MySQL
 
 
                 //Realiza se o nível do produto for 0, ou seja se for um produto acabado.
-                if (item.nivel == 0)
+                if (item.nivel == "1")
                 {
                     //Select do Pedido através do nome do produto.
                     conMps.GetDemandaMPS(item.nome);
@@ -149,7 +149,7 @@ namespace MRP_SdC.MySQL
                 else
                 {
                     //retorna o valor do No Pai.
-                    int noPai = item.noPai;
+                    string noPai = item.nivel.Substring(item.nivel.Length-3,1);
 
                     //traz o valor do nome do produto.
                     daobom.GetNomeNoPai(noPai, item.codigoLista);

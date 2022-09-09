@@ -22,11 +22,13 @@ namespace MRP_SdC.Telas.Producao
             //Método try catch
             try
             {
-                //Gerando objeto MPS.   
+                //Gerando objeto MPS. 
+
+                
                 MPS mps = new MPS(int.Parse(txtIdProduto.Text), comboBox1.Text,
                 int.Parse(txtQuantidadePedido.Text), int.Parse(txtQuantidadePrevisaoDemanda.Text),
                 int.Parse(txtQuantidadeDemandaConsiderada.Text), int.Parse(txtEstoqueAtual.Text),
-                int.Parse(valorPmp.ToString()), int.Parse(txtSemana.Text));
+                int.Parse(valorPmp.ToString()), int.Parse(txtSemana.Text), DateTime.Now.ToString());
 
                 DialogResult confirmarInsert = MessageBox.Show(
                     "( ﾉ ﾟｰﾟ)ﾉ " + mps.idProduto + " ?!", "Confirmar Inserção",

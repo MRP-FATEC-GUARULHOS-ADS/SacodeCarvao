@@ -14,9 +14,9 @@ namespace MRP_SdC.Telas.Producao
         private void cadastrar_Click(object sender, EventArgs e)
         {
             //Objeto e seus atributos.
-            BOM bom = new BOM(int.Parse(txtNoPai.Text),
-            int.Parse(txtCodigoLista.Text), cmbNome.Text, int.Parse(txtNivel.Text),
-            int.Parse(txtQuantidadeUnidade.Text), int.Parse(txtNoProduto.Text));
+            BOM bom = new BOM(
+            int.Parse(txtCodigoLista.Text), cmbNome.Text, txtNivel.Text,
+            int.Parse(txtQuantidadeUnidade.Text));
 
             DialogResult confirmarInsert = MessageBox.Show(
                 "( ﾉ ﾟｰﾟ)ﾉ " + bom.idBOM + " ?!", "Confirmar Inserção",

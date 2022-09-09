@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
 namespace MRP_SdC
 {
@@ -14,6 +14,7 @@ namespace MRP_SdC
         public int estoqueAtual { get; set; }
         public int planoMestreProducao { get; set; }
         public int semana { get; set; }
+        public string data { get; set; }
 
         //Construtores
         public MPS()
@@ -24,7 +25,7 @@ namespace MRP_SdC
         //Construtores
         public MPS(
             int idProduto, string nomeProduto, int quantidadePedido, int quantidadePrevisaoDemanda,
-            int quantidadeDemandaConsiderada, int estoqueAtual, int PlanoMestreProducao, int semana
+            int quantidadeDemandaConsiderada, int estoqueAtual, int PlanoMestreProducao, int semana, string data
         )
 
         {
@@ -36,6 +37,7 @@ namespace MRP_SdC
             this.estoqueAtual = estoqueAtual;
             this.planoMestreProducao = PlanoMestreProducao;
             this.semana = semana;
+            this.data = data;
         }
 
         public override string ToString()

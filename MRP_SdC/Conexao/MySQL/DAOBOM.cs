@@ -23,16 +23,14 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO BOM ( " +
-                    "noProduto, noPai, codigoLista, nome, nivel, quantidadeLista" +
-                    ") VALUES(@noProd, @noP, @codLista, @nomeComp, @nvl, @qntdList); ";
+                    "codigoLista, nome, nivel, quantidadeLista" +
+                    ") VALUES(@codLista, @nomeComp, @nvl, @qntdList); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return false;
                 }
 
-                cmd.Parameters.AddWithValue("@noProd", bom.noProduto);
-                cmd.Parameters.AddWithValue("@noP", bom.noPai);
                 cmd.Parameters.AddWithValue("@codLista", bom.codigoLista);
                 cmd.Parameters.AddWithValue("@nomeComp", bom.nome);
                 cmd.Parameters.AddWithValue("@nvl", bom.nivel);
@@ -116,11 +114,9 @@ namespace MRP_SdC.MySQL
                     bom = new BOM();
                     {
                         bom.idBOM = Convert.ToInt32(reader["idBom"]);
-                        bom.noProduto = Convert.ToInt32(reader["noProduto"]);
-                        bom.noPai = Convert.ToInt32(reader["noPai"]);
                         bom.codigoLista = Convert.ToInt32(reader["codigoLista"]);
                         bom.nome = Convert.ToString(reader["nome"]);
-                        bom.nivel = Convert.ToInt32(reader["nivel"]);
+                        bom.nivel = Convert.ToString(reader["nivel"]);
                         bom.quantidadeLista = Convert.ToInt32(reader["quantidadeLista"]);
                     }
 
@@ -166,11 +162,9 @@ namespace MRP_SdC.MySQL
                     {
                         bom = new BOM();
                         bom.idBOM = Convert.ToInt32(reader["idBom"]);
-                        bom.noProduto = Convert.ToInt32(reader["noProduto"]);
-                        bom.noPai = Convert.ToInt32(reader["noPai"]);
                         bom.codigoLista = Convert.ToInt32(reader["codigoLista"]);
                         bom.nome = Convert.ToString(reader["nome"]);
-                        bom.nivel = Convert.ToInt32(reader["nivel"]);
+                        bom.nivel = Convert.ToString(reader["nivel"]);
                         bom.quantidadeLista = Convert.ToInt32(reader["quantidadeLista"]);
                     }
 
@@ -220,11 +214,9 @@ namespace MRP_SdC.MySQL
                     bom = new BOM
                     {
                         idBOM = Convert.ToInt32(reader["idBom"]),
-                        noProduto = Convert.ToInt32(reader["noProduto"]),
-                        noPai = Convert.ToInt32(reader["noPai"]),
                         codigoLista = Convert.ToInt32(reader["codigoLista"]),
                         nome = Convert.ToString(reader["nome"]),
-                        nivel = Convert.ToInt32(reader["nivel"]),
+                        nivel = Convert.ToString(reader["nivel"]),
                         quantidadeLista = Convert.ToInt32(reader["quantidadeLista"])
                     };
 
@@ -303,8 +295,6 @@ namespace MRP_SdC.MySQL
                     return false;
                 }
 
-                cmd.Parameters.AddWithValue("@noProd", bom.noProduto);
-                cmd.Parameters.AddWithValue("@noP", bom.noPai);
                 cmd.Parameters.AddWithValue("@codLista", bom.codigoLista);
                 cmd.Parameters.AddWithValue("@nomeComp", bom.nome);
                 cmd.Parameters.AddWithValue("@nvl", bom.nivel);
@@ -330,7 +320,7 @@ namespace MRP_SdC.MySQL
         //retorna o código da lista de materiais.
         public int codigoListaBom;
         //Metodo que retorna o nome do produto Nó Pai.
-        public BOM GetNomeNoPai(int noPai, int codigoLista)
+        public BOM GetNomeNoPai(string noPai, int codigoLista)
         {
             BOM objBom = new BOM();
 
@@ -346,7 +336,7 @@ namespace MRP_SdC.MySQL
                 MySqlDataReader reader;
                 //Seleciona todos os atributos da linha do BOM, QUANDO o noProduto e o código da
                 //Lista forem iguais aos dos parâmetros.
-                string query = "SELECT * FROM BOM WHERE noProduto = @noProd AND codigoLista = " +
+                string query = "SELECT * FROM BOM WHERE nivel = @noPai AND codigoLista = " +
                     "@codLista;";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
@@ -355,7 +345,7 @@ namespace MRP_SdC.MySQL
                 }
 
                 //Adiciona um valor ao final do SqlParameterCollection.
-                cmd.Parameters.AddWithValue("@noProd", noPai);
+                cmd.Parameters.AddWithValue("@noPai", noPai);
                 //Adiciona um valor ao final do SqlParameterCollection.
                 cmd.Parameters.AddWithValue("@codLista", codigoLista);
                 cmd.Prepare();

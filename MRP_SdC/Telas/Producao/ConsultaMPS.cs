@@ -55,19 +55,6 @@ namespace MRP_SdC.Telas.Producao
             }
         }
 
-        private void ConsultaMPS_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                AtualizaListas();
-                MudaInfos();
-            }catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-           
-        }
-
         private void mrp_dgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1 && mps_dgv.CurrentRow != null)
@@ -93,6 +80,22 @@ namespace MRP_SdC.Telas.Producao
             }
         }
 
+        // funcoes de pesquisa
+        private void PesquisarProdutosSemana()
+        {
+            if (pesquisa_tbx.Text != "")
+            {
+                MySQL.ConexaoMPS conexaomps = new MySQL.ConexaoMPS();
+                List<MPS> listaMPS = conexaomps.PesquisaMPS(pesquisa_tbx.Text);
+                var bindingProdutos = new BindingList<MPS>(listaMPS);
+                mps_dgv.DataSource = bindingProdutos;
+            }
+            else
+            {
+                AtualizaListas();
+            }
+        }
+
         private void pesquisa_btn_Click(object sender, EventArgs e)
         {
             PesquisarProdutos();
@@ -100,6 +103,7 @@ namespace MRP_SdC.Telas.Producao
 
         private void ConsultaMPS_Load_1(object sender, EventArgs e)
         {
+            
             //Chama o método atualiza listas.
             AtualizaListas();
             MudaInfos();
@@ -110,10 +114,14 @@ namespace MRP_SdC.Telas.Producao
             //Método try catch.
             try
             {
+                //Gerando objeto MPS. 
+                MPS mps = new MPS();
+                mps.data = DateTime.Now.Hour.ToString();
+
                 //Passando os parâmetros para o objeto do tipo mps.
-                MPS mps = new MPS(int.Parse(txtProdId.Text), txtNomeProduto.Text, int.Parse(txtQuantidadePedido.Text),
+                mps = new MPS(int.Parse(txtProdId.Text), txtNomeProduto.Text, int.Parse(txtQuantidadePedido.Text),
                 int.Parse(txtQuantidadePrevisaoDemanda.Text), int.Parse(txtQuantidadeDemandaConsiderada.Text),
-                int.Parse(txtEstoqueAtual.Text), int.Parse(txtPlanoMestreProducao.Text), int.Parse(txtSemana.Text));
+                int.Parse(txtEstoqueAtual.Text), int.Parse(txtPlanoMestreProducao.Text), int.Parse(txtSemana.Text), mps.data);
 
                 mps.idMPS = int.Parse(dados_ttl_lbl.Text);
                 DialogResult confirmarUpdate = MessageBox.Show(
@@ -181,6 +189,41 @@ namespace MRP_SdC.Telas.Producao
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void comboBox1_MouseHover(object sender, EventArgs e)
+        {
+           //MessageBox.Show("Escolha a semana que desejar consultar");
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PesquisarProdutosSemana();
+        }
+
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            PesquisarProdutosSemana();
+        }
+
+        private void comboBox1_Enter(object sender, EventArgs e)
+        {
+            PesquisarProdutosSemana();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            PesquisarProdutos();
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PesquisarProdutosSemana();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            PesquisarProdutosSemana();
         }
     }
 }

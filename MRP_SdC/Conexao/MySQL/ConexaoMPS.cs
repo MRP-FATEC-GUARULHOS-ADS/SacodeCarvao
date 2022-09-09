@@ -19,8 +19,8 @@ namespace MRP_SdC.MySQL
                 MySqlDataReader reader;
                 string query = "INSERT INTO MPS ( " +
                     "idProduto, nomeProduto, quantidadePedido, quantidadePrevisaoDemanda," +
-                    "quantidadeDemandaConsiderada, estoqueAtual, PlanoMestreProducao, semana" +
-                    ") VALUES(@idProdut, @nomeProd, @qntdPed, @qntdPrev, @qntdDemandaCons, @est, @pmp, @sem); ";
+                    "quantidadeDemandaConsiderada, estoqueAtual, PlanoMestreProducao, semana, dataMps" +
+                    ") VALUES(@idProdut, @nomeProd, @qntdPed, @qntdPrev, @qntdDemandaCons, @est, @pmp, @sem, @data); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -35,6 +35,7 @@ namespace MRP_SdC.MySQL
                 cmd.Parameters.AddWithValue("@est", mps.estoqueAtual);
                 cmd.Parameters.AddWithValue("@pmp", mps.planoMestreProducao);
                 cmd.Parameters.AddWithValue("@sem", mps.semana);
+                cmd.Parameters.AddWithValue("@data", mps.data);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -170,7 +171,8 @@ namespace MRP_SdC.MySQL
                 //SQL de select.
                 string query = "SELECT * FROM MPS " +
                     "WHERE (idProduto LIKE @pesquisa " +
-                        "OR nomeProduto LIKE @pesquisa) "; 
+                        "OR nomeProduto LIKE @pesquisa " +
+                        "OR semana LIKE @pesquisa)"; 
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -192,6 +194,61 @@ namespace MRP_SdC.MySQL
                         //Pega o nome do produto.
                         nomeProduto = Convert.ToString(reader["nomeProduto"]),
                     };
+
+                    listaMPS.Add(mps);
+                }
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+            }
+            conexao.CloseConexao();
+            return listaMPS;
+        }
+
+        //Faz a pesquisa específica por semana
+        public List<MPS> PesquisaMPSSemana(int pesquisa)
+        {
+            List<MPS> listaMPS = new List<MPS>();
+            MPS mps;
+
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                //SQL de select.
+                string query = "SELECT * FROM MPS WHERE (semana LIKE @pesquisa)";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Parameters.AddWithValue("@pesquisa", pesquisa);
+                cmd.Prepare();
+                Console.WriteLine(query);
+
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    mps = new MPS
+                    {
+                        idMPS = Convert.ToInt32(reader["idMPS"]),
+                        idProduto = Convert.ToInt32(reader["idProduto"]),
+                        nomeProduto = Convert.ToString(reader["nomeProduto"]),
+                        quantidadePedido = Convert.ToInt32(reader["quantidadePedido"]),
+                        quantidadePrevisaoDemanda = Convert.ToInt32(reader["quantidadePrevisaoDemanda"]),
+                        quantidadeDemandaConsiderada = Convert.ToInt32(reader["quantidadeDemandaConsiderada"]),
+                        planoMestreProducao = Convert.ToInt32(reader["PlanoMestreProducao"]),
+                        semana = Convert.ToInt32(reader["semana"]),
+                };
 
                     listaMPS.Add(mps);
                 }

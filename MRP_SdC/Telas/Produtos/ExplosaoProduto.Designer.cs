@@ -31,9 +31,6 @@ namespace MRP_SdC
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExplosaoProduto));
             this.corpo_pnl = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnConsultaArvoreProduto = new System.Windows.Forms.Button();
             this.add_pnl = new System.Windows.Forms.Panel();
@@ -42,7 +39,6 @@ namespace MRP_SdC
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -58,16 +54,13 @@ namespace MRP_SdC
             this.comp_nome_pnl = new System.Windows.Forms.Panel();
             this.comp_nome_cbb = new System.Windows.Forms.ComboBox();
             this.comp_nome_lbl = new System.Windows.Forms.Label();
-            this.comp_qnt_pnl = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comp_qnt_lbl = new System.Windows.Forms.Label();
             this.fechar_pnl = new System.Windows.Forms.Panel();
             this.fechar_btn = new System.Windows.Forms.Button();
             this.ttl_lbl = new System.Windows.Forms.Label();
             this.esp_dir_pnl = new System.Windows.Forms.Panel();
             this.esp_esq_pnl = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.corpo_pnl.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.panel1.SuspendLayout();
             this.add_pnl.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -78,7 +71,6 @@ namespace MRP_SdC
             this.comps_pnl.SuspendLayout();
             this.comp_pnl.SuspendLayout();
             this.comp_nome_pnl.SuspendLayout();
-            this.comp_qnt_pnl.SuspendLayout();
             this.fechar_pnl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,7 +78,6 @@ namespace MRP_SdC
             // 
             this.corpo_pnl.AutoScroll = true;
             this.corpo_pnl.AutoSize = true;
-            this.corpo_pnl.Controls.Add(this.panel5);
             this.corpo_pnl.Controls.Add(this.panel1);
             this.corpo_pnl.Controls.Add(this.add_pnl);
             this.corpo_pnl.Controls.Add(this.panel4);
@@ -103,35 +94,6 @@ namespace MRP_SdC
             this.corpo_pnl.Name = "corpo_pnl";
             this.corpo_pnl.Size = new System.Drawing.Size(352, 537);
             this.corpo_pnl.TabIndex = 0;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.comboBox5);
-            this.panel5.Controls.Add(this.label4);
-            this.panel5.Location = new System.Drawing.Point(202, 126);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(72, 48);
-            this.panel5.TabIndex = 18;
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(4, 17);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(46, 21);
-            this.comboBox5.TabIndex = 1;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label4.Location = new System.Drawing.Point(0, 0);
-            this.label4.Name = "label4";
-            this.label4.Padding = new System.Windows.Forms.Padding(6, 0, 0, 4);
-            this.label4.Size = new System.Drawing.Size(67, 17);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "No Produto";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // panel1
             // 
@@ -202,20 +164,12 @@ namespace MRP_SdC
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.comboBox3);
+            this.panel3.Controls.Add(this.textBox1);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Location = new System.Drawing.Point(88, 126);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(56, 48);
             this.panel3.TabIndex = 16;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(4, 17);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(46, 21);
-            this.comboBox3.TabIndex = 1;
             // 
             // label2
             // 
@@ -341,7 +295,6 @@ namespace MRP_SdC
             // comp_pnl
             // 
             this.comp_pnl.Controls.Add(this.comp_nome_pnl);
-            this.comp_pnl.Controls.Add(this.comp_qnt_pnl);
             this.comp_pnl.Controls.Add(this.fechar_pnl);
             this.comp_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.comp_pnl.Location = new System.Drawing.Point(0, 0);
@@ -386,35 +339,6 @@ namespace MRP_SdC
             this.comp_nome_lbl.Size = new System.Drawing.Size(67, 17);
             this.comp_nome_lbl.TabIndex = 0;
             this.comp_nome_lbl.Text = "Componente";
-            // 
-            // comp_qnt_pnl
-            // 
-            this.comp_qnt_pnl.Controls.Add(this.comboBox1);
-            this.comp_qnt_pnl.Controls.Add(this.comp_qnt_lbl);
-            this.comp_qnt_pnl.Location = new System.Drawing.Point(176, 23);
-            this.comp_qnt_pnl.Name = "comp_qnt_pnl";
-            this.comp_qnt_pnl.Size = new System.Drawing.Size(56, 48);
-            this.comp_qnt_pnl.TabIndex = 2;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(4, 17);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(46, 21);
-            this.comboBox1.TabIndex = 1;
-            // 
-            // comp_qnt_lbl
-            // 
-            this.comp_qnt_lbl.AutoSize = true;
-            this.comp_qnt_lbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.comp_qnt_lbl.Location = new System.Drawing.Point(0, 0);
-            this.comp_qnt_lbl.Name = "comp_qnt_lbl";
-            this.comp_qnt_lbl.Padding = new System.Windows.Forms.Padding(6, 0, 0, 4);
-            this.comp_qnt_lbl.Size = new System.Drawing.Size(45, 17);
-            this.comp_qnt_lbl.TabIndex = 0;
-            this.comp_qnt_lbl.Text = "No Pai";
-            this.comp_qnt_lbl.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // fechar_pnl
             // 
@@ -466,6 +390,13 @@ namespace MRP_SdC
             this.esp_esq_pnl.Size = new System.Drawing.Size(32, 537);
             this.esp_esq_pnl.TabIndex = 11;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(0, 17);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(53, 20);
+            this.textBox1.TabIndex = 1;
+            // 
             // ExplosaoProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -479,8 +410,6 @@ namespace MRP_SdC
             this.Load += new System.EventHandler(this.ExplosaoProduto_Load);
             this.corpo_pnl.ResumeLayout(false);
             this.corpo_pnl.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.add_pnl.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -496,8 +425,6 @@ namespace MRP_SdC
             this.comp_pnl.ResumeLayout(false);
             this.comp_nome_pnl.ResumeLayout(false);
             this.comp_nome_pnl.PerformLayout();
-            this.comp_qnt_pnl.ResumeLayout(false);
-            this.comp_qnt_pnl.PerformLayout();
             this.fechar_pnl.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -516,9 +443,7 @@ namespace MRP_SdC
         private System.Windows.Forms.Panel comp_pnl;
         private System.Windows.Forms.Panel comp_nome_pnl;
         private System.Windows.Forms.ComboBox comp_nome_cbb;
-        private System.Windows.Forms.Panel comp_qnt_pnl;
         private System.Windows.Forms.Label comp_nome_lbl;
-        private System.Windows.Forms.Label comp_qnt_lbl;
         private System.Windows.Forms.Panel comps_pnl;
         private System.Windows.Forms.Panel add_pnl;
         private System.Windows.Forms.Button add_btn;
@@ -529,18 +454,14 @@ namespace MRP_SdC
         private System.Windows.Forms.Label estado_lbl;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnConsultaArvoreProduto;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

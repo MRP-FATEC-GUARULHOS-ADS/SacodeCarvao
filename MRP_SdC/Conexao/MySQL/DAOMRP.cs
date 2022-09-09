@@ -101,9 +101,9 @@ namespace MRP_SdC.MySQL
                 MySqlDataReader reader;
                 string query = "SELECT * FROM MRP " +
                     "WHERE (idProduto LIKE @pesquisa " +
-                        "OR qntdPedido LIKE @pesquisa " +
-                        "OR nome LIKE @modelo" +
-                        "OR qntdEstoque LIKE @pesquisa )";
+                        "OR quantidadePedido LIKE @pesquisa " +
+                        "OR nome LIKE '%" + pesquisa + "%' " +
+                        "OR quantidadeEstoque LIKE @pesquisa);";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -120,12 +120,13 @@ namespace MRP_SdC.MySQL
                 {
                     mrp = new MRP
                     {
-                        idMRP = Convert.ToInt32(reader["id"]),
+                        idMRP = Convert.ToInt32(reader["idMRP"]),
+                        idMPS = Convert.ToInt32(reader["idMPS"]),
                         idProduto = Convert.ToInt32(reader["idProduto"]),
                         nome = Convert.ToString(reader["nome"]),
-                        quantidadePedido = Convert.ToInt32(reader["qntdPedido"]),
-                        quantidadeEstoque = Convert.ToInt32(reader["qntdEst"]),
-                        quantidadeFinal = Convert.ToInt32(reader["qntdNecesLiq"])
+                        quantidadePedido = Convert.ToInt32(reader["quantidadePedido"]),
+                        quantidadeEstoque = Convert.ToInt32(reader["quantidadeEstoque"]),
+                        quantidadeFinal = Convert.ToInt32(reader["quantidadeFinal"])
                     };
 
                     listaMRP.Add(mrp);
