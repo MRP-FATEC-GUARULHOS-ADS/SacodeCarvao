@@ -54,6 +54,7 @@ namespace MRP_SdC
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.componentesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fornecedoresToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.entregaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pedidoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.demandaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,14 +104,15 @@ namespace MRP_SdC
             this.demanda_pnl = new System.Windows.Forms.Panel();
             this.header_pnl = new System.Windows.Forms.Panel();
             this.ttl_pnl = new System.Windows.Forms.Panel();
+            this.pb_Foto = new System.Windows.Forms.PictureBox();
             this.ttl_lbl = new System.Windows.Forms.Label();
             this.user_pnl = new System.Windows.Forms.Panel();
             this.user_txt_pnl = new System.Windows.Forms.Panel();
             this.user_name_txb = new System.Windows.Forms.Label();
             this.user_ttl_txb = new System.Windows.Forms.Label();
-            this.user_img_pnl = new System.Windows.Forms.Panel();
             this.logo_pnl = new System.Windows.Forms.Panel();
-            this.entregaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.menu_dir_pnl.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -130,8 +132,11 @@ namespace MRP_SdC
             this.demanda_pnl.SuspendLayout();
             this.header_pnl.SuspendLayout();
             this.ttl_pnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Foto)).BeginInit();
             this.user_pnl.SuspendLayout();
             this.user_txt_pnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -284,14 +289,14 @@ namespace MRP_SdC
             // produtosToolStripMenuItem
             // 
             this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
-            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.produtosToolStripMenuItem.Text = "Produtos";
             this.produtosToolStripMenuItem.Click += new System.EventHandler(this.EstProdutos_TSMI_Click);
             // 
             // componentesToolStripMenuItem
             // 
             this.componentesToolStripMenuItem.Name = "componentesToolStripMenuItem";
-            this.componentesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.componentesToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.componentesToolStripMenuItem.Text = "Componentes";
             this.componentesToolStripMenuItem.Click += new System.EventHandler(this.EstComponentes_TSMI_Click);
             // 
@@ -300,21 +305,28 @@ namespace MRP_SdC
             this.fornecedoresToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.entregaToolStripMenuItem});
             this.fornecedoresToolStripMenuItem1.Name = "fornecedoresToolStripMenuItem1";
-            this.fornecedoresToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.fornecedoresToolStripMenuItem1.Size = new System.Drawing.Size(149, 22);
             this.fornecedoresToolStripMenuItem1.Text = "Fornecedores";
             this.fornecedoresToolStripMenuItem1.Click += new System.EventHandler(this.EstFornecedores_TSMI_Click);
+            // 
+            // entregaToolStripMenuItem
+            // 
+            this.entregaToolStripMenuItem.Name = "entregaToolStripMenuItem";
+            this.entregaToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.entregaToolStripMenuItem.Text = "Entrega";
+            this.entregaToolStripMenuItem.Click += new System.EventHandler(this.entregaToolStripMenuItem_Click);
             // 
             // pedidoToolStripMenuItem1
             // 
             this.pedidoToolStripMenuItem1.Name = "pedidoToolStripMenuItem1";
-            this.pedidoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.pedidoToolStripMenuItem1.Size = new System.Drawing.Size(149, 22);
             this.pedidoToolStripMenuItem1.Text = "Pedido";
             this.pedidoToolStripMenuItem1.Click += new System.EventHandler(this.pedidoToolStripMenuItem1_Click);
             // 
             // demandaToolStripMenuItem1
             // 
             this.demandaToolStripMenuItem1.Name = "demandaToolStripMenuItem1";
-            this.demandaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.demandaToolStripMenuItem1.Size = new System.Drawing.Size(149, 22);
             this.demandaToolStripMenuItem1.Text = "Demanda";
             this.demandaToolStripMenuItem1.Click += new System.EventHandler(this.demandaToolStripMenuItem1_Click);
             // 
@@ -813,6 +825,7 @@ namespace MRP_SdC
             // header_pnl
             // 
             this.header_pnl.BackColor = System.Drawing.SystemColors.Control;
+            this.header_pnl.Controls.Add(this.pictureBox2);
             this.header_pnl.Controls.Add(this.ttl_pnl);
             this.header_pnl.Controls.Add(this.user_pnl);
             this.header_pnl.Controls.Add(this.logo_pnl);
@@ -826,11 +839,18 @@ namespace MRP_SdC
             // ttl_pnl
             // 
             this.ttl_pnl.Controls.Add(this.ttl_lbl);
-            this.ttl_pnl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ttl_pnl.Location = new System.Drawing.Point(80, 12);
             this.ttl_pnl.Name = "ttl_pnl";
-            this.ttl_pnl.Size = new System.Drawing.Size(724, 56);
+            this.ttl_pnl.Size = new System.Drawing.Size(591, 56);
             this.ttl_pnl.TabIndex = 1;
+            // 
+            // pb_Foto
+            // 
+            this.pb_Foto.Location = new System.Drawing.Point(-42, -5);
+            this.pb_Foto.Name = "pb_Foto";
+            this.pb_Foto.Size = new System.Drawing.Size(42, 53);
+            this.pb_Foto.TabIndex = 6;
+            this.pb_Foto.TabStop = false;
             // 
             // ttl_lbl
             // 
@@ -845,8 +865,8 @@ namespace MRP_SdC
             // 
             // user_pnl
             // 
+            this.user_pnl.Controls.Add(this.pictureBox1);
             this.user_pnl.Controls.Add(this.user_txt_pnl);
-            this.user_pnl.Controls.Add(this.user_img_pnl);
             this.user_pnl.Dock = System.Windows.Forms.DockStyle.Right;
             this.user_pnl.Location = new System.Drawing.Point(804, 12);
             this.user_pnl.Name = "user_pnl";
@@ -856,13 +876,14 @@ namespace MRP_SdC
             // 
             // user_txt_pnl
             // 
+            this.user_txt_pnl.Controls.Add(this.pb_Foto);
             this.user_txt_pnl.Controls.Add(this.user_name_txb);
             this.user_txt_pnl.Controls.Add(this.user_ttl_txb);
             this.user_txt_pnl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.user_txt_pnl.Location = new System.Drawing.Point(48, 8);
+            this.user_txt_pnl.Location = new System.Drawing.Point(8, 8);
             this.user_txt_pnl.Name = "user_txt_pnl";
             this.user_txt_pnl.Padding = new System.Windows.Forms.Padding(0, 3, 0, 6);
-            this.user_txt_pnl.Size = new System.Drawing.Size(124, 40);
+            this.user_txt_pnl.Size = new System.Drawing.Size(164, 40);
             this.user_txt_pnl.TabIndex = 1;
             // 
             // user_name_txb
@@ -872,7 +893,7 @@ namespace MRP_SdC
             this.user_name_txb.Location = new System.Drawing.Point(0, 21);
             this.user_name_txb.Name = "user_name_txb";
             this.user_name_txb.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.user_name_txb.Size = new System.Drawing.Size(124, 13);
+            this.user_name_txb.Size = new System.Drawing.Size(164, 13);
             this.user_name_txb.TabIndex = 1;
             this.user_name_txb.Text = "gatinhodoestoque18";
             // 
@@ -888,16 +909,6 @@ namespace MRP_SdC
             this.user_ttl_txb.TabIndex = 0;
             this.user_ttl_txb.Text = "Usuário:";
             // 
-            // user_img_pnl
-            // 
-            this.user_img_pnl.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("user_img_pnl.BackgroundImage")));
-            this.user_img_pnl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.user_img_pnl.Dock = System.Windows.Forms.DockStyle.Left;
-            this.user_img_pnl.Location = new System.Drawing.Point(8, 8);
-            this.user_img_pnl.Name = "user_img_pnl";
-            this.user_img_pnl.Size = new System.Drawing.Size(40, 40);
-            this.user_img_pnl.TabIndex = 0;
-            // 
             // logo_pnl
             // 
             this.logo_pnl.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("logo_pnl.BackgroundImage")));
@@ -908,12 +919,22 @@ namespace MRP_SdC
             this.logo_pnl.Size = new System.Drawing.Size(56, 56);
             this.logo_pnl.TabIndex = 0;
             // 
-            // entregaToolStripMenuItem
+            // pictureBox1
             // 
-            this.entregaToolStripMenuItem.Name = "entregaToolStripMenuItem";
-            this.entregaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.entregaToolStripMenuItem.Text = "Entrega";
-            this.entregaToolStripMenuItem.Click += new System.EventHandler(this.entregaToolStripMenuItem_Click);
+            this.pictureBox1.Location = new System.Drawing.Point(-98, 11);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(688, 18);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // Main_frm
             // 
@@ -956,9 +977,12 @@ namespace MRP_SdC
             this.header_pnl.ResumeLayout(false);
             this.ttl_pnl.ResumeLayout(false);
             this.ttl_pnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Foto)).EndInit();
             this.user_pnl.ResumeLayout(false);
             this.user_txt_pnl.ResumeLayout(false);
             this.user_txt_pnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -990,7 +1014,6 @@ namespace MRP_SdC
         private System.Windows.Forms.Panel user_txt_pnl;
         private System.Windows.Forms.Label user_name_txb;
         private System.Windows.Forms.Label user_ttl_txb;
-        private System.Windows.Forms.Panel user_img_pnl;
         private System.Windows.Forms.Panel logo_pnl;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button button7;
@@ -1044,6 +1067,9 @@ namespace MRP_SdC
         private System.Windows.Forms.ToolStripMenuItem demandaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem demandaToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem entregaToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pb_Foto;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

@@ -73,8 +73,15 @@ namespace MRP_SdC
         private void FormMain_Load(object sender, EventArgs e)
         {
             //AutenticarUsuario();
+            Modelos.Usuario usu = new Modelos.Usuario();
+
+
+            // textos do produto selecionado
+            Login login = new Login();
+     
 
             atualizalistaspedido();
+
         }
 
         // funcoes das listas
@@ -282,6 +289,11 @@ namespace MRP_SdC
         {
             Telas.Fornecedores.frmConsultaEntrega frmConsEntrega = new Telas.Fornecedores.frmConsultaEntrega();
             frmConsEntrega.ShowDialog();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

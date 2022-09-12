@@ -78,5 +78,10 @@ namespace MRP_SdC.Telas.Usuario
                 MudaInfos();
             }
         }
+
+        private void pb_Foto_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

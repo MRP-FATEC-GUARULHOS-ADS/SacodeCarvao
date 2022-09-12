@@ -12,7 +12,7 @@ namespace MRP_SdC
 {
     public partial class Login : Form
     {
-        public Modelos.Usuario myUser = null;
+        public Modelos.Usuario myUser = new Modelos.Usuario();
 
         public Login()
         {
@@ -32,9 +32,9 @@ namespace MRP_SdC
             }
         }
 
+        public string foto;
         // funcoes dos botoes
-
-        private void OK_btn_Click(object sender, System.EventArgs e)
+        public void OK_btn_Click(object sender, System.EventArgs e)
         {
             MySQL.UsuarioDAO objUserDAO = new MySQL.UsuarioDAO();
             myUser = objUserDAO.Get(user_tbx.Text, senha_tbx.Text);
@@ -48,7 +48,7 @@ namespace MRP_SdC
             }
             else
             {
-                resultado_lbl.Text = "Usuário ou senha não encontrados.";
+                label1.Text = "Usuário ou senha não encontrados.";
             }
         }
 

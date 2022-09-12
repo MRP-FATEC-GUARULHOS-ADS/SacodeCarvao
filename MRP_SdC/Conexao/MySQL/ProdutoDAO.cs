@@ -245,7 +245,7 @@ namespace MRP_SdC.MySQL
             return true;
         }
 
-        public List<Produto> GetProdutos()
+        public List<Produto> GetProdutosDescontinuados()
         {
             List<Produto> listaProdutos = new List<Produto>();
             Produto objProduto;
@@ -260,7 +260,7 @@ namespace MRP_SdC.MySQL
             try
             {
                 MySqlDataReader reader;
-                string query = "SELECT p.* FROM PRODUTO p;";
+                string query = "SELECT p.* FROM PRODUTO p WHERE estado = 'D';";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {

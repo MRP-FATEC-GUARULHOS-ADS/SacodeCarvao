@@ -20,7 +20,7 @@ namespace MRP_SdC
         private void AtualizaLista()
         {
             MySQL.ProdutoDAO objProdDAO = new MySQL.ProdutoDAO();
-            List<Produto> listaProdutos = (pesquisa_descnt_cbx.Checked ? objProdDAO.GetProdutos() : objProdDAO.GetProdutosAtivos());
+            List<Produto> listaProdutos = (pesquisa_descnt_cbx.Checked ? objProdDAO.GetProdutosDescontinuados() : objProdDAO.GetProdutosAtivos());
 
             var bindingProdutos = new BindingList<Produto>(listaProdutos);
             prod_lista_dgv.DataSource = bindingProdutos;

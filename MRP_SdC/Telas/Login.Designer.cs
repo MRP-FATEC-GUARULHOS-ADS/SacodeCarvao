@@ -31,10 +31,10 @@ namespace MRP_SdC
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.corpo_pnl = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.barraInf_pnl = new System.Windows.Forms.Panel();
             this.cancelar_btn = new System.Windows.Forms.Button();
             this.ok_btn = new System.Windows.Forms.Button();
-            this.resultado_lbl = new System.Windows.Forms.Label();
             this.senha_pnl = new System.Windows.Forms.Panel();
             this.senha_tbx = new System.Windows.Forms.TextBox();
             this.senha_lbl = new System.Windows.Forms.Label();
@@ -54,8 +54,8 @@ namespace MRP_SdC
             // 
             this.corpo_pnl.AutoScroll = true;
             this.corpo_pnl.AutoSize = true;
+            this.corpo_pnl.Controls.Add(this.label1);
             this.corpo_pnl.Controls.Add(this.barraInf_pnl);
-            this.corpo_pnl.Controls.Add(this.resultado_lbl);
             this.corpo_pnl.Controls.Add(this.senha_pnl);
             this.corpo_pnl.Controls.Add(this.user_pnl);
             this.corpo_pnl.Controls.Add(this.ttl_lbl);
@@ -66,6 +66,14 @@ namespace MRP_SdC
             this.corpo_pnl.Name = "corpo_pnl";
             this.corpo_pnl.Size = new System.Drawing.Size(368, 281);
             this.corpo_pnl.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(32, 155);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 9;
             // 
             // barraInf_pnl
             // 
@@ -99,18 +107,6 @@ namespace MRP_SdC
             this.ok_btn.Text = "OK";
             this.ok_btn.UseVisualStyleBackColor = true;
             this.ok_btn.Click += new System.EventHandler(this.OK_btn_Click);
-            // 
-            // resultado_lbl
-            // 
-            this.resultado_lbl.AutoSize = true;
-            this.resultado_lbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.resultado_lbl.ForeColor = System.Drawing.Color.DarkRed;
-            this.resultado_lbl.Location = new System.Drawing.Point(32, 148);
-            this.resultado_lbl.Name = "resultado_lbl";
-            this.resultado_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.resultado_lbl.Size = new System.Drawing.Size(176, 17);
-            this.resultado_lbl.TabIndex = 3;
-            this.resultado_lbl.Text = "(dica: usuário=admin, senha=admin)";
             // 
             // senha_pnl
             // 
@@ -238,7 +234,7 @@ namespace MRP_SdC
         private System.Windows.Forms.Panel senha_pnl;
         private System.Windows.Forms.Label senha_lbl;
         private System.Windows.Forms.TextBox senha_tbx;
-        private System.Windows.Forms.Label resultado_lbl;
         private System.Windows.Forms.TextBox user_tbx;
+        private System.Windows.Forms.Label label1;
     }
 }

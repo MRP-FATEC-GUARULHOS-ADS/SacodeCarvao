@@ -82,7 +82,7 @@ namespace MRP_SdC.MySQL
                         Nome = (reader["nomeUsuario"] != DBNull.Value ? (string)(reader["nomeUsuario"]) : ""),
                         Acesso = (reader["acessoUsuario"] != DBNull.Value ? (string)(reader["acessoUsuario"]) : ""),
                         Senha = (reader["senhaUsuario"] != DBNull.Value ? (string)(reader["senhaUsuario"]) : ""),
-                        Foto = Convert.ToString(reader["foto"])
+                        Foto = Convert.ToString(reader["foto"]),
                     };
 
                     listaUsuario.Add(objUser);
@@ -143,6 +143,7 @@ namespace MRP_SdC.MySQL
 conexao.CloseConexao();
 return listaMRP;*/
 
+        public string fotoMain;
         public Modelos.Usuario Get(string acesso, string senha)
         {
             //Tipo do objeto.
@@ -177,9 +178,10 @@ return listaMRP;*/
                 {
                     Nome = (reader["nomeUsuario"] != DBNull.Value ? (string)(reader["nomeUsuario"]) : ""),
                     Acesso = (reader["acessoUsuario"] != DBNull.Value ? (string)(reader["acessoUsuario"]) : ""),
-                    Senha = (reader["senhaUsuario"] != DBNull.Value ? (string)(reader["senhaUsuario"]) : "")
-                };
+                    Senha = (reader["senhaUsuario"] != DBNull.Value ? (string)(reader["senhaUsuario"]) : ""),
+                    Foto = Convert.ToString(reader["foto"]),
 
+            };
             }
             catch (MySqlException e)
             {

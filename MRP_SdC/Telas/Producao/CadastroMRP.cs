@@ -149,7 +149,7 @@ namespace MRP_SdC.MySQL
                 else
                 {
                     //retorna o valor do No Pai.
-                    string noPai = item.nivel.Substring(item.nivel.Length-3,1);
+                    string noPai = item.nivel.Remove(item.nivel.Length - 2, 2);
 
                     //traz o valor do nome do produto.
                     daobom.GetNomeNoPai(noPai, item.codigoLista);
