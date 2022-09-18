@@ -28,15 +28,16 @@ namespace MRP_SdC
 
         private void MudaInfos()
         {
+
             myProd = prod_lista_dgv.CurrentRow.DataBoundItem as Produto;
             descnt_btn.Enabled = myProd.estado;
 
             // textos do produto selecionado
             dados_ttl_lbl.Text = myProd.idProduto.ToString();
             dados_subttl_lbl.Text = myProd.modelo;
-            estoque_atual_tbx.Text = myProd.qtdeAtual.ToString();
-            estoque_min_tbx.Text = myProd.qtdeMin.ToString();
-            estoque_max_tbx.Text = myProd.qtdeMax.ToString();
+            estoque_atual_tbx.Text = myProd.qtdeAtualEstoque.ToString();
+            txtSegurancaEstoque.Text = myProd.estoqueSeguranca.ToString();
+            txtLote.Text = myProd.lote.ToString();
 
             atualizar_btn.Enabled = true;
         }
@@ -140,9 +141,7 @@ namespace MRP_SdC
         {
             MySQL.ProdutoDAO prodDAO = new MySQL.ProdutoDAO();
 
-            myProd.qtdeAtual = Int32.Parse(estoque_atual_tbx.Text);
-            myProd.qtdeMin = Int32.Parse(estoque_min_tbx.Text);
-            myProd.qtdeMax = Int32.Parse(estoque_max_tbx.Text);
+            myProd.qtdeAtualEstoque = Int32.Parse(estoque_atual_tbx.Text);
 
             prodDAO.UpdateEstoque(myProd);
             atualizar_btn.Enabled = false;
