@@ -31,10 +31,6 @@ namespace MRP_SdC.MySQL
                 cmd.Parameters.AddWithValue("@modelo", prod.modelo);
                 cmd.Parameters.AddWithValue("@descricao", prod.descricao);
                 cmd.Parameters.AddWithValue("@valor", prod.valor);
-                cmd.Parameters.AddWithValue("@qntAtual", prod.qtdeAtualEstoque);
-                cmd.Parameters.AddWithValue("@estSeg", prod.estoqueSeguranca);
-                cmd.Parameters.AddWithValue("@lt", prod.leadTime);
-                cmd.Parameters.AddWithValue("@lote", prod.lote);
                 cmd.Parameters.AddWithValue("@estado", (prod.estado ? 'P' : 'D'));
                 cmd.Prepare();
 
@@ -65,8 +61,7 @@ namespace MRP_SdC.MySQL
                 MySqlDataReader reader;
                 string query = "UPDATE PRODUTO " +
                     "SET modeloProduto = @modelo, descrProduto = @descricao, valorProduto = @valor, " +
-                    "qtdeAtualEstoque = @qntAtual, estoqueSeguranca = @estSeg, leadTime = @lt," +
-                    "lote = @lote, estado = @estado " +
+                    "estado = @estado " +
                     "WHERE idProduto = @idProd; ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
@@ -78,10 +73,6 @@ namespace MRP_SdC.MySQL
                 cmd.Parameters.AddWithValue("@modelo", prod.modelo);
                 cmd.Parameters.AddWithValue("@descricao", prod.descricao);
                 cmd.Parameters.AddWithValue("@valor", prod.valor);
-                cmd.Parameters.AddWithValue("@qntAtual", prod.qtdeAtualEstoque);
-                cmd.Parameters.AddWithValue("@estSeg", prod.estoqueSeguranca);
-                cmd.Parameters.AddWithValue("@lt", prod.leadTime);
-                cmd.Parameters.AddWithValue("@lote", prod.lote);
                 cmd.Parameters.AddWithValue("@estado", (prod.estado ? 'P' : 'D'));
                 cmd.Parameters.AddWithValue("@idProd", prod.idProduto);
                 cmd.Prepare();
@@ -194,8 +185,6 @@ namespace MRP_SdC.MySQL
                     return false;
                 }
 
-                cmd.Parameters.AddWithValue("@qntAtual", produto.qtdeAtualEstoque);;
-                cmd.Parameters.AddWithValue("@estSeg", produto.estoqueSeguranca);
                 cmd.Parameters.AddWithValue("@idProd", produto.idProduto);
                 cmd.Prepare();
 
@@ -280,10 +269,6 @@ namespace MRP_SdC.MySQL
                         modelo = (string)reader["modeloProduto"],
                         descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : ""),
                         valor = Convert.ToDecimal(reader["valorProduto"]),
-                        qtdeAtualEstoque = ((reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0),
-                        estoqueSeguranca = Convert.ToInt32(reader["estoqueSeguranca"]),
-                        leadTime = Convert.ToInt32(reader["leadTime"]),
-                        lote = Convert.ToInt32(reader["lote"]),
                         estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false)
                     };
 
@@ -330,10 +315,6 @@ namespace MRP_SdC.MySQL
                         modelo = (string)reader["modeloProduto"],
                         descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : ""),
                         valor = Convert.ToDecimal(reader["valorProduto"]),
-                        qtdeAtualEstoque = ((reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0),
-                        estoqueSeguranca = Convert.ToInt32(reader["estoqueSeguranca"]),
-                        leadTime = Convert.ToInt32(reader["leadTime"]),
-                        lote = Convert.ToInt32(reader["lote"]),
                         estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false)
                     };
 
@@ -381,10 +362,6 @@ namespace MRP_SdC.MySQL
                         modelo = (string)reader["modeloProduto"],
                         descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : ""),
                         valor = Convert.ToDecimal(reader["valorProduto"]),
-                        qtdeAtualEstoque = ((reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0),
-                        estoqueSeguranca = Convert.ToInt32(reader["estoqueSeguranca"]),
-                        leadTime = Convert.ToInt32(reader["leadTime"]),
-                        lote = Convert.ToInt32(reader["lote"]),
                         estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false)
                     };
 
@@ -440,10 +417,6 @@ namespace MRP_SdC.MySQL
                         modelo = (string)reader["modeloProduto"],
                         descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : ""),
                         valor = Convert.ToDecimal(reader["valorProduto"]),
-                        qtdeAtualEstoque = ( (reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0 ),
-                        estoqueSeguranca = Convert.ToInt32(reader["estoqueSeguranca"]),
-                        leadTime = Convert.ToInt32(reader["leadTime"]),
-                        lote = Convert.ToInt32(reader["lote"]),
                         estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false)
                     };
                     produtoLocalizado = objProduto.modelo;
@@ -498,10 +471,6 @@ namespace MRP_SdC.MySQL
                         modelo = (string)reader["modeloProduto"],
                         descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : ""),
                         valor = Convert.ToDecimal(reader["valorProduto"]),
-                        qtdeAtualEstoque = ((reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0),
-                        estoqueSeguranca = Convert.ToInt32(reader["estoqueSeguranca"]),
-                        leadTime = Convert.ToInt32(reader["leadTime"]),
-                        lote = Convert.ToInt32(reader["lote"]),
                         estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false)
                     };
                     listaProdutos.Add(objProduto);
@@ -550,11 +519,6 @@ namespace MRP_SdC.MySQL
                 modProd = objProduto.modelo;
                 objProduto.descricao = (reader["descrProduto"] != DBNull.Value ? (string)(reader["descrProduto"]) : "");
                 objProduto.valor = Convert.ToDecimal(reader["valorProduto"]);
-                objProduto.qtdeAtualEstoque = ((reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0);
-                qntEst = objProduto.qtdeAtualEstoque;
-                objProduto.estoqueSeguranca = Convert.ToInt32(reader["estoqueSeguranca"]);
-                objProduto.leadTime = Convert.ToInt32(reader["leadTime"]);
-                objProduto.lote = Convert.ToInt32(reader["lote"]);
                 objProduto.estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false);
             
             
@@ -611,8 +575,6 @@ namespace MRP_SdC.MySQL
                 objProduto.idProduto = Convert.ToInt32(reader["idProduto"]);
                 //Preenche o valor da variável lá em cima.
                 idProdutoGetIdEstoque = objProduto.idProduto;
-                objProduto.qtdeAtualEstoque = ((reader["qtdeAtualEstoque"] != DBNull.Value) ? Convert.ToInt32(reader["qtdeAtualEstoque"]) : 0);
-                estoqueAtualGetIdEstoque = objProduto.qtdeAtualEstoque;
             }
             catch (MySqlException e)
             {

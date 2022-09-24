@@ -42,7 +42,7 @@ namespace MRP_SdC
         private void OK_btn_Click(object sender, System.EventArgs e)
         {
             myComponente = new Componente(
-                tipo_cbb.Text, marca_tbx.Text, modelo_tbx.Text, especs_tbm.Text, (estado_clb.CheckedIndices[0] == 0 ? true : false)
+                tipo_cbb.Text, marca_tbx.Text, modelo_tbx.Text, especs_tbm.Text,(estado_clb.CheckedIndices[0] == 0 ? true : false)
             );
 
             compControl.cadastrarComponente(myComponente);

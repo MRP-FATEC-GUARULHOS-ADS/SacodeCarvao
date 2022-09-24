@@ -35,9 +35,6 @@ namespace MRP_SdC
             // textos do produto selecionado
             dados_ttl_lbl.Text = myProd.idProduto.ToString();
             dados_subttl_lbl.Text = myProd.modelo;
-            estoque_atual_tbx.Text = myProd.qtdeAtualEstoque.ToString();
-            txtSegurancaEstoque.Text = myProd.estoqueSeguranca.ToString();
-            txtLote.Text = myProd.lote.ToString();
 
             atualizar_btn.Enabled = true;
         }
@@ -140,8 +137,6 @@ namespace MRP_SdC
         private void Estoque_btn_Click(object sender, EventArgs e)
         {
             MySQL.ProdutoDAO prodDAO = new MySQL.ProdutoDAO();
-
-            myProd.qtdeAtualEstoque = Int32.Parse(estoque_atual_tbx.Text);
 
             prodDAO.UpdateEstoque(myProd);
             atualizar_btn.Enabled = false;

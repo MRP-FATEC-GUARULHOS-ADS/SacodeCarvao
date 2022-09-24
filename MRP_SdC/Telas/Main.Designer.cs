@@ -63,6 +63,9 @@ namespace MRP_SdC
             this.fornecedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.demandaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.estoqueToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.produtoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.componenteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.usuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,16 +106,16 @@ namespace MRP_SdC
             this.prod_pesquisa_btn = new System.Windows.Forms.Button();
             this.demanda_pnl = new System.Windows.Forms.Panel();
             this.header_pnl = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.ttl_pnl = new System.Windows.Forms.Panel();
-            this.pb_Foto = new System.Windows.Forms.PictureBox();
             this.ttl_lbl = new System.Windows.Forms.Label();
             this.user_pnl = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.user_txt_pnl = new System.Windows.Forms.Panel();
+            this.pb_Foto = new System.Windows.Forms.PictureBox();
             this.user_name_txb = new System.Windows.Forms.Label();
             this.user_ttl_txb = new System.Windows.Forms.Label();
             this.logo_pnl = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.menu_dir_pnl.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -131,12 +134,12 @@ namespace MRP_SdC
             this.prod_pesquisa_barra_pnl.SuspendLayout();
             this.demanda_pnl.SuspendLayout();
             this.header_pnl.SuspendLayout();
-            this.ttl_pnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_Foto)).BeginInit();
-            this.user_pnl.SuspendLayout();
-            this.user_txt_pnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.ttl_pnl.SuspendLayout();
+            this.user_pnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.user_txt_pnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Foto)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -337,7 +340,8 @@ namespace MRP_SdC
             this.componenteToolStripMenuItem,
             this.fornecedoresToolStripMenuItem,
             this.pedidoToolStripMenuItem,
-            this.demandaToolStripMenuItem2});
+            this.demandaToolStripMenuItem2,
+            this.estoqueToolStripMenuItem1});
             this.cadastrarToolStripMenuItem.Name = "cadastrarToolStripMenuItem";
             this.cadastrarToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.cadastrarToolStripMenuItem.Text = "Cadastrar";
@@ -345,37 +349,60 @@ namespace MRP_SdC
             // produtoToolStripMenuItem
             // 
             this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
-            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.produtoToolStripMenuItem.Text = "Produto";
             this.produtoToolStripMenuItem.Click += new System.EventHandler(this.CadProdutos_TSMI_Click);
             // 
             // componenteToolStripMenuItem
             // 
             this.componenteToolStripMenuItem.Name = "componenteToolStripMenuItem";
-            this.componenteToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.componenteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.componenteToolStripMenuItem.Text = "Componente";
             this.componenteToolStripMenuItem.Click += new System.EventHandler(this.CadComponentes_TSMI_Click);
             // 
             // fornecedoresToolStripMenuItem
             // 
             this.fornecedoresToolStripMenuItem.Name = "fornecedoresToolStripMenuItem";
-            this.fornecedoresToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.fornecedoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.fornecedoresToolStripMenuItem.Text = "Fornecedor";
             this.fornecedoresToolStripMenuItem.Click += new System.EventHandler(this.CadFornecedores_TSMI_Click);
             // 
             // pedidoToolStripMenuItem
             // 
             this.pedidoToolStripMenuItem.Name = "pedidoToolStripMenuItem";
-            this.pedidoToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.pedidoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pedidoToolStripMenuItem.Text = "Pedido";
             this.pedidoToolStripMenuItem.Click += new System.EventHandler(this.pedidoToolStripMenuItem_Click);
             // 
             // demandaToolStripMenuItem2
             // 
             this.demandaToolStripMenuItem2.Name = "demandaToolStripMenuItem2";
-            this.demandaToolStripMenuItem2.Size = new System.Drawing.Size(144, 22);
+            this.demandaToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.demandaToolStripMenuItem2.Text = "Demanda";
             this.demandaToolStripMenuItem2.Click += new System.EventHandler(this.demandaToolStripMenuItem2_Click);
+            // 
+            // estoqueToolStripMenuItem1
+            // 
+            this.estoqueToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.produtoToolStripMenuItem1,
+            this.componenteToolStripMenuItem1});
+            this.estoqueToolStripMenuItem1.Name = "estoqueToolStripMenuItem1";
+            this.estoqueToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.estoqueToolStripMenuItem1.Text = "Estoque";
+            // 
+            // produtoToolStripMenuItem1
+            // 
+            this.produtoToolStripMenuItem1.Name = "produtoToolStripMenuItem1";
+            this.produtoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.produtoToolStripMenuItem1.Text = "Produto";
+            this.produtoToolStripMenuItem1.Click += new System.EventHandler(this.produtoToolStripMenuItem1_Click);
+            // 
+            // componenteToolStripMenuItem1
+            // 
+            this.componenteToolStripMenuItem1.Name = "componenteToolStripMenuItem1";
+            this.componenteToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.componenteToolStripMenuItem1.Text = "Componente";
+            this.componenteToolStripMenuItem1.Click += new System.EventHandler(this.componenteToolStripMenuItem1_Click);
             // 
             // usuárioToolStripMenuItem
             // 
@@ -836,6 +863,15 @@ namespace MRP_SdC
             this.header_pnl.Size = new System.Drawing.Size(1008, 80);
             this.header_pnl.TabIndex = 1;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(688, 18);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
             // ttl_pnl
             // 
             this.ttl_pnl.Controls.Add(this.ttl_lbl);
@@ -843,14 +879,6 @@ namespace MRP_SdC
             this.ttl_pnl.Name = "ttl_pnl";
             this.ttl_pnl.Size = new System.Drawing.Size(591, 56);
             this.ttl_pnl.TabIndex = 1;
-            // 
-            // pb_Foto
-            // 
-            this.pb_Foto.Location = new System.Drawing.Point(-42, -5);
-            this.pb_Foto.Name = "pb_Foto";
-            this.pb_Foto.Size = new System.Drawing.Size(42, 53);
-            this.pb_Foto.TabIndex = 6;
-            this.pb_Foto.TabStop = false;
             // 
             // ttl_lbl
             // 
@@ -874,6 +902,14 @@ namespace MRP_SdC
             this.user_pnl.Size = new System.Drawing.Size(180, 56);
             this.user_pnl.TabIndex = 2;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(-98, 11);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
             // user_txt_pnl
             // 
             this.user_txt_pnl.Controls.Add(this.pb_Foto);
@@ -885,6 +921,14 @@ namespace MRP_SdC
             this.user_txt_pnl.Padding = new System.Windows.Forms.Padding(0, 3, 0, 6);
             this.user_txt_pnl.Size = new System.Drawing.Size(164, 40);
             this.user_txt_pnl.TabIndex = 1;
+            // 
+            // pb_Foto
+            // 
+            this.pb_Foto.Location = new System.Drawing.Point(-42, -5);
+            this.pb_Foto.Name = "pb_Foto";
+            this.pb_Foto.Size = new System.Drawing.Size(42, 53);
+            this.pb_Foto.TabIndex = 6;
+            this.pb_Foto.TabStop = false;
             // 
             // user_name_txb
             // 
@@ -918,23 +962,6 @@ namespace MRP_SdC
             this.logo_pnl.Name = "logo_pnl";
             this.logo_pnl.Size = new System.Drawing.Size(56, 56);
             this.logo_pnl.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(-98, 11);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(688, 18);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // Main_frm
             // 
@@ -975,14 +1002,14 @@ namespace MRP_SdC
             this.prod_pesquisa_barra_pnl.PerformLayout();
             this.demanda_pnl.ResumeLayout(false);
             this.header_pnl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ttl_pnl.ResumeLayout(false);
             this.ttl_pnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_Foto)).EndInit();
             this.user_pnl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.user_txt_pnl.ResumeLayout(false);
             this.user_txt_pnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Foto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1070,6 +1097,9 @@ namespace MRP_SdC
         private System.Windows.Forms.PictureBox pb_Foto;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem estoqueToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem componenteToolStripMenuItem1;
     }
 }
 

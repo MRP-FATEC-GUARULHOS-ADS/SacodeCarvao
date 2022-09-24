@@ -19,8 +19,9 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO COMPONENTE ( " +
-                    "tipoComponente, marcaComponente, modeloComponente, especificacoes, qtdeMinEstoque, qtdeMaxEstoque, qtdeAtualEstoque, estado" +
-                    ") VALUES( @tipo, @marca, @modelo, @especs, @qntmin, @qntmax, @qntatual, @estado ); ";
+                    "tipoComponente, marcaComponente, modeloComponente, especificacoes, qtdeAtualEstoque, estoqueSeguranca"+
+                    "leadTime, lote, estado"+
+                    ") VALUES( @tipo, @marca, @modelo, @especs, @qntatual, @estSeg, @lt, @lot, @estado ); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -31,9 +32,6 @@ namespace MRP_SdC.MySQL
                 cmd.Parameters.AddWithValue("@marca", comp.marca);
                 cmd.Parameters.AddWithValue("@modelo", comp.modelo);
                 cmd.Parameters.AddWithValue("@especs", comp.especificacoes);
-                cmd.Parameters.AddWithValue("@qntmin", comp.qtdeMin);
-                cmd.Parameters.AddWithValue("@qntmax", comp.qtdeMax);
-                cmd.Parameters.AddWithValue("@qntatual", comp.qtdeAtual);
                 cmd.Parameters.AddWithValue("@estado", (comp.estado ? 'P' : 'D'));
                 cmd.Prepare();
 
@@ -76,9 +74,6 @@ namespace MRP_SdC.MySQL
                 cmd.Parameters.AddWithValue("@marca", comp.marca);
                 cmd.Parameters.AddWithValue("@modelo", comp.modelo);
                 cmd.Parameters.AddWithValue("@especs", comp.especificacoes);
-                cmd.Parameters.AddWithValue("@qntmin", comp.qtdeMin);
-                cmd.Parameters.AddWithValue("@qntmax", comp.qtdeMax);
-                cmd.Parameters.AddWithValue("@qntatual", comp.qtdeAtual);
                 cmd.Parameters.AddWithValue("@estado", (comp.estado ? 'P' : 'D'));
                 cmd.Parameters.AddWithValue("@id", comp.id);
                 cmd.Prepare();
@@ -151,9 +146,6 @@ namespace MRP_SdC.MySQL
                     return false;
                 }
 
-                cmd.Parameters.AddWithValue("@qntmin", comp.qtdeMin);
-                cmd.Parameters.AddWithValue("@qntmax", comp.qtdeMax);
-                cmd.Parameters.AddWithValue("@qntatual", comp.qtdeAtual);
                 cmd.Parameters.AddWithValue("@id", comp.id);
                 cmd.Prepare();
 
@@ -281,9 +273,6 @@ namespace MRP_SdC.MySQL
                         marca = (string)reader["marcaComponente"],
                         modelo = (string)reader["modeloComponente"],
                         especificacoes = (reader["especificacoes"] != DBNull.Value ? (string)(reader["especificacoes"]) : ""),
-                        qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]),
-                        qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]),
-                        qtdeAtual = Convert.ToInt32(reader["qtdeAtualEstoque"]),
                         estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false)
                     };
 
@@ -329,9 +318,6 @@ namespace MRP_SdC.MySQL
                         marca = (string)reader["marcaComponente"],
                         modelo = (string)reader["modeloComponente"],
                         especificacoes = (reader["especificacoes"] != DBNull.Value ? (string)(reader["especificacoes"]) : ""),
-                        qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]),
-                        qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]),
-                        qtdeAtual = Convert.ToInt32(reader["qtdeAtualEstoque"]),
                         estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false)
                     };
 
@@ -387,9 +373,6 @@ namespace MRP_SdC.MySQL
                     objComponente.marca = (string)reader["marcaComponente"];
                     objComponente.modelo = (string)reader["modeloComponente"];
                     objComponente.especificacoes = (reader["especificacoes"] != DBNull.Value ? (string)(reader["especificacoes"]) : "");
-                    objComponente.qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]);
-                    objComponente.qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]);
-                    objComponente.qtdeAtual = Convert.ToInt32(reader["qtdeAtualEstoque"]);
                     objComponente.estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false);
 
                     listaComponentes.Add(objComponente);
@@ -434,9 +417,6 @@ namespace MRP_SdC.MySQL
                 objComponente.marca = (string)reader["marcaComponente"];
                 objComponente.modelo = (string)reader["modeloComponente"];
                 objComponente.especificacoes = (reader["especificacoes"] != DBNull.Value ? (string)(reader["especificacoes"]) : "");
-                objComponente.qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]);
-                objComponente.qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]);
-                objComponente.qtdeAtual = Convert.ToInt32(reader["qtdeAtualEstoque"]);
                 objComponente.estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false);
 
             }
@@ -544,12 +524,8 @@ namespace MRP_SdC.MySQL
                 objComponente.marca = (string)reader["marcaComponente"];
                 objComponente.modelo = (string)reader["modeloComponente"];
                 objComponente.especificacoes = (reader["especificacoes"] != DBNull.Value ? (string)(reader["especificacoes"]) : "");
-                objComponente.qtdeMin = Convert.ToInt32(reader["qtdeMinEstoque"]);
-                objComponente.qtdeMax = Convert.ToInt32(reader["qtdeMaxEstoque"]);
-                objComponente.qtdeAtual = Convert.ToInt32(reader["qtdeAtualEstoque"]);
                 //preenche o valor da variável global com o valor da quantidade atual do
                 //componente.
-                quantidadeEstoque = objComponente.qtdeAtual;
                 objComponente.estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false);
 
             }

@@ -78,13 +78,13 @@ namespace MRP_SdC.Telas.Producao
             //Método try catch.
             try
             {
-                MySQL.ProdutoDAO produtoDao = new MySQL.ProdutoDAO();
-                produtoDao.PesquisaProdutos(comboBox1.Text);
+                MySQL.EstoqueProdutoDao EstoqueprodutoDao = new MySQL.EstoqueProdutoDao();
+                EstoqueprodutoDao.PesquisaEstoqueProdutos(comboBox1.Text);
                 //Chama o get que busca o id do produto e sua quantidade no estoque atual.
-                produtoDao.GetIdEstoque(comboBox1.Text);
-                txtEstoqueAtual.Text = produtoDao.estoqueAtualGetIdEstoque.ToString();
+                EstoqueprodutoDao.GetIdEstoque(comboBox1.Text);
+                txtEstoqueAtual.Text = EstoqueprodutoDao.estoqueAtualGetIdEstoque.ToString();
                 //Preenche o valor do txt com o id retornado da consulta.
-                txtIdProduto.Text = produtoDao.idProdutoGetIdEstoque.ToString();
+                txtIdProduto.Text = EstoqueprodutoDao.idProdutoGetIdEstoque.ToString();
 
                 //Cria um objeto do tipo DaoPedido.
                 MySQL.DAOPedido pedidoDao = new MySQL.DAOPedido();

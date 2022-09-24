@@ -57,6 +57,8 @@
     <Compile Include="Conexao\MySQL\DAOPrevisaoDemanda.cs" />
     <Compile Include="Conexao\MySQL\DAORequisicao.cs" />
     <Compile Include="Conexao\MySQL\EntregaDAO.cs" />
+    <Compile Include="Conexao\MySQL\EstoqueComponenteDAO.cs" />
+    <Compile Include="Conexao\MySQL\EstoqueProdutoDao.cs" />
     <Compile Include="Conexao\MySQL\FornecedorComponenteDAO.cs" />
     <Compile Include="Conexao\MySQL\FornecedorDAO.cs" />
     <Compile Include="Conexao\MySQL\UsuarioDAO.cs" />
@@ -66,6 +68,8 @@
     <Compile Include="Globais.cs" />
     <Compile Include="Modelos\BOM.cs" />
     <Compile Include="Modelos\Entrega.cs" />
+    <Compile Include="Modelos\EstoqueComponente.cs" />
+    <Compile Include="Modelos\EstoqueProduto.cs" />
     <Compile Include="Modelos\FornecedorComponente.cs" />
     <Compile Include="Modelos\MPS.cs" />
     <Compile Include="Modelos\Componente.cs" />
@@ -76,6 +80,18 @@
     <Compile Include="Modelos\Produto.cs" />
     <Compile Include="Modelos\RequisicaoCompra.cs" />
     <Compile Include="Modelos\Usuario.cs" />
+    <Compile Include="Telas\Estoque\frmCadastroEstoqueComponente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Estoque\frmCadastroEstoqueComponente.Designer.cs">
+      <DependentUpon>frmCadastroEstoqueComponente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Estoque\frmCadastroEstoqueProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Estoque\frmCadastroEstoqueProduto.Designer.cs">
+      <DependentUpon>frmCadastroEstoqueProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Fornecedores\frmConsultaEntrega.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,17 +242,17 @@
     <Compile Include="Telas\Produtos\CadastroProduto.Designer.cs">
       <DependentUpon>CadastroProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Telas\Produtos\EstoqueProduto.cs">
+    <Compile Include="Telas\Produtos\ConsultaProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Telas\Produtos\EstoqueProduto.Designer.cs">
-      <DependentUpon>EstoqueProduto.cs</DependentUpon>
+    <Compile Include="Telas\Produtos\ConsultaProduto.Designer.cs">
+      <DependentUpon>ConsultaProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Telas\Componentes\EstoqueComponente.cs">
+    <Compile Include="Telas\Componentes\ConsultaComponente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Telas\Componentes\EstoqueComponente.Designer.cs">
-      <DependentUpon>EstoqueComponente.cs</DependentUpon>
+    <Compile Include="Telas\Componentes\ConsultaComponente.Designer.cs">
+      <DependentUpon>ConsultaComponente.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\Main.cs">
       <SubType>Form</SubType>
@@ -258,6 +274,12 @@
     <Compile Include="Telas\Usuario\ConsultaUsuario.Designer.cs">
       <DependentUpon>ConsultaUsuario.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Telas\Estoque\frmCadastroEstoqueComponente.resx">
+      <DependentUpon>frmCadastroEstoqueComponente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Estoque\frmCadastroEstoqueProduto.resx">
+      <DependentUpon>frmCadastroEstoqueProduto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\Fornecedores\frmConsultaEntrega.resx">
       <DependentUpon>frmConsultaEntrega.cs</DependentUpon>
     </EmbeddedResource>
@@ -330,11 +352,11 @@
     <EmbeddedResource Include="Telas\Produtos\CadastroProduto.resx">
       <DependentUpon>CadastroProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Telas\Produtos\EstoqueProduto.resx">
-      <DependentUpon>EstoqueProduto.cs</DependentUpon>
+    <EmbeddedResource Include="Telas\Produtos\ConsultaProduto.resx">
+      <DependentUpon>ConsultaProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Telas\Componentes\EstoqueComponente.resx">
-      <DependentUpon>EstoqueComponente.cs</DependentUpon>
+    <EmbeddedResource Include="Telas\Componentes\ConsultaComponente.resx">
+      <DependentUpon>ConsultaComponente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

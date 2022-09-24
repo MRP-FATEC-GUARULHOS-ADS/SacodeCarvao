@@ -8,10 +8,6 @@ namespace MRP_SdC
         public string modelo { get; set; }
         public string descricao { get; set; }
         public decimal valor { get; set; }
-        public int qtdeAtualEstoque { get; set; }
-        public int estoqueSeguranca { get; set; }
-        public int leadTime { get; set; }
-        public int lote { get; set; }
         public bool estado { get; set; }
         public List<Componente> componentes { get; set; }
 
@@ -22,17 +18,12 @@ namespace MRP_SdC
         }
 
         public Produto(
-           string modelo, string descricao, int valor, int qtdeAtualEstoque, int estoqueSeguranca, 
-           int leadTime, int lote
+           string modelo, string descricao, int valor
         )
         {
             this.modelo = modelo;
             this.descricao = descricao;
             this.valor = valor;
-            this.qtdeAtualEstoque = qtdeAtualEstoque;
-            this.estoqueSeguranca = estoqueSeguranca;
-            this.leadTime = leadTime;
-            this.lote = lote;
         }
 
         public override string ToString()

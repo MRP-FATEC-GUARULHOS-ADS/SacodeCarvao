@@ -77,7 +77,7 @@ namespace MRP_SdC
             this.corpo_pnl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.corpo_pnl.Location = new System.Drawing.Point(0, 0);
             this.corpo_pnl.Name = "corpo_pnl";
-            this.corpo_pnl.Size = new System.Drawing.Size(304, 409);
+            this.corpo_pnl.Size = new System.Drawing.Size(304, 398);
             this.corpo_pnl.TabIndex = 0;
             // 
             // barraInf_pnl
@@ -85,7 +85,7 @@ namespace MRP_SdC
             this.barraInf_pnl.Controls.Add(this.cancelar_btn);
             this.barraInf_pnl.Controls.Add(this.ok_btn);
             this.barraInf_pnl.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barraInf_pnl.Location = new System.Drawing.Point(32, 361);
+            this.barraInf_pnl.Location = new System.Drawing.Point(32, 350);
             this.barraInf_pnl.Name = "barraInf_pnl";
             this.barraInf_pnl.Size = new System.Drawing.Size(240, 48);
             this.barraInf_pnl.TabIndex = 6;
@@ -117,10 +117,10 @@ namespace MRP_SdC
             // 
             this.estado_pnl.Controls.Add(this.estado_clb);
             this.estado_pnl.Controls.Add(this.estado_lbl);
-            this.estado_pnl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.estado_pnl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.estado_pnl.Location = new System.Drawing.Point(32, 284);
             this.estado_pnl.Name = "estado_pnl";
-            this.estado_pnl.Size = new System.Drawing.Size(240, 58);
+            this.estado_pnl.Size = new System.Drawing.Size(240, 114);
             this.estado_pnl.TabIndex = 5;
             // 
             // estado_clb
@@ -299,7 +299,7 @@ namespace MRP_SdC
             this.esp_dir_pnl.Dock = System.Windows.Forms.DockStyle.Right;
             this.esp_dir_pnl.Location = new System.Drawing.Point(272, 0);
             this.esp_dir_pnl.Name = "esp_dir_pnl";
-            this.esp_dir_pnl.Size = new System.Drawing.Size(32, 409);
+            this.esp_dir_pnl.Size = new System.Drawing.Size(32, 398);
             this.esp_dir_pnl.TabIndex = 8;
             // 
             // esp_esq_pnl
@@ -307,14 +307,14 @@ namespace MRP_SdC
             this.esp_esq_pnl.Dock = System.Windows.Forms.DockStyle.Left;
             this.esp_esq_pnl.Location = new System.Drawing.Point(0, 0);
             this.esp_esq_pnl.Name = "esp_esq_pnl";
-            this.esp_esq_pnl.Size = new System.Drawing.Size(32, 409);
+            this.esp_esq_pnl.Size = new System.Drawing.Size(32, 398);
             this.esp_esq_pnl.TabIndex = 7;
             // 
             // CadastroComponente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 409);
+            this.ClientSize = new System.Drawing.Size(304, 398);
             this.Controls.Add(this.corpo_pnl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CadastroComponente";

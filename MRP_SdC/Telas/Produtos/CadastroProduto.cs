@@ -35,8 +35,7 @@ namespace MRP_SdC
             
 
             Produto myProduto = new Produto(
-                txt_ModeloProduto.Text, txt_DescricaoProduto.Text, int.Parse(txt_ValorProduto.Text), 0,
-                int.Parse(txtEstoqueSeguranca.Text), int.Parse(txtLeadTime.Text), int.Parse(txtLote.Text)
+                txt_ModeloProduto.Text, txt_DescricaoProduto.Text, int.Parse(txt_ValorProduto.Text)
             );
             
             // confirmando insercao

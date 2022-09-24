@@ -31,6 +31,9 @@ namespace MRP_SdC
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadastroProduto));
             this.corpo_pnl = new System.Windows.Forms.Panel();
+            this.estado_pnl = new System.Windows.Forms.Panel();
+            this.estado_clb = new System.Windows.Forms.CheckedListBox();
+            this.estado_lbl = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txt_ValorProduto = new System.Windows.Forms.TextBox();
             this.lbl_ValorProduto = new System.Windows.Forms.Label();
@@ -46,27 +49,12 @@ namespace MRP_SdC
             this.ttl_lbl = new System.Windows.Forms.Label();
             this.esp_dir_pnl = new System.Windows.Forms.Panel();
             this.esp_esq_pnl = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.txtEstoqueSeguranca = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.txtLeadTime = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.txtLote = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.estado_pnl = new System.Windows.Forms.Panel();
-            this.estado_clb = new System.Windows.Forms.CheckedListBox();
-            this.estado_lbl = new System.Windows.Forms.Label();
             this.corpo_pnl.SuspendLayout();
+            this.estado_pnl.SuspendLayout();
             this.panel1.SuspendLayout();
             this.barraInf_pnl.SuspendLayout();
             this.valor_pnl.SuspendLayout();
             this.descr_pnl.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.estado_pnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // corpo_pnl
@@ -74,9 +62,6 @@ namespace MRP_SdC
             this.corpo_pnl.AutoScroll = true;
             this.corpo_pnl.AutoSize = true;
             this.corpo_pnl.Controls.Add(this.estado_pnl);
-            this.corpo_pnl.Controls.Add(this.panel4);
-            this.corpo_pnl.Controls.Add(this.panel3);
-            this.corpo_pnl.Controls.Add(this.panel2);
             this.corpo_pnl.Controls.Add(this.panel1);
             this.corpo_pnl.Controls.Add(this.barraInf_pnl);
             this.corpo_pnl.Controls.Add(this.valor_pnl);
@@ -89,6 +74,42 @@ namespace MRP_SdC
             this.corpo_pnl.Name = "corpo_pnl";
             this.corpo_pnl.Size = new System.Drawing.Size(304, 542);
             this.corpo_pnl.TabIndex = 0;
+            // 
+            // estado_pnl
+            // 
+            this.estado_pnl.Controls.Add(this.estado_clb);
+            this.estado_pnl.Controls.Add(this.estado_lbl);
+            this.estado_pnl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.estado_pnl.Location = new System.Drawing.Point(32, 256);
+            this.estado_pnl.Name = "estado_pnl";
+            this.estado_pnl.Size = new System.Drawing.Size(240, 58);
+            this.estado_pnl.TabIndex = 13;
+            // 
+            // estado_clb
+            // 
+            this.estado_clb.BackColor = System.Drawing.SystemColors.Control;
+            this.estado_clb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.estado_clb.CheckOnClick = true;
+            this.estado_clb.Dock = System.Windows.Forms.DockStyle.Top;
+            this.estado_clb.FormattingEnabled = true;
+            this.estado_clb.Items.AddRange(new object[] {
+            "sim",
+            "não"});
+            this.estado_clb.Location = new System.Drawing.Point(0, 17);
+            this.estado_clb.Name = "estado_clb";
+            this.estado_clb.Size = new System.Drawing.Size(240, 30);
+            this.estado_clb.TabIndex = 1;
+            // 
+            // estado_lbl
+            // 
+            this.estado_lbl.AutoSize = true;
+            this.estado_lbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.estado_lbl.Location = new System.Drawing.Point(0, 0);
+            this.estado_lbl.Name = "estado_lbl";
+            this.estado_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.estado_lbl.Size = new System.Drawing.Size(114, 17);
+            this.estado_lbl.TabIndex = 0;
+            this.estado_lbl.Text = "Adicionar à produção?";
             // 
             // panel1
             // 
@@ -238,129 +259,6 @@ namespace MRP_SdC
             this.esp_esq_pnl.Size = new System.Drawing.Size(32, 542);
             this.esp_esq_pnl.TabIndex = 7;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.txtEstoqueSeguranca);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(32, 256);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(240, 48);
-            this.panel2.TabIndex = 10;
-            // 
-            // txtEstoqueSeguranca
-            // 
-            this.txtEstoqueSeguranca.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtEstoqueSeguranca.Location = new System.Drawing.Point(0, 17);
-            this.txtEstoqueSeguranca.Name = "txtEstoqueSeguranca";
-            this.txtEstoqueSeguranca.Size = new System.Drawing.Size(240, 20);
-            this.txtEstoqueSeguranca.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.label1.Size = new System.Drawing.Size(116, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Estoque de Segurança";
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.txtLeadTime);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(32, 304);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(240, 48);
-            this.panel3.TabIndex = 11;
-            // 
-            // txtLeadTime
-            // 
-            this.txtLeadTime.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtLeadTime.Location = new System.Drawing.Point(0, 17);
-            this.txtLeadTime.Name = "txtLeadTime";
-            this.txtLeadTime.Size = new System.Drawing.Size(240, 20);
-            this.txtLeadTime.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.label2.Size = new System.Drawing.Size(57, 17);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Lead Time";
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.txtLote);
-            this.panel4.Controls.Add(this.label3);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(32, 352);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(240, 48);
-            this.panel4.TabIndex = 12;
-            // 
-            // txtLote
-            // 
-            this.txtLote.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtLote.Location = new System.Drawing.Point(0, 17);
-            this.txtLote.Name = "txtLote";
-            this.txtLote.Size = new System.Drawing.Size(240, 20);
-            this.txtLote.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Location = new System.Drawing.Point(0, 0);
-            this.label3.Name = "label3";
-            this.label3.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.label3.Size = new System.Drawing.Size(28, 17);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Lote";
-            // 
-            // estado_pnl
-            // 
-            this.estado_pnl.Controls.Add(this.estado_clb);
-            this.estado_pnl.Controls.Add(this.estado_lbl);
-            this.estado_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.estado_pnl.Location = new System.Drawing.Point(32, 400);
-            this.estado_pnl.Name = "estado_pnl";
-            this.estado_pnl.Size = new System.Drawing.Size(240, 58);
-            this.estado_pnl.TabIndex = 13;
-            // 
-            // estado_clb
-            // 
-            this.estado_clb.BackColor = System.Drawing.SystemColors.Control;
-            this.estado_clb.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.estado_clb.CheckOnClick = true;
-            this.estado_clb.Dock = System.Windows.Forms.DockStyle.Top;
-            this.estado_clb.FormattingEnabled = true;
-            this.estado_clb.Items.AddRange(new object[] {
-            "sim",
-            "não"});
-            this.estado_clb.Location = new System.Drawing.Point(0, 17);
-            this.estado_clb.Name = "estado_clb";
-            this.estado_clb.Size = new System.Drawing.Size(240, 30);
-            this.estado_clb.TabIndex = 1;
-            // 
-            // estado_lbl
-            // 
-            this.estado_lbl.AutoSize = true;
-            this.estado_lbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.estado_lbl.Location = new System.Drawing.Point(0, 0);
-            this.estado_lbl.Name = "estado_lbl";
-            this.estado_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.estado_lbl.Size = new System.Drawing.Size(114, 17);
-            this.estado_lbl.TabIndex = 0;
-            this.estado_lbl.Text = "Adicionar à produção?";
-            // 
             // CadastroProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,6 +270,8 @@ namespace MRP_SdC
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cadastro de produto";
             this.corpo_pnl.ResumeLayout(false);
+            this.estado_pnl.ResumeLayout(false);
+            this.estado_pnl.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.barraInf_pnl.ResumeLayout(false);
@@ -379,14 +279,6 @@ namespace MRP_SdC
             this.valor_pnl.PerformLayout();
             this.descr_pnl.ResumeLayout(false);
             this.descr_pnl.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.estado_pnl.ResumeLayout(false);
-            this.estado_pnl.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -410,15 +302,6 @@ namespace MRP_SdC
         private System.Windows.Forms.TextBox txt_DescricaoProduto;
         private System.Windows.Forms.TextBox txt_ModeloProduto;
         public System.Windows.Forms.Button ok_btn;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox txtEstoqueSeguranca;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox txtLote;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox txtLeadTime;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel estado_pnl;
         private System.Windows.Forms.CheckedListBox estado_clb;
         private System.Windows.Forms.Label estado_lbl;

@@ -8,9 +8,6 @@
         public string marca { get; set; }
         public string modelo { get; set; }
         public string especificacoes { get; set; }
-        public int qtdeMin { get; set; }
-        public int qtdeMax { get; set; }
-        public int qtdeAtual { get; set; }
         public bool estado { get; set; }
 
         // Construtores
@@ -28,9 +25,6 @@
             this.marca = marca;
             this.modelo = modelo;
             this.especificacoes = especificacoes;
-            this.qtdeMin = qtdeMin;
-            this.qtdeMax = qtdeMax;
-            this.qtdeAtual = qtdeAtual;
             this.estado = estado;
         }
 

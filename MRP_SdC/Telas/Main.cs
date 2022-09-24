@@ -295,5 +295,17 @@ namespace MRP_SdC
         {
 
         }
+
+        private void componenteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Telas.Estoque.frmCadastroEstoqueComponente frmEstoqueEntrega = new Telas.Estoque.frmCadastroEstoqueComponente();
+            frmEstoqueEntrega.ShowDialog();
+        }
+
+        private void produtoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Telas.Estoque.frmCadastroEstoqueProduto frmEstoqueProduto = new Telas.Estoque.frmCadastroEstoqueProduto();
+            frmEstoqueProduto.ShowDialog();
+        }
     }
 }

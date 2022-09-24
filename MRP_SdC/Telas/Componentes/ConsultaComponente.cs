@@ -39,9 +39,6 @@ namespace MRP_SdC
             // textos do componente selecionado
             dados_ttl_lbl.Text = String.Format("{0:D6} - {1}", myComp.id, myComp.tipo);
             dados_subttl_lbl.Text = myComp.modelo;
-            dados_atual_tbx.Text = myComp.qtdeAtual.ToString();
-            dados_min_tbx.Text = myComp.qtdeMin.ToString();
-            dados_max_tbx.Text = myComp.qtdeMax.ToString();
 
             atualizar_btn.Enabled = false;
         }
@@ -145,9 +142,6 @@ namespace MRP_SdC
         {
             MySQL.ComponenteDAO compDAO = new MySQL.ComponenteDAO();
 
-            myComp.qtdeAtual = Int32.Parse(dados_atual_tbx.Text);
-            myComp.qtdeMin = Int32.Parse(dados_min_tbx.Text);
-            myComp.qtdeMax = Int32.Parse(dados_max_tbx.Text);
 
             compDAO.UpdateEstoque(myComp);
             atualizar_btn.Enabled = false;
