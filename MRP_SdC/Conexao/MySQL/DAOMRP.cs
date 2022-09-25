@@ -19,8 +19,8 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO MRP ( " +
-                    "idMPS, idProduto, nome, quantidadePedido, quantidadeEstoque, quantidadeFinal" +
-                    ") VALUES(@idMps, @idProd, @modelo, @qntdPed, @qntdEst, @qntdFinal);";
+                    "idMPS, idProduto, nome, necBruta, estoqueDisp, recOrdensPlan, libDeOrdens, semana" +
+                    ") VALUES(@idMPS, @idProd, @modelo, @necBruta, @estDisp, @recOrdPlan, @libOrdens, @semana);";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -30,9 +30,11 @@ namespace MRP_SdC.MySQL
                 cmd.Parameters.AddWithValue("@idMps", mrp.idMPS);
                 cmd.Parameters.AddWithValue("@idProd", mrp.idProduto);
                 cmd.Parameters.AddWithValue("@modelo", mrp.nome);
-                cmd.Parameters.AddWithValue("@qntdPed", mrp.quantidadePedido);
-                cmd.Parameters.AddWithValue("@qntdEst", mrp.quantidadeEstoque);
-                cmd.Parameters.AddWithValue("@qntdFinal", mrp.quantidadeFinal);
+                cmd.Parameters.AddWithValue("@necBruta", mrp.necBruta);
+                cmd.Parameters.AddWithValue("@estDisp", mrp.estoqueDisp);
+                cmd.Parameters.AddWithValue("@recOrdPlan", mrp.recOrdensPlan);
+                cmd.Parameters.AddWithValue("@libOrdens", mrp.libDeOrdens);
+                cmd.Parameters.AddWithValue("@semana", mrp.semana);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();
@@ -124,9 +126,10 @@ namespace MRP_SdC.MySQL
                         idMPS = Convert.ToInt32(reader["idMPS"]),
                         idProduto = Convert.ToInt32(reader["idProduto"]),
                         nome = Convert.ToString(reader["nome"]),
-                        quantidadePedido = Convert.ToInt32(reader["quantidadePedido"]),
-                        quantidadeEstoque = Convert.ToInt32(reader["quantidadeEstoque"]),
-                        quantidadeFinal = Convert.ToInt32(reader["quantidadeFinal"])
+                        necBruta = Convert.ToInt32(reader["necBruta"]),
+                        estoqueDisp = Convert.ToInt32(reader["estoqueDisp"]),
+                        recOrdensPlan = Convert.ToInt32(reader["recOrdensPlan"]),
+                        semana = Convert.ToInt32(reader["semana"])
                     };
 
                     listaMRP.Add(mrp);
@@ -171,9 +174,11 @@ namespace MRP_SdC.MySQL
                         mrp.idMPS = Convert.ToInt32(reader["idMPS"]);
                         mrp.idProduto = Convert.ToInt32(reader["idProduto"]);
                         mrp.nome = Convert.ToString(reader["nome"]);
-                        mrp.quantidadePedido = Convert.ToInt32(reader["quantidadePedido"]);
-                        mrp.quantidadeEstoque = Convert.ToInt32(reader["quantidadeEstoque"]);
-                        mrp.quantidadeFinal = Convert.ToInt32(reader["quantidadeFinal"]);
+                        mrp.necBruta = Convert.ToInt32(reader["necBruta"]);
+                        mrp.estoqueDisp = Convert.ToInt32(reader["estoqueDisp"]);
+                        mrp.recOrdensPlan = Convert.ToInt32(reader["recOrdensPlan"]);
+                        mrp.libDeOrdens = Convert.ToInt32(reader["libDeOrdens"]);
+                        mrp.semana = Convert.ToInt32(reader["semana"]);
                     }
 
                     listaMRP.Add(mrp);
@@ -215,10 +220,12 @@ namespace MRP_SdC.MySQL
 
                 mrp = new MRP();
                 mrp.idProduto = Convert.ToInt32(reader["idProduto"]);
-                mrp.quantidadePedido = Convert.ToInt32(reader["qntdPedido"]);
                 mrp.nome = Convert.ToString(reader["nome"]);
-                mrp.quantidadeEstoque = Convert.ToInt32(reader["qntdEstoque"]);
-                mrp.quantidadeFinal = Convert.ToInt32(reader["qntdNecesLiq"]);
+                mrp.necBruta = Convert.ToInt32(reader["necBruta"]);
+                mrp.estoqueDisp = Convert.ToInt32(reader["estoqueDisp"]);
+                mrp.recOrdensPlan = Convert.ToInt32(reader["recOrdensPlan"]);
+                mrp.libDeOrdens = Convert.ToInt32(reader["libDeOrdens"]);
+                mrp.semana = Convert.ToInt32(reader["semana"]);
             }
             catch (MySqlException e)
             {
@@ -262,9 +269,9 @@ namespace MRP_SdC.MySQL
                 reader.Read();
 
                 mrp = new MRP();
-                mrp.quantidadeFinal = Convert.ToInt32(reader["quantidadeFinal"]);
+                mrp.estoqueDisp = Convert.ToInt32(reader["estoqueDisp"]);
                 //Atribui o valor de quantidade final à variável necessidade Líquida.
-                necessidadeLiquida = mrp.quantidadeFinal;
+                necessidadeLiquida = mrp.estoqueDisp;
             }
             catch (MySqlException e)
             {
@@ -288,8 +295,9 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "UPDATE MRP " +
-                    "SET idProduto = @idProd, nome = @modelo, qntdPedido = @qntdPed, " +
-                    "qntdEstoque= @qntdEstoq, qntdNecesLiq = @qntdNecLiq " +
+                    "SET idProduto = @idProd, nome = @modelo, necBruta = @necBruta, " +
+                    "estoqueDisp= @estDisp, recOrdensPlan = @recOrdPlan, libDeOrdens = @libOrdens," +
+                    "semana = @semana " +
                     "WHERE idMRP = @id; ";
 
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
@@ -298,12 +306,14 @@ namespace MRP_SdC.MySQL
                     return false;
                 }
 
+                cmd.Parameters.AddWithValue("@id", mrp.idMRP);
                 cmd.Parameters.AddWithValue("@idProd", mrp.idProduto);
-                cmd.Parameters.AddWithValue("@qntdPed", mrp.quantidadePedido);
                 cmd.Parameters.AddWithValue("@modelo", mrp.nome);
-                cmd.Parameters.AddWithValue("@qntdEstoq", mrp.quantidadeEstoque);
-                cmd.Parameters.AddWithValue("@qntdNecLiq", mrp.quantidadeFinal);
-                cmd.Parameters.AddWithValue("@idNecesLiq", mrp.idMRP);
+                cmd.Parameters.AddWithValue("@necBruta", mrp.necBruta);
+                cmd.Parameters.AddWithValue("@estDisp", mrp.estoqueDisp);
+                cmd.Parameters.AddWithValue("@recOrdPlan", mrp.recOrdensPlan);
+                cmd.Parameters.AddWithValue("@libOrdens", mrp.libDeOrdens);
+                cmd.Parameters.AddWithValue("@semana", mrp.semana);
                 cmd.Prepare();
 
                 reader = cmd.ExecuteReader();

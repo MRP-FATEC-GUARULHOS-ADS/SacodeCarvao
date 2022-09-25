@@ -105,6 +105,53 @@ namespace MRP_SdC.MySQL
             return listaProdutos;
         }
 
+        public List<Modelos.EstoqueProduto> GetProdutosEstoque()
+        {
+            List<Modelos.EstoqueProduto> listaProdutos = new List<Modelos.EstoqueProduto>();
+            Modelos.EstoqueProduto objProduto;
+
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT * FROM ESTOQUEPRODUTO;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    objProduto = new Modelos.EstoqueProduto
+                    {
+                        idProduto = Convert.ToInt32(reader["idProduto"]),
+                        modeloProduto = (string)reader["modeloProduto"],
+                        qtdeAtualEstoque = Convert.ToInt32(reader["qtdeAtualEstoque"]),
+                        estoqueSeguranca = Convert.ToInt32(reader["estoqueSeguranca"]),
+                        leadTime = Convert.ToInt32(reader["leadTime"]),
+                        lote = Convert.ToInt32(reader["lote"]),
+                    };
+
+                    listaProdutos.Add(objProduto);
+                }
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+            }
+            conexao.CloseConexao();
+            return listaProdutos;
+        }
+
         //Variável que vai me retornar o nome do produto que vou usar no cadastro do MPS.
         public string nomeProdutoGetIdEstoque;
         public int idProdutoGetIdEstoque;
@@ -150,6 +197,102 @@ namespace MRP_SdC.MySQL
                 idProdutoGetIdEstoque = objProduto.idProduto;
                 objProduto.qtdeAtualEstoque = Convert.ToInt32(reader["qtdeAtualEstoque"]);
                 estoqueAtualGetIdEstoque = objProduto.qtdeAtualEstoque;
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+            conexao.CloseConexao();
+            return objProduto;
+        }
+
+        public int id;
+        public string nomeProdutoBom;
+        public Modelos.EstoqueProduto GetModeloProduto(string nome)
+        {
+            Modelos.EstoqueProduto objProduto;
+
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT * FROM ESTOQUEPRODUTO WHERE modeloProduto = @modProd;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Parameters.AddWithValue("@modProd", nome);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                objProduto = new Modelos.EstoqueProduto();
+                objProduto.idProduto = Convert.ToInt32(reader["idProduto"]);
+                objProduto.modeloProduto = Convert.ToString(reader["modeloProduto"]);
+
+                id = objProduto.idProduto;
+                nomeProdutoBom = objProduto.modeloProduto;
+
+
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+            conexao.CloseConexao();
+            return objProduto;
+        }
+
+        public int qntAtualEstoque;
+        public Modelos.EstoqueProduto Get(string modProd)
+        {
+            Modelos.EstoqueProduto objProduto;
+
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT * FROM ESTOQUEPRODUTO WHERE modeloProduto = @modProd;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Parameters.AddWithValue("@modProd", modProd);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                objProduto = new Modelos.EstoqueProduto();
+
+                objProduto.modeloProduto = (string)reader["modeloProduto"];
+                modProd = objProduto.modeloProduto;
+                objProduto.qtdeAtualEstoque = Convert.ToInt32(reader["qtdeAtualEstoque"]);
+                qntAtualEstoque = objProduto.qtdeAtualEstoque;
+                objProduto.estoqueSeguranca = Convert.ToInt32(reader["estoqueSeguranca"]);
+                objProduto.leadTime = Convert.ToInt32(reader["leadTime"]);
+                objProduto.lote = Convert.ToInt32(reader["lote"]);
+
             }
             catch (MySqlException e)
             {

@@ -22,8 +22,10 @@ namespace MRP_SdC.MySQL
         //Variável que armazena a quantidade da Necessidade Líquida.
         public int quantidadeFinal;
 
+        
         private void cadastrar_Click(object sender, EventArgs e)
         {
+            /*
             //Cria o objeto do tipo MPS.
             MPS mps = new MPS();
 
@@ -31,8 +33,8 @@ namespace MRP_SdC.MySQL
             ConexaoMPS conMps = new ConexaoMPS();
 
 
-            Produto prod = new Produto();
-            ProdutoDAO prodDao = new ProdutoDAO();
+            Modelos.EstoqueProduto Estprod = new Modelos.EstoqueProduto();
+            EstoqueProdutoDao estProdDao = new EstoqueProdutoDao();
 
             //Cria um objeto do tipo componente.
             Componente componente = new Componente();
@@ -70,16 +72,16 @@ namespace MRP_SdC.MySQL
                     demandaConsiderada = conMps.DemandaConsiderada;
 
                     //Método que retorna as informações do produto.
-                    prodDao.GetModeloProduto(item.nome);
+                    estProdDao.GetModeloProduto(item.nome);
                     //Variável que recebe o id do Produto.
-                    prod.idProduto = prodDao.id;
+                    Estprod.idProduto = estProdDao.id;
                     //Variável que recebe o nome do Produto.
-                    prod.modelo = prodDao.nomeProdutoBom;
+                    Estprod.modeloProduto = estProdDao.nomeProdutoBom;
 
                     //Método que busca a quantidade atual no Estoque.
-                    prodDao.Get(item.nome);
+                    estProdDao.Get(item.nome);
                     //Variável que recebe a quantidade atual do produto no Estoque.
-                    estoqueAtual = prodDao.qntEst;
+                    estoqueAtual = estProdDao.qntAtualEstoque;
 
                     
 
@@ -92,7 +94,7 @@ namespace MRP_SdC.MySQL
                         quantidadeFinal = 0;
                     }
                     */
-
+                    /*
                     if(quantidadeFinal == 0)
                     {
                         quantidadeFinal = 0;
@@ -115,7 +117,7 @@ namespace MRP_SdC.MySQL
                             Modelos.RequisicaoCompra requisicao = new Modelos.RequisicaoCompra();
 
                             //Preenche os atributos do objeto requisição.
-                            requisicao.idProduto = prod.idProduto;
+                            requisicao.idProduto = Estprod.idProduto;
                             requisicao.nomeProduto = item.nome;
                             requisicao.quantidade = -(quantidadeFinal);
 
@@ -127,7 +129,7 @@ namespace MRP_SdC.MySQL
                         }
                     }
                     //Faz a inserção dos valores na tabela.
-                    mrpObjeto = new MRP(mps.idMPS, prod.idProduto, prod.modelo,
+                    mrpObjeto = new MRP(mps.idMPS, Estprod.idProduto, Estprod.modeloProduto,
                     planoMestreProducao, estoqueAtual, quantidadeFinal);
 
                     //Confirma o cadastro, exibindo uma mensagem.
@@ -213,7 +215,7 @@ namespace MRP_SdC.MySQL
                             Modelos.RequisicaoCompra requisicao = new Modelos.RequisicaoCompra();
 
                             //Preenche os atributos do objeto requisição.
-                            requisicao.idProduto = prod.idProduto;
+                            requisicao.idProduto = Estprod.idProduto;
                             requisicao.nomeProduto = item.nome;
                             requisicao.quantidade = -(quantidadeFinal);
 
@@ -247,7 +249,7 @@ namespace MRP_SdC.MySQL
                         Close();
                     }
                 }
-            }
+            }*/
         }
 
         private void cancelar_btn_Click(object sender, EventArgs e)
@@ -282,6 +284,30 @@ namespace MRP_SdC.MySQL
                 idPedido += 1;
                 i++;
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        // funcoes personalizadas
+        private void AtualizaListas()
+        {
+            MySQL.EstoqueProdutoDao estProdDao = new MySQL.EstoqueProdutoDao();
+            List<Modelos.EstoqueProduto> listaEstoqueProduto = estProdDao.GetProdutosEstoque();
+
+            dataGridView1.DataSource = listaEstoqueProduto;
+        }
+
+        private void CadastroMRP_Load_1(object sender, EventArgs e)
+        {
+            AtualizaListas();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

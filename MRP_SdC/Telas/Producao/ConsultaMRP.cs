@@ -33,9 +33,9 @@ namespace MRP_SdC.Telas.Producao
             mrp.idMRP = int.Parse(dados_ttl_lbl.Text);
             dados_subttl_lbl.Text = String.Format(mrp.idProduto.ToString());
             txtProdId.Text = mrp.idProduto.ToString();
-            txtQntdPedido.Text = mrp.quantidadePedido.ToString();
-            txtQntdEstoque.Text = mrp.quantidadeEstoque.ToString();
-            txtQntdNecesLiq.Text = mrp.quantidadeFinal.ToString();
+            txtQntdPedido.Text = mrp.necBruta.ToString();
+            txtQntdEstoque.Text = mrp.estoqueDisp.ToString();
+            txtQntdNecesLiq.Text = mrp.libDeOrdens.ToString();
         }
 
         private void ConsultaMRP_Load(object sender, EventArgs e)

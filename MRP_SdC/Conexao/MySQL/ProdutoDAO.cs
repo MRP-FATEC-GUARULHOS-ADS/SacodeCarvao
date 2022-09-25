@@ -19,9 +19,8 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO PRODUTO ( " +
-                    "modeloProduto, descrProduto, valorProduto, qtdeAtualEstoque, estoqueSeguranca, " +
-                    "leadTime, lote, estado" +
-                    ") VALUES(@modelo, @descricao, @valor, @qntAtual, @estSeg, @lt, @lote, @estado); ";
+                    "modeloProduto, descrProduto, valorProduto, estado" +
+                    ") VALUES(@modelo, @descricao, @valor, @estado); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -164,6 +163,7 @@ namespace MRP_SdC.MySQL
             conexao.CloseConexao();
             return true;
         }
+
         public Boolean UpdateEstoque(Produto produto)
         {
             Conexao conexao = new Conexao();
