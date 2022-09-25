@@ -307,5 +307,11 @@ namespace MRP_SdC
             Telas.Estoque.frmCadastroEstoqueProduto frmEstoqueProduto = new Telas.Estoque.frmCadastroEstoqueProduto();
             frmEstoqueProduto.ShowDialog();
         }
+
+        private void produtosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Telas.Estoque.frmConsultaEstoqueProduto frmConsultaEstoqueProduto = new Telas.Estoque.frmConsultaEstoqueProduto();
+            frmConsultaEstoqueProduto.ShowDialog();
+        }
     }
 }
