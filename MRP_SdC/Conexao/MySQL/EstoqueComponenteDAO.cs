@@ -50,7 +50,7 @@ namespace MRP_SdC.MySQL
             return true;
         }
 
-        public List<Modelos.EstoqueComponente> GetListaProduto()
+        public List<Modelos.EstoqueComponente> GetListaComponente()
         {
             List<Modelos.EstoqueComponente> listaComponentes = new List<Modelos.EstoqueComponente>();
             Modelos.EstoqueComponente objComponente;
@@ -80,6 +80,53 @@ namespace MRP_SdC.MySQL
                     {
                         idComponente = Convert.ToInt32(reader["idComponente"]),
                         modeloComponente = (string)reader["modeloComponente"],
+                    };
+
+                    listaComponentes.Add(objComponente);
+                }
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+            }
+            conexao.CloseConexao();
+            return listaComponentes;
+        }
+
+        public List<Modelos.EstoqueComponente> GetComponenteEstoque()
+        {
+            List<Modelos.EstoqueComponente> listaComponentes = new List<Modelos.EstoqueComponente>();
+            Modelos.EstoqueComponente objComponente;
+
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT * FROM ESTOQUECOMPONENTE;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    objComponente = new Modelos.EstoqueComponente
+                    {
+                        idComponente = Convert.ToInt32(reader["idComponente"]),
+                        modeloComponente = (string)reader["modeloComponente"],
+                        qtdeAtualEstoque = Convert.ToInt32(reader["qtdeAtualEstoque"]),
+                        estoqueSeguranca = Convert.ToInt32(reader["estoqueSeguranca"]),
+                        leadTime = Convert.ToInt32(reader["leadTime"]),
+                        lote = Convert.ToInt32(reader["lote"]),
                     };
 
                     listaComponentes.Add(objComponente);

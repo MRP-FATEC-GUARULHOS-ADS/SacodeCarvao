@@ -5,7 +5,7 @@ using MRP_SdC.Modelos;
 
 namespace MRP_SdC.MySQL
 {
-    class EstoqueProdutoDao
+    public class EstoqueProdutoDao
     {
         public Boolean Insert(Modelos.EstoqueProduto estProd)
         {
@@ -133,6 +133,7 @@ namespace MRP_SdC.MySQL
                 {
                     objProduto = new Modelos.EstoqueProduto
                     {
+                        idEstoqueProduto = Convert.ToInt32(reader["idEstoqueProduto"]),
                         idProduto = Convert.ToInt32(reader["idProduto"]),
                         modeloProduto = (string)reader["modeloProduto"],
                         qtdeAtualEstoque = Convert.ToInt32(reader["qtdeAtualEstoque"]),
@@ -301,6 +302,48 @@ namespace MRP_SdC.MySQL
             }
             conexao.CloseConexao();
             return objProduto;
+        }
+
+        public Boolean UpdateEstoqueProduto(Modelos.EstoqueProduto Estoqueproduto)
+        {
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return false;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "UPDATE ESTOQUEPRODUTO " +
+                    "SET qtdeAtualEstoque = @qntAtual, " +
+                    "estoqueSeguranca = @estSeg, leadTime = @lTime, lote = @lot " +
+                    "WHERE idProduto = @idProd; ";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return false;
+                }
+
+                cmd.Parameters.AddWithValue("@idProd", Estoqueproduto.idProduto);
+                cmd.Parameters.AddWithValue("@qntAtual", Estoqueproduto.qtdeAtualEstoque);
+                cmd.Parameters.AddWithValue("@estSeg", Estoqueproduto.estoqueSeguranca);
+                cmd.Parameters.AddWithValue("@lTime", Estoqueproduto.leadTime);
+                cmd.Parameters.AddWithValue("@lot", Estoqueproduto.lote);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            conexao.CloseConexao();
+            return true;
         }
     }
 }

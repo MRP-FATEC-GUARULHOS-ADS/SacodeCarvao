@@ -92,6 +92,12 @@
     <Compile Include="Telas\Estoque\frmCadastroEstoqueProduto.Designer.cs">
       <DependentUpon>frmCadastroEstoqueProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Estoque\frmConsultaEstoqueComponente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Estoque\frmConsultaEstoqueComponente.Designer.cs">
+      <DependentUpon>frmConsultaEstoqueComponente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Estoque\frmConsultaEstoqueProduto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -285,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Estoque\frmCadastroEstoqueProduto.resx">
       <DependentUpon>frmCadastroEstoqueProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Estoque\frmConsultaEstoqueComponente.resx">
+      <DependentUpon>frmConsultaEstoqueComponente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Estoque\frmConsultaEstoqueProduto.resx">
       <DependentUpon>frmConsultaEstoqueProduto.cs</DependentUpon>

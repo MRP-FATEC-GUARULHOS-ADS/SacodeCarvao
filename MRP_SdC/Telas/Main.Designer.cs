@@ -57,6 +57,9 @@ namespace MRP_SdC
             this.entregaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pedidoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.demandaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.estoqueToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.produtosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.componentesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.componenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,9 +119,6 @@ namespace MRP_SdC
             this.user_name_txb = new System.Windows.Forms.Label();
             this.user_ttl_txb = new System.Windows.Forms.Label();
             this.logo_pnl = new System.Windows.Forms.Panel();
-            this.estoqueToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.produtosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.componentesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.menu_dir_pnl.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -337,6 +337,29 @@ namespace MRP_SdC
             this.demandaToolStripMenuItem1.Text = "Demanda";
             this.demandaToolStripMenuItem1.Click += new System.EventHandler(this.demandaToolStripMenuItem1_Click);
             // 
+            // estoqueToolStripMenuItem2
+            // 
+            this.estoqueToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.produtosToolStripMenuItem1,
+            this.componentesToolStripMenuItem1});
+            this.estoqueToolStripMenuItem2.Name = "estoqueToolStripMenuItem2";
+            this.estoqueToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.estoqueToolStripMenuItem2.Text = "Estoque";
+            // 
+            // produtosToolStripMenuItem1
+            // 
+            this.produtosToolStripMenuItem1.Name = "produtosToolStripMenuItem1";
+            this.produtosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.produtosToolStripMenuItem1.Text = "Produtos";
+            this.produtosToolStripMenuItem1.Click += new System.EventHandler(this.produtosToolStripMenuItem1_Click);
+            // 
+            // componentesToolStripMenuItem1
+            // 
+            this.componentesToolStripMenuItem1.Name = "componentesToolStripMenuItem1";
+            this.componentesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.componentesToolStripMenuItem1.Text = "Componentes";
+            this.componentesToolStripMenuItem1.Click += new System.EventHandler(this.componentesToolStripMenuItem1_Click);
+            // 
             // cadastrarToolStripMenuItem
             // 
             this.cadastrarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -353,35 +376,35 @@ namespace MRP_SdC
             // produtoToolStripMenuItem
             // 
             this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
-            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.produtoToolStripMenuItem.Text = "Produto";
             this.produtoToolStripMenuItem.Click += new System.EventHandler(this.CadProdutos_TSMI_Click);
             // 
             // componenteToolStripMenuItem
             // 
             this.componenteToolStripMenuItem.Name = "componenteToolStripMenuItem";
-            this.componenteToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.componenteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.componenteToolStripMenuItem.Text = "Componente";
             this.componenteToolStripMenuItem.Click += new System.EventHandler(this.CadComponentes_TSMI_Click);
             // 
             // fornecedoresToolStripMenuItem
             // 
             this.fornecedoresToolStripMenuItem.Name = "fornecedoresToolStripMenuItem";
-            this.fornecedoresToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.fornecedoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.fornecedoresToolStripMenuItem.Text = "Fornecedor";
             this.fornecedoresToolStripMenuItem.Click += new System.EventHandler(this.CadFornecedores_TSMI_Click);
             // 
             // pedidoToolStripMenuItem
             // 
             this.pedidoToolStripMenuItem.Name = "pedidoToolStripMenuItem";
-            this.pedidoToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.pedidoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pedidoToolStripMenuItem.Text = "Pedido";
             this.pedidoToolStripMenuItem.Click += new System.EventHandler(this.pedidoToolStripMenuItem_Click);
             // 
             // demandaToolStripMenuItem2
             // 
             this.demandaToolStripMenuItem2.Name = "demandaToolStripMenuItem2";
-            this.demandaToolStripMenuItem2.Size = new System.Drawing.Size(144, 22);
+            this.demandaToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.demandaToolStripMenuItem2.Text = "Demanda";
             this.demandaToolStripMenuItem2.Click += new System.EventHandler(this.demandaToolStripMenuItem2_Click);
             // 
@@ -391,7 +414,7 @@ namespace MRP_SdC
             this.produtoToolStripMenuItem1,
             this.componenteToolStripMenuItem1});
             this.estoqueToolStripMenuItem1.Name = "estoqueToolStripMenuItem1";
-            this.estoqueToolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
+            this.estoqueToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.estoqueToolStripMenuItem1.Text = "Estoque";
             // 
             // produtoToolStripMenuItem1
@@ -423,7 +446,7 @@ namespace MRP_SdC
             this.consultarToolStripMenuItem4,
             this.cadastrarToolStripMenuItem5});
             this.sairToolStripMenuItem1.Name = "sairToolStripMenuItem1";
-            this.sairToolStripMenuItem1.Size = new System.Drawing.Size(119, 22);
+            this.sairToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.sairToolStripMenuItem1.Text = "Usuários";
             // 
             // consultarToolStripMenuItem4
@@ -443,7 +466,7 @@ namespace MRP_SdC
             // sairToolStripMenuItem2
             // 
             this.sairToolStripMenuItem2.Name = "sairToolStripMenuItem2";
-            this.sairToolStripMenuItem2.Size = new System.Drawing.Size(119, 22);
+            this.sairToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.sairToolStripMenuItem2.Text = "Sair";
             this.sairToolStripMenuItem2.Click += new System.EventHandler(this.sairToolStripMenuItem2_Click);
             // 
@@ -966,28 +989,6 @@ namespace MRP_SdC
             this.logo_pnl.Name = "logo_pnl";
             this.logo_pnl.Size = new System.Drawing.Size(56, 56);
             this.logo_pnl.TabIndex = 0;
-            // 
-            // estoqueToolStripMenuItem2
-            // 
-            this.estoqueToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.produtosToolStripMenuItem1,
-            this.componentesToolStripMenuItem1});
-            this.estoqueToolStripMenuItem2.Name = "estoqueToolStripMenuItem2";
-            this.estoqueToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
-            this.estoqueToolStripMenuItem2.Text = "Estoque";
-            // 
-            // produtosToolStripMenuItem1
-            // 
-            this.produtosToolStripMenuItem1.Name = "produtosToolStripMenuItem1";
-            this.produtosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.produtosToolStripMenuItem1.Text = "Produtos";
-            this.produtosToolStripMenuItem1.Click += new System.EventHandler(this.produtosToolStripMenuItem1_Click);
-            // 
-            // componentesToolStripMenuItem1
-            // 
-            this.componentesToolStripMenuItem1.Name = "componentesToolStripMenuItem1";
-            this.componentesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.componentesToolStripMenuItem1.Text = "Componentes";
             // 
             // Main_frm
             // 

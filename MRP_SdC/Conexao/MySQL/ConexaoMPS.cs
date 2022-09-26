@@ -88,6 +88,7 @@ namespace MRP_SdC.MySQL
                     mps.estoqueAtual = Convert.ToInt32(reader["estoqueAtual"]);
                     mps.planoMestreProducao = Convert.ToInt32(reader["PlanoMestreProducao"]);
                     mps.semana = Convert.ToInt32(reader["semana"]);
+                    mps.data= Convert.ToString(reader["dataMps"]);
 
                     listaMPS.Add(mps);
                 }
@@ -193,6 +194,13 @@ namespace MRP_SdC.MySQL
                         idProduto = Convert.ToInt32(reader["idProduto"]),
                         //Pega o nome do produto.
                         nomeProduto = Convert.ToString(reader["nomeProduto"]),
+                        quantidadePedido = Convert.ToInt32(reader["quantidadePedido"]),
+                        quantidadePrevisaoDemanda = Convert.ToInt32(reader["quantidadePrevisaoDemanda"]),
+                        quantidadeDemandaConsiderada = Convert.ToInt32(reader["quantidadeDemandaConsiderada"]),
+                        estoqueAtual = Convert.ToInt32(reader["estoqueAtual"]),
+                        planoMestreProducao = Convert.ToInt32(reader["PlanoMestreProducao"]),
+                        semana = Convert.ToInt32(reader["semana"]),
+                        data = Convert.ToString(reader["dataMps"])
                     };
 
                     listaMPS.Add(mps);

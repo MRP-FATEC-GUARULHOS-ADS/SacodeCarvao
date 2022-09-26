@@ -25,7 +25,6 @@ namespace MRP_SdC.MySQL
         
         private void cadastrar_Click(object sender, EventArgs e)
         {
-            /*
             //Cria o objeto do tipo MPS.
             MPS mps = new MPS();
 
@@ -88,13 +87,12 @@ namespace MRP_SdC.MySQL
                     //Variável que recebe o valor da quantidade que tem que ser produzida.
                     quantidadeFinal = estoqueAtual - planoMestreProducao;
 
-                    /*Se quantidade Final for < 0, retorna esse valor == 0.
+                    //Se quantidade Final for < 0, retorna esse valor == 0.
                     if (quantidadeFinal < 0)
                     {
                         quantidadeFinal = 0;
                     }
-                    */
-                    /*
+
                     if(quantidadeFinal == 0)
                     {
                         quantidadeFinal = 0;
@@ -130,7 +128,8 @@ namespace MRP_SdC.MySQL
                     }
                     //Faz a inserção dos valores na tabela.
                     mrpObjeto = new MRP(mps.idMPS, Estprod.idProduto, Estprod.modeloProduto,
-                    planoMestreProducao, estoqueAtual, quantidadeFinal);
+                    planoMestreProducao, estoqueAtual, int.Parse(txtRecOrdensPlan.Text),
+                    int.Parse(txtLibDeOrdens.Text), int.Parse(txtSemana.Text));
 
                     //Confirma o cadastro, exibindo uma mensagem.
                     DialogResult confirmarInsert = MessageBox.Show(
@@ -228,8 +227,9 @@ namespace MRP_SdC.MySQL
                     }
 
                     //Faz a inserção dos valores na tabela.
-                    MRP mrpObjetoComponente = new MRP(mps.idMPS, componente.id, componente.modelo,
-                    planoMestreProducao, estoqueAtual, quantidadeFinal);
+                    MRP mrpObjetoComponente = new MRP(mps.idMPS, Estprod.idProduto, Estprod.modeloProduto,
+                    planoMestreProducao, estoqueAtual, int.Parse(txtRecOrdensPlan.Text),
+                    int.Parse(txtLibDeOrdens.Text), int.Parse(txtSemana.Text));
 
                     //Confirma o cadastro, exibindo uma mensagem.
                     DialogResult confirmarInsert = MessageBox.Show(
@@ -249,7 +249,7 @@ namespace MRP_SdC.MySQL
                         Close();
                     }
                 }
-            }*/
+            }
         }
 
         private void cancelar_btn_Click(object sender, EventArgs e)
@@ -292,6 +292,15 @@ namespace MRP_SdC.MySQL
         }
 
         // funcoes personalizadas
+        private void AtualizaListasMrp()
+        {
+            MySQL.DAOMRP mrp = new MySQL.DAOMRP();
+            List<MRP> listaMRP = mrp.GetMRP();
+
+            dgvMrp.DataSource = listaMRP;
+        }
+
+        // funcoes personalizadas
         private void AtualizaListas()
         {
             MySQL.EstoqueProdutoDao estProdDao = new MySQL.EstoqueProdutoDao();
@@ -303,6 +312,7 @@ namespace MRP_SdC.MySQL
         private void CadastroMRP_Load_1(object sender, EventArgs e)
         {
             AtualizaListas();
+            AtualizaListasMrp();
         }
 
         private void label1_Click(object sender, EventArgs e)

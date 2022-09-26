@@ -1,7 +1,7 @@
 ﻿
 namespace MRP_SdC.Telas.Estoque
 {
-    partial class frmConsultaEstoqueProduto
+    partial class frmConsultaEstoqueComponente
     {
         /// <summary>
         /// Required designer variable.
@@ -32,8 +32,8 @@ namespace MRP_SdC.Telas.Estoque
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.EspEsq_pnl = new System.Windows.Forms.Panel();
             this.EspDir_pnl = new System.Windows.Forms.Panel();
+            this.EspEsq_pnl = new System.Windows.Forms.Panel();
             this.ttl_lbl = new System.Windows.Forms.Label();
             this.pesquisa_pnl = new System.Windows.Forms.Panel();
             this.pesquisa_cont_pnl = new System.Windows.Forms.Panel();
@@ -59,15 +59,15 @@ namespace MRP_SdC.Telas.Estoque
             this.txtQuantidadeAtualEstoque = new System.Windows.Forms.TextBox();
             this.estoque_atual_lbl = new System.Windows.Forms.Label();
             this.estoque_max_pnl = new System.Windows.Forms.Panel();
-            this.txtNomeProduto = new System.Windows.Forms.TextBox();
+            this.txtNomeComponente = new System.Windows.Forms.TextBox();
             this.estoque_max_lbl = new System.Windows.Forms.Label();
             this.estoque_min_pnl = new System.Windows.Forms.Panel();
-            this.txtProdId = new System.Windows.Forms.TextBox();
+            this.txtIdComponente = new System.Windows.Forms.TextBox();
             this.estoque_min_lbl = new System.Windows.Forms.Label();
             this.chart_cht = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dados_subttl_lbl = new System.Windows.Forms.Label();
             this.dados_ttl_lbl = new System.Windows.Forms.Label();
-            this.dgvEstoqueProduto = new System.Windows.Forms.DataGridView();
+            this.dgvEstoqueComponente = new System.Windows.Forms.DataGridView();
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
             this.dados_pnl.SuspendLayout();
@@ -80,16 +80,8 @@ namespace MRP_SdC.Telas.Estoque
             this.estoque_max_pnl.SuspendLayout();
             this.estoque_min_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEstoqueProduto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEstoqueComponente)).BeginInit();
             this.SuspendLayout();
-            // 
-            // EspEsq_pnl
-            // 
-            this.EspEsq_pnl.Dock = System.Windows.Forms.DockStyle.Left;
-            this.EspEsq_pnl.Location = new System.Drawing.Point(0, 0);
-            this.EspEsq_pnl.Name = "EspEsq_pnl";
-            this.EspEsq_pnl.Size = new System.Drawing.Size(32, 450);
-            this.EspEsq_pnl.TabIndex = 8;
             // 
             // EspDir_pnl
             // 
@@ -97,7 +89,15 @@ namespace MRP_SdC.Telas.Estoque
             this.EspDir_pnl.Location = new System.Drawing.Point(768, 0);
             this.EspDir_pnl.Name = "EspDir_pnl";
             this.EspDir_pnl.Size = new System.Drawing.Size(32, 450);
-            this.EspDir_pnl.TabIndex = 9;
+            this.EspDir_pnl.TabIndex = 10;
+            // 
+            // EspEsq_pnl
+            // 
+            this.EspEsq_pnl.Dock = System.Windows.Forms.DockStyle.Left;
+            this.EspEsq_pnl.Location = new System.Drawing.Point(0, 0);
+            this.EspEsq_pnl.Name = "EspEsq_pnl";
+            this.EspEsq_pnl.Size = new System.Drawing.Size(32, 450);
+            this.EspEsq_pnl.TabIndex = 11;
             // 
             // ttl_lbl
             // 
@@ -107,8 +107,8 @@ namespace MRP_SdC.Telas.Estoque
             this.ttl_lbl.Name = "ttl_lbl";
             this.ttl_lbl.Padding = new System.Windows.Forms.Padding(0, 16, 0, 12);
             this.ttl_lbl.Size = new System.Drawing.Size(736, 52);
-            this.ttl_lbl.TabIndex = 10;
-            this.ttl_lbl.Text = "Estoque de Produtos";
+            this.ttl_lbl.TabIndex = 12;
+            this.ttl_lbl.Text = "Estoque de Componentes";
             this.ttl_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pesquisa_pnl
@@ -119,7 +119,7 @@ namespace MRP_SdC.Telas.Estoque
             this.pesquisa_pnl.Name = "pesquisa_pnl";
             this.pesquisa_pnl.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
             this.pesquisa_pnl.Size = new System.Drawing.Size(736, 36);
-            this.pesquisa_pnl.TabIndex = 11;
+            this.pesquisa_pnl.TabIndex = 13;
             // 
             // pesquisa_cont_pnl
             // 
@@ -187,7 +187,7 @@ namespace MRP_SdC.Telas.Estoque
             this.dados_pnl.Name = "dados_pnl";
             this.dados_pnl.Padding = new System.Windows.Forms.Padding(12, 24, 12, 12);
             this.dados_pnl.Size = new System.Drawing.Size(240, 362);
-            this.dados_pnl.TabIndex = 12;
+            this.dados_pnl.TabIndex = 14;
             // 
             // panel6
             // 
@@ -226,7 +226,6 @@ namespace MRP_SdC.Telas.Estoque
             this.btnAtualizaMRP.TabIndex = 0;
             this.btnAtualizaMRP.Text = "Atualizar Estoque";
             this.btnAtualizaMRP.UseVisualStyleBackColor = true;
-            this.btnAtualizaMRP.Click += new System.EventHandler(this.btnAtualizaMRP_Click);
             // 
             // button1
             // 
@@ -348,7 +347,7 @@ namespace MRP_SdC.Telas.Estoque
             // 
             // estoque_max_pnl
             // 
-            this.estoque_max_pnl.Controls.Add(this.txtNomeProduto);
+            this.estoque_max_pnl.Controls.Add(this.txtNomeComponente);
             this.estoque_max_pnl.Controls.Add(this.estoque_max_lbl);
             this.estoque_max_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.estoque_max_pnl.Location = new System.Drawing.Point(0, 48);
@@ -356,13 +355,13 @@ namespace MRP_SdC.Telas.Estoque
             this.estoque_max_pnl.Size = new System.Drawing.Size(199, 48);
             this.estoque_max_pnl.TabIndex = 2;
             // 
-            // txtNomeProduto
+            // txtNomeComponente
             // 
-            this.txtNomeProduto.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtNomeProduto.Location = new System.Drawing.Point(0, 17);
-            this.txtNomeProduto.Name = "txtNomeProduto";
-            this.txtNomeProduto.Size = new System.Drawing.Size(199, 20);
-            this.txtNomeProduto.TabIndex = 1;
+            this.txtNomeComponente.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtNomeComponente.Location = new System.Drawing.Point(0, 17);
+            this.txtNomeComponente.Name = "txtNomeComponente";
+            this.txtNomeComponente.Size = new System.Drawing.Size(199, 20);
+            this.txtNomeComponente.TabIndex = 1;
             // 
             // estoque_max_lbl
             // 
@@ -371,13 +370,13 @@ namespace MRP_SdC.Telas.Estoque
             this.estoque_max_lbl.Location = new System.Drawing.Point(0, 0);
             this.estoque_max_lbl.Name = "estoque_max_lbl";
             this.estoque_max_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.estoque_max_lbl.Size = new System.Drawing.Size(75, 17);
+            this.estoque_max_lbl.Size = new System.Drawing.Size(98, 17);
             this.estoque_max_lbl.TabIndex = 0;
-            this.estoque_max_lbl.Text = "Nome Produto";
+            this.estoque_max_lbl.Text = "Nome Componente";
             // 
             // estoque_min_pnl
             // 
-            this.estoque_min_pnl.Controls.Add(this.txtProdId);
+            this.estoque_min_pnl.Controls.Add(this.txtIdComponente);
             this.estoque_min_pnl.Controls.Add(this.estoque_min_lbl);
             this.estoque_min_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.estoque_min_pnl.Location = new System.Drawing.Point(0, 0);
@@ -385,13 +384,13 @@ namespace MRP_SdC.Telas.Estoque
             this.estoque_min_pnl.Size = new System.Drawing.Size(199, 48);
             this.estoque_min_pnl.TabIndex = 1;
             // 
-            // txtProdId
+            // txtIdComponente
             // 
-            this.txtProdId.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtProdId.Location = new System.Drawing.Point(0, 17);
-            this.txtProdId.Name = "txtProdId";
-            this.txtProdId.Size = new System.Drawing.Size(199, 20);
-            this.txtProdId.TabIndex = 1;
+            this.txtIdComponente.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtIdComponente.Location = new System.Drawing.Point(0, 17);
+            this.txtIdComponente.Name = "txtIdComponente";
+            this.txtIdComponente.Size = new System.Drawing.Size(199, 20);
+            this.txtIdComponente.TabIndex = 1;
             // 
             // estoque_min_lbl
             // 
@@ -400,9 +399,9 @@ namespace MRP_SdC.Telas.Estoque
             this.estoque_min_lbl.Location = new System.Drawing.Point(0, 0);
             this.estoque_min_lbl.Name = "estoque_min_lbl";
             this.estoque_min_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.estoque_min_lbl.Size = new System.Drawing.Size(56, 17);
+            this.estoque_min_lbl.Size = new System.Drawing.Size(79, 17);
             this.estoque_min_lbl.TabIndex = 0;
-            this.estoque_min_lbl.Text = "Id Produto";
+            this.estoque_min_lbl.Text = "Id Componente";
             // 
             // chart_cht
             // 
@@ -448,37 +447,36 @@ namespace MRP_SdC.Telas.Estoque
             this.dados_ttl_lbl.TabIndex = 0;
             this.dados_ttl_lbl.Text = "codigo";
             // 
-            // dgvEstoqueProduto
+            // dgvEstoqueComponente
             // 
-            this.dgvEstoqueProduto.AllowUserToAddRows = false;
-            this.dgvEstoqueProduto.AllowUserToDeleteRows = false;
-            this.dgvEstoqueProduto.BackgroundColor = System.Drawing.Color.White;
-            this.dgvEstoqueProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEstoqueProduto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvEstoqueProduto.Location = new System.Drawing.Point(32, 88);
-            this.dgvEstoqueProduto.MultiSelect = false;
-            this.dgvEstoqueProduto.Name = "dgvEstoqueProduto";
-            this.dgvEstoqueProduto.ReadOnly = true;
-            this.dgvEstoqueProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEstoqueProduto.Size = new System.Drawing.Size(496, 362);
-            this.dgvEstoqueProduto.StandardTab = true;
-            this.dgvEstoqueProduto.TabIndex = 13;
-            this.dgvEstoqueProduto.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstoqueProduto_CellClick);
+            this.dgvEstoqueComponente.AllowUserToAddRows = false;
+            this.dgvEstoqueComponente.AllowUserToDeleteRows = false;
+            this.dgvEstoqueComponente.BackgroundColor = System.Drawing.Color.White;
+            this.dgvEstoqueComponente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEstoqueComponente.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvEstoqueComponente.Location = new System.Drawing.Point(32, 88);
+            this.dgvEstoqueComponente.MultiSelect = false;
+            this.dgvEstoqueComponente.Name = "dgvEstoqueComponente";
+            this.dgvEstoqueComponente.ReadOnly = true;
+            this.dgvEstoqueComponente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvEstoqueComponente.Size = new System.Drawing.Size(496, 362);
+            this.dgvEstoqueComponente.StandardTab = true;
+            this.dgvEstoqueComponente.TabIndex = 15;
             // 
-            // frmConsultaEstoqueProduto
+            // frmConsultaEstoqueComponente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dgvEstoqueProduto);
+            this.Controls.Add(this.dgvEstoqueComponente);
             this.Controls.Add(this.dados_pnl);
             this.Controls.Add(this.pesquisa_pnl);
             this.Controls.Add(this.ttl_lbl);
-            this.Controls.Add(this.EspDir_pnl);
             this.Controls.Add(this.EspEsq_pnl);
-            this.Name = "frmConsultaEstoqueProduto";
-            this.Text = "frmConsultaEstoqueProduto";
-            this.Load += new System.EventHandler(this.frmConsultaEstoqueProduto_Load);
+            this.Controls.Add(this.EspDir_pnl);
+            this.Name = "frmConsultaEstoqueComponente";
+            this.Text = "frmConsultaEstoqueComponente";
+            this.Load += new System.EventHandler(this.frmConsultaEstoqueComponente_Load);
             this.pesquisa_pnl.ResumeLayout(false);
             this.pesquisa_cont_pnl.ResumeLayout(false);
             this.pesquisa_cont_pnl.PerformLayout();
@@ -499,15 +497,15 @@ namespace MRP_SdC.Telas.Estoque
             this.estoque_min_pnl.ResumeLayout(false);
             this.estoque_min_pnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEstoqueProduto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEstoqueComponente)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel EspEsq_pnl;
         private System.Windows.Forms.Panel EspDir_pnl;
+        private System.Windows.Forms.Panel EspEsq_pnl;
         private System.Windows.Forms.Label ttl_lbl;
         private System.Windows.Forms.Panel pesquisa_pnl;
         private System.Windows.Forms.Panel pesquisa_cont_pnl;
@@ -533,14 +531,14 @@ namespace MRP_SdC.Telas.Estoque
         private System.Windows.Forms.TextBox txtQuantidadeAtualEstoque;
         private System.Windows.Forms.Label estoque_atual_lbl;
         private System.Windows.Forms.Panel estoque_max_pnl;
-        private System.Windows.Forms.TextBox txtNomeProduto;
+        private System.Windows.Forms.TextBox txtNomeComponente;
         private System.Windows.Forms.Label estoque_max_lbl;
         private System.Windows.Forms.Panel estoque_min_pnl;
-        private System.Windows.Forms.TextBox txtProdId;
+        private System.Windows.Forms.TextBox txtIdComponente;
         private System.Windows.Forms.Label estoque_min_lbl;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart_cht;
         private System.Windows.Forms.Label dados_subttl_lbl;
         private System.Windows.Forms.Label dados_ttl_lbl;
-        private System.Windows.Forms.DataGridView dgvEstoqueProduto;
+        private System.Windows.Forms.DataGridView dgvEstoqueComponente;
     }
 }
