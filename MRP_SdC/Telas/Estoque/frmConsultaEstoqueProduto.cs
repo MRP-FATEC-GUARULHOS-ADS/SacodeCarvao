@@ -90,5 +90,34 @@ namespace MRP_SdC.Telas.Estoque
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //Método try catch
+            try
+            {
+                Modelos.EstoqueProduto estProd = new Modelos.EstoqueProduto();
+
+                //preenche o valor de idMPS.
+                estProd.modeloProduto = txtNomeProduto.Text;
+                //Pergunta se quer realizar a exclusão.
+                DialogResult confirmarUpdate = MessageBox.Show(
+                    "( ﾉ ﾟｰﾟ)ﾉ " + estProd.modeloProduto + " ?!", "Confirmar Delete",
+                    MessageBoxButtons.YesNo);
+
+                if (confirmarUpdate == DialogResult.Yes)
+                {
+                    //Gerar objeto do tipo DAOMRP.
+                    MySQL.EstoqueProdutoDao estProdDao = new MySQL.EstoqueProdutoDao();
+                    estProdDao.Delete(int.Parse(dados_ttl_lbl.Text));
+                    //Atualizar a tabela.
+                    AtualizaListas();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

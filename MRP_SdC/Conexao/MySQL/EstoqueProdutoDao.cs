@@ -345,5 +345,84 @@ namespace MRP_SdC.MySQL
             conexao.CloseConexao();
             return true;
         }
+
+        public Boolean Delete(int idEstoque)
+        {
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return false;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "DELETE FROM ESTOQUEPRODUTO " +
+                    "WHERE idEstoqueProduto = @id; ";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return false;
+                }
+
+                cmd.Parameters.AddWithValue("@id", idEstoque);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            conexao.CloseConexao();
+            return true;
+        }
+
+        //Método que atualiza o saldo depois do cálculo de Necessidade Líquida.
+        public Boolean UpdateSaldo(string nomeProduto, int saldoAtual)
+        {
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return false;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                //Atualiza a quantidade atual do estoque de Componentes
+                //quando o id do Componente, for igual ao parâmetro.
+                string query = "UPDATE ESTOQUEPRODUTO " +
+                    "SET qtdeAtualEstoque = @qntatual " +
+                    "WHERE modeloProduto = @modelo; ";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return false;
+                }
+
+                //Adiciona um valor ao final do SqlParameterCollection.
+                cmd.Parameters.AddWithValue("@modelo", nomeProduto);
+                cmd.Parameters.AddWithValue("@qntatual", saldoAtual);
+
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            conexao.CloseConexao();
+            return true;
+        }
     }
 }

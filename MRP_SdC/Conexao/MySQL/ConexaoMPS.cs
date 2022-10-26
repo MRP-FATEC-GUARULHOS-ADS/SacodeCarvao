@@ -352,5 +352,57 @@ namespace MRP_SdC.MySQL
             conexao.CloseConexao();
             return true;
         }
+
+        public int planoMestreProducao;
+        public string nomePaiProduto;
+        public List<MPS> GetPlanoMestreProducao(string nomeP, int semana)
+        {
+            List<MPS> listaMps = new List<MPS>();
+            MPS mps;
+            Conexao conexao = new Conexao();
+            CadastroMRP cadMrp = new CadastroMRP();
+
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT * FROM MPS WHERE nomeProduto = @nomeProd AND semana = @semana;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Parameters.AddWithValue("@nomeProd", nomeP);
+                cmd.Parameters.AddWithValue("@semana", semana);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                mps = new MPS();
+                mps.idMPS = Convert.ToInt32(reader["idMPS"]);
+                mps.idProduto = Convert.ToInt32(reader["idProduto"]);
+                mps.nomeProduto = Convert.ToString(reader["nomeProduto"]);
+                nomePaiProduto = mps.nomeProduto;
+                mps.quantidadeDemandaConsiderada = Convert.ToInt32(reader["quantidadeDemandaConsiderada"]);
+                mps.planoMestreProducao = Convert.ToInt32(reader["PlanoMestreProducao"]);
+                planoMestreProducao = mps.planoMestreProducao;
+            }
+
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+
+            conexao.CloseConexao();
+            return listaMps;
+        }
     }
 }

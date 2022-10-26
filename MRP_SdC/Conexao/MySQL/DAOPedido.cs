@@ -356,7 +356,7 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "UPDATE PEDIDO " +
-                    "SET idProduto = @idProd, nomeProduto = @nomeProd quantidade = @quant, valor = @val " +
+                    "SET idProduto = @idProd, nomeProduto = @nomeProd, quantidade = @quant, valor = @val, semana = @sem " +
                     "WHERE idPedido = @idPed; ";
 
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
@@ -369,6 +369,7 @@ namespace MRP_SdC.MySQL
                 cmd.Parameters.AddWithValue("@nomeProd", pedido.nomeProduto);
                 cmd.Parameters.AddWithValue("@quant", pedido.quantidade);
                 cmd.Parameters.AddWithValue("@val", pedido.valor);
+                cmd.Parameters.AddWithValue("@sem", pedido.semana);
                 cmd.Parameters.AddWithValue("@idPed", pedido.idPedido);
                 cmd.Prepare();
 

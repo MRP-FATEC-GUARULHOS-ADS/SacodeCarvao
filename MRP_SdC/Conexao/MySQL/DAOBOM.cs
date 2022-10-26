@@ -320,7 +320,7 @@ namespace MRP_SdC.MySQL
         //retorna o código da lista de materiais.
         public int codigoListaBom;
         //Metodo que retorna o nome do produto Nó Pai.
-        public BOM GetNomeNoPai(string noPai, int codigoLista)
+        public BOM GetNomeNoPai(string nivel, int codigoLista)
         {
             BOM objBom = new BOM();
 
@@ -336,7 +336,7 @@ namespace MRP_SdC.MySQL
                 MySqlDataReader reader;
                 //Seleciona todos os atributos da linha do BOM, QUANDO o noProduto e o código da
                 //Lista forem iguais aos dos parâmetros.
-                string query = "SELECT * FROM BOM WHERE nivel = @noPai AND codigoLista = " +
+                string query = "SELECT * FROM BOM WHERE nivel = @nvl AND codigoLista = " +
                     "@codLista;";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
@@ -345,7 +345,7 @@ namespace MRP_SdC.MySQL
                 }
 
                 //Adiciona um valor ao final do SqlParameterCollection.
-                cmd.Parameters.AddWithValue("@noPai", noPai);
+                cmd.Parameters.AddWithValue("@nvl", nivel);
                 //Adiciona um valor ao final do SqlParameterCollection.
                 cmd.Parameters.AddWithValue("@codLista", codigoLista);
                 cmd.Prepare();
@@ -370,6 +370,55 @@ namespace MRP_SdC.MySQL
             }
             conexao.CloseConexao();
             return objBom;
+        }
+
+        public int GetNivelBomCodigoLista;
+        public int quantidadeLista;
+        public string nivelComponente;
+        public int GetNivelBomQuantidadeLista;
+        public BOM GetNivelBom(string nome, int codigoLista)
+        {
+            BOM bom = new BOM();
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT * FROM BOM WHERE nome = @nome AND codigoLista = @codList;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Parameters.AddWithValue("@codList", codigoLista);
+                cmd.Parameters.AddWithValue("@nome", nome);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                bom = new BOM();
+                bom.codigoLista = Convert.ToInt32(reader["codigoLista"]);
+                GetNivelBomCodigoLista = bom.codigoLista;
+                bom.nome = Convert.ToString(reader["nome"]);
+                bom.nivel = Convert.ToString(reader["nivel"]);
+                nivelComponente = bom.nivel;
+                bom.quantidadeLista = Convert.ToInt32(reader["quantidadeLista"]);
+                GetNivelBomQuantidadeLista = bom.quantidadeLista;
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+            conexao.CloseConexao();
+            return bom;
         }
     }
 }

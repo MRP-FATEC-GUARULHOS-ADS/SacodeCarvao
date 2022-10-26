@@ -121,6 +121,7 @@ namespace MRP_SdC.MySQL
                 {
                     objComponente = new Modelos.EstoqueComponente
                     {
+                        idEstoqueComponente = Convert.ToInt32(reader["idEstoqueComponente"]),
                         idComponente = Convert.ToInt32(reader["idComponente"]),
                         modeloComponente = (string)reader["modeloComponente"],
                         qtdeAtualEstoque = Convert.ToInt32(reader["qtdeAtualEstoque"]),
@@ -138,6 +139,168 @@ namespace MRP_SdC.MySQL
             }
             conexao.CloseConexao();
             return listaComponentes;
+        }
+
+        //Variável que vai me retornar o nome do produto que vou usar no cadastro do MPS.
+        public string nomeComponenteGetIdEstoque;
+        public int idComponenteGetIdEstoque;
+        //Variável que vai me retornar o estoque atual do produto que vou usar no cadastro do MPS.
+        public int estoqueAtualGetIdEstoque;
+        //Variável que vai me retornar o estoque de segurança.
+        public int quantidadeSeguranca;
+        //Método Get para idProduto e estoque atual a partir do nome do produto.
+        public Modelos.EstoqueComponente GetIdEstoque(string modeloComponente)
+        {
+            Modelos.EstoqueComponente objComponente;
+
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                //SQL da consulta.
+                string query = "SELECT * FROM ESTOQUECOMPONENTE WHERE modeloComponente = @modComp;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Parameters.AddWithValue("@modComp", modeloComponente);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                objComponente = new Modelos.EstoqueComponente();
+
+                //Recupera os dados usando reader.
+                objComponente.modeloComponente = Convert.ToString(reader["modeloComponente"]);
+                nomeComponenteGetIdEstoque = objComponente.modeloComponente;
+                modeloComponente = objComponente.modeloComponente;
+                objComponente.idComponente = Convert.ToInt32(reader["idComponente"]);
+                //Preenche o valor da variável lá em cima.
+                idComponenteGetIdEstoque = objComponente.idComponente;
+                objComponente.qtdeAtualEstoque = Convert.ToInt32(reader["qtdeAtualEstoque"]);
+                estoqueAtualGetIdEstoque = objComponente.qtdeAtualEstoque;
+                objComponente.estoqueSeguranca = Convert.ToInt32(reader["estoqueSeguranca"]);
+                quantidadeSeguranca = objComponente.estoqueSeguranca;
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+            conexao.CloseConexao();
+            return objComponente;
+        }
+
+
+        //Variável que vai me retornar o nome do produto que vou usar no cadastro do MPS.
+        public string GetLeadTimeLotenomeComponenteGetIdEstoque;
+        public int GetLeadTimeLoteIdComponenteGetIdEstoque;
+        //Variável que vai me retornar o lead time do componente.
+        public int GetLeadTime;
+        //Variáve que vai me retornar o lote do componente.
+        public int getLote;
+        //Método Get para idProduto e estoque atual a partir do nome do produto.
+        public Modelos.EstoqueComponente GetLeadTimeLote(string modeloComponente)
+        {
+            Modelos.EstoqueComponente objComponente;
+
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                //SQL da consulta.
+                string query = "SELECT * FROM ESTOQUECOMPONENTE WHERE modeloComponente = @modComp;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Parameters.AddWithValue("@modComp", modeloComponente);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                objComponente = new Modelos.EstoqueComponente();
+
+                //Recupera os dados usando reader.
+                objComponente.modeloComponente = Convert.ToString(reader["modeloComponente"]);
+                GetLeadTimeLotenomeComponenteGetIdEstoque = objComponente.modeloComponente;
+                modeloComponente = objComponente.modeloComponente;
+                objComponente.idComponente = Convert.ToInt32(reader["idComponente"]);
+                //Preenche o valor da variável lá em cima.
+                GetLeadTimeLoteIdComponenteGetIdEstoque = objComponente.idComponente;
+                objComponente.leadTime = Convert.ToInt32(reader["leadTime"]);
+                GetLeadTime = objComponente.leadTime;
+                objComponente.lote = Convert.ToInt32(reader["lote"]);
+                getLote = objComponente.lote;
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+            conexao.CloseConexao();
+            return objComponente;
+        }
+
+        //Método que atualiza o saldo depois do cálculo de Necessidade Líquida.
+        public Boolean UpdateSaldo(string nomeComponente, int saldoAtual)
+        {
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return false;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                //Atualiza a quantidade atual do estoque de Componentes
+                //quando o id do Componente, for igual ao parâmetro.
+                string query = "UPDATE ESTOQUECOMPONENTE " +
+                    "SET qtdeAtualEstoque = @qntatual " +
+                    "WHERE modeloComponente = @modelo; ";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return false;
+                }
+
+                //Adiciona um valor ao final do SqlParameterCollection.
+                cmd.Parameters.AddWithValue("@modelo", nomeComponente);
+                cmd.Parameters.AddWithValue("@qntatual", saldoAtual);
+
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            conexao.CloseConexao();
+            return true;
         }
     }
 }

@@ -127,7 +127,7 @@ namespace MRP_SdC.MySQL
                         }
                     }
                     //Faz a inserção dos valores na tabela.
-                    mrpObjeto = new MRP(mps.idMPS, Estprod.idProduto, Estprod.modeloProduto,
+                    mrpObjeto = new MRP(Estprod.idProduto, Estprod.modeloProduto,
                     planoMestreProducao, estoqueAtual, int.Parse(txtRecOrdensPlan.Text),
                     int.Parse(txtLibDeOrdens.Text), int.Parse(txtSemana.Text));
 
@@ -227,7 +227,7 @@ namespace MRP_SdC.MySQL
                     }
 
                     //Faz a inserção dos valores na tabela.
-                    MRP mrpObjetoComponente = new MRP(mps.idMPS, Estprod.idProduto, Estprod.modeloProduto,
+                    MRP mrpObjetoComponente = new MRP(Estprod.idProduto, Estprod.modeloProduto,
                     planoMestreProducao, estoqueAtual, int.Parse(txtRecOrdensPlan.Text),
                     int.Parse(txtLibDeOrdens.Text), int.Parse(txtSemana.Text));
 
@@ -269,7 +269,7 @@ namespace MRP_SdC.MySQL
             DAOPedido daoPed = new DAOPedido();
             daoPed.GetIdPedido();
             int idPedido = daoPed.idPed;
-            cmbIdPedido.Items.Add(10);
+            cmbModeloComponente.Items.Add(10);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -280,7 +280,7 @@ namespace MRP_SdC.MySQL
             int i = 0;
             while (i < 100)
             {
-                cmbIdPedido.Items.Add(idPedido);
+                cmbModeloComponente.Items.Add(idPedido);
                 idPedido += 1;
                 i++;
             }
@@ -311,6 +311,19 @@ namespace MRP_SdC.MySQL
 
         private void CadastroMRP_Load_1(object sender, EventArgs e)
         {
+            //Objeto Produto.
+            Modelos.EstoqueComponente estComponente = new Modelos.EstoqueComponente();
+            //Objeto ProdutoDAO.
+            MySQL.EstoqueComponenteDAO estCompDao = new MySQL.EstoqueComponenteDAO();
+
+            //Variável que vai trazer os valores do banco de dados.
+            var model = estCompDao.GetComponenteEstoque();
+
+            foreach (Modelos.EstoqueComponente item in model)
+            {
+                cmbModeloComponente.Items.Add(item);
+            }
+
             AtualizaListas();
             AtualizaListasMrp();
         }
@@ -318,6 +331,189 @@ namespace MRP_SdC.MySQL
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCadastro_Click(object sender, EventArgs e)
+        {
+            EstoqueComponenteDAO estCompDao = new EstoqueComponenteDAO();
+            estCompDao.GetIdEstoque(cmbModeloComponente.Text);
+
+            //Faz a inserção dos valores na tabela.
+            MRP mrpObjeto = new MRP(estCompDao.idComponenteGetIdEstoque, cmbModeloComponente.Text,
+            int.Parse(txtNecBruta.Text), int.Parse(txtEstoqueDisp.Text), int.Parse(txtRecOrdensPlan.Text),
+            int.Parse(txtLibDeOrdens.Text), int.Parse(txtSemana.Text));
+
+            //Confirma o cadastro, exibindo uma mensagem.
+            DialogResult confirmarInsert = MessageBox.Show(
+                estCompDao.nomeComponenteGetIdEstoque + " ?!", "Confirmar Inserção",
+                MessageBoxButtons.YesNo
+            );
+            //Se o usuário confirmar, cadastra.
+            if (confirmarInsert == DialogResult.Yes)
+            {
+                //Cria um objeto do tipo DAOMRP.
+                DAOMRP daoMrpInsertComponente = new DAOMRP();
+
+                //Faz o Insert.
+                daoMrpInsertComponente.Insert(mrpObjeto);
+
+                //Fecha a tela após o Cadastro.
+                Close();
+            }
+        }
+
+        private void cmbIdPedido_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            Modelos.EstoqueComponente estComp = new Modelos.EstoqueComponente();
+            BOM bom = new BOM();
+
+            MySQL.DAOBOM daoBom = new DAOBOM();
+            daoBom.GetNivelBom(cmbModeloComponente.Text, int.Parse(txtIdBom.Text));
+
+            txtNecBruta.Text = daoBom.quantidadeLista.ToString();
+            bom.nivel = daoBom.nivelComponente;
+            bom.codigoLista = daoBom.GetNivelBomCodigoLista;
+            bom.quantidadeLista = daoBom.GetNivelBomQuantidadeLista;
+
+            if (bom.nivel.Length == 3)
+            {
+                //retorna o valor do No Pai.
+                string noPai = bom.nivel.Remove(bom.nivel.Length - 2, 2);
+
+                //traz o valor do nome do produto.
+                daoBom.GetNomeNoPai(noPai, bom.codigoLista);
+                string nomeNoPai = daoBom.nomeNoPai;
+
+                ConexaoMPS conMps = new ConexaoMPS();
+                conMps.GetPlanoMestreProducao(nomeNoPai, int.Parse(txtSemana.Text));
+
+                ConexaoMPS conMps2 = new ConexaoMPS();
+
+                int necBruta = conMps.planoMestreProducao * bom.quantidadeLista;
+                txtNecBruta.Text = necBruta.ToString();
+
+                EstoqueComponenteDAO estCompDao = new EstoqueComponenteDAO();
+                estCompDao.GetIdEstoque(cmbModeloComponente.Text);
+
+                DAOMRP daoMrp = new DAOMRP();
+                DAOMRP daoMrp2 = new DAOMRP();
+
+                if (int.Parse(txtSemana.Text) == 1)
+                {
+                    txtRecOrdensPlan.Text = 0.ToString();
+                    txtLibDeOrdens.Text = 0.ToString();
+                    int estoqueDisponivel = estCompDao.estoqueAtualGetIdEstoque - necBruta;
+                    txtEstoqueDisp.Text = estoqueDisponivel.ToString();
+                }
+
+                if (int.Parse(txtSemana.Text) != 1)
+                {
+                    estCompDao.GetLeadTimeLote(cmbModeloComponente.Text);
+                    int leadTime = estCompDao.GetLeadTime;
+                    int lote = estCompDao.getLote;
+                    int semana = int.Parse(txtSemana.Text) + leadTime;
+                    int semanaLibOrdem = int.Parse(txtSemana.Text) - leadTime;
+
+
+                    conMps2.GetPlanoMestreProducao(nomeNoPai, semana);
+
+                    int necBruta2 = conMps2.planoMestreProducao * bom.quantidadeLista;
+
+                    daoMrp2.GetLibOrdem(cmbModeloComponente.Text, semana);
+                    daoMrp2.GetRecOrdensPlan(cmbModeloComponente.Text, semanaLibOrdem);
+                    txtRecOrdensPlan.Text = daoMrp2.GetLibDeOrdensRecPlan.ToString();
+                    int estoqueDisponivel = estCompDao.estoqueAtualGetIdEstoque - necBruta + int.Parse(txtRecOrdensPlan.Text);
+                    txtEstoqueDisp.Text = estoqueDisponivel.ToString();
+
+                    if (necBruta2 > int.Parse(txtEstoqueDisp.Text) - estCompDao.quantidadeSeguranca)
+                    {
+                        int liberacao = necBruta2 - estoqueDisponivel;
+                        int liberacaoReal;
+                        if (liberacao < estCompDao.quantidadeSeguranca)
+                        {
+                            liberacaoReal = estCompDao.quantidadeSeguranca + liberacao;
+                        }
+                        else
+                        {
+                            liberacaoReal = liberacao;
+                        }
+                        txtLibDeOrdens.Text = liberacaoReal.ToString();
+                    }
+                    else
+                    {
+                        txtLibDeOrdens.Text = 0.ToString();
+                    }
+                }
+            }
+            else
+            {
+                //retorna o valor do No Pai.
+                string noPai = bom.nivel.Remove(bom.nivel.Length - 2, 2);
+
+                //traz o valor do nome do produto.
+                daoBom.GetNomeNoPai(noPai, bom.codigoLista);
+                string nomeNoPai = daoBom.nomeNoPai;
+
+                EstoqueComponenteDAO estCompDao = new EstoqueComponenteDAO();
+                estCompDao.GetIdEstoque(cmbModeloComponente.Text);
+
+                DAOMRP daoMrp = new DAOMRP();
+                daoMrp.GetNecessidadeBruta(nomeNoPai, int.Parse(txtSemana.Text));
+
+                DAOMRP daoMrp2 = new DAOMRP();
+
+                int necBruta = daoMrp.GetNecessidadeBrutaNecBruta * bom.quantidadeLista;
+                txtNecBruta.Text = necBruta.ToString();
+
+                if (int.Parse(txtSemana.Text) == 1)
+                {
+                    txtRecOrdensPlan.Text = 0.ToString();
+                    txtLibDeOrdens.Text = 0.ToString();
+                    int estoqueDisponivel = estCompDao.estoqueAtualGetIdEstoque - necBruta;
+                    txtEstoqueDisp.Text = estoqueDisponivel.ToString();
+                }
+
+                if (int.Parse(txtSemana.Text) != 1)
+                {
+                    estCompDao.GetLeadTimeLote(cmbModeloComponente.Text);
+                    int leadTime = estCompDao.GetLeadTime;
+                    int lote = estCompDao.getLote;
+                    int semana = int.Parse(txtSemana.Text) + leadTime;
+                    int semanaLibOrdem = int.Parse(txtSemana.Text) - leadTime;
+
+                    daoMrp2.GetNecessidadeBruta(nomeNoPai, semana);
+
+                    daoMrp2.GetLibOrdem(cmbModeloComponente.Text, semana);
+                    daoMrp2.GetRecOrdensPlan(cmbModeloComponente.Text, semanaLibOrdem);
+                    txtRecOrdensPlan.Text = daoMrp2.GetLibDeOrdensRecPlan.ToString();
+                    int estoqueDisponivel = estCompDao.estoqueAtualGetIdEstoque - necBruta + int.Parse(txtRecOrdensPlan.Text);
+                    txtEstoqueDisp.Text = estoqueDisponivel.ToString();
+
+                    int necBruta2 = 0;
+
+                    if (necBruta2 > int.Parse(txtEstoqueDisp.Text) - estCompDao.quantidadeSeguranca)
+                    {
+                        int liberacao = necBruta2 - estoqueDisponivel;
+                        int liberacaoReal;
+                        if (liberacao < estCompDao.quantidadeSeguranca)
+                        {
+                            liberacaoReal = estCompDao.quantidadeSeguranca;
+                        }
+                        else
+                        {
+                            liberacaoReal = liberacao;
+                        }
+                        txtLibDeOrdens.Text = liberacaoReal.ToString();
+                    }
+                    else
+                    {
+                        txtLibDeOrdens.Text = 0.ToString();
+                    }
+                }
+
+                EstoqueComponenteDAO estoqueCompDao = new EstoqueComponenteDAO();
+                estoqueCompDao.UpdateSaldo(cmbModeloComponente.Text, int.Parse(txtEstoqueDisp.Text));
+            }
         }
     }
 }

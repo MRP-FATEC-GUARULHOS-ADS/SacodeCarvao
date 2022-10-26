@@ -19,16 +19,15 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO MRP ( " +
-                    "idMPS, idProduto, nome, necBruta, estoqueDisp, recOrdensPlan, libDeOrdens, semana" +
-                    ") VALUES(@idMPS, @idProd, @modelo, @necBruta, @estDisp, @recOrdPlan, @libOrdens, @semana);";
+                    "idComponente, nome, necBruta, estoqueDisp, recOrdensPlan, libDeOrdens, semana" +
+                    ") VALUES(@idComp, @modelo, @necBruta, @estDisp, @recOrdPlan, @libOrdens, @semana);";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return false;
                 }
 
-                cmd.Parameters.AddWithValue("@idMps", mrp.idMPS);
-                cmd.Parameters.AddWithValue("@idProd", mrp.idProduto);
+                cmd.Parameters.AddWithValue("@idComp", mrp.idComponente);
                 cmd.Parameters.AddWithValue("@modelo", mrp.nome);
                 cmd.Parameters.AddWithValue("@necBruta", mrp.necBruta);
                 cmd.Parameters.AddWithValue("@estDisp", mrp.estoqueDisp);
@@ -123,8 +122,7 @@ namespace MRP_SdC.MySQL
                     mrp = new MRP
                     {
                         idMRP = Convert.ToInt32(reader["idMRP"]),
-                        idMPS = Convert.ToInt32(reader["idMPS"]),
-                        idProduto = Convert.ToInt32(reader["idProduto"]),
+                        idComponente = Convert.ToInt32(reader["idComponente"]),
                         nome = Convert.ToString(reader["nome"]),
                         necBruta = Convert.ToInt32(reader["necBruta"]),
                         estoqueDisp = Convert.ToInt32(reader["estoqueDisp"]),
@@ -171,8 +169,7 @@ namespace MRP_SdC.MySQL
                     mrp = new MRP();
                     {
                         mrp.idMRP = Convert.ToInt32(reader["idMRP"]);
-                        mrp.idMPS = Convert.ToInt32(reader["idMPS"]);
-                        mrp.idProduto = Convert.ToInt32(reader["idProduto"]);
+                        mrp.idComponente = Convert.ToInt32(reader["idComponente"]);
                         mrp.nome = Convert.ToString(reader["nome"]);
                         mrp.necBruta = Convert.ToInt32(reader["necBruta"]);
                         mrp.estoqueDisp = Convert.ToInt32(reader["estoqueDisp"]);
@@ -219,7 +216,7 @@ namespace MRP_SdC.MySQL
                 reader.Read();
 
                 mrp = new MRP();
-                mrp.idProduto = Convert.ToInt32(reader["idProduto"]);
+                mrp.idComponente = Convert.ToInt32(reader["idComponente"]);
                 mrp.nome = Convert.ToString(reader["nome"]);
                 mrp.necBruta = Convert.ToInt32(reader["necBruta"]);
                 mrp.estoqueDisp = Convert.ToInt32(reader["estoqueDisp"]);
@@ -295,7 +292,7 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "UPDATE MRP " +
-                    "SET idProduto = @idProd, nome = @modelo, necBruta = @necBruta, " +
+                    "SET idProduto = @idComp, nome = @modelo, necBruta = @necBruta, " +
                     "estoqueDisp= @estDisp, recOrdensPlan = @recOrdPlan, libDeOrdens = @libOrdens," +
                     "semana = @semana " +
                     "WHERE idMRP = @id; ";
@@ -307,7 +304,7 @@ namespace MRP_SdC.MySQL
                 }
 
                 cmd.Parameters.AddWithValue("@id", mrp.idMRP);
-                cmd.Parameters.AddWithValue("@idProd", mrp.idProduto);
+                cmd.Parameters.AddWithValue("@idComp", mrp.idComponente);
                 cmd.Parameters.AddWithValue("@modelo", mrp.nome);
                 cmd.Parameters.AddWithValue("@necBruta", mrp.necBruta);
                 cmd.Parameters.AddWithValue("@estDisp", mrp.estoqueDisp);
@@ -327,6 +324,150 @@ namespace MRP_SdC.MySQL
             }
             conexao.CloseConexao();
             return true;
+        }
+
+        public int GetNecessidadeBrutaNecBruta;
+        public string nomePaiProduto;
+        public List<MRP> GetNecessidadeBruta(string nomeC, int semana)
+        {
+            List<MRP> listaMrp = new List<MRP>();
+            MRP mrp;
+            Conexao conexao = new Conexao();
+            CadastroMRP cadMrp = new CadastroMRP();
+
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT * FROM MRP M WHERE idMRP = (Select MAX(X.idMRP) FROM MRP X WHERE X.nome = M.nome) and " +
+                    " M.nome = @nomeComp AND M.semana = @semana;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Parameters.AddWithValue("@nomeComp", nomeC);
+                cmd.Parameters.AddWithValue("@semana", semana);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                mrp = new MRP();
+                mrp.nome = Convert.ToString(reader["nome"]);
+                nomePaiProduto = mrp.nome;
+                mrp.necBruta = Convert.ToInt32(reader["necBruta"]);
+                GetNecessidadeBrutaNecBruta = mrp.necBruta;
+            }
+
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+
+            conexao.CloseConexao();
+            return listaMrp;
+        }
+
+        public int getLibOrdens;
+        public MRP GetLibOrdem(string nomeComponente, int semana)
+        {
+            MRP mrp = new MRP();
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT * FROM MRP WHERE nome = @nome AND semana = @sem;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Parameters.AddWithValue("@nome", nomeComponente);
+                cmd.Parameters.AddWithValue("@sem", semana);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                mrp = new MRP();
+                mrp.idComponente = Convert.ToInt32(reader["idComponente"]);
+                mrp.nome = Convert.ToString(reader["nome"]);
+                mrp.necBruta = Convert.ToInt32(reader["necBruta"]);
+                mrp.estoqueDisp = Convert.ToInt32(reader["estoqueDisp"]);
+                mrp.recOrdensPlan = Convert.ToInt32(reader["recOrdensPlan"]);
+                mrp.libDeOrdens = Convert.ToInt32(reader["libDeOrdens"]);
+                getLibOrdens = mrp.libDeOrdens;
+                mrp.semana = Convert.ToInt32(reader["semana"]);
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+            conexao.CloseConexao();
+            return mrp;
+        }
+
+        public int GetLibDeOrdensRecPlan;
+        public MRP GetRecOrdensPlan(string nomeComponente, int semana)
+        {
+            MRP mrp = new MRP();
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT * FROM MRP WHERE nome = @nome AND semana = @sem;";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                cmd.Parameters.AddWithValue("@nome", nomeComponente);
+                cmd.Parameters.AddWithValue("@sem", semana);
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                mrp = new MRP();
+                mrp.idComponente = Convert.ToInt32(reader["idComponente"]);
+                mrp.nome = Convert.ToString(reader["nome"]);
+                mrp.necBruta = Convert.ToInt32(reader["necBruta"]);
+                mrp.estoqueDisp = Convert.ToInt32(reader["estoqueDisp"]);
+                mrp.recOrdensPlan = Convert.ToInt32(reader["recOrdensPlan"]);
+                mrp.libDeOrdens = Convert.ToInt32(reader["libDeOrdens"]);
+                GetLibDeOrdensRecPlan = mrp.libDeOrdens;
+                mrp.semana = Convert.ToInt32(reader["semana"]);
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+            conexao.CloseConexao();
+            return mrp;
         }
     }
 }

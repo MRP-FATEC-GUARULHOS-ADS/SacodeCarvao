@@ -31,8 +31,8 @@ namespace MRP_SdC.Telas.Producao
             // textos do produto selecionado
             dados_ttl_lbl.Text = mrp.idMRP.ToString();
             mrp.idMRP = int.Parse(dados_ttl_lbl.Text);
-            dados_subttl_lbl.Text = String.Format(mrp.idProduto.ToString());
-            txtProdId.Text = mrp.idProduto.ToString();
+            dados_subttl_lbl.Text = String.Format(mrp.idComponente.ToString());
+            txtProdId.Text = mrp.idComponente.ToString();
             txtQntdPedido.Text = mrp.necBruta.ToString();
             txtQntdEstoque.Text = mrp.estoqueDisp.ToString();
             txtQntdNecesLiq.Text = mrp.libDeOrdens.ToString();
@@ -89,7 +89,7 @@ namespace MRP_SdC.Telas.Producao
             MRP mrp = new MRP();
 
             DialogResult confirmarUpdate = MessageBox.Show(
-                "( ﾉ ﾟｰﾟ)ﾉ " + mrp.idProduto + " ?!", "Confirmar Delete",
+                "( ﾉ ﾟｰﾟ)ﾉ " + mrp.idComponente + " ?!", "Confirmar Delete",
                 MessageBoxButtons.YesNo);
 
             if (confirmarUpdate == DialogResult.Yes)
@@ -107,7 +107,7 @@ namespace MRP_SdC.Telas.Producao
             MRP mrp = new MRP();
 
             DialogResult confirmarUpdate = MessageBox.Show(
-                "( ﾉ ﾟｰﾟ)ﾉ " + mrp.idProduto + " ?!", "Confirmar Delete",
+                "( ﾉ ﾟｰﾟ)ﾉ " + mrp.idComponente + " ?!", "Confirmar Delete",
                 MessageBoxButtons.YesNo);
 
             if (confirmarUpdate == DialogResult.Yes)

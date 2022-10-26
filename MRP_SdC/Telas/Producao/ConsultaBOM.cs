@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 
 namespace MRP_SdC.Telas.Producao
@@ -94,7 +96,7 @@ namespace MRP_SdC.Telas.Producao
             MPS mps = new MPS();
 
             Pedido.ConsultaPedido consPed = new Pedido.ConsultaPedido();
-            cadMrp.cmbIdPedido.Text = dados_subttl_lbl.Text;
+            cadMrp.cmbModeloComponente.Text = dados_subttl_lbl.Text;
             cadMrp.txtIdBom.Text = txtCodigoLista.Text; 
             cadMrp.Show();
         }
@@ -142,6 +144,81 @@ namespace MRP_SdC.Telas.Producao
 
                 AtualizaListas();
             }
+        }
+
+        private void exportarExcel(DataGridView dt)
+        {
+            FolderBrowserDialog fb = new FolderBrowserDialog();
+            if (fb.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    string path = @"" + fb.SelectedPath + "\\Report_excel" + DateTime.Now.ToShortTimeString().Replace(":", "") + ".xls";
+                    using (StreamWriter sw = new StreamWriter(path, false, System.Text.Encoding.Unicode))
+                    {
+                        String cabecalho = "";
+
+                        for (int i = 0; i < dt.ColumnCount; i++)
+                        {
+                            if (dt.Columns[i].Visible)
+                            {
+                                if (cabecalho == "")
+                                {
+                                    cabecalho = dgvBom.Columns[i].HeaderCell.Value.ToString();
+                                }
+                                else
+                                {
+                                    cabecalho += "\t" + dgvBom.Columns[i].HeaderCell.Value.ToString();
+                                }
+                            }
+                        }
+
+                        sw.WriteLine(cabecalho);
+
+                        String linha = "";
+
+                        for (int k = 0; k < dt.Rows.Count; k++)
+                        {
+                            for (int i = 0; i < dt.Columns.Count; i++)
+                            {
+                                String valor = dt.Rows[k].Cells[i].Value.ToString();
+
+                                valor = valor.Replace("\n", "");
+                                valor = valor.Replace("\r", "");
+
+                                if (dt.Columns[i].Visible)
+                                {
+                                    if (linha == "")
+                                    {
+                                        linha = valor;
+                                    }
+                                    else
+                                    {
+                                        linha += "\t" + valor;
+                                    }
+                                }
+                            }//FIM FOR COLUNAS
+                            sw.WriteLine(linha);
+                            linha = "";
+                        }//FIM FOR LINHAS
+                    } //FIM SW
+
+                    Process.Start(new ProcessStartInfo(@path) { UseShellExecute = true });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nenhuma pasta selecionada!");
+            }
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            exportarExcel(dgvBom);
         }
     }
 }

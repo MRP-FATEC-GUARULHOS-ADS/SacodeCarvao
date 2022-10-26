@@ -55,8 +55,9 @@ namespace MRP_SdC.Telas.Producao
                         subtraiEstoque = 0;
                     }
 
+                    MySQL.EstoqueProdutoDao estProdDao = new MySQL.EstoqueProdutoDao();
                     //Método que desconta o valor e atualiza o estoque atual.
-                    prodDao.UpdateSaldo(subtraiEstoque, prod.idProduto);
+                    estProdDao.UpdateSaldo(comboBox1.Text, subtraiEstoque);
 
                     Close();
                 }

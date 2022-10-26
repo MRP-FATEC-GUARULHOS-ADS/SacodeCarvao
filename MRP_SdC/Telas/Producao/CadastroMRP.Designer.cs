@@ -32,6 +32,8 @@ namespace MRP_SdC.MySQL
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadastroMRP));
             this.esp_dir_pnl = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dgvMrp = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.esp_esq_pnl = new System.Windows.Forms.Panel();
@@ -46,13 +48,12 @@ namespace MRP_SdC.MySQL
             this.label2 = new System.Windows.Forms.Label();
             this.ttl_lbl = new System.Windows.Forms.Label();
             this.id_pnl = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.txtSemana = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.cmbIdPedido = new System.Windows.Forms.ComboBox();
-            this.lblIdPedido = new System.Windows.Forms.Label();
+            this.cmbModeloComponente = new System.Windows.Forms.ComboBox();
             this.barraInf_pnl = new System.Windows.Forms.Panel();
-            this.cadastrar = new System.Windows.Forms.Button();
             this.cancelar_btn = new System.Windows.Forms.Button();
             this.qntdNecesLiq_tbx = new System.Windows.Forms.Panel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -70,9 +71,9 @@ namespace MRP_SdC.MySQL
             this.panel7 = new System.Windows.Forms.Panel();
             this.txtLibDeOrdens = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.dgvMrp = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
+            this.btnCadastro = new System.Windows.Forms.Button();
             this.esp_dir_pnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMrp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.esp_esq_pnl.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -84,7 +85,6 @@ namespace MRP_SdC.MySQL
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMrp)).BeginInit();
             this.SuspendLayout();
             // 
             // esp_dir_pnl
@@ -98,6 +98,23 @@ namespace MRP_SdC.MySQL
             this.esp_dir_pnl.Name = "esp_dir_pnl";
             this.esp_dir_pnl.Size = new System.Drawing.Size(827, 471);
             this.esp_dir_pnl.TabIndex = 9;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(317, 221);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(30, 13);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Item ";
+            // 
+            // dgvMrp
+            // 
+            this.dgvMrp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMrp.Location = new System.Drawing.Point(3, 245);
+            this.dgvMrp.Name = "dgvMrp";
+            this.dgvMrp.Size = new System.Drawing.Size(774, 150);
+            this.dgvMrp.TabIndex = 2;
             // 
             // label1
             // 
@@ -114,7 +131,7 @@ namespace MRP_SdC.MySQL
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(0, 25);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(780, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(780, 79);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -225,22 +242,33 @@ namespace MRP_SdC.MySQL
             // 
             // id_pnl
             // 
+            this.id_pnl.Controls.Add(this.label11);
             this.id_pnl.Controls.Add(this.panel8);
-            this.id_pnl.Controls.Add(this.cmbIdPedido);
-            this.id_pnl.Controls.Add(this.lblIdPedido);
+            this.id_pnl.Controls.Add(this.cmbModeloComponente);
             this.id_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.id_pnl.Location = new System.Drawing.Point(32, 56);
             this.id_pnl.Name = "id_pnl";
             this.id_pnl.Size = new System.Drawing.Size(260, 48);
             this.id_pnl.TabIndex = 1;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label11.Location = new System.Drawing.Point(0, 0);
+            this.label11.Name = "label11";
+            this.label11.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.label11.Size = new System.Drawing.Size(98, 17);
+            this.label11.TabIndex = 28;
+            this.label11.Text = "Nome Componente";
+            // 
             // panel8
             // 
             this.panel8.Controls.Add(this.txtSemana);
             this.panel8.Controls.Add(this.label9);
-            this.panel8.Location = new System.Drawing.Point(133, 2);
+            this.panel8.Location = new System.Drawing.Point(190, 2);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(124, 40);
+            this.panel8.Size = new System.Drawing.Size(67, 40);
             this.panel8.TabIndex = 27;
             // 
             // txtSemana
@@ -261,49 +289,27 @@ namespace MRP_SdC.MySQL
             this.label9.TabIndex = 0;
             this.label9.Text = "Semana";
             // 
-            // cmbIdPedido
+            // cmbModeloComponente
             // 
-            this.cmbIdPedido.FormattingEnabled = true;
-            this.cmbIdPedido.Location = new System.Drawing.Point(6, 17);
-            this.cmbIdPedido.Name = "cmbIdPedido";
-            this.cmbIdPedido.Size = new System.Drawing.Size(121, 21);
-            this.cmbIdPedido.TabIndex = 3;
-            // 
-            // lblIdPedido
-            // 
-            this.lblIdPedido.AutoSize = true;
-            this.lblIdPedido.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblIdPedido.Location = new System.Drawing.Point(0, 0);
-            this.lblIdPedido.Name = "lblIdPedido";
-            this.lblIdPedido.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.lblIdPedido.Size = new System.Drawing.Size(75, 17);
-            this.lblIdPedido.TabIndex = 0;
-            this.lblIdPedido.Text = "Nome Produto";
+            this.cmbModeloComponente.FormattingEnabled = true;
+            this.cmbModeloComponente.Location = new System.Drawing.Point(3, 18);
+            this.cmbModeloComponente.Name = "cmbModeloComponente";
+            this.cmbModeloComponente.Size = new System.Drawing.Size(121, 21);
+            this.cmbModeloComponente.TabIndex = 3;
+            this.cmbModeloComponente.SelectedIndexChanged += new System.EventHandler(this.cmbIdPedido_SelectedIndexChanged_1);
             // 
             // barraInf_pnl
             // 
             this.barraInf_pnl.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barraInf_pnl.Location = new System.Drawing.Point(32, 429);
+            this.barraInf_pnl.Location = new System.Drawing.Point(32, 461);
             this.barraInf_pnl.Name = "barraInf_pnl";
-            this.barraInf_pnl.Size = new System.Drawing.Size(260, 42);
+            this.barraInf_pnl.Size = new System.Drawing.Size(260, 10);
             this.barraInf_pnl.TabIndex = 6;
-            // 
-            // cadastrar
-            // 
-            this.cadastrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cadastrar.BackColor = System.Drawing.Color.Lime;
-            this.cadastrar.Location = new System.Drawing.Point(189, 391);
-            this.cadastrar.Name = "cadastrar";
-            this.cadastrar.Size = new System.Drawing.Size(81, 32);
-            this.cadastrar.TabIndex = 18;
-            this.cadastrar.Text = "Cadastrar";
-            this.cadastrar.UseVisualStyleBackColor = false;
-            this.cadastrar.Click += new System.EventHandler(this.cadastrar_Click);
             // 
             // cancelar_btn
             // 
             this.cancelar_btn.BackColor = System.Drawing.Color.Red;
-            this.cancelar_btn.Location = new System.Drawing.Point(69, 391);
+            this.cancelar_btn.Location = new System.Drawing.Point(48, 391);
             this.cancelar_btn.Name = "cancelar_btn";
             this.cancelar_btn.Size = new System.Drawing.Size(90, 32);
             this.cancelar_btn.TabIndex = 2;
@@ -450,28 +456,24 @@ namespace MRP_SdC.MySQL
             this.label8.TabIndex = 0;
             this.label8.Text = "Liberação de Ordens";
             // 
-            // dgvMrp
+            // btnCadastro
             // 
-            this.dgvMrp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMrp.Location = new System.Drawing.Point(3, 245);
-            this.dgvMrp.Name = "dgvMrp";
-            this.dgvMrp.Size = new System.Drawing.Size(774, 150);
-            this.dgvMrp.TabIndex = 2;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(317, 221);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(30, 13);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Item ";
+            this.btnCadastro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCadastro.BackColor = System.Drawing.Color.Lime;
+            this.btnCadastro.Location = new System.Drawing.Point(162, 391);
+            this.btnCadastro.Name = "btnCadastro";
+            this.btnCadastro.Size = new System.Drawing.Size(81, 32);
+            this.btnCadastro.TabIndex = 27;
+            this.btnCadastro.Text = "Cadastrar";
+            this.btnCadastro.UseVisualStyleBackColor = false;
+            this.btnCadastro.Click += new System.EventHandler(this.btnCadastro_Click);
             // 
             // CadastroMRP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1119, 471);
+            this.Controls.Add(this.btnCadastro);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
@@ -479,7 +481,6 @@ namespace MRP_SdC.MySQL
             this.Controls.Add(this.lblIdBom);
             this.Controls.Add(this.txtIdBom);
             this.Controls.Add(this.cancelar_btn);
-            this.Controls.Add(this.cadastrar);
             this.Controls.Add(this.barraInf_pnl);
             this.Controls.Add(this.qntdNecesLiq_tbx);
             this.Controls.Add(this.id_pnl);
@@ -493,6 +494,7 @@ namespace MRP_SdC.MySQL
             this.Load += new System.EventHandler(this.CadastroMRP_Load_1);
             this.esp_dir_pnl.ResumeLayout(false);
             this.esp_dir_pnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMrp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.esp_esq_pnl.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
@@ -513,7 +515,6 @@ namespace MRP_SdC.MySQL
             this.panel5.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMrp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -525,14 +526,12 @@ namespace MRP_SdC.MySQL
         private System.Windows.Forms.Panel esp_esq_pnl;
         private System.Windows.Forms.Label ttl_lbl;
         private System.Windows.Forms.Panel id_pnl;
-        private System.Windows.Forms.Label lblIdPedido;
         private System.Windows.Forms.Panel barraInf_pnl;
         private System.Windows.Forms.Button cancelar_btn;
-        private System.Windows.Forms.Button cadastrar;
         private System.Windows.Forms.Panel qntdNecesLiq_tbx;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Label lblIdBom;
-        public System.Windows.Forms.ComboBox cmbIdPedido;
+        public System.Windows.Forms.ComboBox cmbModeloComponente;
         public System.Windows.Forms.TextBox txtIdBom;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
@@ -562,5 +561,7 @@ namespace MRP_SdC.MySQL
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView dgvMrp;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnCadastro;
     }
 }
