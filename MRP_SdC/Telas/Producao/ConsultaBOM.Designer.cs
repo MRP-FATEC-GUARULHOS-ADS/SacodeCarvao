@@ -60,12 +60,6 @@ namespace MRP_SdC.Telas.Producao
             this.lblNome = new System.Windows.Forms.Label();
             this.txtCodigoLista = new System.Windows.Forms.TextBox();
             this.lblCodigoLista = new System.Windows.Forms.Label();
-            this.estoque_max_pnl = new System.Windows.Forms.Panel();
-            this.txtNoPai = new System.Windows.Forms.TextBox();
-            this.lblNoFilho = new System.Windows.Forms.Label();
-            this.estoque_min_pnl = new System.Windows.Forms.Panel();
-            this.txtNoProduto = new System.Windows.Forms.TextBox();
-            this.lblNoPai = new System.Windows.Forms.Label();
             this.chart_cht = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dados_subttl_lbl = new System.Windows.Forms.Label();
             this.dados_ttl_lbl = new System.Windows.Forms.Label();
@@ -81,8 +75,6 @@ namespace MRP_SdC.Telas.Producao
             this.dados_estoque_pnl.SuspendLayout();
             this.estoque_atual_pnl.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.estoque_max_pnl.SuspendLayout();
-            this.estoque_min_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBom)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -211,7 +203,7 @@ namespace MRP_SdC.Telas.Producao
             this.panel4.Controls.Add(this.txtQuantidadeLista);
             this.panel4.Controls.Add(this.lblQuantidadeLista);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(12, 385);
+            this.panel4.Location = new System.Drawing.Point(12, 289);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(216, 48);
             this.panel4.TabIndex = 7;
@@ -259,7 +251,7 @@ namespace MRP_SdC.Telas.Producao
             // 
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(12, 337);
+            this.panel1.Location = new System.Drawing.Point(12, 241);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(216, 48);
             this.panel1.TabIndex = 6;
@@ -297,12 +289,10 @@ namespace MRP_SdC.Telas.Producao
             // 
             this.dados_estoque_pnl.AutoSize = true;
             this.dados_estoque_pnl.Controls.Add(this.estoque_atual_pnl);
-            this.dados_estoque_pnl.Controls.Add(this.estoque_max_pnl);
-            this.dados_estoque_pnl.Controls.Add(this.estoque_min_pnl);
             this.dados_estoque_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.dados_estoque_pnl.Location = new System.Drawing.Point(12, 156);
             this.dados_estoque_pnl.Name = "dados_estoque_pnl";
-            this.dados_estoque_pnl.Size = new System.Drawing.Size(216, 181);
+            this.dados_estoque_pnl.Size = new System.Drawing.Size(216, 85);
             this.dados_estoque_pnl.TabIndex = 3;
             // 
             // estoque_atual_pnl
@@ -311,7 +301,7 @@ namespace MRP_SdC.Telas.Producao
             this.estoque_atual_pnl.Controls.Add(this.txtCodigoLista);
             this.estoque_atual_pnl.Controls.Add(this.lblCodigoLista);
             this.estoque_atual_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.estoque_atual_pnl.Location = new System.Drawing.Point(0, 96);
+            this.estoque_atual_pnl.Location = new System.Drawing.Point(0, 0);
             this.estoque_atual_pnl.Name = "estoque_atual_pnl";
             this.estoque_atual_pnl.Size = new System.Drawing.Size(216, 85);
             this.estoque_atual_pnl.TabIndex = 0;
@@ -363,64 +353,6 @@ namespace MRP_SdC.Telas.Producao
             this.lblCodigoLista.Size = new System.Drawing.Size(65, 17);
             this.lblCodigoLista.TabIndex = 0;
             this.lblCodigoLista.Text = "Codigo Lista";
-            // 
-            // estoque_max_pnl
-            // 
-            this.estoque_max_pnl.Controls.Add(this.txtNoPai);
-            this.estoque_max_pnl.Controls.Add(this.lblNoFilho);
-            this.estoque_max_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.estoque_max_pnl.Location = new System.Drawing.Point(0, 48);
-            this.estoque_max_pnl.Name = "estoque_max_pnl";
-            this.estoque_max_pnl.Size = new System.Drawing.Size(216, 48);
-            this.estoque_max_pnl.TabIndex = 2;
-            // 
-            // txtNoPai
-            // 
-            this.txtNoPai.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtNoPai.Location = new System.Drawing.Point(0, 17);
-            this.txtNoPai.Name = "txtNoPai";
-            this.txtNoPai.Size = new System.Drawing.Size(216, 20);
-            this.txtNoPai.TabIndex = 1;
-            // 
-            // lblNoFilho
-            // 
-            this.lblNoFilho.AutoSize = true;
-            this.lblNoFilho.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblNoFilho.Location = new System.Drawing.Point(0, 0);
-            this.lblNoFilho.Name = "lblNoFilho";
-            this.lblNoFilho.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.lblNoFilho.Size = new System.Drawing.Size(39, 17);
-            this.lblNoFilho.TabIndex = 0;
-            this.lblNoFilho.Text = "No Pai";
-            // 
-            // estoque_min_pnl
-            // 
-            this.estoque_min_pnl.Controls.Add(this.txtNoProduto);
-            this.estoque_min_pnl.Controls.Add(this.lblNoPai);
-            this.estoque_min_pnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.estoque_min_pnl.Location = new System.Drawing.Point(0, 0);
-            this.estoque_min_pnl.Name = "estoque_min_pnl";
-            this.estoque_min_pnl.Size = new System.Drawing.Size(216, 48);
-            this.estoque_min_pnl.TabIndex = 1;
-            // 
-            // txtNoProduto
-            // 
-            this.txtNoProduto.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtNoProduto.Location = new System.Drawing.Point(0, 17);
-            this.txtNoProduto.Name = "txtNoProduto";
-            this.txtNoProduto.Size = new System.Drawing.Size(216, 20);
-            this.txtNoProduto.TabIndex = 1;
-            // 
-            // lblNoPai
-            // 
-            this.lblNoPai.AutoSize = true;
-            this.lblNoPai.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblNoPai.Location = new System.Drawing.Point(0, 0);
-            this.lblNoPai.Name = "lblNoPai";
-            this.lblNoPai.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.lblNoPai.Size = new System.Drawing.Size(61, 17);
-            this.lblNoPai.TabIndex = 0;
-            this.lblNoPai.Text = "No Produto";
             // 
             // chart_cht
             // 
@@ -527,10 +459,6 @@ namespace MRP_SdC.Telas.Producao
             this.estoque_atual_pnl.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.estoque_max_pnl.ResumeLayout(false);
-            this.estoque_max_pnl.PerformLayout();
-            this.estoque_min_pnl.ResumeLayout(false);
-            this.estoque_min_pnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_cht)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBom)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
@@ -558,12 +486,6 @@ namespace MRP_SdC.Telas.Producao
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.Label lblCodigoLista;
-        private System.Windows.Forms.Panel estoque_max_pnl;
-        private System.Windows.Forms.TextBox txtNoPai;
-        private System.Windows.Forms.Label lblNoFilho;
-        private System.Windows.Forms.Panel estoque_min_pnl;
-        private System.Windows.Forms.TextBox txtNoProduto;
-        private System.Windows.Forms.Label lblNoPai;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart_cht;
         private System.Windows.Forms.Label dados_subttl_lbl;
         private System.Windows.Forms.Label dados_ttl_lbl;

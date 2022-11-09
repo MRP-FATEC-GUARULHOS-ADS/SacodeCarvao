@@ -24,8 +24,7 @@ namespace MRP_SdC
         private void AtualizaLista()
         {
             MySQL.ComponenteDAO objCompDAO = new MySQL.ComponenteDAO();
-            List<Componente> listaComponentes =
-                (pesquisa_descnt_cbx.Checked ? objCompDAO.GetComponentes() : objCompDAO.GetComponentesAtivos()); ;
+            List<Componente> listaComponentes = (pesquisa_descnt_cbx.Checked ? objCompDAO.GetComponentesDescontinuados() : objCompDAO.GetComponentesAtivos()); ;
 
             var bindingComps = new BindingList<Componente>(listaComponentes);
             comp_lista_dgv.DataSource = bindingComps;
@@ -33,14 +32,21 @@ namespace MRP_SdC
 
         private void MudaInfos()
         {
-            myComp = comp_lista_dgv.CurrentRow.DataBoundItem as Componente;
-            descnt_btn.Enabled = myComp.estado;
+            try
+            {
+                myComp = comp_lista_dgv.CurrentRow.DataBoundItem as Componente;
+                descnt_btn.Enabled = myComp.estado;
 
-            // textos do componente selecionado
-            dados_ttl_lbl.Text = String.Format("{0:D6} - {1}", myComp.id, myComp.tipo);
-            dados_subttl_lbl.Text = myComp.modelo;
+                // textos do componente selecionado
+                dados_ttl_lbl.Text = String.Format("{0:D6} - {1}", myComp.id, myComp.tipo);
+                dados_subttl_lbl.Text = myComp.modelo;
 
-            atualizar_btn.Enabled = false;
+                atualizar_btn.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("erro");
+            }
         }
 
         // funcoes do formulario

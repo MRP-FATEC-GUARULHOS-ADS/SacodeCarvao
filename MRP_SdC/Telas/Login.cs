@@ -50,6 +50,8 @@ namespace MRP_SdC
             {
                 label1.Text = "Usuário ou senha não encontrados.";
             }
+
+            Close();
         }
 
         private void Sair_btn_Click(object sender, System.EventArgs e)

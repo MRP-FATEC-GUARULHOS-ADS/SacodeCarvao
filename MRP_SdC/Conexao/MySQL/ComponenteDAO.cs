@@ -19,9 +19,9 @@ namespace MRP_SdC.MySQL
             {
                 MySqlDataReader reader;
                 string query = "INSERT INTO COMPONENTE ( " +
-                    "tipoComponente, marcaComponente, modeloComponente, especificacoes, qtdeAtualEstoque, estoqueSeguranca"+
-                    "leadTime, lote, estado"+
-                    ") VALUES( @tipo, @marca, @modelo, @especs, @qntatual, @estSeg, @lt, @lot, @estado ); ";
+                    "tipoComponente, marcaComponente, modeloComponente, especificacoes,"+
+                    "estado"+
+                    ") VALUES( @tipo, @marca, @modelo, @especs, @estado ); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
@@ -286,6 +286,54 @@ namespace MRP_SdC.MySQL
             conexao.CloseConexao();
             return listaComponentes;
         }
+
+        public List<Componente> GetComponentesDescontinuados()
+        {
+            List<Componente> listaComponentes = new List<Componente>();
+            Componente objComponente;
+
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                string query = "SELECT p.* FROM COMPONENTE p WHERE estado = 'D';";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return null;
+                }
+
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    objComponente = new Componente
+                    {
+                        id = Convert.ToInt32(reader["idComponente"]),
+                        tipo = (string)reader["tipoComponente"],
+                        modelo = (string)reader["modeloComponente"],
+                        marca = (string)reader["marcaComponente"],
+                        especificacoes = (string)reader["especificacoes"],
+                        estado = (Convert.ToChar(reader["estado"]) == 'P' ? true : false)
+                    };
+
+                    listaComponentes.Add(objComponente);
+                }
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+            }
+            conexao.CloseConexao();
+            return listaComponentes;
+        }
+
         public List<Componente> GetComponentesAtivos()
         {
             List<Componente> listaComponentes = new List<Componente>();
