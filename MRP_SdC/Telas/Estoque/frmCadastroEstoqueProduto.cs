@@ -66,7 +66,7 @@ namespace MRP_SdC.Telas.Estoque
             }
             catch (Exception ex)
             {
-                MessageBox.Show("A demanda considerada tem que ser preenchida");
+                MessageBox.Show(ex.Message);
             }
         }
     }

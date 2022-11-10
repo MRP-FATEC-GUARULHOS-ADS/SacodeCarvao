@@ -59,5 +59,21 @@ namespace MRP_SdC.Telas.Pedido
                 Console.WriteLine(ex);
             }
         }
+
+        private void cmbNomeProduto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Método try catch.
+            try
+            {
+                MySQL.ProdutoDAO produtoDao = new MySQL.ProdutoDAO();
+                produtoDao.GetModeloProduto(cmbNomeProduto.Text);
+
+                txtIdProduto.Text = produtoDao.id.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

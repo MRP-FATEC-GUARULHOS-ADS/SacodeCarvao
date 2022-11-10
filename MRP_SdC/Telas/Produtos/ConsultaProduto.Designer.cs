@@ -43,13 +43,13 @@ namespace MRP_SdC
             this.atualizar_btn = new System.Windows.Forms.Button();
             this.dados_estoque_pnl = new System.Windows.Forms.Panel();
             this.estoque_atual_pnl = new System.Windows.Forms.Panel();
-            this.estoque_atual_tbx = new System.Windows.Forms.TextBox();
-            this.estoque_atual_lbl = new System.Windows.Forms.Label();
+            this.txtValor = new System.Windows.Forms.TextBox();
+            this.lblValor = new System.Windows.Forms.Label();
             this.estoque_max_pnl = new System.Windows.Forms.Panel();
-            this.txtLote = new System.Windows.Forms.TextBox();
+            this.txtDescricao = new System.Windows.Forms.TextBox();
             this.lblLote = new System.Windows.Forms.Label();
             this.estoque_min_pnl = new System.Windows.Forms.Panel();
-            this.txtSegurancaEstoque = new System.Windows.Forms.TextBox();
+            this.txtModelo = new System.Windows.Forms.TextBox();
             this.estoque_min_lbl = new System.Windows.Forms.Label();
             this.chart_cht = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dados_subttl_lbl = new System.Windows.Forms.Label();
@@ -165,7 +165,7 @@ namespace MRP_SdC
             this.atualizar_btn.Name = "atualizar_btn";
             this.atualizar_btn.Size = new System.Drawing.Size(176, 23);
             this.atualizar_btn.TabIndex = 0;
-            this.atualizar_btn.Text = "Atualizar estoque";
+            this.atualizar_btn.Text = "Atualizar Produto";
             this.atualizar_btn.UseVisualStyleBackColor = true;
             this.atualizar_btn.Click += new System.EventHandler(this.Estoque_btn_Click);
             // 
@@ -183,37 +183,37 @@ namespace MRP_SdC
             // 
             // estoque_atual_pnl
             // 
-            this.estoque_atual_pnl.Controls.Add(this.estoque_atual_tbx);
-            this.estoque_atual_pnl.Controls.Add(this.estoque_atual_lbl);
+            this.estoque_atual_pnl.Controls.Add(this.txtValor);
+            this.estoque_atual_pnl.Controls.Add(this.lblValor);
             this.estoque_atual_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.estoque_atual_pnl.Location = new System.Drawing.Point(0, 96);
             this.estoque_atual_pnl.Name = "estoque_atual_pnl";
             this.estoque_atual_pnl.Size = new System.Drawing.Size(199, 48);
             this.estoque_atual_pnl.TabIndex = 0;
             // 
-            // estoque_atual_tbx
+            // txtValor
             // 
-            this.estoque_atual_tbx.Dock = System.Windows.Forms.DockStyle.Top;
-            this.estoque_atual_tbx.Location = new System.Drawing.Point(0, 17);
-            this.estoque_atual_tbx.Name = "estoque_atual_tbx";
-            this.estoque_atual_tbx.Size = new System.Drawing.Size(199, 20);
-            this.estoque_atual_tbx.TabIndex = 1;
-            this.estoque_atual_tbx.TextChanged += new System.EventHandler(this.Estoque_tbx_TextChanged);
+            this.txtValor.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtValor.Location = new System.Drawing.Point(0, 17);
+            this.txtValor.Name = "txtValor";
+            this.txtValor.Size = new System.Drawing.Size(199, 20);
+            this.txtValor.TabIndex = 1;
+            this.txtValor.TextChanged += new System.EventHandler(this.Estoque_tbx_TextChanged);
             // 
-            // estoque_atual_lbl
+            // lblValor
             // 
-            this.estoque_atual_lbl.AutoSize = true;
-            this.estoque_atual_lbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.estoque_atual_lbl.Location = new System.Drawing.Point(0, 0);
-            this.estoque_atual_lbl.Name = "estoque_atual_lbl";
-            this.estoque_atual_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.estoque_atual_lbl.Size = new System.Drawing.Size(73, 17);
-            this.estoque_atual_lbl.TabIndex = 0;
-            this.estoque_atual_lbl.Text = "Estoque Atual";
+            this.lblValor.AutoSize = true;
+            this.lblValor.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblValor.Location = new System.Drawing.Point(0, 0);
+            this.lblValor.Name = "lblValor";
+            this.lblValor.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.lblValor.Size = new System.Drawing.Size(31, 17);
+            this.lblValor.TabIndex = 0;
+            this.lblValor.Text = "Valor";
             // 
             // estoque_max_pnl
             // 
-            this.estoque_max_pnl.Controls.Add(this.txtLote);
+            this.estoque_max_pnl.Controls.Add(this.txtDescricao);
             this.estoque_max_pnl.Controls.Add(this.lblLote);
             this.estoque_max_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.estoque_max_pnl.Location = new System.Drawing.Point(0, 48);
@@ -221,14 +221,14 @@ namespace MRP_SdC
             this.estoque_max_pnl.Size = new System.Drawing.Size(199, 48);
             this.estoque_max_pnl.TabIndex = 2;
             // 
-            // txtLote
+            // txtDescricao
             // 
-            this.txtLote.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtLote.Location = new System.Drawing.Point(0, 17);
-            this.txtLote.Name = "txtLote";
-            this.txtLote.Size = new System.Drawing.Size(199, 20);
-            this.txtLote.TabIndex = 1;
-            this.txtLote.TextChanged += new System.EventHandler(this.Estoque_tbx_TextChanged);
+            this.txtDescricao.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtDescricao.Location = new System.Drawing.Point(0, 17);
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.Size = new System.Drawing.Size(199, 20);
+            this.txtDescricao.TabIndex = 1;
+            this.txtDescricao.TextChanged += new System.EventHandler(this.Estoque_tbx_TextChanged);
             // 
             // lblLote
             // 
@@ -237,13 +237,13 @@ namespace MRP_SdC
             this.lblLote.Location = new System.Drawing.Point(0, 0);
             this.lblLote.Name = "lblLote";
             this.lblLote.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.lblLote.Size = new System.Drawing.Size(28, 17);
+            this.lblLote.Size = new System.Drawing.Size(55, 17);
             this.lblLote.TabIndex = 0;
-            this.lblLote.Text = "Lote";
+            this.lblLote.Text = "Descrição";
             // 
             // estoque_min_pnl
             // 
-            this.estoque_min_pnl.Controls.Add(this.txtSegurancaEstoque);
+            this.estoque_min_pnl.Controls.Add(this.txtModelo);
             this.estoque_min_pnl.Controls.Add(this.estoque_min_lbl);
             this.estoque_min_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.estoque_min_pnl.Location = new System.Drawing.Point(0, 0);
@@ -251,14 +251,14 @@ namespace MRP_SdC
             this.estoque_min_pnl.Size = new System.Drawing.Size(199, 48);
             this.estoque_min_pnl.TabIndex = 1;
             // 
-            // txtSegurancaEstoque
+            // txtModelo
             // 
-            this.txtSegurancaEstoque.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtSegurancaEstoque.Location = new System.Drawing.Point(0, 17);
-            this.txtSegurancaEstoque.Name = "txtSegurancaEstoque";
-            this.txtSegurancaEstoque.Size = new System.Drawing.Size(199, 20);
-            this.txtSegurancaEstoque.TabIndex = 1;
-            this.txtSegurancaEstoque.TextChanged += new System.EventHandler(this.Estoque_tbx_TextChanged);
+            this.txtModelo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtModelo.Location = new System.Drawing.Point(0, 17);
+            this.txtModelo.Name = "txtModelo";
+            this.txtModelo.Size = new System.Drawing.Size(199, 20);
+            this.txtModelo.TabIndex = 1;
+            this.txtModelo.TextChanged += new System.EventHandler(this.Estoque_tbx_TextChanged);
             // 
             // estoque_min_lbl
             // 
@@ -267,9 +267,9 @@ namespace MRP_SdC
             this.estoque_min_lbl.Location = new System.Drawing.Point(0, 0);
             this.estoque_min_lbl.Name = "estoque_min_lbl";
             this.estoque_min_lbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.estoque_min_lbl.Size = new System.Drawing.Size(116, 17);
+            this.estoque_min_lbl.Size = new System.Drawing.Size(97, 17);
             this.estoque_min_lbl.TabIndex = 0;
-            this.estoque_min_lbl.Text = "Segurança de Estoque";
+            this.estoque_min_lbl.Text = "Modelo do Produto";
             // 
             // chart_cht
             // 
@@ -505,14 +505,14 @@ namespace MRP_SdC
         private System.Windows.Forms.Panel dados_pnl;
         private System.Windows.Forms.Panel dados_estoque_pnl;
         private System.Windows.Forms.Panel estoque_max_pnl;
-        private System.Windows.Forms.TextBox txtLote;
+        private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.Label lblLote;
         private System.Windows.Forms.Panel estoque_min_pnl;
-        private System.Windows.Forms.TextBox txtSegurancaEstoque;
+        private System.Windows.Forms.TextBox txtModelo;
         private System.Windows.Forms.Label estoque_min_lbl;
         private System.Windows.Forms.Panel estoque_atual_pnl;
-        private System.Windows.Forms.TextBox estoque_atual_tbx;
-        private System.Windows.Forms.Label estoque_atual_lbl;
+        private System.Windows.Forms.TextBox txtValor;
+        private System.Windows.Forms.Label lblValor;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart_cht;
         private System.Windows.Forms.Label dados_subttl_lbl;
         private System.Windows.Forms.Label dados_ttl_lbl;

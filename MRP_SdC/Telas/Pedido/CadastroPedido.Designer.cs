@@ -36,6 +36,7 @@ namespace MRP_SdC.Telas.Pedido
             this.txtIdProduto = new System.Windows.Forms.TextBox();
             this.txt_idProduto = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbNomeProduto = new System.Windows.Forms.ComboBox();
             this.lblNomeProduto = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtQuantidade = new System.Windows.Forms.TextBox();
@@ -48,7 +49,6 @@ namespace MRP_SdC.Telas.Pedido
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtSemana = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cmbNomeProduto = new System.Windows.Forms.ComboBox();
             this.produzir_pnl.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -122,6 +122,15 @@ namespace MRP_SdC.Telas.Pedido
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(302, 48);
             this.panel1.TabIndex = 18;
+            // 
+            // cmbNomeProduto
+            // 
+            this.cmbNomeProduto.FormattingEnabled = true;
+            this.cmbNomeProduto.Location = new System.Drawing.Point(0, 20);
+            this.cmbNomeProduto.Name = "cmbNomeProduto";
+            this.cmbNomeProduto.Size = new System.Drawing.Size(266, 21);
+            this.cmbNomeProduto.TabIndex = 25;
+            this.cmbNomeProduto.SelectedIndexChanged += new System.EventHandler(this.cmbNomeProduto_SelectedIndexChanged);
             // 
             // lblNomeProduto
             // 
@@ -241,14 +250,6 @@ namespace MRP_SdC.Telas.Pedido
             this.label1.Size = new System.Drawing.Size(46, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Semana";
-            // 
-            // cmbNomeProduto
-            // 
-            this.cmbNomeProduto.FormattingEnabled = true;
-            this.cmbNomeProduto.Location = new System.Drawing.Point(0, 20);
-            this.cmbNomeProduto.Name = "cmbNomeProduto";
-            this.cmbNomeProduto.Size = new System.Drawing.Size(266, 21);
-            this.cmbNomeProduto.TabIndex = 25;
             // 
             // CadastroPedido
             // 

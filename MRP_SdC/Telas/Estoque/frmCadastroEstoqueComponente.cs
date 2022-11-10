@@ -60,5 +60,21 @@ namespace MRP_SdC.Telas.Estoque
                 cmbModeloComponente.Items.Add(item);
             }
         }
+
+        private void cmbModeloComponente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Método try catch.
+            try
+            {
+                MySQL.ComponenteDAO componenteDao = new MySQL.ComponenteDAO();
+                componenteDao.GetModeloComponente(cmbModeloComponente.Text);
+
+                txtIdComponente.Text = componenteDao.id.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

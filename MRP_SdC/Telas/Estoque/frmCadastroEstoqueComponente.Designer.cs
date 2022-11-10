@@ -108,6 +108,7 @@ namespace MRP_SdC.Telas.Estoque
             this.cmbModeloComponente.Name = "cmbModeloComponente";
             this.cmbModeloComponente.Size = new System.Drawing.Size(219, 21);
             this.cmbModeloComponente.TabIndex = 1;
+            this.cmbModeloComponente.SelectedIndexChanged += new System.EventHandler(this.cmbModeloComponente_SelectedIndexChanged);
             // 
             // lbl_ModeloProduto
             // 

@@ -302,5 +302,51 @@ namespace MRP_SdC.MySQL
             conexao.CloseConexao();
             return true;
         }
+
+        public Boolean Update(Modelos.EstoqueComponente estComp)
+        {
+            Conexao conexao = new Conexao();
+
+            if (conexao.mErro.Length > 0)
+            {
+                return false;
+            }
+
+            try
+            {
+                MySqlDataReader reader;
+                //Atualiza a quantidade atual do estoque de Componentes
+                //quando o id do Componente, for igual ao parâmetro.
+                string query = "UPDATE ESTOQUECOMPONENTE " +
+                    "SET qtdeAtualEstoque = @qntatual, estoqueSeguranca = @estseg, leadTime = @lt," +
+                    "lote = @lote " +
+                    "WHERE modeloComponente = @modelo; ";
+                MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
+                if (!conexao.OpenConexao())
+                {
+                    return false;
+                }
+
+                //Adiciona um valor ao final do SqlParameterCollection.
+                cmd.Parameters.AddWithValue("@modelo", estComp.modeloComponente);
+                cmd.Parameters.AddWithValue("@qntatual", estComp.qtdeAtualEstoque);
+                cmd.Parameters.AddWithValue("@estseg", estComp.estoqueSeguranca);
+                cmd.Parameters.AddWithValue("@lt", estComp.leadTime);
+                cmd.Parameters.AddWithValue("@lote", estComp.lote);
+
+                cmd.Prepare();
+
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            conexao.CloseConexao();
+            return true;
+        }
     }
 }

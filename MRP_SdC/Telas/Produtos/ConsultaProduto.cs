@@ -35,6 +35,9 @@ namespace MRP_SdC
             // textos do produto selecionado
             dados_ttl_lbl.Text = myProd.idProduto.ToString();
             dados_subttl_lbl.Text = myProd.modelo;
+            txtModelo.Text = myProd.modelo;
+            txtDescricao.Text = myProd.descricao;
+            txtValor.Text = myProd.valor.ToString();
 
             atualizar_btn.Enabled = true;
         }
