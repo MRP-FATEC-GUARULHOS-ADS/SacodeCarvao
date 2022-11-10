@@ -8,10 +8,18 @@ CREATE TABLE PRODUTO (
  modeloProduto varchar(100) not null,
  descrProduto varchar(1000),
  valorProduto decimal(10,2),
- qtdeMinEstoque int,
- qtdeMaxEstoque int,
- qtdeAtualEstoque int,
  estado char(1) not null
+);
+
+CREATE TABLE ESTOQUEPRODUTO (
+ idEstoqueProduto int primary key AUTO_INCREMENT,
+ idProduto int,
+ modeloProduto varchar(100) not null,
+ qtdeAtualEstoque int,
+ estoqueSeguranca int,
+ leadTime int, 
+ lote int,
+ FOREIGN KEY idProdut (idProduto) References PRODUTO (idProduto)
 );
 
 CREATE TABLE PEDIDO (
@@ -20,6 +28,16 @@ CREATE TABLE PEDIDO (
  nomeProduto varchar(100) not null,
  quantidade int,
  valor int,
+ semana int,
+ FOREIGN KEY idProdut (idProduto) References PRODUTO (idProduto) 
+ );
+
+ CREATE TABLE PREVISAODEMANDA (
+ idPrevisaoDemanda int primary key AUTO_INCREMENT,
+ idProduto int,
+ nomeProduto varchar(100) not null,
+ quantidade int,
+ semana int,
  FOREIGN KEY idProdut (idProduto) References PRODUTO (idProduto) 
  );
 
@@ -29,11 +47,19 @@ CREATE TABLE COMPONENTE (
  marcaComponente varchar(1000) not null,
  modeloComponente varchar(1000) not null,
  especificacoes varchar(8000),
- qtdeMinEstoque int,
- qtdeMaxEstoque int,
- qtdeAtualEstoque int,
  estado char(1) not null
 );
+
+CREATE TABLE ESTOQUECOMPONENTE (
+ idEstoqueComponente int primary key AUTO_INCREMENT,
+ idComponente int,
+ modeloComponente varchar(100),
+ qtdeAtualEstoque int,
+ estoqueSeguranca int,
+ leadTime int, 
+ lote int,
+ FOREIGN KEY idComp (idComponente) References Componente (idComponente)
+ );
 
 CREATE TABLE PRODUTO_COMPONENTE (
   idProduto int not null,
@@ -105,23 +131,36 @@ FOREIGN KEY (idComponente) REFERENCES COMPONENTE(idComponente);
 
 CREATE TABLE BOM(
 idBom int PRIMARY KEY AUTO_INCREMENT,
-noProduto int,
-noPai int NULL,
 codigoLista int,
-nome varchar(20),
-nivel int,
+nome varchar(100),
+nivel varchar(20),
 quantidadeLista int
 );
 
 CREATE TABLE MRP (
  idMRP int PRIMARY KEY AUTO_INCREMENT,
- idPedido int,
- idProduto int,
+ idComponente int,
  nome varchar(50),
+ necBruta int,
+ estoqueDisp int,
+ recOrdensPlan int,
+ libDeOrdens int,
+ semana int,
+ FOREIGN KEY idComp (idComponente) REFERENCES ESTOQUECOMPONENTE (idComponente)
+);
+
+CREATE TABLE MPS (
+ idMPS int PRIMARY KEY AUTO_INCREMENT,
+ idProduto int,
+ nomeProduto varchar(50),
  quantidadePedido int,
- quantidadeEstoque int,
- quantidadeFinal int,
- FOREIGN KEY idPed (idPedido) REFERENCES PEDIDO (idPedido)
+ quantidadePrevisaoDemanda int,
+ quantidadeDemandaConsiderada int,
+ estoqueAtual int,
+ PlanoMestreProducao int,
+ semana int,
+ dataMps varchar(20),
+ FOREIGN KEY idProdut (idProduto) REFERENCES PRODUTO (idProduto)
 );
 
 CREATE TABLE REQUISICAOCOMPRA (
@@ -142,27 +181,26 @@ CREATE TABLE USUARIO (
 -- INSERTS
 INSERT INTO PRODUTO (
   modeloProduto, descrProduto, valorProduto,
-  qtdeMinEstoque, qtdeMaxEstoque, qtdeAtualEstoque, estado
+  estado
 ) VALUES
-  ('Notebook A3', 'Notebook A3 A315-33-C58D Intel Celeron N3060 15,6" 4GB HD 500 GB Linux', 2899, 50, 500, 100, 'P'),
-  ('Notebook S145', 'Notebook S145 81WT0006BR Intel Celeron N4020 15,6" 4GB SSD 128 GB Windows', 1899.00, 20, 50, null, 'P'),
-  ('Notebook P', 'Notebook P Motion Plus Q464B Intel Atom 14" 4GB eMMC', 4500, 20, 100, null, 'D'),
-  ('Notebook S', 'Notebook S Book E20 NP550XCJ-KO2BR Intel Celeron 5205U 15,6" 4GB HD 500 GB', 2420.50, 200, 500, 120, 'P');
+  ('Notebook A3', 'Notebook A3 A315-33-C58D Intel Celeron N3060 15,6" 4GB HD 500 GB Linux', 2899, 'P'),
+  ('Notebook S145', 'Notebook S145 81WT0006BR Intel Celeron N4020 15,6" 4GB SSD 128 GB Windows', 1899.00, 'P'),
+  ('Notebook P', 'Notebook P Motion Plus Q464B Intel Atom 14" 4GB eMMC', 4500, 'D'),
+  ('Notebook S', 'Notebook S Book E20 NP550XCJ-KO2BR Intel Celeron 5205U 15,6" 4GB HD 500 GB', 2420.50, 'P');
 
 INSERT INTO COMPONENTE (
-  tipoComponente, marcaComponente, modeloComponente, especificacoes,
-  qtdeMinEstoque, qtdeMaxEstoque, qtdeAtualEstoque, estado
+  tipoComponente, marcaComponente, modeloComponente, especificacoes, estado
 ) VALUES 
-  ('Processador','Intel', 'Celeron N3060', null, 100, 1000, 200, 'P'),
-  ('Processador','Intel', 'Celeron N4020', null, 100, 800, 300, 'P'),
-  ('Processador','Intel', 'Core i5 1035G1', null, 100, 1100, 110, 'D'),
-  ('Processador','Intel', 'Core i3 10110U', null, 80, 720, 100, 'P'),
-  ('Processador','Intel', 'Core i5 9300H', null, 100, 1000, 200, 'P'),
-  ('HD', 'Seagate', '500 GB', null, 10, 500, 80, 'P'),
-  ('HD', 'ASUS', '1 TB', null, 100, 1000, 200, 'P'),
-  ('SSD', 'Crucial', '500 GB', null, 100, 1000, 200, 'P'),
-  ('Memória RAM', 'Kingston', '4 GB', null, 100, 1000, 200, 'M'),
-  ('Memória RAM', 'Spectrix', '8 GB', null, 100, 1000, 200, 'P');
+  ('Processador','Intel', 'Celeron N3060', null, 'P'),
+  ('Processador','Intel', 'Celeron N4020', null, 'P'),
+  ('Processador','Intel', 'Core i5 1035G1', null, 'D'),
+  ('Processador','Intel', 'Core i3 10110U', null, 'P'),
+  ('Processador','Intel', 'Core i5 9300H', null, 'P'),
+  ('HD', 'Seagate', '500 GB', null, 'P'),
+  ('HD', 'ASUS', '1 TB', null, 'P'),
+  ('SSD', 'Crucial', '500 GB', null, 'P'),
+  ('Memória RAM', 'Kingston', '4 GB', null, 'M'),
+  ('Memória RAM', 'Spectrix', '8 GB', null, 'P');
 
 INSERT INTO PRODUTO_COMPONENTE VALUES 
   (1,  1, 1) ,(1,  6, 1) ,(1,  9, 1),

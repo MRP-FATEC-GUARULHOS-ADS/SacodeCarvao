@@ -53,5 +53,21 @@ namespace MRP_SdC.Telas.Estoque
                 cmbModeloProduto.Items.Add(item);
             }
         }
+
+        private void cmbModeloProduto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Método try catch.
+            try
+            {
+                MySQL.ProdutoDAO produtoDao = new MySQL.ProdutoDAO();
+                produtoDao.GetModeloProduto(cmbModeloProduto.Text);
+    
+                txtIdProduto.Text = produtoDao.id.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("A demanda considerada tem que ser preenchida");
+            }
+        }
     }
 }

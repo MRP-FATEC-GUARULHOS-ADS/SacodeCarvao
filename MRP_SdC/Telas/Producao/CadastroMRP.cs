@@ -508,6 +508,27 @@ namespace MRP_SdC.MySQL
                     txtLibDeOrdens.Text = daoMrp2.getLibOrdens.ToString();
                     int estoqueDisponivel = estCompDao.estoqueAtualGetIdEstoque - necBruta;
                     txtEstoqueDisp.Text = estoqueDisponivel.ToString();
+
+                    int necBruta2 = daoMrp2.GetNecessidadeBrutaNecBruta * bom.quantidadeLista;
+
+                    if (necBruta2 > int.Parse(txtEstoqueDisp.Text) - estCompDao.quantidadeSeguranca)
+                    {
+                        int liberacao = necBruta2 - estoqueDisponivel;
+                        int liberacaoReal;
+                        if (liberacao < estCompDao.quantidadeSeguranca)
+                        {
+                            liberacaoReal = estCompDao.quantidadeSeguranca;
+                        }
+                        else
+                        {
+                            liberacaoReal = liberacao;
+                        }
+                        txtLibDeOrdens.Text = liberacaoReal.ToString();
+                    }
+                    else
+                    {
+                        txtLibDeOrdens.Text = 0.ToString();
+                    }
                 }
 
                 if (int.Parse(txtSemana.Text) != 1)
@@ -526,7 +547,7 @@ namespace MRP_SdC.MySQL
                     int estoqueDisponivel = estCompDao.estoqueAtualGetIdEstoque - necBruta + int.Parse(txtRecOrdensPlan.Text);
                     txtEstoqueDisp.Text = estoqueDisponivel.ToString();
 
-                    int necBruta2 = 0;
+                    int necBruta2 = daoMrp2.GetNecessidadeBrutaNecBruta * bom.quantidadeLista;
 
                     if (necBruta2 > int.Parse(txtEstoqueDisp.Text) - estCompDao.quantidadeSeguranca)
                     {
