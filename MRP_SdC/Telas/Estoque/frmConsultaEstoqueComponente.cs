@@ -26,9 +26,27 @@ namespace MRP_SdC.Telas.Estoque
             dgvEstoqueComponente.DataSource = listaEstoqueComponente;
         }
 
+        public void MudaInfos()
+        {
+            Modelos.EstoqueComponente estComp = new Modelos.EstoqueComponente();
+            estComp = dgvEstoqueComponente.CurrentRow.DataBoundItem as Modelos.EstoqueComponente;
+
+            // textos do produto selecionado
+            dados_ttl_lbl.Text = estComp.idEstoqueComponente.ToString();
+            estComp.idEstoqueComponente = int.Parse(dados_ttl_lbl.Text);
+            dados_subttl_lbl.Text = String.Format(estComp.modeloComponente.ToString());
+            txtIdComponente.Text = estComp.idComponente.ToString();
+            txtNomeComponente.Text = estComp.modeloComponente.ToString();
+            txtQuantidadeAtualEstoque.Text = estComp.qtdeAtualEstoque.ToString();
+            txtEstoqueSeguranca.Text = estComp.estoqueSeguranca.ToString();
+            txtLeadTime.Text = estComp.leadTime.ToString();
+            txtLote.Text = estComp.lote.ToString();
+        }
+
         private void frmConsultaEstoqueComponente_Load(object sender, EventArgs e)
         {
             AtualizaListas();
+            MudaInfos();
         }
     }
 }

@@ -43,6 +43,7 @@ namespace MRP_SdC.Telas.Producao
             this.pesquisa_sep_pnl = new System.Windows.Forms.Panel();
             this.pesquisa_descnt_cbx = new System.Windows.Forms.CheckBox();
             this.dados_pnl = new System.Windows.Forms.Panel();
+            this.btnExcel = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.txtSemana = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -77,7 +78,6 @@ namespace MRP_SdC.Telas.Producao
             this.mps_dgv = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.buscarÁrvoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnExcel = new System.Windows.Forms.Button();
             this.pesquisa_pnl.SuspendLayout();
             this.pesquisa_cont_pnl.SuspendLayout();
             this.dados_pnl.SuspendLayout();
@@ -205,6 +205,16 @@ namespace MRP_SdC.Telas.Producao
             this.dados_pnl.Padding = new System.Windows.Forms.Padding(12, 24, 12, 12);
             this.dados_pnl.Size = new System.Drawing.Size(214, 615);
             this.dados_pnl.TabIndex = 11;
+            // 
+            // btnExcel
+            // 
+            this.btnExcel.Location = new System.Drawing.Point(48, 541);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(107, 23);
+            this.btnExcel.TabIndex = 12;
+            this.btnExcel.Text = "Excel";
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // panel8
             // 
@@ -555,16 +565,6 @@ namespace MRP_SdC.Telas.Producao
             this.buscarÁrvoreToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.buscarÁrvoreToolStripMenuItem.Text = "Buscar Árvore";
             this.buscarÁrvoreToolStripMenuItem.Click += new System.EventHandler(this.buscarÁrvoreToolStripMenuItem_Click);
-            // 
-            // btnExcel
-            // 
-            this.btnExcel.Location = new System.Drawing.Point(48, 541);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(107, 23);
-            this.btnExcel.TabIndex = 12;
-            this.btnExcel.Text = "Excel";
-            this.btnExcel.UseVisualStyleBackColor = true;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // ConsultaMPS
             // 

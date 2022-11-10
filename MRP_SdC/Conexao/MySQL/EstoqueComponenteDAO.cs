@@ -22,14 +22,14 @@ namespace MRP_SdC.MySQL
                 string query = "INSERT INTO ESTOQUECOMPONENTE ( " +
                     "idComponente, modeloComponente, qtdeAtualEstoque, estoqueSeguranca, " +
                     "leadTime, lote" +
-                    ") VALUES(@idComp, @modelo, @qntAtual, @estSeg, @lt, @lote); ";
+                    ") VALUES(@idCompo, @modelo, @qntAtual, @estSeg, @lt, @lote); ";
                 MySqlCommand cmd = new MySqlCommand(query, conexao.conn);
                 if (!conexao.OpenConexao())
                 {
                     return false;
                 }
 
-                cmd.Parameters.AddWithValue("@idComp", estComp.idComponente);
+                cmd.Parameters.AddWithValue("@idCompo", estComp.idComponente);
                 cmd.Parameters.AddWithValue("@modelo", estComp.modeloComponente);
                 cmd.Parameters.AddWithValue("@qntAtual", estComp.qtdeAtualEstoque);
                 cmd.Parameters.AddWithValue("@estSeg", estComp.estoqueSeguranca);

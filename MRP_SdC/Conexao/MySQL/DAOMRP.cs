@@ -423,7 +423,7 @@ namespace MRP_SdC.MySQL
             return mrp;
         }
 
-        public int GetLibDeOrdensRecPlan;
+        public int GetLibDeOrdensRecPlan=0;
         public MRP GetRecOrdensPlan(string nomeComponente, int semana)
         {
             MRP mrp = new MRP();

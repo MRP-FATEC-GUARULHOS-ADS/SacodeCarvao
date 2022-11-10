@@ -400,10 +400,38 @@ namespace MRP_SdC.MySQL
 
                 if (int.Parse(txtSemana.Text) == 1)
                 {
+                    estCompDao.GetLeadTimeLote(cmbModeloComponente.Text);
+                    int leadTime = estCompDao.GetLeadTime;
+
                     txtRecOrdensPlan.Text = 0.ToString();
-                    txtLibDeOrdens.Text = 0.ToString();
+
+                    int semana = int.Parse(txtSemana.Text) + leadTime;
+                    conMps2.GetPlanoMestreProducao(nomeNoPai, semana);
+                    int necBruta2 = conMps2.planoMestreProducao * bom.quantidadeLista;
+
+                    daoMrp2.GetLibOrdem(cmbModeloComponente.Text, semana);
                     int estoqueDisponivel = estCompDao.estoqueAtualGetIdEstoque - necBruta;
                     txtEstoqueDisp.Text = estoqueDisponivel.ToString();
+
+                    if (necBruta2 > int.Parse(txtEstoqueDisp.Text) - estCompDao.quantidadeSeguranca)
+                    {
+                        int liberacao = necBruta2 - estoqueDisponivel;
+                        int liberacaoReal;
+                        if (liberacao < estCompDao.quantidadeSeguranca)
+                        {
+                            liberacaoReal = estCompDao.quantidadeSeguranca + liberacao;
+                        }
+                        else
+                        {
+                            liberacaoReal = liberacao;
+                        }
+                        txtLibDeOrdens.Text = liberacaoReal.ToString();
+                    }
+                    else
+                    {
+                        txtLibDeOrdens.Text = 0.ToString();
+                    }
+
                 }
 
                 if (int.Parse(txtSemana.Text) != 1)
@@ -444,6 +472,8 @@ namespace MRP_SdC.MySQL
                         txtLibDeOrdens.Text = 0.ToString();
                     }
                 }
+
+                estCompDao.UpdateSaldo(cmbModeloComponente.Text, int.Parse(txtEstoqueDisp.Text));
             }
             else
             {
@@ -468,7 +498,14 @@ namespace MRP_SdC.MySQL
                 if (int.Parse(txtSemana.Text) == 1)
                 {
                     txtRecOrdensPlan.Text = 0.ToString();
-                    txtLibDeOrdens.Text = 0.ToString();
+                    estCompDao.GetLeadTimeLote(cmbModeloComponente.Text);
+                    int leadTime = estCompDao.GetLeadTime;
+                    int semana = int.Parse(txtSemana.Text) + leadTime;
+
+                    daoMrp2.GetNecessidadeBruta(nomeNoPai, semana);
+
+                    daoMrp2.GetLibOrdem(cmbModeloComponente.Text, semana);
+                    txtLibDeOrdens.Text = daoMrp2.getLibOrdens.ToString();
                     int estoqueDisponivel = estCompDao.estoqueAtualGetIdEstoque - necBruta;
                     txtEstoqueDisp.Text = estoqueDisponivel.ToString();
                 }

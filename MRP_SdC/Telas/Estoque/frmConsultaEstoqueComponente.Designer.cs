@@ -475,7 +475,7 @@ namespace MRP_SdC.Telas.Estoque
             this.Controls.Add(this.EspEsq_pnl);
             this.Controls.Add(this.EspDir_pnl);
             this.Name = "frmConsultaEstoqueComponente";
-            this.Text = "frmConsultaEstoqueComponente";
+            this.Text = "Estoque de Componentes";
             this.Load += new System.EventHandler(this.frmConsultaEstoqueComponente_Load);
             this.pesquisa_pnl.ResumeLayout(false);
             this.pesquisa_cont_pnl.ResumeLayout(false);

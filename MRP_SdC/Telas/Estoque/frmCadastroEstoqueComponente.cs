@@ -20,22 +20,28 @@ namespace MRP_SdC.Telas.Estoque
 
         private void ok_btn_Click(object sender, EventArgs e)
         {
-            //Objeto e seus atributos.
-            Modelos.EstoqueComponente estComp = new Modelos.EstoqueComponente(int.Parse(txtIdProduto.Text),
-            cmbModeloComponente.Text, int.Parse(txtQuantidadeAtual.Text), int.Parse(txtEstoqueSeguranca.Text),
-            int.Parse(txtLeadTime.Text), int.Parse(txtLote.Text));
-
-            DialogResult confirmarInsert = MessageBox.Show(
-                "( ﾉ ﾟｰﾟ)ﾉ " + estComp.modeloComponente + " ?!", "Confirmar Inserção",
-                MessageBoxButtons.YesNo
-            );
-            if (confirmarInsert == DialogResult.Yes)
+            try
             {
-                MySQL.EstoqueComponenteDAO estCompDao = new MySQL.EstoqueComponenteDAO();
+                //Objeto e seus atributos.
+                Modelos.EstoqueComponente estComp = new Modelos.EstoqueComponente(int.Parse(txtIdComponente.Text), cmbModeloComponente.Text, int.Parse(txtQuantidadeAtual.Text),
+                int.Parse(txtEstoqueSeguranca.Text), int.Parse(txtLeadTime.Text), int.Parse(txtLote.Text));
+                
+                DialogResult confirmarInsert = MessageBox.Show(
+                    "( ﾉ ﾟｰﾟ)ﾉ " + estComp.modeloComponente + " ?!", "Confirmar Inserção",
+                    MessageBoxButtons.YesNo
+                );
+                if (confirmarInsert == DialogResult.Yes)
+                {
+                    MySQL.EstoqueComponenteDAO estCompDao = new MySQL.EstoqueComponenteDAO();
 
-                estCompDao.Insert(estComp);
+                    estCompDao.Insert(estComp);
 
-                Close();
+                    Close();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
